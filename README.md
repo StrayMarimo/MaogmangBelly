@@ -1,9 +1,9 @@
 # MaogmangBelly
 A Proprietary Restaurant E-Commerce Website for Maogmang Belly
 
+Prereq: must have **composer**, **mysql**,  **php**, and **laravel** installed
 
 ### To install phpMyAdmin UI:  
-Prereq: must have composer and mysql installed
 
 From root directory,  
 <code>create-project phpmyadmin/phpmyadmin</code>
