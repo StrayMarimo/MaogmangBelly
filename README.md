@@ -21,7 +21,7 @@ A Proprietary Restaurant E-Commerce Website for Maogmang Belly
 
 ### To install and run phpMyAdmin UI:  
 
-From terminal, [not under the project directory]
+From terminal, [not under the project directory]:  
 <code>composer create-project phpmyadmin/phpmyadmin</code>
 
 go to the folder:  
