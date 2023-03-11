@@ -14,6 +14,10 @@ A Proprietary Restaurant E-Commerce Website for Maogmang Belly
  DB_DATABASE=maogmangbelly
  DB_USERNAME=root
  DB_PASSWORD=pass</code>
+ 
+ 
+ ### Run Laravel Project server:  
+<code>php artisan serve </code>
 
 ### To install and run phpMyAdmin UI:  
 
@@ -31,9 +35,8 @@ open the file:
 
 Set AllowNoPassword to true (for convenience hehe).  
 
-Back to terminal, still in phpmyadmin directory, type:  
+Back to terminal, still in phpmyadmin directory, type to run phpMyAdmin UI:    
 <code>php -s 127.0.0.1:8080</code>
-
 
 
 
