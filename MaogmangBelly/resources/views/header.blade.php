@@ -25,7 +25,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Cart(0)</a>
+                    <a class="nav-link" href="#">Order(0)</a>
                 </li>
             </ul>
 
