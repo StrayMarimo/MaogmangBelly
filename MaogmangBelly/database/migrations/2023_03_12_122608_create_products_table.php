@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string("name");
             $table->string("description");
             $table->double("price", 8, 2);
-            $table->int("stock");
-            $table->int("total_sold");
+            $table->integer("stock");
+            $table->integer("total_sold");
             $table->string("gallery");
-            $table->string("category_id");
+            $table->bigInteger("category_id");
             $table->timestamps();
         });
     }
