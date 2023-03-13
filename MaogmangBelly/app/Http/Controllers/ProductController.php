@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Category;
 class ProductController extends Controller
 {
     //
@@ -17,7 +18,9 @@ class ProductController extends Controller
     function details($id)
     {
         $data = Product::find($id);
-        return view('details', ['product'=>$data]);
+        $cat_id = $data['category_id'];
+        $category = Category::find($cat_id);
+        return view('details', ['product'=>$data, 'category'=>$category]);
     }
 
 }
