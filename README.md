@@ -1,10 +1,13 @@
 # MaogmangBelly
 A Proprietary Restaurant E-Commerce Website for Maogmang Belly
 
+
 ### Prereq:
  - mysql
  - php
  - laravel
+ 
+ <hr>
  
 ### DATABASE CREDENTIALS (change these values on the ***.env*** file):
 <code>DB_CONNECTION=mysql  
@@ -14,19 +17,22 @@ A Proprietary Restaurant E-Commerce Website for Maogmang Belly
  DB_USERNAME=root  
  DB_PASSWORD=pass</code>
  
+ <hr>
  
- ### Run Laravel Project server:  
+ ### Running servers: 
+**Run Laravel:**  
 <code>php artisan serve </code>
 
-### Run phpMyAdmin UI:
+**Run phpMyAdmin UI:**  
 in your phpmyadmin directory,  
-<code>
-  mysql.server start  
+<code>mysql.server start  
   php -S 127.0.0.1:8080
 </code>
 
+<hr>
+
 ### PHP commands
-##### Migrations:
+#### Migrations:
 To generate migration:  
 <code>php artisan make:migration <migration_name></code>
 
