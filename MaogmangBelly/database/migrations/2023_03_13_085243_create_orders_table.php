@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->double("grand_total", 16, 2);
+            $table->double("grand_total", 16, 2)->default(0);
             $table->char("order_type");
             $table->string("address");
-            $table->boolean("is_purchased");
+            $table->boolean("is_purchased")->default(false);
             $table->timestamp("date_purchased")->nullable();
             $table->timestamp("date_completed")->nullable();
             $table->bigInteger("user_id");
