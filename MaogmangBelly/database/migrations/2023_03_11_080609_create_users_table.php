@@ -15,8 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->unsignedBigInteger('mobile_number');
             $table->string('password');
+            $table->string('address')->nullable();
+            $table->char('user_type');
             $table->timestamps();
+            
         });
     }
 
