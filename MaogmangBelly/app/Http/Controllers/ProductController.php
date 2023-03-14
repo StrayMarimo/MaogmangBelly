@@ -7,10 +7,8 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Order;
 use App\Models\OrderLine;
-use Illuminate\Console\View\Components\Alert;
 use Illuminate\Support\Facades\DB;
 
-use function PHPUnit\Framework\isEmpty;
 
 class ProductController extends Controller
 {

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CheckoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,4 +25,5 @@ Route::get("/", [ProductController::class, 'index']);
 Route::get("details/{id}", [ProductController::class, 'details']);
 Route::get("search", [ProductController::class, 'searchProduct']);
 Route::post("add_to_order", [ProductController::class, 'addToOrder']);
+Route::post("checkout_order", [CheckoutController::class, 'checkout']);
 

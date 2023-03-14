@@ -18,14 +18,18 @@
                 </li>
                 <li>
                     <form class="d-flex" action="/search" role="search">
-                        <input class="form-control me-2 search-box" type="text" name="query" placeholder="Search" aria-label="Search">
+                        <input class="form-control me-2 search-box" type="text" name="query" placeholder="Search"
+                            aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Order(0)</a>
+                    <form action="/checkout_order" method="POST">
+                        @csrf
+                        <button class="btn">Order(0)</button>
+                    </form>
                 </li>
             </ul>
 
