@@ -10,13 +10,14 @@ use Illuminate\Support\Facades\DB;
 
 class CheckoutController extends Controller
 {
-    /*
-        Gets all orders of user that has not been purchased
-         to be displayed in the checkout page
-        @param Request $req
-        @return View[login, noOrders, checkout]
-    */
-    public function checkout(Request $req) {
+    /**
+     *  Gets all orders of user that has not been purchased 
+     *  to be displayed in the checkout page
+     *  @param Request $req
+     *  @return View[login, noOrders, checkout]
+     */
+    public function checkout(Request $req)
+    {
 
         if ($req->session()->has('user')) {
             // get user id
@@ -27,10 +28,9 @@ class CheckoutController extends Controller
                 ['user_id', '=', $user],
                 ['is_purchased', 0],
             ])->first();
-            
+
             // if user has not added any order
-            if ($order == null)
-            {
+            if ($order == null) {
                 return "You have not added orders yet";
             }
 
@@ -40,21 +40,22 @@ class CheckoutController extends Controller
 
             // query the product name and price of every item indicated in the order
             // and add them as fields in orders
-            foreach ($orders as $item)
-            {
+            foreach ($orders as $item) {
                 $product = Product::where(
-                    'id', '=', $item['product_id'])->first();
+                    'id',
+                    '=',
+                    $item['product_id']
+                )->first();
                 $item['product_name'] = $product['name'];
                 $item['price'] = $product['price'];
             }
 
             // display checkout page, passing all products ordered and order data
             return view('checkout', [
-                'orders' => $orders, 
+                'orders' => $orders,
                 'order' => $order,
             ]);
-        } else
-        {
+        } else {
             // user must be logged in first
             return redirect('/login');
         }

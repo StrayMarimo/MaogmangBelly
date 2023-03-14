@@ -13,10 +13,10 @@ use App\Http\Controllers\CheckoutController;
 
 class ProductController extends Controller
 {
-    /* 
-        gets all products to be displayed
-        @return view products
-    */
+    /**
+     *    gets all products to be displayed
+     *   @return view products
+     */
     function index()
     {
         $data = Product::all();
@@ -37,10 +37,10 @@ class ProductController extends Controller
         return view('details', ['product' => $data, 'category' => $category]);
     }
 
-    /*
-        gets all products similar to search input
-        @param Request $req
-    */
+    /**
+     * gets all products similar to search input
+     * @param Request $req
+     */
     function searchProduct(Request $req)
     {
         $data = Product::where('name', 'like', '%' . $req->input('query') . '%')
@@ -48,17 +48,16 @@ class ProductController extends Controller
         return view('search', ['products' => $data]);
     }
 
-    /*
-        Creates new order line in db
-        If user has unpurchased order already
-            add price of order line to grand total of current order
-        else
-            create new order
-
-        @param Request $req
-        @return checkout post request if user is logged in
-        @return else redirect user to login 
-    */
+    /**
+     *   Creates new order line in db
+     *   If user has unpurchased order already
+     *     add price of order line to grand total of current order
+     *   else
+     *    create new order
+     *   @param Request $req
+     *   @return checkout post request if user is logged in
+     *   @return else redirect user to login 
+     */
 
     function addToOrder(Request $req)
     {
