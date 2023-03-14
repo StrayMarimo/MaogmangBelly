@@ -15,15 +15,14 @@ use App\Http\Controllers\CheckoutController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/login', function () {
-    return view('login');
-});
-
-Route::post("/login", [UserController::class, 'login']);
+// GET Requests
+Route::get('/login', function () { return view('login');});
 Route::get("/", [ProductController::class, 'index']);
 Route::get("details/{id}", [ProductController::class, 'details']);
 Route::get("search", [ProductController::class, 'searchProduct']);
+
+// POST Requests
+Route::post("/login", [UserController::class, 'login']);
 Route::post("add_to_order", [ProductController::class, 'addToOrder']);
 Route::post("checkout_order", [CheckoutController::class, 'checkout']);
 
