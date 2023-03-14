@@ -65,15 +65,13 @@ class ProductController extends Controller
         if (!$req->session()->has('user')) {
             return redirect('/login');
         }
-
         // create new Order Line
         $order_line = new OrderLine;
 
         // get all needed data [user_id, product, total_price]
         $user = $req->session()->get('user')['id'];
         $product = Product::find($req->product_id);
-        $quantity = 1;
-        $total_price = $product['price'] * $quantity;
+        $total_price = $product['price'] * $req->quantity;
 
         // check if user has an already saved unpurchased order
         $orders = Order::where([
@@ -106,7 +104,7 @@ class ProductController extends Controller
         // store and save details of order line
         $order_line->order_id = $order['id'];
         $order_line->product_id = $req->product_id;
-        $order_line->quantity = $quantity;
+        $order_line->quantity = $req->quantity;
         $order_line->total_price = $total_price;
         $order_line->save();
 
