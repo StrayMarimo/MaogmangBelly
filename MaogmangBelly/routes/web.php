@@ -24,5 +24,6 @@ Route::get("search", [ProductController::class, 'searchProduct']);
 // POST Requests
 Route::post("/login", [UserController::class, 'login']);
 Route::post("add_to_order", [ProductController::class, 'addToOrder']);
+Route::post("buy", [CheckoutController::class, 'buy']);
 Route::post("checkout_order", [CheckoutController::class, 'checkout']);
 

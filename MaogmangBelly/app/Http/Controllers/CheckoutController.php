@@ -60,4 +60,19 @@ class CheckoutController extends Controller
             return redirect('/login');
         }
     }
+
+    function buy(Request $req) 
+    {
+        $user = $req->session()->get('user')['id'];
+        $order = Order::where([
+            ['user_id', '=', $user],
+            ['is_purchased', '=', false]
+        ])->first();
+
+        DB::table("orders")
+            ->where('id', $order['id'])
+            ->update(['is_purchased' => true]);
+        return "successfully bought order with id " .strval($order['id']) ;
+        
+    }
 }

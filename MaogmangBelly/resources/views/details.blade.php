@@ -15,11 +15,9 @@
             <form action="/add_to_order" method="POST">
                 @csrf
                 <input type="hidden" name="product_id" value={{$product['id']}}>
-                <input type="number" name="quantity">
+                <input type="number" name="quantity" value=1>
                 <button class="btn btn-primary">Add to Order</button>
             </form>
-            <br><br>
-            <button class="btn btn-success">Buy Now!</button>
         </div>
     </div>
 </div>

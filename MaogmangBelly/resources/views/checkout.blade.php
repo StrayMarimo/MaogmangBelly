@@ -22,6 +22,11 @@
    <div>
         Grand Total :  {{$order['grand_total']}} 
    </div>
+   <br><br>
+   <form action="/buy" method="POST">
+        @csrf
+        <button class="btn btn-success">Buy Now!</button>
+    </form>
   
 </div>
 @endsection
