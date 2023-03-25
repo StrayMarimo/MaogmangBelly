@@ -1,5 +1,6 @@
-@extends('master')
+@extends('layouts.app')
 @section("content")
+
 <div class="row d-flex justify-content-center m-2">
     <div class="custom-product col-6">
         <div id="carouselExampleCaptions" class="carousel slide">

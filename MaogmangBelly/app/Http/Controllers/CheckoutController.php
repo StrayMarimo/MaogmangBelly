@@ -7,6 +7,8 @@ use App\Models\Order;
 use App\Models\OrderLine;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 
 class CheckoutController extends Controller
 {
@@ -19,9 +21,11 @@ class CheckoutController extends Controller
     public function checkout(Request $req)
     {
 
-        if ($req->session()->has('user')) {
+        if (Auth::check()) {
+
             // get user id
-            $user = $req->session()->get('user')['id'];
+            $user =  Auth::user()->id;
+        
 
             // get unpurchased order of user
             $order = Order::where([
@@ -57,13 +61,14 @@ class CheckoutController extends Controller
             ]);
         } else {
             // user must be logged in first
+            return "has no user";
             return redirect('/login');
         }
     }
 
     function buy(Request $req) 
     {
-        $user = $req->session()->get('user')['id'];
+        $user = Auth::user()->id;
         $order = Order::where([
             ['user_id', '=', $user],
             ['is_purchased', '=', false]

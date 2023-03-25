@@ -1,4 +1,4 @@
-@extends('master')
+@extends('layouts.app')
 @section("content")
 <div class="container">
     <div class="row">
@@ -9,7 +9,7 @@
             <a href="/">Go Back</a>
             <h2>{{$product['name']}}</h2>
             <h3>Price: {{$product['price']}}</h3>
-            <h4>Details: {{$product['description']}}</h4>
+            <h4>Details: {{$product['description']}}</h4>`
             <h4>Category: {{$category['name']}}</h4>
             <br><br>
             <form action="/add_to_order" method="POST">

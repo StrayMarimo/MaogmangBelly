@@ -1,6 +1,7 @@
 <div class="card text-center">
+  <hr>
     <div class="card-header">
-      Featured
+      Footer ni beh
     </div>
     <div class="card-body">
       <h5 class="card-title">Special title treatment</h5>

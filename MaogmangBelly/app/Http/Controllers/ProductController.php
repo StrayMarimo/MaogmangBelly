@@ -9,7 +9,7 @@ use App\Models\Order;
 use App\Models\OrderLine;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\CheckoutController;
-
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -22,8 +22,6 @@ class ProductController extends Controller
         $data = Product::all();
         return view('products', ['products' => $data]);
     }
-
-
     /*
         gets all product details
         @param int $id
@@ -48,6 +46,7 @@ class ProductController extends Controller
         return view('search', ['products' => $data]);
     }
 
+
     /**
      *   Creates new order line in db
      *   If user has unpurchased order already
@@ -62,14 +61,14 @@ class ProductController extends Controller
     function addToOrder(Request $req)
     {
         // user must be logged in first
-        if (!$req->session()->has('user')) {
+        if (!Auth::check()) {
             return redirect('/login');
         }
         // create new Order Line
         $order_line = new OrderLine;
 
         // get all needed data [user_id, product, total_price]
-        $user = $req->session()->get('user')['id'];
+        $user = Auth::user()->id;
         $product = Product::find($req->product_id);
         $total_price = $product['price'] * $req->quantity;
 
@@ -94,7 +93,7 @@ class ProductController extends Controller
             ['user_id', '=', $user],
             ['is_purchased', 0],
         ])->first();
-
+            
         // update grand total of order by adding it with the total_price
         $grand_total = $order['grand_total'] + $total_price;
         DB::table("orders")
@@ -106,6 +105,7 @@ class ProductController extends Controller
         $order_line->product_id = $req->product_id;
         $order_line->quantity = $req->quantity;
         $order_line->total_price = $total_price;
+        // return $order_line;
         $order_line->save();
 
         // call post request to direct user to checkout page
