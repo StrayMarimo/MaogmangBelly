@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Auth\GoogleSocialiteController;
+use App\Http\Controllers\MailController;
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +24,8 @@ Route::get("/", [ProductController::class, 'index']);
 Route::get("details/{id}", [ProductController::class, 'details']);
 Route::get("search", [ProductController::class, 'searchProduct']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/profile', [UserController::class, 'profile']);
+
 
 // POST Requests
 
@@ -29,10 +34,12 @@ Route::post("buy", [CheckoutController::class, 'buy']);
 Route::post("checkout_order", [CheckoutController::class, 'checkout']);
 
 // Authentication
-Auth::routes();
+Auth::routes([
+    'verify' =>true
+]);
+
 // Google Auth
 Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle']);
 Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback']);
 
-
-
+Route::get('send-mail', [MailController::class, 'index']);
