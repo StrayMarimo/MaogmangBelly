@@ -61,7 +61,6 @@ class CheckoutController extends Controller
             ]);
         } else {
             // user must be logged in first
-            return "has no user";
             return redirect('/login');
         }
     }

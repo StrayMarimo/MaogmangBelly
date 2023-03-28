@@ -1,9 +1,7 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+<nav class="navbar navbar-expand-md navbar-light shadow-sm">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}"><img src="/assets/logo.png" alt="logo" height="36"></a>
-        <a class="navbar-brand" href="{{ url('/') }}">
-            {{ config('app.name', 'Maogmang Belly') }}
-        </a>
+    
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
@@ -13,17 +11,23 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link {{request()->is('/') ? 'active' : ''}}" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Products</a>
+                    <a class="nav-link {{request()->is('/products') ? 'active' : ''}}" href="/products">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled">Catering</a>
+                    <a class="nav-link {{request()->is('/catering') ? 'active' : ''}}" href="/catering">Catering</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{request()->is('/contact') ? 'active' : ''}}" href="/contact">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{request()->is('/about') ? 'active' : ''}}" href="/about">About Us</a>
                 </li>
                 <li>
                     <form class="d-flex" action="/search" role="search">
-                        <input class="form-control me-2 search-box" type="text" name="query" placeholder="Search"
+                        <input class="form-control me-4 search-box" type="text" name="query" placeholder="Search"
                             aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>

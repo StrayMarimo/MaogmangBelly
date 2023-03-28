@@ -6,6 +6,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Auth\GoogleSocialiteController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
 
 
 /*
@@ -20,10 +21,13 @@ use App\Http\Controllers\UserController;
 */
 
 
-Route::get("/", [ProductController::class, 'index']);
+Route::get("/products", [ProductController::class, 'index']);
 Route::get("details/{id}", [ProductController::class, 'details']);
 Route::get("search", [ProductController::class, 'searchProduct']);
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/catering', [HomeController::class, 'catering']);
+Route::get('/about', [HomeController::class, 'about']);
+Route::get('/contact', [HomeController::class, 'contact']);
 Route::get('/profile', [UserController::class, 'profile']);
 
 
