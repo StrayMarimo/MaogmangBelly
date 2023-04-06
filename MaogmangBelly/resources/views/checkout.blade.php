@@ -41,7 +41,7 @@
         </div>
         <div id="addressPicker">
             Address: <br>
-            <input type="text" name="address">
+            <input type="text" name="address" id="address" required>
         </div>
 
         <br><br>
@@ -54,13 +54,17 @@
 <script type="text/javascript">
     function showAddressPicker() {
         document.getElementById('addressPicker').style.display='block';
+        const addressField = document.getElementById('address');
         const forPickupBtn = document.getElementById('forPickup');
         forPickupBtn.checked = false;
+        addressField.required = true;
     }
     function hideAddressPicker() {
         document.getElementById('addressPicker').style.display='none';
         const forDeliveryBtn = document.getElementById('forDelivery');
-        forDeliveryBtn.checked = false; 
+        const addressField = document.getElementById('address');
+        forDeliveryBtn.checked = false;
+        addressField.required = false; 
      
     }
 </script>

@@ -81,8 +81,7 @@ class ProductController extends Controller
         if (count($orders) == 0) {
             $newOrder = new Order;
             $newOrder->user_id = $user;
-            $newOrder->order_type = 'd';
-            $newOrder->address = 'dummy address';
+            $newOrder->order_type = 'X';
             $newOrder->is_purchased = false;
             $newOrder->save();
         }
