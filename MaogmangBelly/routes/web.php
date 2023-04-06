@@ -29,13 +29,13 @@ Route::get('/catering', [HomeController::class, 'catering']);
 Route::get('/about', [HomeController::class, 'about']);
 Route::get('/contact', [HomeController::class, 'contact']);
 Route::get('/profile', [UserController::class, 'profile']);
-
+Route::get("/checkout_order", [CheckoutController::class, 'checkout']);
 
 // POST Requests
 
 Route::post("add_to_order", [ProductController::class, 'addToOrder']);
 Route::post("buy", [CheckoutController::class, 'buy']);
-Route::post("checkout_order", [CheckoutController::class, 'checkout']);
+
 
 // Authentication
 Auth::routes([

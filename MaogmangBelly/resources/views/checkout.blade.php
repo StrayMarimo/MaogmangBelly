@@ -22,6 +22,9 @@
    <div>
         Grand Total :  {{$order['grand_total']}} 
    </div>
+   Delivery type:
+   
+
    <br><br>
    <form action="/buy" method="POST">
         @csrf

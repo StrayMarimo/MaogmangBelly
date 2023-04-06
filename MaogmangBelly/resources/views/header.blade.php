@@ -72,7 +72,7 @@
 
                 @endguest
                 <li class="nav-item">
-                    <form action="/checkout_order" method="POST">
+                    <form action="/checkout_order">
                         @csrf
                         <button class="btn">Order(0)</button>
                     </form>

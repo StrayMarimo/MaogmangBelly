@@ -8,7 +8,6 @@ use App\Models\Category;
 use App\Models\Order;
 use App\Models\OrderLine;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
@@ -108,8 +107,6 @@ class ProductController extends Controller
         // return $order_line;
         $order_line->save();
 
-        // call post request to direct user to checkout page
-        $checkoutController = new CheckoutController();
-        return $checkoutController->checkout($req);
+        return redirect('/checkout_order');
     }
 }

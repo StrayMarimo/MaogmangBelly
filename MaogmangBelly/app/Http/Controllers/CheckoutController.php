@@ -15,7 +15,6 @@ class CheckoutController extends Controller
     /**
      *  Gets all orders of user that has not been purchased 
      *  to be displayed in the checkout page
-     *  @param Request $req
      *  @return View[login, noOrders, checkout]
      */
     public function checkout(Request $req)
