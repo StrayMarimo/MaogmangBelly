@@ -39,4 +39,5 @@
         {{View::make('footer')}}
     </div>
 </body>
+@yield('javascript')
 </html>

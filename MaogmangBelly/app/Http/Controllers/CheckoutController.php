@@ -66,6 +66,8 @@ class CheckoutController extends Controller
 
     function buy(Request $req) 
     {
+      
+        $order_type = ($req->exists('forDelivery')) ? 'D' : 'P';
         $user = Auth::user()->id;
         $order = Order::where([
             ['user_id', '=', $user],
@@ -74,7 +76,11 @@ class CheckoutController extends Controller
 
         DB::table("orders")
             ->where('id', $order['id'])
-            ->update(['is_purchased' => true]);
+            ->update([
+                'is_purchased' => true,
+                'order_type' => $order_type,
+                'address' => $req->address
+            ]);
         return "successfully bought order with id " .strval($order['id']) ;
         
     }
