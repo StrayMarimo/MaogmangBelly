@@ -18,8 +18,22 @@ class ProductController extends Controller
      */
     function index()
     {
-        $data = Product::all();
-        return view('products', ['products' => $data]);
+        $isAdmin= false;
+        $user = Auth::user();
+
+        if ($user != null) {
+            if ($user->is_admin) {
+                $isAdmin = true;   
+            }
+        }
+
+        $products = Product::all();
+        $categories = Category::all();
+        return view('products', [
+            'products' => $products,
+            'categories' => $categories,
+            'isAdmin' => $isAdmin
+        ]);
     }
     /*
         gets all product details
@@ -107,5 +121,12 @@ class ProductController extends Controller
         $order_line->save();
 
         return redirect('/checkout_order');
+    }
+
+    function editCategory(Request $req) {
+        DB::table("categories")
+            ->where('id', $req->category_id)
+            ->update(['name' => $req->category_name]);
+        return redirect("/products");
     }
 }

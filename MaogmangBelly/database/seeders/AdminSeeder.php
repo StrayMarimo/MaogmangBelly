@@ -17,7 +17,7 @@ class AdminSeeder extends Seeder
             'name' => 'Maogmang Belly Admin',
             'email' => 'maogmangbelly@gmail.com',
             'password' => Hash::make('password'),
-            'isAdmin' => true
+            'is_admin' => true
         ]);
     }
 }

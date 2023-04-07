@@ -40,4 +40,5 @@
     </div>
 </body>
 @yield('javascript')
+@stack('script')
 </html>

@@ -35,6 +35,8 @@ Route::get("/checkout_order", [CheckoutController::class, 'checkout']);
 
 Route::post("add_to_order", [ProductController::class, 'addToOrder']);
 Route::post("buy", [CheckoutController::class, 'buy']);
+Route::post("edit_category", [ProductController::class, 'editCategory']);
+
 
 
 // Authentication
