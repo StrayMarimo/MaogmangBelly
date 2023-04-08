@@ -65,10 +65,11 @@
                     aria-selected="false">
                     <form action="/edit_category" method="POST" class="row g-3" id="form-{{$category['id']}}">
                         @csrf
-                        <input type="hidden" name="category_id" value="none" id="cat-edit">
+                        <input type="hidden" name="category_id" value="0" id="cat-edit" class="category-tab">
                         <div class="col-auto">
                             <input type="text" class="form-control-plaintext category-tabs text-center text-capitalize"
-                                id="tab-{{$category['id']}}" value="{{$category['name']}}" name="category_name" readonly />
+                                id="tab-{{$category['id']}}" value="{{$category['name']}}" name="category_name"
+                                readonly />
                         </div>
                         @if($isAdmin)
                         <div class="col-auto">
@@ -128,8 +129,10 @@
         $(".nav-tabs a").click(function(){
             $(this).tab('show');
         });
+  
     });
     function editCategory(id) {
+        $("#cat-edit").val(id);
         let catInput = $("#tab-"+id);
         if ($("i#cat-icon-"+id).hasClass("bi-pencil-fill")) {
             $("i#cat-icon-"+id).removeClass("bi-pencil-fill").addClass("bi-check2-square");
@@ -139,7 +142,6 @@
             $("i#cat-icon-"+id).removeClass("bi-check2-square").addClass("bi-pencil-fill");
             catInput.attr("readonly", true);
             catInput.css("border","none");
-            $("#cat-edit").val(id);
             $("#form-"+id).submit();
         }
   

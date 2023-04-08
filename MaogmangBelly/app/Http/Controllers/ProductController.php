@@ -124,8 +124,10 @@ class ProductController extends Controller
     }
 
     function editCategory(Request $req) {
+        
+       
         DB::table("categories")
-            ->where('id', $req->category_id)
+            ->where('id', (int) $req->category_id)
             ->update(['name' => $req->category_name]);
         return redirect("/products");
     }
