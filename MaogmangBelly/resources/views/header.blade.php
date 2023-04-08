@@ -74,7 +74,7 @@
                 <li class="nav-item">
                     <form action="/checkout_order">
                         @csrf
-                        <button class="btn">Order(0)</button>
+                        <button class="btn">Order({{$order_qty}})</button>
                     </form>
                 </li>
             </ul>

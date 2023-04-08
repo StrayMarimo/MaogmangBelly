@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Order;
+use App\Models\OrderLine;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Auth;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +22,22 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        view()->composer('*', function ($view) {
+
+            $user = Auth::user()->id;
+            $order_qty = 0;
+
+            $order = Order::where([
+                ['user_id', '=', $user],
+                ['is_purchased', 0],
+            ])->first();
+
+            if ($order != null) {
+                $orders = OrderLine::where('order_id', '=', $order['id'])->get();
+                $order_qty = count($orders);
+            }
+
+            $view->with('order_qty', $order_qty);
+        });
     }
 }
