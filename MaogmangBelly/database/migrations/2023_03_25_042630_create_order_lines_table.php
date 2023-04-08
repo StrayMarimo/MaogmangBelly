@@ -13,8 +13,14 @@ return new class extends Migration
     {
         Schema::create('order_lines', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger("product_id");
-            $table->bigInteger("order_id");
+            $table->foreignId("product_id")
+                ->constrained("products")
+                ->onUpdate("cascade")
+                ->onDelete("cascade");
+            $table->foreignId("order_id")
+                ->constrained("orders")
+                ->onUpdate("cascade")
+                ->onDelete("cascade");
             $table->integer("quantity");
             $table->double("total_price", 16, 2);
             $table->timestamps();

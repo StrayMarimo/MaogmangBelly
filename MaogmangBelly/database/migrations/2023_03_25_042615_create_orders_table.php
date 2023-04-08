@@ -19,7 +19,10 @@ return new class extends Migration
             $table->boolean("is_purchased")->default(false);
             $table->timestamp("date_purchased")->nullable();
             $table->timestamp("date_completed")->nullable();
-            $table->bigInteger("user_id");
+            $table->foreignId("user_id")
+                ->constrained("users")
+                ->onUpdate("cascade")
+                ->onDelete("cascade");
             $table->timestamps();
         });
     }

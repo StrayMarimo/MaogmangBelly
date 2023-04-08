@@ -19,7 +19,10 @@ return new class extends Migration
             $table->integer("stock");
             $table->integer("total_sold");
             $table->string("gallery");
-            $table->bigInteger("category_id");
+            $table->foreignId("category_id")
+                ->constrained("categories")
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
