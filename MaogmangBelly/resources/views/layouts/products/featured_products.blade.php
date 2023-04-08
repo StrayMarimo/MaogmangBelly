@@ -4,7 +4,8 @@
             @foreach ($products as $item)
             <div class="carousel-item {{$item['id'] == 1 ? 'active' : ''}}">
                 <a href="details/{{$item['id']}}">
-                    <img class="slider-img w-100 px-5" src="{{$item['gallery']}}" class="d-block w-100">
+                    <img class="slider-img w-100 px-5" src="{{ url('/assets/'.$item['gallery']) }}"
+                        class="d-block w-100">
                     <div class="carousel-caption d-none d-md-block slider-text">
                         <h5>{{$item['name']}}</h5>
                         <p>{{$item['description']}}</p>

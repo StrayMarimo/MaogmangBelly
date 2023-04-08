@@ -125,8 +125,8 @@ class ProductController extends Controller
         // update grand total of order by adding it with the total_price
         $grand_total = $order['grand_total'] + $total_price;
         DB::table("orders")
-        ->where('id', $order['id'])
-        ->update(['grand_total' => $grand_total]);
+            ->where('id', $order['id'])
+            ->update(['grand_total' => $grand_total]);
 
         // store and save details of order line
         $order_line->order_id = $order['id'];
@@ -151,12 +151,12 @@ class ProductController extends Controller
         if ($req->to_delete == "0") {
             // Update the category's name in the database
             DB::table("categories")
-            ->where('id', (int) $req->category_id)
+                ->where('id', (int) $req->category_id)
                 ->update(['name' => $req->category_name]);
         } else {
             // Delete the category from the database
             DB::table("categories")
-            ->where('id', (int) $req->to_delete)
+                ->where('id', (int) $req->to_delete)
                 ->delete();
         }
 
@@ -183,4 +183,35 @@ class ProductController extends Controller
         return redirect("/products");
     }
 
+    /**
+     * Add a new product to the database.
+     *
+     * @param  Request  $req  The HTTP request containing the new product's info.
+     * @return RedirectResponse  A redirect back to the products page.
+     */
+    function addProduct(Request $req)
+    {
+        
+        // get the filename of image uploaded
+        $filename = $req->img->getClientOriginalName();
+
+        // store in public folder
+        $req->img->move(public_path('assets'), $filename);
+
+         // Create a new Product object and set its data
+        $product = new Product;
+        $product->name = $req->product_name;
+        $product->description = $req->product_desc;
+        $product->price = $req->product_price;
+        $product->stock = $req->product_stock;
+        $product->gallery = $filename;
+        $product->total_sold = 0;
+        $product->category_id = $req->category_id;
+
+        // Save the new product to the database
+        $product->save();
+
+        // Redirect back to the products page
+        return redirect("/products");
+    }
 }

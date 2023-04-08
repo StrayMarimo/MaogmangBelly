@@ -21,7 +21,7 @@ class ProductSeeder extends Seeder
             'price' => 120,
             'stock' => 20,
             'total_sold' => 0,
-            'gallery' => "https://panlasangpinoy.com/wp-content/uploads/2014/10/Pork-Sisig-500x500.jpg",
+            'gallery' => "Pork-Sisig.jpg",
             'category_id' => 1
         ],
         [
@@ -30,7 +30,7 @@ class ProductSeeder extends Seeder
             'price' => 100,
             'stock' => 50,
             'total_sold' => 0,
-            'gallery' => "https://omnivorescookbook.com/wp-content/uploads/2020/12/201113_Lumpia-Shanghai_550.jpg",
+            'gallery' => "Lumpia-Shanghai.jpg",
             'category_id' => 1
         ],
         [
@@ -39,7 +39,7 @@ class ProductSeeder extends Seeder
             'price' => 150,
             'stock' => 10,
             'total_sold' => 0,
-            'gallery' => "https://www.lutongbahayrecipe.com/wp-content/uploads/2021/02/lutong-bahay-homemade-beef-tapa.jpg",
+            'gallery' => "Beef-Tapa.jpg",
             'category_id' => 2
         ],
         [
@@ -48,7 +48,7 @@ class ProductSeeder extends Seeder
             'price' => 80,
             'stock' => 15,
             'total_sold' => 0,
-            'gallery' => "https://cdn.tastephilippines.com/wp-content/uploads/2022/10/golden-brown-fried-bangus-from-the-Philippines.jpg?strip=all&lossy=1&ssl=1",
+            'gallery' => "Daing.jpg",
             'category_id' => 3
         ],
         [
@@ -57,7 +57,7 @@ class ProductSeeder extends Seeder
             'price' => 100,
             'stock' => 25,
             'total_sold' => 0,
-            'gallery' => "https://www.kawalingpinoy.com/wp-content/uploads/2013/04/pinakbet-tagalog-7-1200.jpg",
+            'gallery' => "Pakbet.jpg",
             'category_id' => 4
         ],
     ]);

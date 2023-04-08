@@ -27,6 +27,13 @@ $(document).ready(function () {
             .removeClass("d-flex align-items-center justify-content-center");
     });
 
+    // Handle clicks on the "Add Product" button
+    $(".btn, .btn-primary, .add-product").click(function() {
+        let categoryId = $(this).attr("id").substring(9);
+        console.log("adding product on " + categoryId);
+        $(".modal-body #prod-cat-id").val(categoryId);
+    })
+    
     // Handle clicks on the "Edit Category" buttons
     $(".btn.category-edit").click(function () {
         // Get the ID of the category to edit
@@ -36,11 +43,20 @@ $(document).ready(function () {
         editCategory(categoryId);
     });
 
+    // Handle product image upload
+     $('#img').change(function() {
+            let reader = new FileReader();
+            reader.onload = (e) => {
+                $('#preview-image-before-upload').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(this.files[0]);
+        });
+
     // Handle clicks on the "Delete Category" buttons
     $(".btn.category-delete").click(function () {
         // Get the ID of the category to delete
         let categoryId = $(this).attr("id").substring(11);
-
+        
         // Call the deleteCategory function with the retrieved ID as the parameter
         deleteCategory(categoryId);
     });
