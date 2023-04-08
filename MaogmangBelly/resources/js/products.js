@@ -1,4 +1,6 @@
+// Wait for the document to finish loading before executing this code
 $(document).ready(function () {
+    // Handle clicks on the tabs in the navigation menu
     $(".nav-tabs a").click(function () {
         $(this).tab("show");
     });
@@ -25,38 +27,45 @@ $(document).ready(function () {
             .removeClass("d-flex align-items-center justify-content-center");
     });
 
-    // On edit category button click
+    // Handle clicks on the "Edit Category" buttons
     $(".btn.category-edit").click(function () {
-       // get id of element
+        // Get the ID of the category to edit
         let categoryId = $(this).attr('id').substring(9);
 
-        // Call the function with the retrieved parameter
+        // Call the editCategory function with the retrieved ID as the parameter
         editCategory(categoryId);
     });
 
-    // On delete category button click
+    // Handle clicks on the "Delete Category" buttons
     $(".btn.category-delete").click(function () {
-        // Get the value of the "data-category-buttons" attribute from category-buttons
+        // Get the ID of the category to delete
         let categoryId = $(this).attr("id").substring(11);
-        console.log("delete: " + categoryId);
-    
-        // Call the function with the retrieved parameter
+
+        // Call the deleteCategory function with the retrieved ID as the parameter
         deleteCategory(categoryId);
     });
 
-
-    // edit category
+    // Function to handle editing of a category
     function editCategory(id) {
         console.log("editing : " + id);
+
+        // Set the value of the "cat-edit" input field to the ID of the category being edited
         $("#cat-edit").val(id);
+
+        // Get the input field for the category being edited
         let catInput = $("#tab-" + id);
+
+        // Check if the "Edit" button has been clicked
         if ($("i#cat-icon-" + id).hasClass("bi-pencil-fill")) {
+            // Change the icon to a "Save" icon and allow the input field to be edited
             $("i#cat-icon-" + id)
                 .removeClass("bi-pencil-fill")
                 .addClass("bi-check2-square");
             catInput.removeAttr("readonly");
             catInput.css("border", "solid 1px black");
         } else {
+            // Change the icon back to an "Edit" icon, prevent further editing of the input field,
+            // and submit the form to save the changes
             $("i#cat-icon-" + id)
                 .removeClass("bi-check2-square")
                 .addClass("bi-pencil-fill");
@@ -66,9 +75,14 @@ $(document).ready(function () {
         }
     }
 
+    // Function to handle deletion of a category
     function deleteCategory(id) {
         console.log("deleted");
+
+        // Set the value of the "delete-category-tab" input field to the ID of the category being deleted
         $(".delete-category-tab").val(id);
+
+        // Submit the form to delete the category
         $("#form-" + id).submit();
     }
 });

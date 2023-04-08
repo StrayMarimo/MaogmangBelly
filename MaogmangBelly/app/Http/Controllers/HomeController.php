@@ -17,9 +17,9 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the home page
+     * Show the home page.
      *
-     * @return home view
+     * @return View - the home view.
      */
     public function index()
     {
@@ -28,9 +28,9 @@ class HomeController extends Controller
 
 
     /**
-     * Show the catering page
+     * Show the catering page.
      *
-     * @return home view
+     * @return View - the catering view.
      */
     public function catering()
     {
@@ -39,9 +39,9 @@ class HomeController extends Controller
 
 
     /**
-     * Show the cintact us page
+     * Show the contact us page.
      *
-     * @return home view
+     * @return View - the contact view.
      */
     public function contact()
     {
@@ -50,12 +50,13 @@ class HomeController extends Controller
 
 
     /**
-     * Show the home page
+     * Show the about us page.
      *
-     * @return home view
+     * @return View - the about view.
      */
     public function about()
     {
         return view('layouts.about.about');
     }
+
 }

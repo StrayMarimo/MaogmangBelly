@@ -12,68 +12,75 @@ use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
+    //TODO: SHOULD RETURN A PAGE WITH NO ORDERS YET
+
     /**
-     *  Gets all orders of user that has not been purchased 
-     *  to be displayed in the checkout page
-     *  @return View[login, noOrders, checkout]
+     * Gets all orders of the user that have not been purchased to be displayed in the checkout page.
+     * @param Request $req - the HTTP request object.
+     * @return string|View - if the user is not authenticated, redirects to the login page. 
+     *                       if the user has not added any orders yet, returns a string message. 
+     *                       Otherwise, returns the checkout page with all the products ordered and order data.
      */
     public function checkout(Request $req)
     {
-
+        // Check if the user is authenticated.
         if (Auth::check()) {
 
-            // get user id
-            $user =  Auth::user()->id;
-        
+            // Get the user id.
+            $user = Auth::user()->id;
 
-            // get unpurchased order of user
+            // Find the first unpurchased order of the user.
             $order = Order::where([
                 ['user_id', '=', $user],
                 ['is_purchased', 0],
             ])->first();
 
-            // if user has not added any order
+            // If the user has not added any orders.
             if ($order == null) {
-                return "You have not added orders yet";
+                return "You have not added any orders yet";
             }
 
-            // if user has one unpurchased order saved
-            // get all orders
+            // If the user has one unpurchased order saved, get all orders.
             $orders = OrderLine::where('order_id', '=', $order['id'])->get();
 
-            // query the product name and price of every item indicated in the order
-            // and add them as fields in orders
+            // For each item in the order, query the product name and price and add them as fields in orders.
             foreach ($orders as $item) {
-                $product = Product::where(
-                    'id',
-                    '=',
-                    $item['product_id']
-                )->first();
+                $product = Product::where('id', '=', $item['product_id'])->first();
                 $item['product_name'] = $product['name'];
                 $item['price'] = $product['price'];
             }
 
-            // display checkout page, passing all products ordered and order data
+            // Display the checkout page, passing all products ordered and order data.
             return view('layouts.checkout.checkout', [
                 'orders' => $orders,
                 'order' => $order,
             ]);
         } else {
-            // user must be logged in first
+            // Redirect the user to the login page if they are not authenticated.
             return redirect('/login');
         }
     }
 
-    function buy(Request $req) 
+    //TODO: SHOULD RETURN A PAGE
+
+    /**
+     * Purchases the order of the authenticated user and updates the order information in the database.
+     * @param Request $req - the HTTP request object.
+     * @return string - a message indicating that the order has been successfully purchased.
+     */
+    function buy(Request $req)
     {
-      
+        // Determine the order type based on the existence of the 'forDelivery' key in the request object.
         $order_type = ($req->exists('forDelivery')) ? 'D' : 'P';
+
+        // Get the authenticated user's id and their first unpurchased order.
         $user = Auth::user()->id;
         $order = Order::where([
             ['user_id', '=', $user],
             ['is_purchased', '=', false]
         ])->first();
 
+        // Update the order information in the database.
         DB::table("orders")
             ->where('id', $order['id'])
             ->update([
@@ -81,7 +88,9 @@ class CheckoutController extends Controller
                 'order_type' => $order_type,
                 'address' => $req->address
             ]);
-        return "successfully bought order with id " .strval($order['id']) ;
-        
+
+        // Return a message indicating that the order has been successfully purchased.
+        return "Successfully bought order with id " . strval($order['id']);
     }
+
 }
