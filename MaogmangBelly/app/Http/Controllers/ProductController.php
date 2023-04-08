@@ -29,7 +29,7 @@ class ProductController extends Controller
 
         $products = Product::all();
         $categories = Category::all();
-        return view('products', [
+        return view('layouts.products.products', [
             'products' => $products,
             'categories' => $categories,
             'isAdmin' => $isAdmin
@@ -45,7 +45,7 @@ class ProductController extends Controller
         $data = Product::find($id);
         $cat_id = $data['category_id'];
         $category = Category::find($cat_id);
-        return view('details', ['product' => $data, 'category' => $category]);
+        return view('layouts.products.details', ['product' => $data, 'category' => $category]);
     }
 
     /**
@@ -56,7 +56,7 @@ class ProductController extends Controller
     {
         $data = Product::where('name', 'like', '%' . $req->input('query') . '%')
             ->get();
-        return view('search', ['products' => $data]);
+        return view('layouts.search.search', ['products' => $data]);
     }
 
 

@@ -20,11 +20,11 @@
 
 <body>
     <div id="app">
-        {{View::make('header')}}
+        {{View::make('components.header')}}
         <main class="py-4">
             @yield('content')
         </main>
-        {{View::make('footer')}}
+        {{View::make('components.footer')}}
     </div>
 </body>
 @yield('javascript')

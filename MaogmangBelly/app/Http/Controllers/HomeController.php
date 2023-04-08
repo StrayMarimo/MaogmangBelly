@@ -23,7 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('layouts.home.home');
     }
 
 
@@ -34,7 +34,7 @@ class HomeController extends Controller
      */
     public function catering()
     {
-        return view('catering');
+        return view('layouts.catering.catering');
     }
 
 
@@ -45,7 +45,7 @@ class HomeController extends Controller
      */
     public function contact()
     {
-        return view('contact');
+        return view('layouts.contact.contact');
     }
 
 
@@ -56,6 +56,6 @@ class HomeController extends Controller
      */
     public function about()
     {
-        return view('about');
+        return view('layouts.about.about');
     }
 }

@@ -54,7 +54,7 @@ class CheckoutController extends Controller
             }
 
             // display checkout page, passing all products ordered and order data
-            return view('checkout', [
+            return view('layouts.checkout.checkout', [
                 'orders' => $orders,
                 'order' => $order,
             ]);

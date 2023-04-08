@@ -12,6 +12,6 @@ class UserController extends Controller
     //
     function profile() {
        
-        return view('profile');
+        return view('layouts.profile.profile');
     }
 }
