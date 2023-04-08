@@ -4,31 +4,31 @@
     <!-- Tab pane for displaying all products -->
     <div class="tab-pane fade show active" id="all-products" role="tabpanel" aria-labelledby="category-0">
 
-        <!-- Loop through all the products and display their names -->
-        @foreach($products as $product)
-        <div>
-            {{$product['name']}}
+        <!-- Loop through all the products and display their data -->
+        <div class="d-flex justify-content-center">
+            @foreach($products as $product)
+                @include('layouts.products.product_card')
+            @endforeach
         </div>
-        @endforeach
     </div>
 
     <!-- Loop through all the categories and create a tab pane for each one -->
     @foreach($categories as $category)
     <div class="tab-pane fade" id="{{$category['name']}}" role="tabpanel"
         aria-labelledby="category-{{$category['id']}}">
-
-        <!-- Loop through all the products and display their names if they belong to the current category -->
-        @foreach($products as $product)
-        @if($product['category_id'] == $category['id'])
-        <div>
-            {{$product['name']}}
+        <div class="d-flex justify-content-center">
+            <!-- Loop through all the products and display their data if they belong to the current category -->
+            @foreach($products as $product)
+            @if($product['category_id'] == $category['id'])
+                @include('layouts.products.product_card')
+            @endif
+            @endforeach
         </div>
-        @endif
-        @endforeach
+      
         <!-- Display add product button if user is admin -->
         @if($isAdmin)
-        <button type="button" class="btn btn-primary add-product" data-bs-toggle="modal" data-bs-target="#add-product-modal"
-            id="add-prod-{{$category['id']}}">
+        <button type="button" class="btn btn-primary add-product" data-bs-toggle="modal"
+            data-bs-target="#add-product-modal" id="add-prod-{{$category['id']}}">
             Add Product
         </button>
         @endif
