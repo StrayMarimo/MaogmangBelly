@@ -65,11 +65,10 @@
                         </div>
                         @if($isAdmin)
                         <div class="col-auto">
-                            <button type="button" class="btn" id="cat-icon-{{$category['id']}}"
-                                onclick="editCategory({{$category['id']}})">
+                            <button type="button" class="btn category-edit" id="cat-edit-{{$category['id']}}">
                                 <i class="bi bi-pencil-fill" id="cat-icon-{{$category['id']}}"></i>
                             </button>
-                            <button type="button" class="btn" id="delete-{{$category['id']}}" onclick="deleteCategory({{$category['id']}})">
+                            <button type="button" class="btn category-delete" id="cat-delete-{{$category['id']}}">
                                 <i class="bi bi-trash-fill"></i>
                             </button>
                         </div>
@@ -144,51 +143,3 @@
     </div>
 </div>
 @endsection
-@push('script')
-<script>
-    $(document).ready(function(){
-        $(".nav-tabs a").click(function(){
-            $(this).tab('show');
-        });
-
-        // Select the modal element
-        var modal = $('.modal');
-        
-        // When the modal is shown
-        modal.on('shown.bs.modal', function() {
-        // Get the modal dialog element
-        var modalDialog = $(this).find('.modal-dialog');
-        
-        // Set the flex container and alignment classes
-        modalDialog.addClass('d-flex align-items-center justify-content-center');
-        });
-        
-        // When the modal is hidden
-        modal.on('hidden.bs.modal', function() {
-        // Remove the flex container and alignment classes
-        $(this).find('.modal-dialog').removeClass('d-flex align-items-center justify-content-center');
-        });
-  
-    });
-    function editCategory(id) {
-        $("#cat-edit").val(id);
-        let catInput = $("#tab-"+id);
-        if ($("i#cat-icon-"+id).hasClass("bi-pencil-fill")) {
-            $("i#cat-icon-"+id).removeClass("bi-pencil-fill").addClass("bi-check2-square");
-            catInput.removeAttr("readonly");
-            catInput.css("border","solid 1px black");      
-        } else {
-            $("i#cat-icon-"+id).removeClass("bi-check2-square").addClass("bi-pencil-fill");
-            catInput.attr("readonly", true);
-            catInput.css("border","none");
-            $("#form-"+id).submit();
-        }
-    }
-
-    function deleteCategory(id) {
-        console.log("deleted");
-        $(".delete-category-tab").val(id);
-        $("#form-"+id).submit();
-    }
-</script>
-@endpush

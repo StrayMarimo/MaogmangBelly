@@ -26,15 +26,13 @@
     <form action="/buy" method="POST">
         @csrf
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="forDelivery" id="forDelivery" checked
-                onclick="showAddressPicker()">
+            <input class="form-check-input" type="radio" name="forDelivery" id="forDelivery" checked>
             <label class="form-check-label" for="forDelivery">
                 For Delivery
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="forPickUp" id="forPickup"
-                onclick="hideAddressPicker()">
+            <input class="form-check-input" type="radio" name="forPickUp" id="forPickup">
             <label class="form-check-label" for="forPickup">
                 For pick up
             </label>
@@ -47,25 +45,5 @@
         <br><br>
         <button class="btn btn-success">Buy Now!</button>
     </form>
-
 </div>
-@endsection
-@section('javascript')
-<script type="text/javascript">
-    function showAddressPicker() {
-        document.getElementById('addressPicker').style.display='block';
-        const addressField = document.getElementById('address');
-        const forPickupBtn = document.getElementById('forPickup');
-        forPickupBtn.checked = false;
-        addressField.required = true;
-    }
-    function hideAddressPicker() {
-        document.getElementById('addressPicker').style.display='none';
-        const forDeliveryBtn = document.getElementById('forDelivery');
-        const addressField = document.getElementById('address');
-        forDeliveryBtn.checked = false;
-        addressField.required = false; 
-     
-    }
-</script>
 @endsection
