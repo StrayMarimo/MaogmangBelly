@@ -37,6 +37,7 @@ Route::post("buy", [CheckoutController::class, 'buy']);
 Route::post("edit_category", [ProductController::class, 'editCategory']);
 Route::post("add_category", [ProductController::class, 'addCategory']);
 Route::post("add_product", [ProductController::class, 'addProduct']);
+Route::post("cancel_all_orders", [CheckoutController::class, 'cancelAllOrders']);
 
 // Authentication
 Auth::routes([

@@ -93,4 +93,9 @@ class CheckoutController extends Controller
         return "Successfully bought order with id " . strval($order['id']);
     }
 
+    function cancelAllOrders(Request $req) {
+        Order::where('id', $req->order_id)->delete();
+        return redirect('/');
+    }
+
 }

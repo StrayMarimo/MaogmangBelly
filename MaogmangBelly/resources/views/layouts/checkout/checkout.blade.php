@@ -22,9 +22,9 @@
     <div>
         Grand Total : {{$order['grand_total']}}
     </div>
-    Delivery type:
     <form action="/buy" method="POST">
         @csrf
+        Delivery type:
         <div class="form-check">
             <input class="form-check-input" type="radio" name="forDelivery" id="forDelivery" checked>
             <label class="form-check-label" for="forDelivery">
@@ -44,6 +44,13 @@
 
         <br><br>
         <button class="btn btn-success">Buy Now!</button>
+    </form>
+    <form action="/cancel_all_orders" method="POST">
+        @csrf
+        <input type="hidden" name="order_id" value="{{$order['id']}}">
+        <button type="submit">
+           <i class="bi bi-trash-fill"></i>
+        </button>
     </form>
 </div>
 @endsection
