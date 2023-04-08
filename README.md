@@ -9,7 +9,19 @@ A Proprietary Restaurant E-Commerce Website for Maogmang Belly
  DB_PORT=3306  
  DB_DATABASE=maogmangbelly  
  DB_USERNAME=root  
- DB_PASSWORD=pass</code>
+ DB_PASSWORD=pass
+
+ ...
+
+ MAIL_MAILER=smtp
+ MAIL_HOST=smtp.gmail.com
+ MAIL_PORT=587
+ MAIL_USERNAME=maogmangbelly@gmail.com
+ MAIL_PASSWORD=jfvouxypsrdrcbdk
+ MAIL_ENCRYPTION=tls
+ MAIL_FROM_ADDRESS=maogmangbelly@gmail.com
+ MAIL_FROM_NAME="${APP_NAME}"
+ </code>
  
  <hr>
  
