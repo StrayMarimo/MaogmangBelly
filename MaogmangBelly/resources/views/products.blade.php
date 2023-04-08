@@ -57,6 +57,7 @@
                     <form action="/edit_category" method="POST" class="row g-3" id="form-{{$category['id']}}">
                         @csrf
                         <input type="hidden" name="category_id" value="0" id="cat-edit" class="category-tab">
+                        <input type="hidden" name="to_delete" value="0" id="to-delete" class="delete-category-tab">
                         <div class="col-auto">
                             <input type="text" class="form-control-plaintext category-tabs text-center text-capitalize"
                                 id="tab-{{$category['id']}}" value="{{$category['name']}}" name="category_name"
@@ -67,6 +68,9 @@
                             <button type="button" class="btn" id="cat-icon-{{$category['id']}}"
                                 onclick="editCategory({{$category['id']}})">
                                 <i class="bi bi-pencil-fill" id="cat-icon-{{$category['id']}}"></i>
+                            </button>
+                            <button type="button" class="btn" id="delete-{{$category['id']}}" onclick="deleteCategory({{$category['id']}})">
+                                <i class="bi bi-trash-fill"></i>
                             </button>
                         </div>
                         @endif
@@ -179,8 +183,12 @@
             catInput.css("border","none");
             $("#form-"+id).submit();
         }
-  
+    }
 
+    function deleteCategory(id) {
+        console.log("deleted");
+        $(".delete-category-tab").val(id);
+        $("#form-"+id).submit();
     }
 </script>
 @endpush

@@ -124,9 +124,16 @@ class ProductController extends Controller
     }
 
     function editCategory(Request $req) {
-        DB::table("categories")
-            ->where('id', (int) $req->category_id)
-            ->update(['name' => $req->category_name]);
+        if ($req->to_delete == "0") {
+            DB::table("categories")
+                ->where('id', (int) $req->category_id)
+                ->update(['name' => $req->category_name]);
+        } else {
+            DB::table("categories") 
+                ->where('id', (int) $req->to_delete)
+                ->delete();
+        }
+      
         return redirect("/products");
     }
 
