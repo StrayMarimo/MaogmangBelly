@@ -2,15 +2,7 @@
 @section("content")
 <div class="row d-flex justify-content-center m-2">
     <div class="custom-product col-6">
-        <div id="carouselExampleCaptions" class="carousel slide">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
-            </div>
+        <div id="product-showcase" class="carousel slide">
             <div class="carousel-inner">
                 @foreach ($products as $item)
                 <div class="carousel-item {{$item['id'] == 1 ? 'active' : ''}}">
@@ -24,12 +16,12 @@
                 </div>
                 @endforeach
             </div>
-            <button class="carousel-control-prev mx-5" type="button" data-bs-target="#carouselExampleCaptions"
+            <button class="carousel-control-prev mx-5" type="button" data-bs-target="#product-showcase"
                 data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next mx-5" type="button" data-bs-target="#carouselExampleCaptions"
+            <button class="carousel-control-next mx-5" type="button" data-bs-target="#product-showcase"
                 data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
@@ -47,7 +39,6 @@
                 </div>
             </a>
         </div>
-
         @endforeach
     </div>
     <div>
@@ -55,8 +46,8 @@
         <!-- Tabs navs -->
         <ul class="nav nav-tabs nav-fill" id="products" role="tablist">
             <li class="nav-item" role="presentation">
-                <a class="nav-link active" id="category-0" data-mdb-toggle="tab" href="#allproducts" role="tab"
-                    aria-controls="allproducts" aria-selected="true">All Products</a>
+                <a class="nav-link active" id="category-0" data-mdb-toggle="tab" href="#all-products" role="tab"
+                    aria-controls="all-products" aria-selected="true">All Products</a>
             </li>
             @foreach($categories as $category)
             <li class="nav-item" role="presentation">
@@ -79,10 +70,7 @@
                             </button>
                         </div>
                         @endif
-
-
                     </form>
-
                 </a>
             </li>
             @endforeach
@@ -90,7 +78,12 @@
             <li class="nav-item" role="presentation">
                 <a class="nav-link text-capitalize" id="category-{{$category['id']}}" data-mdb-toggle="tab"
                     href="#{{$category['name']}}" role="tab" aria-controls="{{$category['name']}}"
-                    aria-selected="false"><i class="bi bi-plus-circle"></i></a>
+                    aria-selected="false">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#add-category-modal">
+                        <i class="bi bi-plus-circle"></i>
+                    </button>
+                </a>
             </li>
             @endif
         </ul>
@@ -98,7 +91,7 @@
 
         <!-- Tabs content -->
         <div class="tab-content" id="products-content">
-            <div class="tab-pane fade show active" id="allproducts" role="tabpanel" aria-labelledby="category-0">
+            <div class="tab-pane fade show active" id="all-products" role="tabpanel" aria-labelledby="category-0">
                 @foreach($products as $product)
                 <div>
                     {{$product['name']}}
@@ -122,12 +115,54 @@
 
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="add-category-modal" tabindex="-1" aria-labelledby="add-category-modal-label"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="add-category-modal-label">Add Category</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/add_category" method="POST">
+                @csrf
+                <div class="modal-body">
+                    Name: <input type="text" placeholder="category name..." name="category_name">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
 @endsection
 @push('script')
 <script>
     $(document).ready(function(){
         $(".nav-tabs a").click(function(){
             $(this).tab('show');
+        });
+
+        // Select the modal element
+        var modal = $('.modal');
+        
+        // When the modal is shown
+        modal.on('shown.bs.modal', function() {
+        // Get the modal dialog element
+        var modalDialog = $(this).find('.modal-dialog');
+        
+        // Set the flex container and alignment classes
+        modalDialog.addClass('d-flex align-items-center justify-content-center');
+        });
+        
+        // When the modal is hidden
+        modal.on('hidden.bs.modal', function() {
+        // Remove the flex container and alignment classes
+        $(this).find('.modal-dialog').removeClass('d-flex align-items-center justify-content-center');
         });
   
     });

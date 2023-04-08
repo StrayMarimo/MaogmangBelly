@@ -20,7 +20,7 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-
+// GET Requests
 Route::get("/products", [ProductController::class, 'index']);
 Route::get("details/{id}", [ProductController::class, 'details']);
 Route::get("search", [ProductController::class, 'searchProduct']);
@@ -32,12 +32,10 @@ Route::get('/profile', [UserController::class, 'profile']);
 Route::get("/checkout_order", [CheckoutController::class, 'checkout']);
 
 // POST Requests
-
 Route::post("add_to_order", [ProductController::class, 'addToOrder']);
 Route::post("buy", [CheckoutController::class, 'buy']);
 Route::post("edit_category", [ProductController::class, 'editCategory']);
-
-
+Route::post("add_category", [ProductController::class, 'addCategory']);
 
 // Authentication
 Auth::routes([
@@ -48,4 +46,5 @@ Auth::routes([
 Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle']);
 Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback']);
 
+// Mails
 Route::get('send-mail', [MailController::class, 'index']);
