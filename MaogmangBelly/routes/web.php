@@ -38,6 +38,8 @@ Route::post("edit_category", [ProductController::class, 'editCategory']);
 Route::post("add_category", [ProductController::class, 'addCategory']);
 Route::post("add_product", [ProductController::class, 'addProduct']);
 Route::post("cancel_all_orders", [CheckoutController::class, 'cancelAllOrders']);
+Route::post("edit_order_qty", [CheckoutController::class, 'editOrderQty']);
+Route::post("delete_order_line", [CheckoutController::class, 'deleteOrderLine']);
 
 // Authentication
 Auth::routes([

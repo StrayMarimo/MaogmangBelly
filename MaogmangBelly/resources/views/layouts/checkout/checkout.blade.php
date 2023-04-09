@@ -9,14 +9,33 @@
             <th>Price</th>
             <th>Quantity</th>
             <th>Total Price</th>
+            <th></th>
         </tr>
         @foreach ($orders as $item)
+        @if($item['quantity'] > 0)
         <tr>
             <td>{{$item['product_name']}}</td>
             <td>{{$item['price']}}</td>
-            <td>{{$item['quantity']}}</td>
+            <td>
+                <form action="/edit_order_qty" method="POST" id="edit-order-form-{{$item['id']}}">
+                    @csrf
+                    <input type="hidden" name="order_line_id" value={{$item['id']}} >
+                    <input type="number" name="item_quantity" class="input-item-quantity" id="item-quantity-{{$item['id']}}" value="{{$item['quantity']}}">
+                </form>
+               
+            </td>
             <td>{{$item['total_price']}}</td>
+            <td>
+                <form action="/delete_order_line" method="POST">
+                    @csrf
+                    <input type="hidden" name="order_line_id" value="{{$item['id']}}">
+                    <button type="submit">
+                        <i class="bs bi-trash-fill" id="delete-order-line"></i>
+                    </button>
+                </form>
+            </td>
         </tr>
+        @endif
         @endforeach
     </table>
     <div>

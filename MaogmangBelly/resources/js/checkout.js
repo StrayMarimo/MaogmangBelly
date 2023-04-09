@@ -21,4 +21,10 @@ $(document).ready(function () {
         $("#forDelivery").prop("checked", true);
         $("#forPickup").prop("checked", false);
     });
+
+    // Handle change on order quantity on checkout page
+    $('.input-item-quantity').change(function() {
+        let item_id = $(this).attr('id').substring(14);
+        $('#edit-order-form-'+item_id).submit();
+    })
 });
