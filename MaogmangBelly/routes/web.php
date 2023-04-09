@@ -51,4 +51,4 @@ Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle']
 Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback']);
 
 // Mails
-Route::get('send-mail', [MailController::class, 'index']);
+Route::get('subscribe_newsletter', [MailController::class, 'index']);

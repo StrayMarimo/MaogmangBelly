@@ -27,10 +27,10 @@ class NewsLetter extends Mailable
      * Get the message envelope.
      */
     public function envelope(): Envelope
-    {
+    {  
         return new Envelope(
             from: new Address('maogmangbelly@gmail.com', 'Maogmang Belly'),
-            subject: 'Email NewsLetter',
+            subject: 'Welcome',
         );
     }
 

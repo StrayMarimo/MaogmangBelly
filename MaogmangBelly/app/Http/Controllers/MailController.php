@@ -13,16 +13,16 @@ class MailController extends Controller
      *
      * @return response()
      */
-    public function index()
+    public function index(Request $req)
     {
         $mailData = [
             'title' => 'Mail from Maogmang Belly',
-            'body' => 'This is for testing email using smtp.'
+            'body' => "Thank you for subscribing to our newsletter. We'll keep you up to date on our business."
         ];
 
         // temp fix: get user email
-        Mail::to('basbasangheline@gmail.com')->send(new NewsLetter($mailData));
+        Mail::to($req->email_newsletter)->send(new NewsLetter($mailData));
 
-        dd("Email is sent successfully.");
+        return redirect('/');
     }
 }

@@ -189,8 +189,4 @@ class CheckoutController extends Controller
         return redirect('/checkout_order');
     }
 
-
-
-
-
 }
