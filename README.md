@@ -1,34 +1,47 @@
 # MaogmangBelly
 A Proprietary Restaurant E-Commerce Website for Maogmang Belly
  
- <hr>
  
-### DATABASE CREDENTIALS (change these values on the ***.env*** file):
-<code>DB_CONNECTION=mysql  
- DB_HOST=localhost  
- DB_PORT=3306  
- DB_DATABASE=maogmangbelly  
- DB_USERNAME=root  
- DB_PASSWORD=pass
+### Installation
+1. Clone GitHub repo for this project locally   
+<code>git clone git@github.com:StrayMarimo/MaogmangBelly.git</code>
+2. Go to project  
+ <code>cd maogmangbelly</code>  
+3. Install composer dependencies  
+ <code>composer install </code>
+4. Install NPM dependencies  
+<code>npm install </code>
+5. create a copy of .env example file  
+<code>cp .env.example .env </code>
+6. Generate app encryption key  
+<code>php artisan key:generate</code>
+7. Create database in laragon named maogmangbelly
+8. Change the following in the .env file:  
 
- ...
-
- MAIL_MAILER=smtp
- MAIL_HOST=smtp.gmail.com
- MAIL_PORT=587
- MAIL_USERNAME=maogmangbelly@gmail.com
- MAIL_PASSWORD=jfvouxypsrdrcbdk
- MAIL_ENCRYPTION=tls
- MAIL_FROM_ADDRESS=maogmangbelly@gmail.com
- MAIL_FROM_NAME="${APP_NAME}"
+ <code>DB_CONNECTION=mysql  
+  DB_HOST=localhost  
+  DB_PORT=3306  
+  DB_DATABASE=maogmangbelly  
+  DB_USERNAME=root  
+  DB_PASSWORD=
+  MAIL_MAILER=smtp
+  MAIL_HOST=smtp.gmail.com
+  MAIL_PORT=587
+  MAIL_USERNAME=maogmangbelly@gmail.com
+  MAIL_PASSWORD=jfvouxypsrdrcbdk
+  MAIL_ENCRYPTION=tls
+  MAIL_FROM_ADDRESS=maogmangbelly@gmail.com
+  MAIL_FROM_NAME="${APP_NAME}"
  </code>
  
- <hr>
- 
- ### Running servers: 
-**Run Laravel:**  
-<code>php artisan serve </code>
-
+  9. Run npm:  
+  <code>npm run dev</code>  
+  10. Migrate db:  
+  <code>php artisan migrate</code> 
+  11. Run seeders:  
+  <code>php artisan db:seed</code>
+  12. Run server:  
+  <code>php artisan serve </code>
 <hr>
 
 ### PHP commands
