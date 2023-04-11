@@ -1,8 +1,18 @@
-<nav class="navbar navbar-expand-md navbar-clear bg-* shadow-sm">
+<nav class="navbar navbar-expand-md navbar-light shadow-sm">
     <div class="container">
+        <a class="navbar-brand" href="{{ url('/') }}"><img src="/assets/logo.png" alt="logo" height="36"></a>
+    
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link {{request()->is('/') ? 'active' : ''}}" aria-current="page" href="/">Home</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link {{request()->is('/products') ? 'active' : ''}}" href="/products">Products</a>
                 </li>
@@ -10,29 +20,18 @@
                     <a class="nav-link {{request()->is('/catering') ? 'active' : ''}}" href="/catering">Catering</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{request()->is('/about') ? 'active' : ''}}" href="/about">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{request()->is('/catering') ? 'active' : ''}}" href="{{ url('/') }}">
-                        <img src="/assets/logo.png" alt="logo" height="69">
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a onclick="return false;"></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{request()->is('/order') ? 'active' : ''}}" href="/Order">Order</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link {{request()->is('/contact') ? 'active' : ''}}" href="/contact">Contact Us</a>
                 </li>
-                <!-- <li>
+                <li class="nav-item">
+                    <a class="nav-link {{request()->is('/about') ? 'active' : ''}}" href="/about">About Us</a>
+                </li>
+                <li>
                     <form class="d-flex" action="/search" role="search">
-                        <input class="form-control me-2 search-box" type="text" name="query" placeholder="Search"
+                        <input class="form-control me-4 search-box" type="text" name="query" placeholder="Search"
                             aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
-                </li> -->
+                </li>
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -75,7 +74,7 @@
                 <li class="nav-item">
                     <form action="/checkout_order">
                         @csrf
-                        <button class="btn">Checkout({{$order_qty}})</button>
+                        <button class="btn">Order({{$order_qty}})</button>
                     </form>
                 </li>
             </ul>
