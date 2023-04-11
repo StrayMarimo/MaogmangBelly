@@ -28,8 +28,8 @@ class ContactUs extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            to: new Address('maogmangbelly@gmail.com', 'Maogmang Belly'),
-            subject: 'Contact Us',
+            from: new Address($this->mailData['email'], $this->mailData['name']),
+            subject: 'Contact',
         );
     }
 

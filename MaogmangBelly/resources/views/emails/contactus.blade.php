@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Maogmang Belly</title>
+Contact
 </head>
 
 <body>
