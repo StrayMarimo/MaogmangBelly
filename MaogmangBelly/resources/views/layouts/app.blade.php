@@ -16,12 +16,15 @@
 
     <!-- Vite -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    <!-- Style -->
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 
 <body>
     <div id="app">
         {{View::make('components.header')}}
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
         {{View::make('components.footer')}}
