@@ -59,4 +59,14 @@ class HomeController extends Controller
         return view('layouts.about.about');
     }
 
+    /**
+     * Show the reservations page.
+     *
+     * @return View - the reservations view.
+     */
+    public function reservations()
+    {
+        return view('layouts.reservations.reservations');
+    }
+
 }

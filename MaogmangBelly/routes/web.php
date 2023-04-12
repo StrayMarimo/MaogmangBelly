@@ -27,9 +27,10 @@ Route::get("search", [ProductController::class, 'searchProduct']);
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/catering', [HomeController::class, 'catering']);
 Route::get('/about', [HomeController::class, 'about']);
+Route::get('/reservations', [HomeController::class, 'reservations']);
 Route::get('/contact', [HomeController::class, 'contact']);
 Route::get('/profile', [UserController::class, 'profile']);
-Route::get("/checkout_order", [CheckoutController::class, 'checkout']);
+Route::get("/order", [CheckoutController::class, 'checkout']);
 
 // POST Requests
 Route::post("add_to_order", [ProductController::class, 'addToOrder']);
@@ -52,3 +53,4 @@ Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback
 
 // Mails
 Route::get('subscribe_newsletter', [MailController::class, 'index']);
+Route::get('mail_contactus', [MailController::class, 'contact']);

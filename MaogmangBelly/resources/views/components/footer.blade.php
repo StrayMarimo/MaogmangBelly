@@ -2,7 +2,7 @@
   <div class="col-4">
     <h3 class="title">Find Us</h3>
     <div class="container">
-      <ul class=list-unstyled>
+      <ul class="list-unstyled">
         <li>
           <h5 class="place"><u>Naga City</u></h5>
           <p class="address">Elias Angeles Street, San Francisco</p>

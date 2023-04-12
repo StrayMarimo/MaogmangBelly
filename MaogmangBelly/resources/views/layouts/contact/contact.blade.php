@@ -21,12 +21,12 @@
         <div class="container px-5 mx-5">
             <div class="row">
                 <div class="col-10">
-                    <form action="/contact" method="POST">
+                    <form action="mail_contactus">
                         @csrf
-                        <input type="text" class="form-control my-2" name="name" placeholder="Name">
-                        <input type="email" class="form-control my-2" name="email" placeholder="Email">
-                        <input type="text" class="form-control my-2" name="number" placeholder="Contact Number">
-                        <textarea class="form-control my-2" name="message" placeholder="Message"rows="5"></textarea>
+                        <input type="text" class="form-control my-2" name="name_user" placeholder="Name">
+                        <input type="email" class="form-control my-2" name="email_user" placeholder="Email">
+                        <input type="text" class="form-control my-2" name="number_user" placeholder="Contact Number">
+                        <textarea class="form-control my-2" name="message_user" placeholder="Message"rows="5"></textarea>
                         <div class="form-group row justify-content-center mx-2">
                             <button type="submit" class="btn btn-danger">Contact Us Now</button>
                         </div>
