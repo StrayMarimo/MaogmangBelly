@@ -208,3 +208,36 @@ img.slider-img {
     align-items: center;
     justify-content: center;
 }
+.nav-item.contact{
+    position: absolute;
+    left: 85%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+
+    font-family: 'Franklin Gothic Medium';
+    font-style: normal;
+    font-weight: 400;   
+    font-size: 15px;
+    line-height: 17px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+
+    color: #FFFFFF;
+}
+
+.about{
+    background: url("/assets/bg-about.jpg") no-repeat;
+    background-size: cover;
+    color: white;
+}
+
+.contactbg{
+        background: url("/assets/contactbg.jpg") no-repeat;
+        background-size: cover;
+        padding: 200px 0px 200px 0px;
+        width: 100%;
+        height: 100%;
+}

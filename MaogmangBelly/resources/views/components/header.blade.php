@@ -27,6 +27,9 @@
       <li class="nav-item">
         <a class="nav-link {{request()->is('/login') ? 'active' : ''}}" href="/login"><p class="{{request()->is('login') ? 'active' : ''}}">LOGIN</p></a>
       </li>
+      <li class="nav-item contact">
+        <a class="nav-link {{request()->is('/contact') ? 'active' : ''}}" href="/contact"><p class="{{request()->is('contact') ? 'active' : ''}}">CONTACT US</p></a>
+      </li>
     </ul>
   </div>
 </nav>
