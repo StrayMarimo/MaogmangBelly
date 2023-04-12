@@ -6,11 +6,13 @@ Contact
 </head>
 
 <body>
-    <h5>Name: {{ $mailData['name'] }}</h5>
-    <h5>Email: {{ $mailData['email'] }}</h5>
-    <h5>Number: {{ $mailData['number'] }}</h5>
+    <p class="fs-4 fw-semibold">
+        Name: {{ $mailData['name'] }} <br>
+        Email: {{ $mailData['email'] }} <br>
+        Number: {{ $mailData['number'] }}
+    </p>
 
-    <p>{{ $mailData['message'] }}</p>
+    <p class="fs-4">Message:<br> {{ $mailData['message'] }}</p>
 </body>
 
 </html>
