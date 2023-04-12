@@ -1,8 +1,9 @@
+<div style="height: 5vh" class="white"></div>
 <div class="row bg-black text-white p-5">
   <div class="col-4">
     <h3 class="title">Find Us</h3>
     <div class="container">
-      <ul class=list-unstyled>
+      <ul class="list-unstyled">
         <li>
           <h5 class="place"><u>Naga City</u></h5>
           <p class="address">Elias Angeles Street, San Francisco</p>
@@ -41,7 +42,7 @@
     <p class="caption2">Email*</p>
     <form action="subscribe_newsletter">
       @csrf
-      <input type="email" name="email_newsletter" size="45" style="height: 30px, border-radius: 30px">
+      <input type="email" name="email_newsletter" size="35" style="height: 30px">
       <br>
       <br>
       <input type="submit" class="btn btn-danger">
