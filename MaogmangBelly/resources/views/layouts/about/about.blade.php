@@ -2,8 +2,8 @@
 @section('content')
 <div class="about">
     <div class="container-fluid text-left p-5">
-        <div class="about-box">
-            <div class="row">
+        <div class="about-box mx-auto">
+            <div class="row mx-5">
                 <div class="col">
                     <p class="we-are">We are</p>
                     <p class="brandname">MAOGMANG BELLY</p>
