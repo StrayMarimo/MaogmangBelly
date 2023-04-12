@@ -41,7 +41,7 @@
     <p class="caption2">Email*</p>
     <form action="subscribe_newsletter">
       @csrf
-      <input type="email" name="email_newsletter" size="45" style="height: 30px, border-radius: 30px">
+      <input type="email" name="email_newsletter" size="35" style="height: 30px">
       <br>
       <br>
       <input type="submit" class="btn btn-danger">
