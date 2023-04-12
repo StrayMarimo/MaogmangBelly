@@ -1,47 +1,49 @@
-<div class="row bg-dark text-white p-5">
+<div class="row bg-black text-white p-5">
   <div class="col-4">
-    <h3>Find Us</h3>
+    <h3 class="title">Find Us</h3>
     <div class="container">
       <ul class="list-unstyled">
         <li>
-          <h5><u>Naga City</u></h5>
-          <p>Elias Angeles Street, San Francisco</p>
+          <h5 class="place"><u>Naga City</u></h5>
+          <p class="address">Elias Angeles Street, San Francisco</p>
         </li>
         <li>
-          <h5><u>Legazpi City</u></h5>
-          <p>Jone Street, BUCIT Road, Sagpon</p>
+          <h5 class="place"><u>Legazpi City</u></h5>
+          <p class="address">Jone Street, BUCIT Road, Sagpon</p>
         </li>
         <li>
-          <h5><u>Masbate City</u></h5>
-          <p>Ibingay Street, Masbate City</p>
+          <h5 class="place"><u>Masbate City</u></h5>
+          <p class="address">Ibingay Street, Masbate City</p>
         </li>
       </ul>
     </div>
   </div>
   <div class="col-4">
-    <h3>Contact</h3>
+    <h3 class="title">Contact</h3>
     <div class="container">
       <ul class="list-unstyled">
         <li>
-          <h5>Email</h5>
-          <p><u>maogmangbelly@gmail.com</u></p>
+          <h5 class="place">Email</h5>
+          <p class="address">maogmangbelly@gmail.com</p>
         </li>
         <li>
-          <h5>Phone</h5>
-          <p>(+63) 91-1250-4959</p>
-          <p>(+63) 92-1250-6942</p>
+          <h5 class="place">Phone</h5>
+          <p class="address">(+63) 91-1250-4959</p>
+          <p class="address">(+63) 92-1250-6942</p>
         </li>
       </ul>
     </div>
   </div>
   <div class="col-4">
-    <h3>Subscribe</h3>
-    <p>Keep up with the good news! Sign up for our newsletter and get the latest on where to find us, recipes, & more!
+    <h3 class="title">Subscribe</h3>
+    <p class="caption1">Keep up with the good news! Sign up for our newsletter <br> and get the latest on where to find us, recipes, & more!
     </p>
-    <p>Email*</p>
+    <p class="caption2">Email*</p>
     <form action="subscribe_newsletter">
       @csrf
-      <input type="email" name="email_newsletter">
+      <input type="email" name="email_newsletter" size="45" style="height: 30px, border-radius: 30px">
+      <br>
+      <br>
       <input type="submit" class="btn btn-danger">
     </form>
   </div>
