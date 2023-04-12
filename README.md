@@ -18,7 +18,7 @@ A Proprietary Restaurant E-Commerce Website for Maogmang Belly
 7. Create database in laragon named maogmangbelly
 8. Change the following in the .env file:  
 
- <code>DB_CONNECTION=mysql  
+ ```DB_CONNECTION=mysql  
   DB_HOST=localhost  
   DB_PORT=3306  
   DB_DATABASE=maogmangbelly  
@@ -32,7 +32,7 @@ A Proprietary Restaurant E-Commerce Website for Maogmang Belly
   MAIL_ENCRYPTION=tls
   MAIL_FROM_ADDRESS=maogmangbelly@gmail.com
   MAIL_FROM_NAME="${APP_NAME}"
- </code>
+ ```
  
   9. Run npm:  
   <code>npm run dev</code>  
