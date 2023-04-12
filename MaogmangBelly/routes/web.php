@@ -53,3 +53,4 @@ Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback
 
 // Mails
 Route::get('subscribe_newsletter', [MailController::class, 'index']);
+Route::get('mail_contactus', [MailController::class, 'contact']);
