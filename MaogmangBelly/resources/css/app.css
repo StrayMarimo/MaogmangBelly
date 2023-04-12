@@ -4,34 +4,43 @@
     height: 500px;
     padding-top: 100px;
 }
+
 img.slider-img {
     height: 400px !important;
 }
+
 .custom-product {
     height: 600px;
 }
+
 .slider-text{
     background-color: #35443585
 }
+
 .trending-image{
     height: 100px;
     width: 100px;
 }
+
 .trending-item{
     float: left;
     width: 20%
 }
+
 .detail-img{
     height: 200px;
 }
+
 .search-box{
     width: 500px !important
 }
+
 .category-tabs {
     background-color: transparent;
     border: 0;
     font-size: 1em;
 }
+
 .navbar-nav {
     align-items: center;
 }
@@ -73,14 +82,14 @@ img.slider-img {
     padding: 0 2em;
 }
 
-.vignette {
+/* .vignette {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     box-shadow: 0 0 200px rgba(0,0,0,0.9) inset;
-  }
+} */
 
 .title {
     font-family: 'Times New Roman MT Std';
@@ -129,4 +138,75 @@ img.slider-img {
     bottom: 27.33%;
     background: #D9D9D9;
     border-radius: 10px;
+}
+
+.text-light {
+    background-image:url('/assets/background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 50% 50%;
+}
+
+.border1 {
+    position: absolute;
+    width: 1337px;
+    height: 549px;
+    left: 151px;
+    top: 293px;
+}
+
+.tagline {
+    font-family: 'Times New Roman MT Std';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 100px;
+    line-height: 130px;
+    display: flex;
+    align-items: center;
+}
+
+.subtitle {
+    font-family: 'Franklin Gothic Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 150%;
+}
+
+.red-sec {
+    background-color: #C1272D;
+    align-items: center;
+    padding-top: 90px;
+}
+
+.tag1 {
+    font-family: 'Lexend';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 70px;
+    line-height: 120%;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.11em;
+    color: #C1272D;
+    text-shadow: -1px 1px 0 #FFF,
+                  1px 1px 0 #FFF,
+                  1px -1px 0 #FFF,
+                 -1px -1px 0 #FFF;
+    text-align: center;
+}
+
+.cap1 {
+    font-family: 'Times New Roman';
+    font-style: italic;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 160%;
+    text-align: center;
+    color: white;
+}
+
+.center {
+    align-items: center;
+    justify-content: center;
 }
