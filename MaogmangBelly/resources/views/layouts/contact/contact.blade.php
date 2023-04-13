@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section('content')
-<div class="contactbg">
-    <div class="row">
+<div class="container-fluid contactbg">
+    
+    <div class="row mx-5 w-80">
         <div class="col">
             <div class="text-center">
                 <h1>CONTACT US</h1>
@@ -19,8 +20,7 @@
             </div>
         </div>
         <div class="col">
-            <div class="container px-5 mx-5">
-                <div class="row">
+                <div class="row mx-5">
                     <div class="col-10">
                         <form action="mail_contactus">
                             @csrf
@@ -34,7 +34,7 @@
                         </form>
                     </div>
                 </div>
-            </div>
+
         </div>
         </div>
     </div>
