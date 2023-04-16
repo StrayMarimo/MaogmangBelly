@@ -235,9 +235,68 @@ img.slider-img {
 }
 
 .contactbg{
-        background: url("/assets/contactbg.jpg") no-repeat;
-        background-size: cover;
-        padding: 200px 0px 200px 0px;
-        width: 100%;
-        height: 100%;
+    background: url("/assets/contactbg.jpg") no-repeat;
+    background-size: cover;
+    padding: 200px 0px 200px 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.about-box {
+    width: 1300px;
+    height: 700px;
+   
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.we-are {
+    font-family: 'Franklin Gothic Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 0%;
+    writing-mode:vertical-rl;
+    color: black;
+}
+
+.brandname {
+    font-family: 'Lexend';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 120%;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.11em;
+    color:rgba(255, 255, 255, 0.8);
+    text-shadow: -1px 1px 0 #000,
+                  1px 1px 0 #000,
+                  1px -1px 0 #000,
+                 -1px -1px 0 #000;
+    text-align: center;
+}
+
+.col2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-fluid {
+    width: 431px;
+    height: 467px;
+}
+
+.about {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.story {
+    color: black;
 }
