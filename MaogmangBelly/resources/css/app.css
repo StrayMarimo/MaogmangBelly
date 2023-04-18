@@ -300,3 +300,53 @@ img.slider-img {
 .story {
     color: black;
 }
+
+.card {
+    width: 68vh;
+    height: 88vh;
+    font-family: 'Franklin Gothic Medium';
+}
+
+.card-body {
+    padding-left: 10vh;
+    padding-right: 10vh;
+    padding-top: 10vh;
+}
+.red-btn {
+    background: #A72322;
+    width: 48vh;
+    height: 7vh;
+    border-radius: 12px;
+
+}
+
+.boxbox {
+    width: 48vh;
+    border: 2px solid #A72322;
+    border-radius: 12px;
+    background: white;
+}
+
+.form-box {
+    background: white;
+}
+
+.check-box {
+    background: white;
+}
+
+a {
+    color: black;
+}
+a:link { 
+    text-decoration: none; 
+}
+a:visited { 
+    text-decoration: none; 
+}
+a:hover { 
+    text-decoration: none; 
+}
+a:active { 
+    text-decoration: none; 
+}
