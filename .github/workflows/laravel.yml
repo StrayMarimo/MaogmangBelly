@@ -47,6 +47,12 @@ jobs:
       run: |
         cd MaogmangBelly
         npm run prod
+    - name: migrate db
+      run: |
+        cd MaogmangBelly
+        php artisan migrate
+        php artisan db:seed
+        php artisan serve
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         MYSQL_DATABASE: maogmangbelly
