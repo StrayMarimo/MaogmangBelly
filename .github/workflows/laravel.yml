@@ -43,6 +43,10 @@ jobs:
         php artisan key:generate
     - name: Check Directories
       run: ls
+    - name: run npm
+      run: |
+        cd MaogmangBelly
+        npm run dev
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         MYSQL_DATABASE: maogmangbelly
