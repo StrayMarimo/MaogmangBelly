@@ -207,6 +207,8 @@ class ProductController extends Controller
         $product->gallery = $filename;
         $product->total_sold = 0;
         $product->category_id = $req->category_id;
+        $product->is_trending = $req->is_trending;
+        $product->is_featured = $req->is_featured;
 
         // Save the new product to the database
         $product->save();
