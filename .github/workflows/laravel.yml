@@ -46,7 +46,7 @@ jobs:
     - name: run npm
       run: |
         cd MaogmangBelly
-        npm run dev
+        npm run prod
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         MYSQL_DATABASE: maogmangbelly
