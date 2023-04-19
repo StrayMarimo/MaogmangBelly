@@ -46,7 +46,7 @@ class ProductSeeder extends Seeder
                 'price_20pax' => 1800,
                 'stock' => 20,
                 'total_sold' => 0,
-                'gallery' => "crispy_korean_honey_soy_chicken.jpg",
+                'gallery' => "crispy_korean_honey_soy_chiken.jpg",
                 'is_trending' => false,
                 'is_featured' => false,
                 'category_id' => 3
