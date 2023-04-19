@@ -33,14 +33,12 @@ jobs:
         mysql --version
         sudo apt-get install -y mysql-client
         mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports['3306'] }} -uuser -psecret -e "SHOW DATABASES"
-    - name: Copy .env
-      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: Check Directories
       run: ls
-    
     - name: Install Dependencies and Generate Key
       run: |
         cd MaogmangBelly
+        php -r "file_exists('.env') || copy('.env.example', '.env');"
         chmod -R 755 storage bootstrap/cache
         composer install
         php artisan key:generate
