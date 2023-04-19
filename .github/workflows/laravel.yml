@@ -16,9 +16,9 @@ jobs:
         image: mysql:8.0
         env:
           MYSQL_DATABASE: maogmangbelly
-          MYSQL_USER: root
-          MYSQL_PASSWORD: pass
-          MYSQL_ROOT_PASSWORD: pass
+          MYSQL_USER: user
+          MYSQL_PASSWORD: secret
+          MYSQL_ROOT_PASSWORD: secretroot
         ports:
           - 3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
