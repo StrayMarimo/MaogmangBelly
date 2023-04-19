@@ -41,8 +41,6 @@ jobs:
         composer install
         npm install
         php artisan key:generate
-    - name: Check Directories
-      run: ls
     - name: run npm
       run: |
         cd MaogmangBelly
@@ -58,8 +56,4 @@ jobs:
         php artisan migrate
         php artisan db:seed
         vendor/bin/phpunit
-    - name: Show .env file
-      run: |
-        cd MaogmangBelly
-        cat .env
 
