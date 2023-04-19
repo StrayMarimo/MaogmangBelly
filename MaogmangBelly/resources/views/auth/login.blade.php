@@ -5,11 +5,11 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-auto">
-                <div class="card" style="border-radius: 12px;">
+                <div class="card auth" style="border-radius: 12px;">
                     <div class="mt-5 text-center">
                         <p>Please log in to continue</p>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body auth">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
 

@@ -5,26 +5,28 @@
     <div class="tab-pane fade show active" id="all-products" role="tabpanel" aria-labelledby="category-0">
 
         <!-- Loop through all the products and display their data -->
-        <div class="d-flex justify-content-center">
+        <div class="d-flex flex-wrap justify-content-center">
             @foreach($products as $product)
-                @include('layouts.products.product_card')
+            <div class="col-sm-6 col-md-3">
+                    @include('layouts.products.product_card')
+            </div>
             @endforeach
         </div>
     </div>
 
     <!-- Loop through all the categories and create a tab pane for each one -->
     @foreach($categories as $category)
-    <div class="tab-pane fade" id="_{{$category['id']}}" role="tabpanel"
-        aria-labelledby="category-{{$category['id']}}">
-        <div class="d-flex justify-content-center">
+    <div class="tab-pane fade" id="_{{$category['id']}}" role="tabpanel" aria-labelledby="category-{{$category['id']}}">
+        <div class="d-flex flex-wrap justify-content-center">
             <!-- Loop through all the products and display their data if they belong to the current category -->
             @foreach($products as $product)
             @if($product['category_id'] == $category['id'])
+            <div class="col-sm-6 col-md-3 mb-4">
                 @include('layouts.products.product_card')
+            </div>
             @endif
             @endforeach
         </div>
-      
         <!-- Display add product button if user is admin -->
         @if($isAdmin)
         <button type="button" class="btn btn-primary add-product" data-bs-toggle="modal"
@@ -62,7 +64,7 @@
                     <!-- Input for product stock -->
                     Stock: <input type="number" placeholder="100" name="product_stock" required> <br />
                     <!-- Input for product gallery -->
-                   <input type="checkbox" name="is_trending"> Trending Product <br />
+                    <input type="checkbox" name="is_trending"> Trending Product <br />
                     <input type="checkbox" name="is_featured"> Featured Product <br />
                     <label for="img">Upload Product Image</label>
                     <div class="row">
