@@ -33,8 +33,6 @@ jobs:
         mysql --version
         sudo apt-get install -y mysql-client
         mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports['3306'] }} -uuser -psecret -e "SHOW DATABASES"
-    - name: Check Directories
-      run: ls
     - name: Install Dependencies and Generate Key
       run: |
         cd MaogmangBelly
@@ -42,6 +40,8 @@ jobs:
         chmod -R 755 storage bootstrap/cache
         composer install
         php artisan key:generate
+    - name: Check Directories
+      run: ls
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         MYSQL_DATABASE: maogmangbelly
