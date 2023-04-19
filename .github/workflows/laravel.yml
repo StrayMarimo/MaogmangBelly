@@ -40,7 +40,9 @@ jobs:
     - name: Install Dependencies
       run: composer install --working-dir=MaogmangBelly
     - name: Change Directory
-      run: cd MaogmangBelly
+      run: |
+        cd MaogmangBelly
+        ls
     - name: Generate key
       run: php artisan key:generate
     - name: Directory Permissions
