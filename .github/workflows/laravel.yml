@@ -39,9 +39,14 @@ jobs:
         php -r "file_exists('.env') || copy('.env.example', '.env');"
         chmod -R 755 storage bootstrap/cache
         composer install
+        npm install
         php artisan key:generate
     - name: Check Directories
       run: ls
+    - name: run npm
+      run: |
+        cd MaogmangBelly
+        npm run prod
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         MYSQL_DATABASE: maogmangbelly
