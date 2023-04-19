@@ -14,7 +14,7 @@
 
     <!-- Loop through all the categories and create a tab pane for each one -->
     @foreach($categories as $category)
-    <div class="tab-pane fade" id="{{$category['name']}}" role="tabpanel"
+    <div class="tab-pane fade" id="_{{$category['id']}}" role="tabpanel"
         aria-labelledby="category-{{$category['id']}}">
         <div class="d-flex justify-content-center">
             <!-- Loop through all the products and display their data if they belong to the current category -->
@@ -62,6 +62,8 @@
                     <!-- Input for product stock -->
                     Stock: <input type="number" placeholder="100" name="product_stock" required> <br />
                     <!-- Input for product gallery -->
+                   <input type="checkbox" name="is_trending"> Trending Product <br />
+                    <input type="checkbox" name="is_featured"> Featured Product <br />
                     <label for="img">Upload Product Image</label>
                     <div class="row">
                         <div class="col-sm-6 ">

@@ -21,15 +21,15 @@ class CategorySeeder extends Seeder
             ],
             [
                 'id' => 2,
-                'name' => 'pork'
+                'name' => 'pork | beef'
             ],
             [
                 'id' => 3,
-                'name' => 'chicken'
+                'name' => 'chicken | fish | seafood'
             ],
             [
                 'id' => 4,
-                'name' => 'appetizer'
+                'name' => 'appetizer | side dish | dessert'
             ],
         ]);
     }

@@ -7,8 +7,8 @@
     @foreach($categories as $category)
     <li class="nav-item" role="presentation">
         <!-- Tab to show products in a specific category -->
-        <a class="nav-link" id="category-{{$category['id']}}" data-mdb-toggle="tab" href="#{{$category['name']}}"
-            role="tab" aria-controls="{{$category['name']}}" aria-selected="false">
+        <a class="nav-link" id="category-{{$category['id']}}" data-mdb-toggle="tab" href="#_{{$category['id']}}"
+            role="tab" aria-controls="_{{$category['id']}}" aria-selected="false">
             <!-- Form to edit category name -->
             <form action="/edit_category" method="POST" class="row g-3" id="form-{{$category['id']}}">
                 @csrf
