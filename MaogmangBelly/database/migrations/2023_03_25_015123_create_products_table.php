@@ -16,9 +16,12 @@ return new class extends Migration
             $table->string("name");
             $table->string("description");
             $table->double("price", 8, 2);
+            $table->double("price_20pax", 8, 2);
             $table->integer("stock");
             $table->integer("total_sold");
             $table->string("gallery");
+            $table->boolean("is_trending");
+            $table->boolean("is_featured");
             $table->foreignId("category_id")
                 ->constrained("categories")
                 ->onUpdate('cascade')

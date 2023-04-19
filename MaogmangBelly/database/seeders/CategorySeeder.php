@@ -17,19 +17,19 @@ class CategorySeeder extends Seeder
         DB::table('categories')->insert([
             [
                 'id' => 1,
-                'name' => 'pork'
+                'name' => 'pasta'
             ],
             [
                 'id' => 2,
-                'name' => 'beef'
+                'name' => 'pork'
             ],
             [
                 'id' => 3,
-                'name' => 'fish'
+                'name' => 'chicken'
             ],
             [
                 'id' => 4,
-                'name' => 'veggies'
+                'name' => 'appetizer'
             ],
         ]);
     }

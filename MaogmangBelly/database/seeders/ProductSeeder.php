@@ -13,53 +13,56 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-       // Dummy Data
-       DB::table('products')->insert([
-        [
-            'name' => 'Sizzling Pork sisig',
-            'description' => "a variety of crispy pig parts, chicken livers, and a punchy, acidic dressing.",
-            'price' => 120,
-            'stock' => 20,
-            'total_sold' => 0,
-            'gallery' => "Pork-Sisig.jpg",
-            'category_id' => 1
-        ],
-        [
-            'name' => 'Lumpia Shanghai',
-            'description' => "Spring rolls made of ground pork, chicken, or beef filling wrapped in thin crepes called lumpia wrappers",
-            'price' => 100,
-            'stock' => 50,
-            'total_sold' => 0,
-            'gallery' => "Lumpia-Shanghai.jpg",
-            'category_id' => 1
-        ],
-        [
-            'name' => 'Beef Tapa',
-            'description' => "dried, cured beef similar to beef jerky",
-            'price' => 150,
-            'stock' => 10,
-            'total_sold' => 0,
-            'gallery' => "Beef-Tapa.jpg",
-            'category_id' => 2
-        ],
-        [
-            'name' => 'Boneless Daing na Bangus',
-            'description' => "a fried milkfish dish wherein the fish is marinated in a vinegar mixture and then fried until brown and crispy.",
-            'price' => 80,
-            'stock' => 15,
-            'total_sold' => 0,
-            'gallery' => "Daing.jpg",
-            'category_id' => 3
-        ],
-        [
-            'name' => 'Pakbet',
-            'description' => "mixed vegetables sautéed in fish or shrimp sauce",
-            'price' => 100,
-            'stock' => 25,
-            'total_sold' => 0,
-            'gallery' => "Pakbet.jpg",
-            'category_id' => 4
-        ],
-    ]);
+        // Dummy Data
+        DB::table('products')->insert([
+            [
+                'name' => 'Baked Macaroni',
+                'description' => "a rich and creamy dish consisting of macaroni pasta mixed with a cheesy sauce",
+                'price' => 900,
+                'price_20pax' => 1800,
+                'stock' => 20,
+                'total_sold' => 0,
+                'gallery' => "baked_macaroni.jpg",
+                'is_trending' => false,
+                'is_featured' => false,
+                'category_id' => 1
+            ],
+            [
+                'name' => 'Crispy Pork Kare-Kare',
+                'description' => "crispy pork belly in peanut sauce and filipino vegetables, served with shrimp paste",
+                'price' => 1000,
+                'price_20pax' => 1950,
+                'stock' => 20,
+                'total_sold' => 0,
+                'gallery' => "crispy_pork_kare_kare.jpg",
+                'is_trending' => false,
+                'is_featured' => true,
+                'category_id' => 2
+            ],
+            [
+                'name' => 'Crispy Korean Honey Soy Chicken',
+                'description' => "big-sized fried chicken topped with honey soy garlic",
+                'price' => 900,
+                'price_20pax' => 1800,
+                'stock' => 20,
+                'total_sold' => 0,
+                'gallery' => "crispy_korean_honey_soy_chicken.jpg",
+                'is_trending' => false,
+                'is_featured' => false,
+                'category_id' => 3
+            ],
+            [
+                'name' => 'Coffee Jelly',
+                'description' => "a dessert consisting of coffee flavored gelatin cubes served with milk and whipped cream topping and shaved chocolate.",
+                'price' => 700,
+                'price_20pax' => 1400,
+                'stock' => 20,
+                'total_sold' => 0,
+                'gallery' => "coffee_jelly.jpg",
+                'is_trending' => false,
+                'is_featured' => false,
+                'category_id' => 4
+            ],
+        ]);
     }
 }
