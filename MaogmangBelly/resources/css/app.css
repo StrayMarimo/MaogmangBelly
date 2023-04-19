@@ -234,6 +234,14 @@ img.slider-img {
     color: white;
 }
 
+.signing{
+    background: url("/assets/bg-login.png") no-repeat;
+    background-size: cover;
+    color: black;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+}
+
 .contactbg{
     background: url("/assets/contactbg.jpg") no-repeat;
     background-size: cover;
