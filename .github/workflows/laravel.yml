@@ -47,6 +47,7 @@ jobs:
       run: |
         cd MaogmangBelly
         npm run prod
+    
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         MYSQL_DATABASE: maogmangbelly
@@ -55,6 +56,7 @@ jobs:
         DB_PORT: ${{ job.services.mysql.ports[3306] }}
       run: |
         cd MaogmangBelly
+        cat .env
         php artisan migrate
         php artisan db:seed
         php artisan serve
