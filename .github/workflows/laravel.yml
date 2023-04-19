@@ -50,7 +50,7 @@ jobs:
     
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
-        MYSQL_DATABASE: maogmangbelly
+        DB_DATABASE: maogmangbelly
         DB_USERNAME: user
         DB_PASSWORD: secret
         DB_PORT: ${{ job.services.mysql.ports[3306] }}
