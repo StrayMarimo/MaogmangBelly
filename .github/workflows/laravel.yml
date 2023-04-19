@@ -1,0 +1,53 @@
+name: Laravel
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  laravel-tests:
+
+    runs-on: ubuntu-latest
+    
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_DATABASE: maogmangbelly
+          MYSQL_USER: user
+          MYSQL_PASSWORD: secret
+          MYSQL_ROOT_PASSWORD: secretroot
+        ports:
+          - 3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+    - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
+      with:
+        php-version: '8.2'
+    - uses: actions/checkout@v3
+    - name: Verify MySQL connection
+      run: |
+        mysql --version
+        sudo apt-get install -y mysql-client
+        mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports['3306'] }} -uuser -psecret -e "SHOW DATABASES"
+    - name: Install Dependencies and Generate Key
+      run: |
+        cd MaogmangBelly
+        php -r "file_exists('.env') || copy('.env.example', '.env');"
+        chmod -R 755 storage bootstrap/cache
+        composer install
+        php artisan key:generate
+    - name: Check Directories
+      run: ls
+    - name: Execute tests (Unit and Feature tests) via PHPUnit
+      env:
+        MYSQL_DATABASE: maogmangbelly
+        DB_USERNAME: root
+        DB_PASSWORD: pass
+        DB_PORT: ${{ job.services.mysql.ports[3306] }}
+      run: |
+        cd MaogmangBelly
+        vendor/bin/phpunit
