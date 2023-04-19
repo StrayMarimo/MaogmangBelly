@@ -59,5 +59,7 @@ jobs:
         php artisan db:seed
         vendor/bin/phpunit
     - name: Show .env file
-      run: cat .env
+      run: |
+        cd MaogmangBelly
+        cat .env
 
