@@ -26,7 +26,7 @@ jobs:
     steps:
     - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
       with:
-        php-version: '10.4'
+        php-version: '8.2'
     - uses: actions/checkout@v3
     - name: Verify MySQL connection
       run: |
