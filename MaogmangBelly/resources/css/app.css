@@ -309,13 +309,13 @@ img.slider-img {
     color: black;
 }
 
-.card {
+.card.auth {
     width: 68vh;
     height: 88vh;
     font-family: 'Franklin Gothic Medium';
 }
 
-.card-body {
+.card-body.auth {
     padding-left: 10vh;
     padding-right: 10vh;
     padding-top: 10vh;

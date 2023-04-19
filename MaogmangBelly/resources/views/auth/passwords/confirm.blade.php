@@ -4,10 +4,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card auth">
                 <div class="card-header">{{ __('Confirm Password') }}</div>
 
-                <div class="card-body">
+                <div class="card-body auth">
                     {{ __('Please confirm your password before continuing.') }}
 
                     <form method="POST" action="{{ route('password.confirm') }}">

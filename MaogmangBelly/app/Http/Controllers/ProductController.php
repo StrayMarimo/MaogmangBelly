@@ -196,7 +196,7 @@ class ProductController extends Controller
         $filename = $req->img->getClientOriginalName();
 
         // store in public folder
-        $req->img->move(public_path('assets'), $filename);
+        $req->img->move(public_path('assets/product_assets/'), $filename);
 
          // Create a new Product object and set its data
         $product = new Product;
