@@ -13,17 +13,15 @@ A Proprietary Restaurant E-Commerce Website for Maogmang Belly
 <code>npm install </code>
 5. create a copy of .env example file  
 <code>cp .env.example .env </code>
-6. Generate app encryption key  
-<code>php artisan key:generate</code>
-7. Create database in laragon named maogmangbelly
-8. Change the credentials in the .env file 
-9. Run npm:  
+6. Create database in laragon named maogmangbelly
+7. Change the credentials in the .env file 
+8. Run npm:  
 <code>npm run dev</code>  
-10. Migrate db:  
+9. Migrate db:  
 <code>php artisan migrate</code> 
-11. Run seeders:  
+10. Run seeders:  
 <code>php artisan db:seed</code>
-12. Run server:  
+11. Run server:  
 <code>php artisan serve </code>
 <hr>
 
