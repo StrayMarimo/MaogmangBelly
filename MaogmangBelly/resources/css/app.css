@@ -9,6 +9,7 @@ img.slider-img {
 
 .custom-product {
     height: 600px;
+    overflow-y: scroll
 }
 
 .slider-text{
@@ -78,6 +79,19 @@ img.slider-img {
 
 .navbar .navbar-nav .nav-link {
     padding: 0 2em;
+}
+.nav-item.dropdown a{
+   font-family: 'Franklin Gothic Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-family: 'Franklin Gothic Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 17px;
+    line-height: 2.2;
+    margin: -10px 0 0 0;
+
 }
 
 /* .vignette {
@@ -208,7 +222,7 @@ img.slider-img {
     align-items: center;
     justify-content: center;
 }
-.nav-item.contact{
+.nav-item.login{
     position: absolute;
     left: 85%;
     right: 0%;
@@ -227,6 +241,7 @@ img.slider-img {
 
     color: #FFFFFF;
 }
+
 
 .about{
     background: url("/assets/bg-about.jpg") no-repeat;
@@ -363,7 +378,6 @@ a:active {
     display: flex;
     justify-content: center;
 }
-
 .contact-title {
     font-family: 'Lexend';
     font-style: normal;
@@ -392,3 +406,4 @@ a:active {
 .contact-red {
     background: #A72322;
 }
+
