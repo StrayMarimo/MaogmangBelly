@@ -392,3 +392,48 @@ a:active {
 .contact-red {
     background: #A72322;
 }
+
+.text-light-2 {
+    background-image:url('/assets/catering.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center top;
+}
+
+.green-sec {
+    background-color: #1E1E1E;
+    align-items: center;
+    padding-top: 90px;
+}
+
+.tag2 {
+    font-family: 'Lexend';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 70px;
+    line-height: 120%;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.11em;
+    color: #1E1E1E;
+    text-shadow: -1px 1px 0 #FFF,
+                  1px 1px 0 #FFF,
+                  1px -1px 0 #FFF,
+                 -1px -1px 0 #FFF;
+    text-align: center;
+}
+
+.capcap {
+    font-family: 'Franklin Gothic Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 45px;
+}
+
+.box2 {
+    border-radius: 20px;
+    width: 350px;
+    background: #C1272D;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
