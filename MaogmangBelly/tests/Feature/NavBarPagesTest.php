@@ -68,6 +68,12 @@ class NavBarPagesTest extends TestCase
     {
         $response = $this->get('/contact');
         $response->assertStatus(200);
+    }
+
+    public function test_products_tab(): void
+    {
+        $response = $this->get('/products');
+        $response->assertStatus(200);
     } 
 
     public function test_login_tab_if_no_user(): void
