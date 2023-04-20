@@ -16,32 +16,15 @@ A Proprietary Restaurant E-Commerce Website for Maogmang Belly
 6. Generate app encryption key  
 <code>php artisan key:generate</code>
 7. Create database in laragon named maogmangbelly
-8. Change the following in the .env file:  
-
- ```DB_CONNECTION=mysql  
-  DB_HOST=localhost  
-  DB_PORT=3306  
-  DB_DATABASE=maogmangbelly  
-  DB_USERNAME=root  
-  DB_PASSWORD=
-  MAIL_MAILER=smtp
-  MAIL_HOST=smtp.gmail.com
-  MAIL_PORT=587
-  MAIL_USERNAME=maogmangbelly@gmail.com
-  MAIL_PASSWORD=jfvouxypsrdrcbdk
-  MAIL_ENCRYPTION=tls
-  MAIL_FROM_ADDRESS=maogmangbelly@gmail.com
-  MAIL_FROM_NAME="${APP_NAME}"
- ```
- 
-  9. Run npm:  
-  <code>npm run dev</code>  
-  10. Migrate db:  
-  <code>php artisan migrate</code> 
-  11. Run seeders:  
-  <code>php artisan db:seed</code>
-  12. Run server:  
-  <code>php artisan serve </code>
+8. Change the credentials in the .env file 
+9. Run npm:  
+<code>npm run dev</code>  
+10. Migrate db:  
+<code>php artisan migrate</code> 
+11. Run seeders:  
+<code>php artisan db:seed</code>
+12. Run server:  
+<code>php artisan serve </code>
 <hr>
 
 ### PHP commands
