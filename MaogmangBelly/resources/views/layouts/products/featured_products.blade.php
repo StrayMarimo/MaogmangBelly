@@ -1,8 +1,8 @@
 <div class="custom-product col-6">
     <div id="product-showcase" class="carousel slide">
         <div class="carousel-inner">
-            @foreach ($products as $item)
-            <div class="carousel-item {{$item['id'] == 1 ? 'active' : ''}}">
+            @foreach ($featured_products as $item)
+            <div class="carousel-item {{$loop->index == 1 ? 'active' : ''}}">
                 <a href="details/{{$item['id']}}">
                     <img class="slider-img w-100 px-5" src="{{ url('/assets/product_assets/'.$item['gallery']) }}"
                         class="d-block w-100">

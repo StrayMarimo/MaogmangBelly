@@ -33,11 +33,16 @@ class ProductController extends Controller
         $products = Product::all();
         $categories = Category::all();
 
+        $featured_products = Product::where('is_featured', true)->get();
+        $trending_products = Product::where('is_trending', true)->get();
+
         // return the products view with all the products and categories, and the isAdmin flag
         return view('layouts.products.products', [
             'products' => $products,
             'categories' => $categories,
-            'isAdmin' => $isAdmin
+            'isAdmin' => $isAdmin,
+            'featured_products' => $featured_products,
+            'trending_products' => $trending_products
         ]);
     }
 
