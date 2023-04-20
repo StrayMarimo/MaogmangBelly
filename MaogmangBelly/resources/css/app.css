@@ -398,6 +398,9 @@ a:active {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center top;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .green-sec {
@@ -436,4 +439,47 @@ a:active {
     width: 350px;
     background: #C1272D;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.red-sectagtag {
+    background-color: #C1272D;
+    align-items: center;
+    padding-top: 40px;
+}
+
+.white-sectagtag {
+    background-color: white;
+    align-items: center;
+    padding-top: 40px;
+}
+
+
+.tagtag {
+    font-family: 'Lexend';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 70px;
+    line-height: 80%;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.11em;
+    color: #C1272D;
+    text-shadow: -1px 1px 0 #FFF,
+                  1px 1px 0 #FFF,
+                  1px -1px 0 #FFF,
+                 -1px -1px 0 #FFF;
+    text-align: center;
+}
+
+.margin-box {
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.tagtag2 {
+    font-family: 'Times New Roman MT';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 64px;
+    text-align: center;
 }

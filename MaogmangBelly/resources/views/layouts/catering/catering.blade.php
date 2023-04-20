@@ -39,5 +39,33 @@
         </div>
     </div>
 </div>
-
+<div style="height: 200vh" class="text-light-2">
+    <div class="margin-box">
+        <div style="height: 30vh; width: 150vh" class="red-sectagtag">
+            <h1 class="tagtag">OUR MENU</h1>
+            <p class="cap1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                sed do eiusmod tempor <br> incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+        </div>
+    <div>
+    <div class="margin-box">
+        <div style="height: 20vh; width: 150vh" class="white-sectagtag">
+            <h1 class="tagtag2">Wedding Meals</h1>
+        </div>
+    <div>
+    <div class="margin-box">
+        <div style="height: 20vh; width: 150vh" class="white-sectagtag">
+            <h1 class="tagtag2">Children's Party</h1>
+        </div>
+    <div>
+    <div class="margin-box">
+        <div style="height: 20vh; width: 150vh" class="white-sectagtag">
+            <h1 class="tagtag2">Holiday Events</h1>
+        </div>
+    <div>
+    <div class="margin-box">
+        <div style="height: 20vh; width: 150vh" class="white-sectagtag">
+            <h1 class="tagtag2">Filipino Fiesta Cuisine</h1>
+        </div>
+    <div>
+</div>
 @endsection
