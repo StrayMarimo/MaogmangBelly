@@ -84,7 +84,7 @@ img.slider-img {
    font-family: 'Franklin Gothic Medium';
     font-style: normal;
     font-weight: 400;
-       font-family: 'Franklin Gothic Medium';
+    font-family: 'Franklin Gothic Medium';
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
@@ -241,6 +241,7 @@ img.slider-img {
 
     color: #FFFFFF;
 }
+
 
 .about{
     background: url("/assets/bg-about.jpg") no-repeat;
