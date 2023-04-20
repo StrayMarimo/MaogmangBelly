@@ -68,13 +68,11 @@
                             <div class="text-center">
                                 <p>or login using</p>
                             </div>
-
-                            <a href="{{ url('auth/google') }}"
-                                style="margin-top: 0px !important; background: green; color: #ffffff; padding: 5px; border-radius:7px;"
-                                class="col-md-6">
-                                <strong>Google Login</strong>
-                            </a>
-
+                            <div class="google col-md-auto justify-content-center">
+                                <a href="{{ url('auth/google') }}">
+                                    <img src="/assets/google.png" alt="logo">
+                                </a>
+                            </div>
                             <div class="mt-3 text-center">
                                 <p>Don't have an account?</p>
                             </div>

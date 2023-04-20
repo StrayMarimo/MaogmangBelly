@@ -358,3 +358,8 @@ a:hover {
 a:active { 
     text-decoration: none; 
 }
+
+.google {
+    display: flex;
+    justify-content: center;
+}
