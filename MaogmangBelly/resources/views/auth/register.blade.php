@@ -60,6 +60,11 @@
                             </div>
 
                             <div class="row mb-3">
+                                <input type="checkbox" name="subscribe_newsletter" id="subscribe-newsletter" checked>
+                                <label for="subscribe-newsletter">Subscribe to MaogmangBelly Newsletter.</label>
+                            </div>
+                            
+                            <div class="row mb-3">
                                 <div class="col-md-auto">
                                     <button type="submit" class="red-btn btn btn-primary">
                                         {{ __('Register') }}
