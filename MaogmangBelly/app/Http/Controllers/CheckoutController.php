@@ -131,7 +131,7 @@ class CheckoutController extends Controller
             $order_lines = OrderLine::where('order_id', $order_id)->get();
             if (count($order_lines) == 0)
             $order->delete();
-            return redirect('/checkout_order');
+            return redirect('/order');
         }
 
         // Get the ID and price of the product associated with the order line
@@ -153,7 +153,7 @@ class CheckoutController extends Controller
         $orderLine->save();
 
         // Redirect to the checkout order page
-        return redirect('/checkout_order');
+        return redirect('/order');
     }
     /**
      * Delete an order line by ID and update the corresponding order's grand total.
@@ -186,7 +186,7 @@ class CheckoutController extends Controller
         }
 
          // Redirect to the checkout order page
-        return redirect('/checkout_order');
+        return redirect('/order');
     }
 
 }

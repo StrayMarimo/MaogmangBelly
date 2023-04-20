@@ -141,7 +141,7 @@ class ProductController extends Controller
 
         $order_line->save();
 
-        return redirect('/checkout_order');
+        return redirect('/order');
     }
 
     /**
