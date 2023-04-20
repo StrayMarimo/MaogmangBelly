@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\Api\V1\ProductController;
+use App\Http\Controllers\Api\V1\CheckoutController;
 use App\Http\Controllers\Auth\GoogleSocialiteController;
-use App\Http\Controllers\MailController;
+use App\Http\Controllers\Api\V1\MailController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 
