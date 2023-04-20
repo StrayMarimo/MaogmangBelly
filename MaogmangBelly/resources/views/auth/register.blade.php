@@ -59,12 +59,28 @@
                                 <label for="floatingInput">Confirm Password</label>
                             </div>
 
-                            <div class="row mb-0">
+                            <div class="row mb-3">
                                 <div class="col-md-auto">
                                     <button type="submit" class="red-btn btn btn-primary">
                                         {{ __('Register') }}
                                     </button>
                                 </div>
+                            </div>
+                            <div class="text-center">
+                                <p>or sign up using</p>
+                            </div>
+                            <div class="google col-md-auto justify-content-center">
+                                <a href="{{ url('auth/google') }}">
+                                    <img src="/assets/google.png" alt="logo">
+                                </a>
+                            </div>
+                            <div class="mt-3 text-center">
+                                <p>Already have an account?</p>
+                            </div>
+                            <div class="mt-2 text-center">
+                                <a href="/login">
+                                    <h6>Log in</h6>
+                                </a>
                             </div>
                         </form>
                     </div>
