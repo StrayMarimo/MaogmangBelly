@@ -9,6 +9,7 @@ img.slider-img {
 
 .custom-product {
     height: 600px;
+    overflow-y: scroll
 }
 
 .slider-text{
