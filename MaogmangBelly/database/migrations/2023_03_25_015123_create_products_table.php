@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string("name");
             $table->string("description");
             $table->double("price", 8, 2);
+            $table->double("price_10pax", 8, 2);
             $table->double("price_20pax", 8, 2);
             $table->integer("stock");
             $table->integer("total_sold");

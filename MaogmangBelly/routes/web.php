@@ -21,7 +21,7 @@ use App\Http\Controllers\HomeController;
 */
 
 // GET Requests
-Route::get("/products", [ProductController::class, 'index']);
+Route::get("/products", [ProductController::class, 'products']);
 Route::get("details/{id}", [ProductController::class, 'details']);
 Route::get("search", [ProductController::class, 'searchProduct']);
 Route::get('/', [HomeController::class, 'index']);

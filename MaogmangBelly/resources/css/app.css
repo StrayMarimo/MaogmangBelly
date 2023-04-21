@@ -378,7 +378,6 @@ a:active {
     display: flex;
     justify-content: center;
 }
-
 .reservationbg{
     background: url("/assets/reservationbg.jpg") no-repeat;
     background-size: cover;
@@ -422,6 +421,7 @@ a:active {
 .contact-red {
     background: #A72322;
 }
+
 
 .text-light-2 {
     background-image:url('/assets/catering.jpg');
@@ -524,3 +524,4 @@ a:active {
     font-size: 13px;
     cursor: pointer;
 }
+

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NewsLetter;
 use App\Mail\ContactUs;
+use App\Models\Mails;
 
 class MailController extends Controller
 {
@@ -20,6 +21,12 @@ class MailController extends Controller
             'title' => 'Mail from Maogmang Belly',
             'body' => "Thank you for subscribing to our newsletter. We'll keep you up to date on our business."
         ];
+
+        if(!Mails::where('email', '=', $req->email_newsletter)->exists()){
+            $mail = new Mails;
+            $mail->email = $req->email_newsletter;
+            $mail->save();
+        }
 
         Mail::to($req->email_newsletter)->send(new NewsLetter($mailData));
 
