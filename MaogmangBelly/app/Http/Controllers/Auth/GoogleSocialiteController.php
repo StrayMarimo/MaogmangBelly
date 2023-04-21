@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
    
 use App\Http\Controllers\Controller;
+use App\Models\Mails;
 use Socialite;
 use Auth;
 use Exception;
@@ -40,12 +41,18 @@ class GoogleSocialiteController extends Controller
                 return redirect('/home');
       
             }else{
+                // Add email to subscribed_to_newsletter table
+                $mail = new Mails();
+                $mail->email = $user->email;
+                $mail->save();
+
                 $newUser = User::create([
                     'name' => $user->name,
                     'email' => $user->email,
                     'social_id'=> $user->id,
                     'social_type'=> 'google',
-                    'password' => encrypt('my-google')
+                    'password' => encrypt('my-google'),
+                    'is_subscribed' => 1
                 ]);
      
                 Auth::login($newUser);

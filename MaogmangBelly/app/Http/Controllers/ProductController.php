@@ -17,7 +17,7 @@ class ProductController extends Controller
      *
      * @return View - the products view.
      */
-    function index()
+    function products()
     {
         $isAdmin = false;
         $user = Auth::user();
