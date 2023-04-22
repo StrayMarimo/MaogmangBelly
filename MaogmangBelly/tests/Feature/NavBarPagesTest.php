@@ -14,7 +14,8 @@ use App\Models\User;
 class NavBarPagesTest extends TestCase
 {
 
-    use DatabaseTransactions;
+    use RefreshDatabase;
+    use WithFaker;
    
     public function test_home_tab(): void
     {

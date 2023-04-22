@@ -6,17 +6,17 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav mx-auto">
       <li class="nav-item">
-        <a class="nav-link {{request()->is('/products') ? 'active' : ''}}" href="/products">
+        <a class="nav-link {{request()->is('/products') ? 'active' : ''}}" href="{{route('products')}}">
           <p class="{{request()->is('products') ? 'active' : ''}}">PRODUCTS</p>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link {{request()->is('/catering') ? 'active' : ''}}" href="/catering">
+        <a class="nav-link {{request()->is('/catering') ? 'active' : ''}}" href="{{route('catering')}}">
           <p class="{{request()->is('catering') ? 'active' : ''}}">CATERING</p>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link {{request()->is('/reservations') ? 'active' : ''}}" href="/reservations">
+        <a class="nav-link {{request()->is('/reservations') ? 'active' : ''}}" href="{{route('reservations')}}">
           <p class="{{request()->is('reservations') ? 'active' : ''}}">RERSERVATIONS</p>
         </a>
       </li>
@@ -26,25 +26,25 @@
         <p class="{{request()->url() == url('') ? 'active' : '' }} mx-2">Belly</p>
       </a>
       <li class="nav-item">
-        <a class="nav-link {{request()->is('/about') ? 'active' : ''}}" href="/about">
-          <p class="{{request()->is('about') ? 'active' : ''}}">ABOUT</p>
+        <a class="nav-link {{request()->is('/about') ? 'active' : ''}}" href="{{route('about')}}">
+          <p class=" {{request()->is('about') ? 'active' : ''}}">ABOUT</p>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link {{request()->is('/order') ? 'active' : ''}}" href="/order">
-          <p class="{{request()->is('order') ? 'active' : ''}}">ORDER</p>
+        <a class="nav-link {{request()->is('/order') ? 'active' : ''}}" href="{{route('order')}}">
+          <p class=" {{request()->is('order') ? 'active' : ''}}">ORDER</p>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link {{request()->is('/contact') ? 'active' : ''}}" href="/contact">
-          <p class="{{request()->is('contact') ? 'active' : ''}}">CONTACT US</p>
+        <a class="nav-link {{request()->is('/contact') ? 'active' : ''}}" href="{{route('contact')}}">
+          <p class=" {{request()->is('contact') ? 'active' : ''}}">CONTACT US</p>
         </a>
       </li>
       @guest
       @if (Route::has('login'))
       <li class="nav-item login">
-        <a class="nav-link {{request()->is('/login') ? 'active' : ''}}" href="/login">
-          <p class="{{request()->is('login') ? 'active' : ''}}">LOGIN</p>
+        <a class="nav-link {{request()->is('/login') ? 'active' : ''}}" href="{{route('login')}}">
+          <p class=" {{request()->is('login') ? 'active' : ''}}">LOGIN</p>
         </a>
       </li>
       @endif
