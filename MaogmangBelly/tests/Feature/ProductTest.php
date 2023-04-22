@@ -45,6 +45,7 @@ class ProductTest extends TestCase
             $this->assertEquals($product->is_featured, $retrievedProduct->is_featured);
             $this->assertEquals($product->category_id, $retrievedProduct->category_id);
         }
+    
     }
 
 

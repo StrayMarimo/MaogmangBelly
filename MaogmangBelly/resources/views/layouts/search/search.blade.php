@@ -9,8 +9,8 @@
             <h4>Result for Products</h4>
             @foreach($products as $item)
             <div class="searched-item">
-              <a href="details/{{$item['id']}}">
-              <img class="trending-image" src="assets/product_assets/{{$item['gallery']}}">
+              <a href="{{ route('product', ['id' => $item['id']]) }}">
+              <img class="trending-image" src="{{ asset('assets/product_assets/'.$item['gallery']) }}">
               <div class="">
                 <h2>{{$item['name']}}</h2>
                 <h5>{{$item['description']}}</h5>
