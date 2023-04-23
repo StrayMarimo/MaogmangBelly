@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
@@ -121,6 +120,7 @@ class ProductController extends Controller
             return response()->json(['success' => true]);
         else
             return response()->json([
+                'success' => false,
                 'message' => 'Failed to add product',
                 'status' => 'error'
             ], 400);
