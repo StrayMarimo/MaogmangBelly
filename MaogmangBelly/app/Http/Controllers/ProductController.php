@@ -50,7 +50,7 @@ class ProductController extends Controller
      * @param int $id - the ID of the product.
      * @return View - the details view.
      */
-    function getProduct(Request $req)
+    function getProductDetails(Request $req)
     {
         // get the product with the given ID
         $data = Product::find($req->id);
@@ -61,6 +61,20 @@ class ProductController extends Controller
 
         // return the details view with the product and category information
         return view('layouts.products.details', ['product' => $data, 'category' => $category]);
+    }
+
+    /**
+     * Show the details of a specific product.
+     *
+     * @param int $id - the ID of the product.
+     * @return JSON - the product data.
+     */
+    function getProduct(Request $req)
+    {
+        // get the product with the given ID
+        $product = Product::find($req->id);
+
+        return response()->json($product);
     }
 
 
@@ -148,7 +162,7 @@ class ProductController extends Controller
         }
     }
 
-    function updateProduct(Request $req)
+    function editProduct(Request $req)
     {
         $filename = "";
 
@@ -158,13 +172,16 @@ class ProductController extends Controller
 
             // store in public folder
             $req->img->move(public_path('assets/product_assets/'), $filename);
+        }else
+        {
+            $filename = Product::find($req->product_id)['gallery'];
         }
 
         // Update the product's data in the database
         $rowsAffected = DB::table("products")
-        ->where('id', (int) $req->category_id)
+        ->where('id', (int) $req->product_id)
             ->update([
-                'name' => $req->category_name,
+                'name' => $req->product_name,
                 'description' =>  $req->product_desc,
                 'price' => $req->product_price,
                 'price_10pax' => $req->product_price_10,
@@ -175,11 +192,12 @@ class ProductController extends Controller
                 'is_trending' => $req->has('is_trending'),
                 'is_featured' => $req->has('is_featured')
             ]);
+        
             
         if ($rowsAffected > 0) {
             return redirect()->route('products')->with([
                 'status' => 200,
-                'message' => 'Product Deleted Successfully',
+                'message' => 'Product Updated Successfully',
                 'success' => true
             ]);
         } else {

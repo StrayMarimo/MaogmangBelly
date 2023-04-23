@@ -77,9 +77,75 @@
                     <input type="hidden" id="deleteProductId" value="" name="product_id" required>
                     <p id="deleteProductName">Are you sure you want to delete</p>
                     <button type="submit" class="btn btn-primary">Yes</button>
-                    <button type="button" class="btn btn-secondary">No</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
                 </form>
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- Update Product Modal -->
+<div class="modal fade" id="editProductModal" data-categories="" tabindex="-1" aria-labelledby="edit-product-modal-label"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- Modal header -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="edit-product-modal-label">Edit Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- Edit Product form -->
+            <form action="{{ route('edit_product')}}" method="POST" enctype="multipart/form-data" id="editProductForm">
+                @csrf
+                <!-- Save product ID -->
+                <input type="hidden" id="productId" value="" name="product_id" required>
+                <!-- Save category ID -->
+                <input type="hidden" id="productCategoryId" value="" name="category_id" required>
+                <div class="form-group">
+                    <select class="form-control" id="selectCategoryUpdate" required>
+                        <!-- dynamically populate options here -->
+                    </select>
+                </div>
+                <!-- Input for product name -->
+                Name: <input type="text" id="name" name="product_name" required> <br />
+                <!-- Input for product description -->
+                Description: <textarea rows="4" cols="50" id="description" name="product_desc"
+                    required></textarea> <br />
+                <!-- Input for product price -->
+                Price: <input type="number" id="price" name="product_price" min="0" max="1000000" step="0.01"
+                    required> <br />
+                <!-- Input for product price for 10pax-->
+                Price(10pax): <input type="number" id="price10" name="product_price_10" min="0" max="1000000"
+                    step="0.01" required> <br />
+                <!-- Input for product price for 20pax-->
+                Price(20pax): <input type="number" id="price20" placeholder="120.50" name="product_price_20" min="0" max="1000000"
+                    step="0.01" required> <br />
+                <!-- Input for product stock -->
+                Stock: <input type="number" id="stock" name="product_stock" required> <br />
+                <!-- Input for product gallery -->
+                <input type="checkbox" name="is_trending" id="isTrending"> Trending Product <br />
+                <input type="checkbox" name="is_featured" id="isFeatured"> Featured Product <br />
+                <label for="img">Upload Product Image</label>
+                <div class="row">
+                    <div class="col-sm-6 ">
+                        <img id="preview-image-before-upload" src="{{asset('/assets/logo.png')}}
+                    " alt="preview image" style="height: 200px; width: 200px; object-fit: cover;" class=" mb-2">
+                        <input class=" form-control @error('img') is-invalid @enderror " type="file" name="img"
+                            value="{{asset('/assets/logo.png')}}" id="img">
+                        <!-- Display error message if file upload fails -->
+                        @error('img')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
