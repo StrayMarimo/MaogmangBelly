@@ -89,14 +89,18 @@ class ProductController extends Controller
      */
     function addProduct(Request $req)
     {
+        $filename= ""; 
+      
 
-        // return dd($req->all());
         // get the filename of image uploaded
-        $filename = $req->img->getClientOriginalName();
+        if($req->img)
+        {
+             $filename = $req->img->getClientOriginalName();
 
-        // store in public folder
-        $req->img->move(public_path('assets/product_assets/'), $filename);
-
+            // store in public folder
+            $req->img->move(public_path('assets/product_assets/'), $filename);
+        }
+           
         // Create a new Product object and set its data
         $product = new Product;
         $product->name = $req->product_name;
@@ -113,9 +117,13 @@ class ProductController extends Controller
 
         // Save the new product to the database
         $product->save();
-
-        // Redirect back to the products page
-        return redirect("/products");
+        if ($product)
+            return response()->json(['success' => true]);
+        else
+            return response()->json([
+                'message' => 'Failed to add product',
+                'status' => 'error'
+            ], 400);
     }
 
     function deleteProduct(Request $req)
@@ -123,7 +131,7 @@ class ProductController extends Controller
         return dd("Under Construction");
     }
 
-     function updateProduct(Request $req)
+    function updateProduct(Request $req)
     {
         return dd("Under Construction");
     }

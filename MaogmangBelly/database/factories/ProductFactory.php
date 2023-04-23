@@ -33,7 +33,7 @@ class ProductFactory extends Factory
             'gallery' => $this->faker->imageUrl(),
             'is_trending' => $this->faker->boolean(),
             'is_featured' => $this->faker->boolean(),
-            'category_id' => Category::factory()->create()->id,
+            'category_id' => $this->faker->numberBetween(1, 5)
         ];
     }
 }

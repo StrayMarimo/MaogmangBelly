@@ -42,7 +42,7 @@
                         <img id="preview-image-before-upload" src="{{asset('/assets/logo.png')}}
                     " alt="preview image" style="height: 200px; width: 200px; object-fit: cover;" class=" mb-2">
                         <input class=" form-control @error('img') is-invalid @enderror " type="file" name="img"
-                            value="{{ old('img') }}" id="img" required>
+                            value="{{asset('/assets/logo.png')}}" id="img" required>
                         <!-- Display error message if file upload fails -->
                         @error('img')
                         <span class="invalid-feedback" role="alert">
