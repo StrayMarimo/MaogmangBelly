@@ -18,13 +18,34 @@ $(document).ready(function () {
     })
 
 
-     // Handle clicks on the add product nav item 
+    // Handle clicks on the add product nav item 
    $('#addProduct').on('click', function(e){
         e.preventDefault();
          $('#addProductModal').modal('show');
 
     });
 
+    // Handle clicks on the delete product nav item 
+   $('.delete-product').on('click', function(e){
+      e.preventDefault();
+
+        let product_id = $(this).data("product-id");
+        let product_name = $(this).data("product-name");
+        $('#deleteProductId').val(product_id);
+
+        let modal_text = $('#deleteProductName').text() + " " + product_name + " ?";
+        console.log(modal_text);
+        $('#deleteProductId').val(product_id);
+        $('#deleteProductName').text(modal_text);
+        $('#deleteProductModal').modal('show');
+    });
+
+    // handles instance when delete product modal is shown
+    $('#deleteProductModal').on('show.bs.modal', function() {
+        // populateParentCategorySelect('#parentCategory');
+    });
+   
+    
     // handles instance when add product modal is shown
     $('#addProductModal').on('show.bs.modal', function() {
         populateParentCategorySelect('#parentCategory');
@@ -83,6 +104,14 @@ $(document).ready(function () {
                 console.log(xhr.responseText);
             }
         });
-    }     
+    }
+    
+   $(".alert .close").click(function() {
+    $(this).parent().fadeOut(500);
+  });
+
+  setTimeout(function() {
+    $(".alert").fadeOut(500);
+  }, 5000);
    
 });

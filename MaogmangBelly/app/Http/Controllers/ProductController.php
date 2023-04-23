@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -121,6 +121,7 @@ class ProductController extends Controller
             return response()->json(['success' => true]);
         else
             return response()->json([
+                'success' => false,
                 'message' => 'Failed to add product',
                 'status' => 'error'
             ], 400);
@@ -128,11 +129,65 @@ class ProductController extends Controller
 
     function deleteProduct(Request $req)
     {
-        return dd("Under Construction");
+        $rowsDeleted = DB::table("products")
+            ->where('id', (int) $req->product_id)
+            ->delete();
+
+        if ($rowsDeleted > 0) {
+            return redirect()->route('products')->with([
+                'status' => 200,
+                'message' => 'Product Deleted Successfully',
+                'success' => true
+            ]);
+        } else {
+            return redirect()->route('products')->with([
+                'status' => 404,
+                'message' => 'Product Deletion failed',
+                'success' => false
+            ]);
+        }
     }
 
     function updateProduct(Request $req)
     {
-        return dd("Under Construction");
+        $filename = "";
+
+        // get the filename of image uploaded
+        if ($req->img) {
+            $filename = $req->img->getClientOriginalName();
+
+            // store in public folder
+            $req->img->move(public_path('assets/product_assets/'), $filename);
+        }
+
+        // Update the product's data in the database
+        $rowsAffected = DB::table("products")
+        ->where('id', (int) $req->category_id)
+            ->update([
+                'name' => $req->category_name,
+                'description' =>  $req->product_desc,
+                'price' => $req->product_price,
+                'price_10pax' => $req->product_price_10,
+                'price_20pax' => $req->product_price_20,
+                'stock' => $req->product_stock,
+                'gallery' => $filename,
+                'category_id' => $req->category_id,
+                'is_trending' => $req->has('is_trending'),
+                'is_featured' => $req->has('is_featured')
+            ]);
+            
+        if ($rowsAffected > 0) {
+            return redirect()->route('products')->with([
+                'status' => 200,
+                'message' => 'Product Deleted Successfully',
+                'success' => true
+            ]);
+        } else {
+            return redirect()->route('products')->with([
+                'status' => 404,
+                'message' => 'Product Deletion failed',
+                'success' => false
+            ]);
+        }
     }
 }

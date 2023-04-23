@@ -2,6 +2,21 @@
 @section("content")
 
 <div class="row d-flex justify-content-center m-2">
+    @if(session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{session('message')}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @elseif(session('failed'))
+   <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{session('message')}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
     <form class="d-flex justify-content-end mb-4" action="{{ route('search') }}" role="search" id="form-search">
         <input class="form-control me-4 search-box" type="text" name="query" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
@@ -18,6 +33,6 @@
     </div>
 
 </div>
-@include('layouts.products.add_product_modal')
+@include('layouts.products.product_modals')
 @include('layouts.products.category_modals')
 @endsection
