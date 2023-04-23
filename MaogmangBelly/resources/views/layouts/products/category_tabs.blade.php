@@ -48,7 +48,7 @@
 
         @foreach ($categories as $category)
         <div class="tab-pane fade" id="category-{{ $category->id }}">
-            <div class="d-flex flex-wrap justify-content-center">
+            <div class="row">
                 <!-- Loop through all the products and display their data if they belong to the current category -->
                 @foreach($products as $product)
                 @if($product['category_id'] == $category['id'])

@@ -20,7 +20,7 @@ class ProductControllerTest extends TestCase
         $expectedProducts = Product::factory()->count(10)->create([
             'category_id' => $categories->random()->id,
         ]);
-       
+
 
         $response = $this->actingAs($user)
             ->get(route('products'));
@@ -34,7 +34,6 @@ class ProductControllerTest extends TestCase
                 'trending_products',
                 'featured_products'
             ]);
-     
     }
 
     public function test_get_product_details(): void
@@ -45,10 +44,17 @@ class ProductControllerTest extends TestCase
         ]);
 
         $response = $this->get(route('product', ['id' => $product->id]));
-
         $response->assertStatus(200);
-    }
 
+        $expectedProduct = Product::find($product['id']);
+        $expectedCategory = Category::find($product['category_id']);
+
+        $response->assertViewIs('layouts.products.details')
+            ->assertViewHasAll([
+                'product' => $expectedProduct,
+                'category' => $expectedCategory
+            ]);
+    }
 
 
     public function test_searching_for_products(): void
@@ -60,7 +66,7 @@ class ProductControllerTest extends TestCase
         ]);
 
         // Assert that there are 10 products and 5 cateories in the database
-        $this->assertCount(10,Product::all());
+        $this->assertCount(10, Product::all());
         $this->assertCount(5, Category::all());
         $searchString = $products[0]->name . substr(0, 2);
         $expectedProducts = Product::where('name', 'like', '%' . $searchString . '%')
@@ -71,7 +77,7 @@ class ProductControllerTest extends TestCase
         $response->assertStatus(200);
 
         $response->assertViewIs('layouts.search.search')
-            ->assertViewHas('products', $expectedProducts); 
+            ->assertViewHas('products', $expectedProducts);
     }
 
     public function test_can_add_product(): void
@@ -90,8 +96,6 @@ class ProductControllerTest extends TestCase
             'category_id' => $category->id
         ];
 
-       
-       
         $response = $this->post(route('add_product'), $productData);
 
         $expectedProduct = Product::first();
@@ -101,5 +105,9 @@ class ProductControllerTest extends TestCase
         $this->assertEquals($expectedProduct['description'], $productData['product_desc']);
         $this->assertEquals($expectedProduct['category_id'], $productData['category_id']);
         $response->assertStatus(200);
+
+        $response->assertJson([
+            'success' => true
+        ]);
     }
 }
