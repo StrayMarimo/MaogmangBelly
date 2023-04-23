@@ -33,13 +33,17 @@ class CategoryController extends Controller
         $category->save();
 
         if ($category)
-            return response()->json(['success' => true]);
+            return redirect()->route('products')->with([
+                'status' => 200,
+                'message' => 'Category Added Successfully',
+                'success' => true
+            ]);
         else
-            return response()->json([
-                'success' => false,
-                'message' => 'Failed to add category',
-                'status' => 'error'
-            ], 400);
+            return redirect()->route('products')->with([
+                'status' => 404,
+                'message' => 'Adding Category failed',
+                'success' => false
+            ]);
     }
 
     /**
@@ -51,20 +55,22 @@ class CategoryController extends Controller
     function editCategory(Request $req)
     {
         // Update the category's name in the database
-        $affectedRows = DB::table("categories")
+        $rowsAffected = DB::table("categories")
             ->where('id', (int) $req->category_id)
             ->update(['name' => $req->category_name]);
 
-        if ($affectedRows > 0) {
-            return response()->json([
-                'success' => true,
-                'message' => 'Category updated successfully'
+        if ($rowsAffected > 0) {
+            return redirect()->route('products')->with([
+                'status' => 200,
+                'message' => 'Product Deleted Successfully',
+                'success' => true
             ]);
         } else {
-            return response()->json([
-                'success' => false,
-                'message' => 'Category not found or update failed'
-            ], 404);
+            return redirect()->route('products')->with([
+                'status' => 404,
+                'message' => 'Product Deletion failed',
+                'success' => false
+            ]);
         }
     }
 
@@ -74,18 +80,19 @@ class CategoryController extends Controller
         $rowsDeleted = DB::table("categories")
             ->where('id', (int) $req->category_id)
             ->delete();
-
+       
         if ($rowsDeleted > 0) {
-            return response()->json([
-                'success' => true,
-                'message' => 'Category updated successfully'
+            return redirect()->route('products')->with([
+                'status' => 200,
+                'message' => 'Category Deleted Successfully',
+                'success' => true
             ]);
         } else {
-            return response()->json([
-                'success' => false,
-                'message' => 'Category not found or update failed'
-            ], 404);
+            return redirect()->route('products')->with([
+                'status' => 404,
+                'message' => 'Category Deletion failed',
+                'success' => false
+            ]);
         }
-
     }
 }
