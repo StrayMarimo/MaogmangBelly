@@ -24,7 +24,7 @@ class CategoryController extends Controller
      */
     function addCategory(Request $req)
     {
-       
+
         // Create a new Category object and set its name
         $category = new Category;
         $category->name = $req->category_name;
@@ -32,8 +32,18 @@ class CategoryController extends Controller
         // Save the new category to the database
         $category->save();
 
-        // Redirect back to the products page
-        return redirect("/products");
+        if ($category)
+            return redirect()->route('products')->with([
+                'status' => 200,
+                'message' => 'Category Added Successfully',
+                'success' => true
+            ]);
+        else
+            return redirect()->route('products')->with([
+                'status' => 404,
+                'message' => 'Adding Category failed',
+                'success' => false
+            ]);
     }
 
     /**
@@ -44,25 +54,45 @@ class CategoryController extends Controller
      */
     function editCategory(Request $req)
     {
-            // Update the category's name in the database
-            DB::table("categories")
+        // Update the category's name in the database
+        $rowsAffected = DB::table("categories")
             ->where('id', (int) $req->category_id)
-                ->update(['name' => $req->category_name]);
+            ->update(['name' => $req->category_name]);
 
-
-        // Redirect back to the products page
-        return redirect("/products");
+        if ($rowsAffected > 0) {
+            return redirect()->route('products')->with([
+                'status' => 200,
+                'message' => 'Product Deleted Successfully',
+                'success' => true
+            ]);
+        } else {
+            return redirect()->route('products')->with([
+                'status' => 404,
+                'message' => 'Product Deletion failed',
+                'success' => false
+            ]);
+        }
     }
 
-      
+
     function deleteCategory(Request $req)
     {
-        DB::table("categories")
+        $rowsDeleted = DB::table("categories")
             ->where('id', (int) $req->category_id)
-                ->delete();
-
-        // Redirect back to the products page
-        return redirect("/products");
+            ->delete();
+       
+        if ($rowsDeleted > 0) {
+            return redirect()->route('products')->with([
+                'status' => 200,
+                'message' => 'Category Deleted Successfully',
+                'success' => true
+            ]);
+        } else {
+            return redirect()->route('products')->with([
+                'status' => 404,
+                'message' => 'Category Deletion failed',
+                'success' => false
+            ]);
+        }
     }
-
 }
