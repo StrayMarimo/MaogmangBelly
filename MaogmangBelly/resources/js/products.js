@@ -25,6 +25,13 @@ $(document).ready(function () {
 
     });
 
+    // Handle clicks on the edit category nav item 
+   $('#editCategory').on('click', function(e){
+        e.preventDefault();
+         $('#editCategoryModal').modal('show');
+
+    });
+
      // Handle clicks on the add product nav item 
    $('.edit-product').on('click', function(e){
         e.preventDefault();
@@ -83,11 +90,6 @@ $(document).ready(function () {
         $('#deleteProductModal').modal('show');
     });
 
-    // handles instance when delete product modal is shown
-    $('#deleteProductModal').on('show.bs.modal', function() {
-        // populateParentCategorySelect('#parentCategory');
-    });
-   
     
     // handles instance when add product modal is shown
     $('#addProductModal').on('show.bs.modal', function() {
@@ -97,6 +99,11 @@ $(document).ready(function () {
     // handles instance when delete category modal is shown
     $('#deleteCategoryModal').on('show.bs.modal', function() {
         populateParentCategorySelect('#selectCategory', 0);
+    });
+
+     // handles instance when delete category modal is shown
+    $('#editCategoryModal').on('show.bs.modal', function() {
+        populateParentCategorySelect('#selectCategoryEdit', 0);
     });
 
      // handles instance when category is selected on add product modal
@@ -111,6 +118,14 @@ $(document).ready(function () {
         let category_id = $('#selectCategory').val();
         console.log("id: ", category_id )
         $('#delete-category-id').val(category_id);
+    })
+
+    // handles instance when category is selected on edit category
+    $('#selectCategoryEdit').on('change', function(){
+        console.log("dasd");
+        let category_id = $('#selectCategoryEdit').val();
+        console.log("id: ", category_id )
+        $('#editCategoryId').val(category_id);
     })
 
     // Handle product image upload
