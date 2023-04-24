@@ -129,7 +129,23 @@ class ProductController extends Controller
 
     function deleteProduct(Request $req)
     {
-        return dd("Under Construction");
+        $rowsDeleted = DB::table("products")
+            ->where('id', (int) $req->product_id)
+            ->delete();
+
+        if ($rowsDeleted > 0) {
+            return redirect()->route('products')->with([
+                'status' => 200,
+                'message' => 'Product Deleted Successfully',
+                'success' => true
+            ]);
+        } else {
+            return redirect()->route('products')->with([
+                'status' => 404,
+                'message' => 'Product Deletion failed',
+                'success' => false
+            ]);
+        }
     }
 
     function updateProduct(Request $req)
