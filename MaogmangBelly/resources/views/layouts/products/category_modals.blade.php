@@ -1,5 +1,5 @@
 <!-- Add Category Modal -->
-<div class="modal fade" id="addCategoryModal" tabindex="-1" aria-labelledby="addCategoryModalLabel" aria-hidden="true">
+<div class="modal fade" id="addCategoryModal" tabindex="-1" aria-labelledby="addCategoryModalLabel" aria-hidden="true" style="font-family:'Franklin Gothic Medium';">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -13,18 +13,15 @@
                         <label for="categoryName" class="form-label">Category Name</label>
                         <input type="text" class="form-control" id="categoryName" name="category_name" required>
                     </div>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="submit" class="red-btn3 btn btn-primary">Save changes</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
 
-
-
 <!-- Delete Category Modal -->
-<div class="modal fade" id="deleteCategoryModal" tabindex="-1" aria-labelledby="deleteCategoryModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="deleteCategoryModal" tabindex="-1" aria-labelledby="deleteCategoryModalLabel" aria-hidden="true" style="font-family:'Franklin Gothic Medium';">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -41,7 +38,7 @@
                             <!-- dynamically populate options here -->
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="submit" class="red-btn3 btn btn-primary mt-2" >Save changes</button>
                 </form>
             </div>
         </div>
