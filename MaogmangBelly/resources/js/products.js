@@ -31,7 +31,7 @@ $(document).ready(function () {
 
         console.log("editproduct");
         let product_id = $(this).data("product-id");
-
+         populateParentCategorySelect('#editProductForm #selectCategoryUpdate', product_id);
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -42,7 +42,7 @@ $(document).ready(function () {
                 let product = response;
                 console.log("dddd: " + product['category_id']);
 
-                populateParentCategorySelect('#editProductForm #selectCategoryUpdate', product['category_id']);
+               
                 $('#editProductForm #productId').val(product['id']); 
                 $('#editProductForm #productCategoryId').val(product['category_id']);
                 $('#editProductForm #name').val(product['name']);
@@ -64,6 +64,9 @@ $(document).ready(function () {
         });
 
     });
+
+ 
+
 
     // Handle clicks on the delete product nav item 
    $('.delete-product').on('click', function(e){
@@ -121,7 +124,7 @@ $(document).ready(function () {
     function populateParentCategorySelect(selectCategoryId, defaultValue) {
         console.log("populating categories options");
         let $parentCategorySelect = $(selectCategoryId);
-       
+        $parentCategorySelect.empty();
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -130,7 +133,7 @@ $(document).ready(function () {
             method: 'GET',
             success: function(response) {
                 let categories = response;
-
+                console.log(categories);
                 if(defaultValue == 0)
                     $parentCategorySelect.empty().append("<option value=''> Select Category </option>");
                 else
@@ -143,7 +146,6 @@ $(document).ready(function () {
                                 value: category['id'],
                                 text: category['name'] 
                             }));
-                            categories.splice(index, 1);
                         }
                     })
                     
