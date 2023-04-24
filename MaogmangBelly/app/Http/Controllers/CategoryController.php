@@ -54,21 +54,23 @@ class CategoryController extends Controller
      */
     function editCategory(Request $req)
     {
+    
         // Update the category's name in the database
         $rowsAffected = DB::table("categories")
             ->where('id', (int) $req->category_id)
             ->update(['name' => $req->category_name]);
+        
 
         if ($rowsAffected > 0) {
             return redirect()->route('products')->with([
                 'status' => 200,
-                'message' => 'Product Deleted Successfully',
+                'message' => 'Category Deleted Successfully',
                 'success' => true
             ]);
         } else {
             return redirect()->route('products')->with([
                 'status' => 404,
-                'message' => 'Product Deletion failed',
+                'message' => 'Category Deletion failed',
                 'success' => false
             ]);
         }
