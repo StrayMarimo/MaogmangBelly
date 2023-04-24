@@ -43,7 +43,7 @@ class ProductControllerTest extends TestCase
             'category_id' => $categories->random()->id,
         ]);
 
-        $response = $this->get(route('product', ['id' => $product->id]));
+        $response = $this->get(route('product_details', ['id' => $product->id]));
         $response->assertStatus(200);
 
         $expectedProduct = Product::find($product['id']);
