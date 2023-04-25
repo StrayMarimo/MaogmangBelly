@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section("content")
-<div>
+<div id="mapView">
     <a href="/">Go Back</a> <br>
     CHECKOUT PAGE
     <table>
@@ -58,7 +58,8 @@
         </div>
         <div id="addressPicker">
             Address: <br>
-            <input type="text" name="address" id="address" required>
+            <textarea type="text" name="address" id="address" rows=2 style="width:20vw;" required></textarea>
+            <div id="map"></div>
         </div>
 
         <br><br>
@@ -71,5 +72,39 @@
            <i class="bi bi-trash-fill"></i>
         </button>
     </form>
+   
 </div>
+@endsection
+@section('javascript')
+<script>
+    var map = L.map('map').setView([13.6303, 123.1851], 18);
+    var popup = L.popup();
+    var marker = L.marker();
+ 
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    function onMapClick(e) {
+        marker.setLatLng(e.latlng).addTo(map);
+       
+        console.log(e);
+        fetch(`https://nominatim.openstreetmap.org/reverse?lat=${e.latlng.lat}&lon=${e.latlng.lng}&format=json`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+        }).then(res => res.json())
+        .then(res => {
+             $('#address').val(res.display_name);
+            console.log(res.display_name)
+            console.log(res.address)
+            })
+    }
+    map.on('click', onMapClick);
+
+</script>
 @endsection

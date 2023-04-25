@@ -110,4 +110,63 @@ class ProductControllerTest extends TestCase
             'success' => true
         ]);
     }
+
+    public function test_can_edit_product(): void
+    {
+        $categories = Category::factory()->count(5)->create();
+        $product = Product::factory()->create([
+            'category_id' => $categories->random()->id,
+        ]);
+
+        $price = $this->faker->randomFloat(2, 10, 1000);
+        $product_data = [
+            'product_id' => $product['id'],
+            'product_name' => $this->faker->word(),
+            'product_desc' => $this->faker->sentence(),
+            'product_price' => $price,
+            'product_price_10' => $price * 10,
+            'product_price_20' => $price * 20,
+            'product_stock' => $this->faker->numberBetween(0, 100),
+            'total_sold' => $this->faker->numberBetween(0, 100),
+            'is_trending' => $this->faker->boolean(),
+            'category_id' => $product['category_id'],
+            'gallery' => $this->faker->word(),
+        ];
+
+        $response = $this->post(route('edit_product'), $product_data);
+        $expectedProduct = Product::first();
+
+        // Assert that the category name is updated
+        $this->assertEquals($expectedProduct['name'], $product_data['product_name']);
+        // $this->assertEquals($expectedProduct['description'], $product_data['product_desc']);
+
+        // assert redirect
+        $response->assertStatus(302);
+
+        $response->assertSessionHas('status', 200); // Assert that the 'status' session key has a value of 200
+        $response->assertSessionHas('success', true); // Assert that the 'success' session key has a value of true
+
+    }
+
+    public function test_can_delete_product(): void
+    {
+        $categories = Category::factory()->count(5)->create();
+        $product = Product::factory()->create([
+            'category_id' => $categories->random()->id,
+        ]);
+
+        $response = $this->post(route('delete_product'), ['product_id' => $product->id]);
+
+
+        // Assert that the product is deleted
+        $deletedProduct = Product::find($product->id);
+        $this->assertNull($deletedProduct);
+
+        // assert redirect
+        $response->assertStatus(302);
+
+        // assert session data
+        $response->assertSessionHas('status', 200); // Assert that the 'status' session key has a value of 200
+        $response->assertSessionHas('success', true); // Assert that the 'success' session key has a value of true
+    }
 }

@@ -99,11 +99,13 @@ $(document).ready(function () {
     // handles instance when delete category modal is shown
     $('#deleteCategoryModal').on('show.bs.modal', function() {
         populateParentCategorySelect('#selectCategory', 0);
+
     });
 
      // handles instance when delete category modal is shown
     $('#editCategoryModal').on('show.bs.modal', function() {
         populateParentCategorySelect('#selectCategoryEdit', 0);
+
     });
 
      // handles instance when category is selected on add product modal

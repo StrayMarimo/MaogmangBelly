@@ -37,7 +37,7 @@ class CheckoutController extends Controller
 
             // If the user has not added any orders.
             if ($order == null) {
-                return "You have not added any orders yet";
+                return view('layouts.checkout.no_orders_yet'); 
             }
 
             // If the user has one unpurchased order saved, get all orders.
