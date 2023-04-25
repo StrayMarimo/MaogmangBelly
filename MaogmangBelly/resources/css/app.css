@@ -541,3 +541,7 @@ a:active {
     background: white;
     border:solid 2px #A72322;
 }
+#map { 
+    width: 50%;
+    height: 180px;
+ }

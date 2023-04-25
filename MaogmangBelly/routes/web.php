@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MapController;
 use App\Http\Controllers\OrderController;
 
 
@@ -55,6 +56,7 @@ Route::post("delete_order_line", [OrderController::class, 'deleteOrderLine'])->n
 
 //CHECKOUT
 Route::post("buy", [CheckoutController::class, 'buy']);
+Route::get("map", [MapController::class, 'showMap'])->name('show_map');
 
 // Authentication
 Auth::routes([
