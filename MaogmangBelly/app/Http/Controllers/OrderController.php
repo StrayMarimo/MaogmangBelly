@@ -7,7 +7,7 @@ use App\Models\Order;
 use App\Models\OrderLine;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\DB;
 class OrderController extends Controller
 {
     /**

@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MapController;
 use App\Http\Controllers\OrderController;
 
 
@@ -34,10 +35,12 @@ Route::get('/order', [CheckoutController::class, 'checkout'])->name('order');
 // PRODUCTS
 Route::get("/products", [ProductController::class, 'getProducts'])->name('products');
 Route::get('/products/search', [ProductController::class, 'searchProducts'])->name('search');
+Route::get("/products/details", [ProductController::class, 'getProductDetails'])->name('product_details');
 Route::get("/products/product", [ProductController::class, 'getProduct'])->name('product');
 Route::post("products/add", [ProductController::class, 'addProduct'])->name('add_product');
 Route::post("/products/delete", [ProductController::class, 'deleteProduct'])->name('delete_product');
-Route::post("/products/update", [ProductController::class, 'updateProduct'])->name('update_product');
+Route::post("/products/edit", [ProductController::class, 'editProduct'])->name('edit_product');
+
 
 // CATEGORIES
 Route::get('/categories', [CategoryController::class, 'getCategories'])->name('categories');
@@ -53,6 +56,7 @@ Route::post("delete_order_line", [OrderController::class, 'deleteOrderLine'])->n
 
 //CHECKOUT
 Route::post("buy", [CheckoutController::class, 'buy']);
+Route::get("map", [MapController::class, 'showMap'])->name('show_map');
 
 // Authentication
 Auth::routes([

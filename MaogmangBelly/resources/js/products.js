@@ -25,6 +25,56 @@ $(document).ready(function () {
 
     });
 
+    // Handle clicks on the edit category nav item 
+   $('#editCategory').on('click', function(e){
+        e.preventDefault();
+         $('#editCategoryModal').modal('show');
+
+    });
+
+     // Handle clicks on the add product nav item 
+   $('.edit-product').on('click', function(e){
+        e.preventDefault();
+
+        console.log("editproduct");
+        let product_id = $(this).data("product-id");
+         populateParentCategorySelect('#editProductForm #selectCategoryUpdate', product_id);
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: '/products/product?id=' + product_id,
+            method: 'GET',
+            success: function(response) {
+                let product = response;
+                console.log("dddd: " + product['category_id']);
+
+               
+                $('#editProductForm #productId').val(product['id']); 
+                $('#editProductForm #productCategoryId').val(product['category_id']);
+                $('#editProductForm #name').val(product['name']);
+                $('#editProductForm #description').val(product['description']);
+                $('#editProductForm #preview-image-before-upload').attr('src', "/assets/product_assets/" + product['gallery']);
+                $('#editProductForm #price').val(product['price']);
+                $('#editProductForm #price10').val(product['price_10pax']);
+                $('#editProductForm #price20').val(product['price_20pax']);
+                $('#editProductForm #stock').val(product['stock']);
+                $('#editProductForm #isFeatured').prop("checked", product['is_featured']);
+                $('#editProductForm #isTrending').prop("checked", product['is_trending']);
+                $('#editProductModal').modal('show');
+               
+                
+            },
+            error: function(xhr) {
+                console.log(xhr.responseText);
+            }
+        });
+
+    });
+
+ 
+
+
     // Handle clicks on the delete product nav item 
    $('.delete-product').on('click', function(e){
       e.preventDefault();
@@ -40,20 +90,22 @@ $(document).ready(function () {
         $('#deleteProductModal').modal('show');
     });
 
-    // handles instance when delete product modal is shown
-    $('#deleteProductModal').on('show.bs.modal', function() {
-        // populateParentCategorySelect('#parentCategory');
-    });
-   
     
     // handles instance when add product modal is shown
     $('#addProductModal').on('show.bs.modal', function() {
-        populateParentCategorySelect('#parentCategory');
+        populateParentCategorySelect('#parentCategory', 0);
     });
 
     // handles instance when delete category modal is shown
     $('#deleteCategoryModal').on('show.bs.modal', function() {
-        populateParentCategorySelect('#selectCategory');
+        populateParentCategorySelect('#selectCategory', 0);
+
+    });
+
+     // handles instance when delete category modal is shown
+    $('#editCategoryModal').on('show.bs.modal', function() {
+        populateParentCategorySelect('#selectCategoryEdit', 0);
+
     });
 
      // handles instance when category is selected on add product modal
@@ -70,6 +122,14 @@ $(document).ready(function () {
         $('#delete-category-id').val(category_id);
     })
 
+    // handles instance when category is selected on edit category
+    $('#selectCategoryEdit').on('change', function(){
+        console.log("dasd");
+        let category_id = $('#selectCategoryEdit').val();
+        console.log("id: ", category_id )
+        $('#editCategoryId').val(category_id);
+    })
+
     // Handle product image upload
      $('#img').change(function() {
             let reader = new FileReader();
@@ -78,11 +138,10 @@ $(document).ready(function () {
             }
             reader.readAsDataURL(this.files[0]);
         });
-    function populateParentCategorySelect(selectCategoryId) {
+    function populateParentCategorySelect(selectCategoryId, defaultValue) {
         console.log("populating categories options");
-        var $parentCategorySelect = $(selectCategoryId);
-         $parentCategorySelect.empty().append('<option value=""> Select Category </option>');
-
+        let $parentCategorySelect = $(selectCategoryId);
+        $parentCategorySelect.empty();
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -90,7 +149,25 @@ $(document).ready(function () {
             url: '/categories',
             method: 'GET',
             success: function(response) {
-                var categories = response;
+                let categories = response;
+                console.log(categories);
+                if(defaultValue == 0)
+                    $parentCategorySelect.empty().append("<option value=''> Select Category </option>");
+                else
+                {
+                    $.each(categories, function (index, category) {
+    
+                        if (category["id"] == defaultValue)
+                        {
+                            $parentCategorySelect.empty().append($('<option>', {
+                                value: category['id'],
+                                text: category['name'] 
+                            }));
+                        }
+                    })
+                    
+                }
+                  
                 $.each(categories, function () {
                     $parentCategorySelect.append($('<option>', {
                         value: this.id,
@@ -107,11 +184,11 @@ $(document).ready(function () {
     }
     
    $(".alert .close").click(function() {
-    $(this).parent().fadeOut(500);
-  });
+        $(this).parent().fadeOut(500);
+    });
 
-  setTimeout(function() {
-    $(".alert").fadeOut(500);
-  }, 5000);
+    setTimeout(function() {
+        $(".alert").fadeOut(500);
+    }, 5000);
    
 });

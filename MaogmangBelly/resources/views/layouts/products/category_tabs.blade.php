@@ -24,6 +24,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#" id="addCategory">Add Category</a>
+                        <a class="dropdown-item" href="#" id="editCategory">Edit Category</a>
                         <a class="dropdown-item" href="#" id="deleteCategory">Delete Category</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#" id="addProduct">Add More

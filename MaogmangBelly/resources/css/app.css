@@ -522,3 +522,26 @@ a:active {
   min-height: 20px; /* to ensure the container always has a minimum height of 3 lines */
   text-overflow: ellipsis;
 }
+
+.red-btn3 {
+    background: #A72322;
+    width: 24vh;
+    height: 7vh;
+    border-radius: 12px;
+}
+
+.gray-btn {
+    background: gray;
+    height: 7vh;
+    border-radius: 12px;
+}
+
+.contact-box-3 {
+    border-radius: 15px;
+    background: white;
+    border:solid 2px #A72322;
+}
+#map { 
+    width: 50%;
+    height: 180px;
+ }

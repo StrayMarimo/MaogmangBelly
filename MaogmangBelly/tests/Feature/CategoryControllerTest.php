@@ -79,17 +79,15 @@ class CategoryControllerTest extends TestCase
         $categoryDeleteId = $categories->random()->id;
 
         $response = $this->post(route('delete_category'), ['category_id' => $categoryDeleteId]);
-        $updatedCategory = Category::find($categories[0]['id']);
-
 
         // Assert that the category name is deleted
         $deletedCategory = Category::find($categoryDeleteId);
         $this->assertNull($deletedCategory);
 
-
         // assert redirect
         $response->assertStatus(302);
 
+        // assert session data
         $response->assertSessionHas('status', 200); // Assert that the 'status' session key has a value of 200
         $response->assertSessionHas('success', true); // Assert that the 'success' session key has a value of true
     }
