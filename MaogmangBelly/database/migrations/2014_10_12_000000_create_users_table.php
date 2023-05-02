@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('password');
             $table->boolean('is_admin')->default(false);
             $table->boolean('is_subscribed')->default(false);
+            $table->string('mobile_number')->nullable();
+            $table->string('access_token')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

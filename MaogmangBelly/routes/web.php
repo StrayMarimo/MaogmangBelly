@@ -10,7 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MapController;
 use App\Http\Controllers\OrderController;
-
+use App\Http\Controllers\SMSController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,3 +70,7 @@ Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback
 // Mails
 Route::get('subscribe_newsletter', [MailController::class, 'index']);
 Route::get('mail_contactus', [MailController::class, 'contact']);
+
+
+// SMS TEST
+Route::get('redirect_uri', [SMSController::class, 'index']);

@@ -30,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = "http://developer.globelabs.com.ph/dialog/oauth/pn6xFapraoIx5cq5eATrkKIX9nybF5pd";
 
     /**
      * Create a new controller instance.
@@ -76,6 +76,8 @@ class RegisterController extends Controller
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),
                 'is_subscribed' => 1,
+                'mobile_number' => null,
+                'access_token' => null
             ]);
         } else {
             return User::create([
@@ -83,6 +85,8 @@ class RegisterController extends Controller
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),
                 'is_subscribed' => 0,
+                'mobile_number' => null,
+                'access_token' => null
             ]);
         }
         
