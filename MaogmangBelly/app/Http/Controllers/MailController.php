@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NewsLetter;
 use App\Mail\ContactUs;
+use App\Mail\AdminMail;
 use App\Models\Mails;
 
 class MailController extends Controller
@@ -45,5 +46,18 @@ class MailController extends Controller
         Mail::to('maogmangbelly@gmail.com')->send(new ContactUs($mailData));
 
         return redirect('/contact');
+    }
+
+    public function adminMail(Request $req)
+    {
+        $mailData = [
+            'message' => $req->message_admin
+        ];
+
+        $customer = Mails::all();
+
+        Mail::to($customer)->send(new AdminMail($mailData));
+
+        return redirect('/profile');
     }
 }
