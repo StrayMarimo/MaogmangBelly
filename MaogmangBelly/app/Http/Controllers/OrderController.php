@@ -35,14 +35,18 @@ class OrderController extends Controller
         // check if user has an already saved unpurchased order
         $orders = Order::where([
             ['user_id', '=', $user],
+            ['order_type', '=', $req->order_type],
             ['is_purchased', 0],
         ])->get();
+
+        $delivery_type = ($req->order_type == "C" || $req->order_type == "R") ? 'D' : 'X';
 
         // if no order exists, create new one
         if (count($orders) == 0) {
             $newOrder = new Order;
             $newOrder->user_id = $user;
-            $newOrder->order_type = 'X';
+            $newOrder->order_type = $req->order_type;
+            $newOrder->delivery_type = $delivery_type;
             $newOrder->is_purchased = false;
             $newOrder->save();
         }
@@ -50,6 +54,7 @@ class OrderController extends Controller
         // get id of order
         $order = Order::where([
             ['user_id', '=', $user],
+            ['order_type', '=', $req->order_type],
             ['is_purchased', 0],
         ])->first();
 
@@ -67,7 +72,13 @@ class OrderController extends Controller
 
         $order_line->save();
 
-        return redirect('/order');
+        if ($req->order_type == "O")
+            return redirect('/order');
+        if ($req->order_type == "C")
+            return redirect('/catering')->with('scroll', true);
+        if ($req->order_type == "R")
+            return redirect('/reservations')->with('scroll', true);
+        
     }
 
     /**
@@ -114,8 +125,13 @@ class OrderController extends Controller
         $orderLine->total_price = $new_price;
         $orderLine->save();
 
-        // Redirect to the checkout order page
-        return redirect('/order');
+
+        if ($req->order_type == "O")
+            return redirect('/order');
+        if ($req->order_type == "C")
+            return redirect('/catering')->with('scroll', true);
+        if ($req->order_type == "R")
+            return redirect('/reservations')->with('scroll', true);
     }
     /**
      * Delete an order line by ID and update the corresponding order's grand total.
@@ -147,8 +163,13 @@ class OrderController extends Controller
             $order->save();
         }
 
-        // Redirect to the checkout order page
-        return redirect('/order');
+
+        if ($req->order_type == "O")
+            return redirect('/order');
+        if ($req->order_type == "C")
+            return redirect('/catering')->with('scroll', true);
+        if ($req->order_type == "R")
+            return redirect('/reservations')->with('scroll', true);
     }
 
     /**

@@ -5,6 +5,12 @@ $(document).ready(function () {
         $(this).tab("show");
     });
 
+    $('#addToOrder').on('click', function(e){
+        e.preventDefault();
+        $('#orderType').val('O');
+        $('#availProductForm').submit();
+    })
+
     // Handle clicks on the add category nav item 
     $('#addCategory').on('click', function(e){
         e.preventDefault();

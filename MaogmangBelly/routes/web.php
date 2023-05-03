@@ -5,12 +5,13 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Auth\GoogleSocialiteController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CateringController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MapController;
 use App\Http\Controllers\OrderController;
-
+use App\Http\Controllers\ReservationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +26,7 @@ use App\Http\Controllers\OrderController;
 
 // PAGES
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/catering', [HomeController::class, 'catering'])->name('catering');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
-Route::get('/reservations', [HomeController::class, 'reservations'])->name('reservations');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/profile', [UserController::class, 'profile'])->name('profile');
 Route::get('/order', [CheckoutController::class, 'checkout'])->name('order');
@@ -40,7 +39,6 @@ Route::get("/products/product", [ProductController::class, 'getProduct'])->name(
 Route::post("products/add", [ProductController::class, 'addProduct'])->name('add_product');
 Route::post("/products/delete", [ProductController::class, 'deleteProduct'])->name('delete_product');
 Route::post("/products/edit", [ProductController::class, 'editProduct'])->name('edit_product');
-
 
 // CATEGORIES
 Route::get('/categories', [CategoryController::class, 'getCategories'])->name('categories');
@@ -58,6 +56,14 @@ Route::post("delete_order_line", [OrderController::class, 'deleteOrderLine'])->n
 Route::post("buy", [CheckoutController::class, 'buy']);
 Route::get("map", [MapController::class, 'showMap'])->name('show_map');
 
+// CATERING
+Route::get('/catering', [HomeController::class, 'catering'])->name('catering');
+Route::get('/checkout_catering', [HomeController::class, 'checkoutCatering'])->name('checkout_catering');
+
+// RESERVATIONS
+Route::get('/reservations', [HomeController::class, 'reservations'])->name('reservations');
+Route::get('/checkout_reservations', [HomeController::class, 'checkoutReservations'])->name('checkout_reservations');
+
 // Authentication
 Auth::routes([
     'verify' => true
@@ -70,3 +76,4 @@ Route::get('callback/google', [GoogleSocialiteController::class, 'handleCallback
 // Mails
 Route::get('subscribe_newsletter', [MailController::class, 'index']);
 Route::get('mail_contactus', [MailController::class, 'contact']);
+Route::get('admin_mail', [MailController::class, 'adminMail']);

@@ -3,7 +3,7 @@
 <div class="container-fluid reservationbg">
     <div class="card" id="reservecard">
     <div>
-        <div class="text-center">
+        <div class="text-center" id="checkout_reservations">
             <h1 class="contact-title" style="color: white">Reservation</h1>
         </div>
         <h5 class="mt-3 mb-2" style="color: white; font-family: 'Lexend';">Name</h5>
@@ -70,5 +70,17 @@
     <input class="contact-red btn btn-primary" style="border: 2px solid #A72322; color: white; font-family: 'Lexend';" type="submit" value="Submit">
     </div>
 </div>
-
+@endsection
+@section('javascript')
+<script>
+    $(document).ready(function(){
+        @if($scroll)
+        setTimeout(() => {
+            $('html, body').animate({
+            scrollTop: $('#checkout_reservations').offset().top
+            }, 'slow');
+        }, 500);
+        @endif
+    })
+</script>
 @endsection
