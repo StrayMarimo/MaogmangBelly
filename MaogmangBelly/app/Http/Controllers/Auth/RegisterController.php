@@ -67,10 +67,11 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         if(key_exists('subscribe_newsletter', $data)){
-            $mail = new Mails();
-            $mail->email = $data['email'];
-            $mail->save();
-
+            if(!Mails::where('email', '=', $data['email'])->exists()){
+                $mail = new Mails();
+                $mail->email = $data['email'];
+                $mail->save();
+            }
             return User::create([
                 'name' => $data['name'],
                 'email' => $data['email'],

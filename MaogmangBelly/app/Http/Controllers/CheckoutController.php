@@ -89,25 +89,61 @@ class CheckoutController extends Controller
                 'address' => $req->address
             ]);
 
-        $clientCor = '';
-        $characters = '0123456789';
-        for($i = 0; $i < 6; $i++){
-            $clientCor .= $characters[random_int(0, strlen($characters) - 1)];
-        }
-        $payload = array('outboundSMSMessageRequest' => array(
-            'clientCorrelator' => '',
-            'senderAddress' => '2790',
-            'outboundSMSTextMessage' => array('message' => 'Test Message for order confirmation'),
-            'address' => $user->mobile_number,
-            'access_token' => $user->access_token,
-        ));
-        $payload = json_encode($payload);
 
-        // Send text message indicating successful order
-        $response = Http::withBody(
-            $payload, 'application/json'
-        )->post('https://devapi.globelabs.com.ph/smsmessaging/v1/outbound/2790/requests?access_token='.$user->access_token);
-        dd($payload, $response, $user);
+            $shortcode = "2790";
+            $access_token = $user->access_token;
+            $address = $user->mobile_number;
+            $clientCorrelator = '';
+            $characters = '0123456789';
+            for($i = 0; $i < 4; $i++){
+                $clientCorrelator .= $characters[random_int(0, strlen($characters) - 1)];
+            }
+            $message = "Test Message for order confirmation";
+            
+            $curl = curl_init();
+            curl_setopt_array($curl, array(
+              CURLOPT_URL => "https://devapi.globelabs.com.ph/smsmessaging/v1/outbound/".$shortcode."/requests?access_token=".$access_token ,
+              CURLOPT_RETURNTRANSFER => true,
+              CURLOPT_ENCODING => "",
+              CURLOPT_MAXREDIRS => 10,
+              CURLOPT_TIMEOUT => 30,
+              CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+              CURLOPT_CUSTOMREQUEST => "POST",
+              CURLOPT_POSTFIELDS => "{\"outboundSMSMessageRequest\": { \"clientCorrelator\": \"".$clientCorrelator."\", \"senderAddress\": \"".$shortcode."\", \"outboundSMSTextMessage\": {\"message\": \"".$message."\"}, \"address\": \"".$address."\" } }",
+              CURLOPT_HTTPHEADER => array(
+                "Content-Type: application/json"
+              ),
+            ));
+            $response = curl_exec($curl);
+            // $err = curl_error($curl);
+            // curl_close($curl);
+            // if ($err) {
+            //   echo "cURL Error #:" . $err;
+            // } else {
+            //   echo $response;
+            // }
+        
+        // $clientCor = '';
+        // $characters = '0123456789';
+        // for($i = 0; $i < 4; $i++){
+        //     $clientCor .= $characters[random_int(0, strlen($characters) - 1)];
+        // }
+        // $payload = array('outboundSMSMessageRequest' => array(
+        //     'clientCorrelator' => $clientCor,
+        //     'senderAddress' => '2790',
+        //     'outboundSMSTextMessage' => array('message' => 'Test Message for order confirmation'),
+        //     'address' => $user->mobile_number,
+        //     //'access_token' => $user->access_token,
+        // ));
+        // $payload = json_encode($payload);
+        
+        // // Send text message indicating successful order
+        // $response = Http::withHeaders([
+        //     'content-type' => 'application/json'
+        // ])->withBody(
+        //     $payload
+        // )->post('https://devapi.globelabs.com.ph/smsmessaging/v1/outbound/2790/requests?access_token='.$user->access_token);
+        dd($response, $user);
         // Return a message indicating that the order has been successfully purchased.
         return "Successfully bought order with id " . strval($order['id']);
     }
