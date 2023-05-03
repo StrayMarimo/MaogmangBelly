@@ -8,7 +8,7 @@ use App\Models\OrderLine;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Http;
 
 class CheckoutController extends Controller
 {
@@ -74,9 +74,9 @@ class CheckoutController extends Controller
         $order_type = ($req->exists('forDelivery')) ? 'D' : 'P';
 
         // Get the authenticated user's id and their first unpurchased order.
-        $user = Auth::user()->id;
+        $user = Auth::user();
         $order = Order::where([
-            ['user_id', '=', $user],
+            ['user_id', '=', $user->id],
             ['is_purchased', '=', false]
         ])->first();
 
@@ -89,6 +89,25 @@ class CheckoutController extends Controller
                 'address' => $req->address
             ]);
 
+        $clientCor = '';
+        $characters = '0123456789';
+        for($i = 0; $i < 6; $i++){
+            $clientCor .= $characters[random_int(0, strlen($characters) - 1)];
+        }
+        $payload = array('outboundSMSMessageRequest' => array(
+            'clientCorrelator' => '',
+            'senderAddress' => '2790',
+            'outboundSMSTextMessage' => array('message' => 'Test Message for order confirmation'),
+            'address' => $user->mobile_number,
+            'access_token' => $user->access_token,
+        ));
+        $payload = json_encode($payload);
+
+        // Send text message indicating successful order
+        $response = Http::withBody(
+            $payload, 'application/json'
+        )->post('https://devapi.globelabs.com.ph/smsmessaging/v1/outbound/2790/requests?access_token='.$user->access_token);
+        dd($payload, $response, $user);
         // Return a message indicating that the order has been successfully purchased.
         return "Successfully bought order with id " . strval($order['id']);
     }
