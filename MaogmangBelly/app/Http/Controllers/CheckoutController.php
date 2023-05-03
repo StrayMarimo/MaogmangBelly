@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\OrderLine;
 use App\Models\Product;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,6 +34,7 @@ class CheckoutController extends Controller
             $order = Order::where([
                 ['user_id', '=', $user],
                 ['is_purchased', 0],
+                ['order_type', '=', 'O']
             ])->first();
 
             // If the user has not added any orders.
@@ -70,22 +72,24 @@ class CheckoutController extends Controller
      */
     function buy(Request $req)
     {
-        // Determine the order type based on the existence of the 'forDelivery' key in the request object.
-        $order_type = ($req->exists('forDelivery')) ? 'D' : 'P';
 
+        // Determine the order type based on the existence of the 'forDelivery' key in the request object.
+        $delivery_type = ($req->exists('forDelivery')) ? 'D' : 'P';
+        
         // Get the authenticated user's id and their first unpurchased order.
         $user = Auth::user()->id;
-        $order = Order::where([
-            ['user_id', '=', $user],
-            ['is_purchased', '=', false]
-        ])->first();
+        $order = Order::where('id', $req->order_id)->first();
 
+        if ($order['order_type'] == 'C' || $order['order_type'] == 'R')
+            $delivery_type = 'D';
         // Update the order information in the database.
         DB::table("orders")
             ->where('id', $order['id'])
             ->update([
                 'is_purchased' => true,
-                'order_type' => $order_type,
+                'date_purchased' => Carbon::now(),
+                'date_needed' => $req->date,
+                'delivery_type' => $delivery_type,
                 'address' => $req->address
             ]);
 
