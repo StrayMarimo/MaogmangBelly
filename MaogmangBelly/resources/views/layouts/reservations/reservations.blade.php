@@ -4,8 +4,8 @@ reservations page
 <div class="container-fluid reservationbg">
     <div class="card" id="reservecard">
     <div>
-        <div class="text-center">
-            <h1>Reservation</h1>
+        <div class="text-center" id="checkout_reservations">
+            <h1>Your Reservation</h1>
             <div class="row g-3">
                 <div class="col">
                     <input type="text" class="form-control" placeholder="First name" aria-label="First name">
@@ -70,5 +70,17 @@ reservations page
     <input class="btn btn-primary" type="submit" value="Submit">
         </div>
 </div>
-
+@endsection
+@section('javascript')
+<script>
+    $(document).ready(function(){
+        @if($scroll)
+        setTimeout(() => {
+            $('html, body').animate({
+            scrollTop: $('#checkout_reservations').offset().top
+            }, 'slow');
+        }, 500);
+        @endif
+    })
+</script>
 @endsection

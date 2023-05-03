@@ -12,11 +12,18 @@
             <h4>Details: {{$product['description']}}</h4>`
             <h4>Category: {{$category['name']}}</h4>
             <br><br>
-            <form action="/add_to_order" method="POST">
+            <form action="{{route('add_order')}}" method="POST" id="availProductForm">
                 @csrf
                 <input type="hidden" name="product_id" value={{$product['id']}}>
-                <input type="number" name="quantity" value=1>
-                <button class="btn btn-primary">Add to Order</button>
+                <input type="hidden" name="order_type" value="" id="orderType">
+                <div class="form-group has-danger">
+                    <div class="form-control-feedback text-danger" id="invalidQty"></div>
+                    <input type="number" name="quantity" value=1 min=1 id="availProductQuantity"
+                        class="form-control form-control-danger" required>
+                </div>
+                <button class="btn btn-primary" id="addToOrder">Add to Order</button>
+                <button class="btn btn-primary" id="addToCatering">Add to Catering</button>
+                <button class="btn btn-primary" id="addToReservations">Add to Reservations</button>
             </form>
         </div>
     </div>

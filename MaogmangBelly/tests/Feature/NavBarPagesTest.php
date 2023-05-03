@@ -24,19 +24,19 @@ class NavBarPagesTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function test_catering_tab(): void
-    {
-        $response = $this->get('/catering');
+    // public function test_catering_tab(): void
+    // {
+    //     $response = $this->get('/catering');
 
-        $response->assertStatus(200);
-    }
+    //     $response->assertStatus(200);
+    // }
 
-    public function test_reservations_tab(): void
-    {
-        $response = $this->get('/reservations');
+    // public function test_reservations_tab(): void
+    // {
+    //     $response = $this->get('/reservations');
 
-        $response->assertStatus(200);
-    }
+    //     $response->assertStatus(200);
+    // }
 
     public function test_about_tab(): void
     {

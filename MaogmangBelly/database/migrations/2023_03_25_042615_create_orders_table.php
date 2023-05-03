@@ -15,10 +15,12 @@ return new class extends Migration
             $table->id();
             $table->double("grand_total", 16, 2)->default(0);
             $table->char("order_type");
+            $table->char("delivery_type");
             $table->string("address")->nullable();
             $table->boolean("is_purchased")->default(false);
             $table->timestamp("date_purchased")->nullable();
             $table->timestamp("date_completed")->nullable();
+            $table->timestamp("date_needed")->nullable();
             $table->foreignId("user_id")
                 ->constrained("users")
                 ->onUpdate("cascade")
