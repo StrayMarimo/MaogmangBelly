@@ -1,0 +1,54 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "restoreTerminals.keepExistingTerminalsOpen": false,
+  "restoreTerminals.artificialDelayMilliseconds": 700,
+  "restoreTerminals.terminals": [
+    {
+      "splitTerminals": [
+        {
+          "name": "Git",
+          "commands": ["git branch", "git status"]
+        }
+      ]
+    },
+    {
+      "splitTerminals": [
+        {
+          "name": "Client",
+          "commands": ["cd maogmangbelly", "php artisan serve"]
+        }
+      ]
+    },
+    {
+      "splitTerminals": [
+        {
+          "name": "Server",
+          "commands": ["cd maogmangbelly", "npm run dev"]
+        }
+      ]
+    },
+    {
+      "splitTerminals": [
+        {
+          "name": "Test",
+          "commands": ["cd maogmangbelly", "php artisan test"],
+          "color": "terminal.ansiBlue"
+        }
+      ]
+    },
+    {
+      "splitTerminals": [
+        {
+          "name": "Artisan",
+          "commands": ["cd maogmangbelly", "php artisan migrate:fresh --seed"],
+          "shouldRunCommands": false
+        }
+      ]
+    }
+  ],
+  "[blade]": {
+    "editor.defaultFormatter": "onecentlin.laravel-blade"
+  }
+}

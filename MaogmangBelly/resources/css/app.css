@@ -1,4 +1,4 @@
-.custom-login{
+.custom-login {
     height: 500px;
     padding-top: 100px;
 }
@@ -9,29 +9,29 @@ img.slider-img {
 
 .custom-product {
     height: 600px;
-    overflow-y: scroll
+    overflow-y: scroll;
 }
 
-.slider-text{
-    background-color: #35443585
+.slider-text {
+    background-color: #35443585;
 }
 
-.trending-image{
+.trending-image {
     height: 100px;
     width: 100px;
 }
 
-.trending-item{
+.trending-item {
     float: left;
-    width: 20%
+    width: 20%;
 }
 
-.detail-img{
+.detail-img {
     height: 200px;
 }
 
-.search-box{
-    width: 500px !important
+.search-box {
+    width: 500px !important;
 }
 
 .category-tabs {
@@ -59,13 +59,13 @@ img.slider-img {
     margin: 0;
 }
 .navbar-brand .active {
-    border-bottom: #C1272D solid 3px;
+    border-bottom: #c1272d solid 3px;
     margin-right: 50px;
     margin-left: 50px;
 }
 
 .nav-item .active {
-    border-bottom: #C1272D solid 3px;
+    border-bottom: #c1272d solid 3px;
 }
 .nav-item p {
     font-family: 'Franklin Gothic Medium';
@@ -74,13 +74,12 @@ img.slider-img {
     font-size: 15px;
     line-height: 17px;
     line-height: 2.2;
-    margin:-10px 0 0 0;
+    margin: -10px 0 0 0;
 }
 
 .navbar .navbar-nav .nav-link {
     padding: 0 2em;
 }
-
 
 /* .vignette {
     position: fixed;
@@ -136,12 +135,12 @@ img.slider-img {
     right: 12.81%;
     top: 66.13%;
     bottom: 27.33%;
-    background: #D9D9D9;
+    background: #d9d9d9;
     border-radius: 10px;
 }
 
 .text-light {
-    background-image:url('/assets/background.jpg');
+    background-image: url('/assets/background.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: 50% 50%;
@@ -174,7 +173,7 @@ img.slider-img {
 }
 
 .red-sec {
-    background-color: #C1272D;
+    background-color: #c1272d;
     align-items: center;
     padding-top: 90px;
 }
@@ -188,11 +187,8 @@ img.slider-img {
     align-items: center;
     text-align: center;
     letter-spacing: 0.11em;
-    color: #C1272D;
-    text-shadow: -1px 1px 0 #FFF,
-                  1px 1px 0 #FFF,
-                  1px -1px 0 #FFF,
-                 -1px -1px 0 #FFF;
+    color: #c1272d;
+    text-shadow: -1px 1px 0 #fff, 1px 1px 0 #fff, 1px -1px 0 #fff, -1px -1px 0 #fff;
     text-align: center;
 }
 
@@ -210,7 +206,7 @@ img.slider-img {
     align-items: center;
     justify-content: center;
 }
-.nav-item.login{
+.nav-item.login {
     position: absolute;
     left: 85%;
     right: 0%;
@@ -219,7 +215,7 @@ img.slider-img {
 
     font-family: 'Franklin Gothic Medium';
     font-style: normal;
-    font-weight: 400;   
+    font-weight: 400;
     font-size: 15px;
     line-height: 17px;
     /* identical to box height */
@@ -227,26 +223,25 @@ img.slider-img {
     display: flex;
     align-items: center;
 
-    color: #FFFFFF;
+    color: #ffffff;
 }
 
-
-.about{
-    background: url("/assets/bg-about.jpg") no-repeat;
+.about {
+    background: url('/assets/bg-about.jpg') no-repeat;
     background-size: cover;
     color: white;
 }
 
-.signing{
-    background: url("/assets/bg-login.png") no-repeat;
+.signing {
+    background: url('/assets/bg-login.png') no-repeat;
     background-size: cover;
     color: black;
     padding-top: 10vh;
     padding-bottom: 10vh;
 }
 
-.contactbg{
-    background: url("/assets/contactbg.jpg") no-repeat;
+.contactbg {
+    background: url('/assets/contactbg.jpg') no-repeat;
     background-size: fixed;
     padding: 200px 0px 200px 0px;
     width: 100%;
@@ -257,7 +252,7 @@ img.slider-img {
 .about-box {
     width: 1300px;
     height: 700px;
-   
+
     background: rgba(255, 255, 255, 0.8);
     border-radius: 40px;
 
@@ -271,7 +266,7 @@ img.slider-img {
     font-weight: 400;
     font-size: 20px;
     line-height: 0%;
-    writing-mode:vertical-rl;
+    writing-mode: vertical-rl;
     color: black;
 }
 
@@ -284,11 +279,8 @@ img.slider-img {
     align-items: center;
     text-align: center;
     letter-spacing: 0.11em;
-    color:rgba(255, 255, 255, 0.8);
-    text-shadow: -1px 1px 0 #000,
-                  1px 1px 0 #000,
-                  1px -1px 0 #000,
-                 -1px -1px 0 #000;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
     text-align: center;
 }
 
@@ -325,7 +317,7 @@ img.slider-img {
     padding-top: 10vh;
 }
 .red-btn {
-    background: #A72322;
+    background: #a72322;
     width: 48vh;
     height: 7vh;
     border-radius: 12px;
@@ -333,7 +325,7 @@ img.slider-img {
 
 .boxbox {
     width: 48vh;
-    border: 2px solid #A72322;
+    border: 2px solid #a72322;
     border-radius: 12px;
     background: white;
 }
@@ -349,42 +341,42 @@ img.slider-img {
 a {
     color: black;
 }
-a:link { 
-    text-decoration: none; 
+a:link {
+    text-decoration: none;
 }
-a:visited { 
-    text-decoration: none; 
+a:visited {
+    text-decoration: none;
 }
-a:hover { 
-    text-decoration: none; 
+a:hover {
+    text-decoration: none;
 }
-a:active { 
-    text-decoration: none; 
+a:active {
+    text-decoration: none;
 }
 
 .google {
     display: flex;
     justify-content: center;
 }
-.reservationbg{
-    background: url("/assets/reservationbg.jpg") no-repeat;
+.reservationbg {
+    background: url('/assets/reservationbg.jpg') no-repeat;
     background-size: cover;
     padding: 200px 0px 200px 0px;
     width: 100%;
     height: 100%;
 }
 
-#reservecard{
+#reservecard {
     margin-left: 40px;
     margin-right: 40px;
     padding-top: 40px;
     padding-bottom: 40px;
     padding-left: 40px;
     padding-right: 40px;
-    box-shadow: 0 0px 20px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 0px 20px 0 rgba(0, 0, 0, 0.2);
     background-color: rgba(0, 0, 0, 0.4);
     transition: 0.3s;
- }
+}
 .contact-title {
     font-family: 'Lexend';
     font-style: normal;
@@ -411,12 +403,11 @@ a:active {
 }
 
 .contact-red {
-    background: #A72322;
+    background: #a72322;
 }
 
-
 .text-light-2 {
-    background-image:url('/assets/catering.jpg');
+    background-image: url('/assets/catering.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center top;
@@ -426,7 +417,7 @@ a:active {
 }
 
 .green-sec {
-    background-color: #1E1E1E;
+    background-color: #1e1e1e;
     align-items: center;
     padding-top: 90px;
 }
@@ -440,11 +431,8 @@ a:active {
     align-items: center;
     text-align: center;
     letter-spacing: 0.11em;
-    color: #1E1E1E;
-    text-shadow: -1px 1px 0 #FFF,
-                  1px 1px 0 #FFF,
-                  1px -1px 0 #FFF,
-                 -1px -1px 0 #FFF;
+    color: #1e1e1e;
+    text-shadow: -1px 1px 0 #fff, 1px 1px 0 #fff, 1px -1px 0 #fff, -1px -1px 0 #fff;
     text-align: center;
 }
 
@@ -459,12 +447,12 @@ a:active {
 .box2 {
     border-radius: 20px;
     width: 350px;
-    background: #C1272D;
+    background: #c1272d;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .red-sectagtag {
-    background-color: #C1272D;
+    background-color: #c1272d;
     align-items: center;
     padding-top: 40px;
 }
@@ -475,7 +463,6 @@ a:active {
     padding-top: 40px;
 }
 
-
 .tagtag {
     font-family: 'Lexend';
     font-style: normal;
@@ -485,11 +472,8 @@ a:active {
     align-items: center;
     text-align: center;
     letter-spacing: 0.11em;
-    color: #C1272D;
-    text-shadow: -1px 1px 0 #FFF,
-                  1px 1px 0 #FFF,
-                  1px -1px 0 #FFF,
-                 -1px -1px 0 #FFF;
+    color: #c1272d;
+    text-shadow: -1px 1px 0 #fff, 1px 1px 0 #fff, 1px -1px 0 #fff, -1px -1px 0 #fff;
     text-align: center;
 }
 
@@ -518,17 +502,17 @@ a:active {
 }
 
 .card-text {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  line-height: 20px; /* 3 lines x 16px font size */
-  min-height: 20px; /* to ensure the container always has a minimum height of 3 lines */
-  text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 20px; /* 3 lines x 16px font size */
+    min-height: 20px; /* to ensure the container always has a minimum height of 3 lines */
+    text-overflow: ellipsis;
 }
 
 .red-btn3 {
-    background: #A72322;
+    background: #a72322;
     width: 24vh;
     height: 7vh;
     border-radius: 12px;
@@ -543,9 +527,9 @@ a:active {
 .contact-box-3 {
     border-radius: 15px;
     background: white;
-    border:solid 2px #A72322;
+    border: solid 2px #a72322;
 }
-#map { 
+#map {
     width: 50%;
     height: 180px;
- }
+}
