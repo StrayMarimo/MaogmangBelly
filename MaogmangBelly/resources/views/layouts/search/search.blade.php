@@ -1,10 +1,63 @@
 @extends('layouts.app')
 @section("content")
 <div class="custom-product">
-     <div class="col-sm-4">
+  <div class="col-sm-4 mx-2">
+    <a href="/">Go Back</a>
+    <h4>Result for Products</h4>
+  </div>
+  <div class="col-sm-12 mx-2">
+    <div class="trending-wrapper">
+      @foreach($products->chunk(3) as $chunk)
+        <div class="row">
+          @foreach($chunk as $item)
+            <div class="col-sm-4">
+              <div class="card">
+                <a href="{{ route('product_details', ['id' => $item['id']]) }}">
+                  <img class="card-img-top" src="{{ asset('assets/product_assets/'.$item['gallery']) }}" alt="{{ $item['name'] }}">
+                </a>
+                <div class="card-body">
+                  <h5 class="card-title">{{$item['name']}}</h5>
+                  <p class="card-text">{{$item['description']}}</p>
+                </div>
+              </div>
+            </div>
+          @endforeach
+        </div>
+      @endforeach
+    </div>
+  </div>
+</div>
+
+@endsection
+
+
+<!-- <div class="custom-product">
+     <div class="col-sm-4 mx-2">
          <a href="/">Go Back</a>
      </div>
-     <div class="col-sm-4">
+     <div class="col-sm-4 mx-2">
+        <div class="trending-wrapper">
+            <h4>Result for Products</h4>
+            @foreach($products as $item)
+            <div class="card">
+              <a href="{{ route('product_details', ['id' => $item['id']]) }}">
+                <img class="card-img-top" src="{{ asset('assets/product_assets/'.$item['gallery']) }}" alt="{{ $item['name'] }}">
+              </a>
+              <div class="card-body">
+                <h5 class="card-title">{{$item['name']}}</h5>
+                <p class="card-text">{{$item['description']}}</p>
+              </div>
+            </div>
+            @endforeach
+          </div>
+     </div>
+</div> -->
+
+<!-- <div class="custom-product">
+     <div class="col-sm-4 mx-2">
+         <a href="/">Go Back</a>
+     </div>
+     <div class="col-sm-4 mx-2">
         <div class="trending-wrapper">
             <h4>Result for Products</h4>
             @foreach($products as $item)
@@ -20,5 +73,4 @@
             @endforeach
           </div>
      </div>
-</div>
-@endsection
+</div> -->

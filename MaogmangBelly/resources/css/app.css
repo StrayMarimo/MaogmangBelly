@@ -577,6 +577,24 @@ a:active {
     background-position: 50% 50%;
 } */
 
+.searched-item {
+    margin: 20px 0;
+    margin-left: 20px;
+  }
+
+.searched-item hr {
+  max-width: 80%;
+}
 
 
+.product-card .card {
+    height: 400px; 
+  }
 
+  .trending-wrapper {
+    background-image: url('/assets/searchbg.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
