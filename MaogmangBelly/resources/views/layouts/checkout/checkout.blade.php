@@ -19,6 +19,7 @@
             <td>
                 <form action="/edit_order_qty" method="POST" id="edit-order-form-{{$item['id']}}">
                     @csrf
+                    <input type="hidden" name="order_type" value="O">
                     <input type="hidden" name="order_line_id" value={{$item['id']}} >
                     <input type="number" name="item_quantity" class="input-item-quantity" id="item-quantity-{{$item['id']}}" value="{{$item['quantity']}}">
                 </form>
@@ -28,6 +29,7 @@
             <td>
                 <form action="/delete_order_line" method="POST">
                     @csrf
+                    <input type="hidden" name="order_type" value="O">
                     <input type="hidden" name="order_line_id" value="{{$item['id']}}">
                     <button type="submit">
                         <i class="bs bi-trash-fill" id="delete-order-line"></i>
@@ -43,6 +45,7 @@
     </div>
     <form action="/buy" method="POST">
         @csrf
+        <input type="hidden" name="order_id" value="{{$order['id']}}"> 
         Delivery type:
         <div class="form-check">
             <input class="form-check-input" type="radio" name="forDelivery" id="forDelivery" checked>
@@ -82,7 +85,7 @@
     var marker = L.marker();
  
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
+    maxZoom: 15,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
