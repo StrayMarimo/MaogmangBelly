@@ -36,7 +36,6 @@
     </div>
     <!-- Tab content -->
     <div class="tab-content">
-
         <div class="tab-pane fade show active" id="all-products">
             <div class="d-flex flex-wrap justify-content-center">
                 @foreach($products as $product)

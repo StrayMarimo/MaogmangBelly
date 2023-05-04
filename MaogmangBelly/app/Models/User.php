@@ -26,8 +26,25 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'social_id',
         'social_type',
-        'is_subscribed'
+        'is_subscribed',
+        'first_name', 
+        'last_name',
     ];
+
+    public function getFirstNameAttribute()
+    {
+        $words = explode(' ', trim($this->name));
+        array_pop($words);
+        $firstName = implode(' ', $words);
+        return $firstName;
+    }
+
+    public function getLastNameAttribute()
+    {
+        $words = explode(' ', trim($this->name));
+        $lastName = array_pop($words);
+        return $lastName;
+    }
  
     /**
      * The attributes that should be hidden for arrays.

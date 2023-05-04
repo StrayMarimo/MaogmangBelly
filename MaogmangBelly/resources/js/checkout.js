@@ -25,6 +25,15 @@ $(document).ready(function () {
     // Handle change on order quantity on checkout page
     $('.input-item-quantity').change(function () {
         let item_id = $(this).attr('id').substring(14);
-        $('#edit-order-form-' + item_id).submit();
+        let minQty = $(this).attr('min');
+        let qty = $(this).val();
+
+        if (parseInt(qty) < parseInt(minQty)) {
+            console.log(qty, minQty);
+            $('#input-number-error').text('Quantity must be at least ' + minQty);
+        } else {
+            $('#input-number-error').text('');
+            $('#edit-order-form-' + item_id).submit();
+        }
     });
 });

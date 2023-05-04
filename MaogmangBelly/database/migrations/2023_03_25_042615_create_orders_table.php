@@ -21,6 +21,7 @@ return new class extends Migration
             $table->timestamp("date_purchased")->nullable();
             $table->timestamp("date_completed")->nullable();
             $table->timestamp("date_needed")->nullable();
+            $table->string("comment")->nullable();
             $table->foreignId("user_id")
                 ->constrained("users")
                 ->onUpdate("cascade")
