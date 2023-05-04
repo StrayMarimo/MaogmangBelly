@@ -70,9 +70,9 @@
             <div class="mt-2 mb-2i">
                 <div class="mapView mb-3" id="mapView">
                     <textarea type="text" name="address" id="address" rows=2
-                        style="width:90vw; font-family: 'Franklin Gothic Medium';"
+                        style="width:88vw; font-family: 'Franklin Gothic Medium';"
                         placeholder="Pin your location in the map..." required></textarea>
-                    <div id="map" style="width: 90vw;"></div>
+                    <div id="map" style="width: 88vw;"></div>
                 </div>
                 <label for="date" style="color: white; font-family: 'Lexend';">Choose Date and Time for
                     Reservation:</label>
