@@ -24,10 +24,11 @@
                         <form action="/edit_order_qty" method="POST" id="edit-order-form-{{$item['id']}}">
                             @csrf
                             <input type="hidden" name="order_type" value="O">
-                            <input type="hidden" name="order_line_id" value={{$item['id']}} >
-                            <input type="number" name="item_quantity" min="1" class="input-item-quantity" id="item-quantity-{{$item['id']}}" value="{{$item['quantity']}}">
+                            <input type="hidden" name="order_line_id" value={{$item['id']}}>
+                            <input type="number" name="item_quantity" min="1" class="input-item-quantity"
+                                id="item-quantity-{{$item['id']}}" value="{{$item['quantity']}}">
                         </form>
-                    
+
                     </td>
                     <td>{{$item['total_price']}}</td>
                     <td>
@@ -47,9 +48,9 @@
             <div>
                 Grand Total : {{$order['grand_total']}}
             </div>
-            <form action="/buy" method="POST">
+            <form class="ml-3" action="/buy" method="POST">
                 @csrf
-                <input type="hidden" name="order_id" value="{{$order['id']}}"> 
+                <input type="hidden" name="order_id" value="{{$order['id']}}">
                 <br>Delivery type:
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="forDelivery" id="forDelivery" checked>
@@ -63,20 +64,22 @@
                         For pick up
                     </label>
                 </div>
-                <h5 class="mt-3 mb-2" style="color: white; font-family: 'Lexend';">Address: </h5>
-                <div class="mt-2 mb-2i">
-                    <div class="mapView mb-3" id="mapView">
-                        <textarea type="text" name="address" id="address" rows=2
+                <div id="addressPicker">
+                    <h5 class="mt-3 mb-2" style="color: white; font-family: 'Lexend';">Address: </h5>
+                    <div class=" mapView mt-3 mb-2" id="mapView">
+                        <textarea class="type=" text" name="address" id="address" rows=2
                             style="width:88vw; font-family: 'Franklin Gothic Medium';"
                             placeholder="Pin your location in the map..." required></textarea>
-                        <div id="map" style="width: 88vw;"></div>
+                        <div id="map" style="width: 88vw;" class="mb-2"></div>
+                        <div>
+                            <button class="btn btn-success mt-3">Buy Now!</button>
+                        </div>
                     </div>
-                </div>
-                <button class="btn btn-success">Buy Now!</button>
             </form>
             <form action="/cancel_all_orders" method="POST">
                 @csrf
                 <input type="hidden" name="order_id" value="{{$order['id']}}">
+                <button class="btn btn-danger mt-2">Cancel this order.</button>
             </form>
         </div>
     </div>
