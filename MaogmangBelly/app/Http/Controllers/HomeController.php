@@ -69,11 +69,7 @@ class HomeController extends Controller
             }
 
             return view('layouts.catering.catering', compact('scroll', 'hasOrder', 'orders', 'order'));
-        }
-        
-
-      
-           
+        } 
     }
 
 
@@ -105,8 +101,42 @@ class HomeController extends Controller
      */
     public function reservations()
     {
+
+        // Get the user id.
+        $user = Auth::user()->id;
+        $hasOrder = false;
+        $order = Order::where([
+            ['user_id', '=', $user],
+            ['order_type', '=', 'R'],
+            ['is_purchased', 0],
+        ])->first();
+
         $scroll = session()->has('scroll') ? true : false;
-        return view('layouts.reservations.reservations', compact('scroll'));
+
+        // If the user has not added any orders.
+        if ($order == null) {
+            return view('layouts.reservations.reservations', compact('scroll', 'hasOrder'));
+        } else{
+
+            $hasOrder = true;
+            // If the user has one unpurchased order saved, get all orders.
+            $orders = OrderLine::where('order_id', '=', $order['id'])->get();
+
+            // For each item in the order, query the product name and price and add them as fields in orders.
+            foreach ($orders as $item) {
+                $product = Product::where('id',
+                    '=',
+                    $item['product_id']
+                )->first();
+                $item['product_name'] = $product['name'];
+                $item['price'] = $product['price'];
+                $item['gallery'] = $product['gallery'];
+            }
+            // dd($orders, $order);
+            return view('layouts.reservations.reservations', compact('scroll', 'hasOrder', 'orders', 'order'));
+        } 
+        // $scroll = session()->has('scroll') ? true : false;
+        // return view('layouts.reservations.reservations', compact('scroll'));
     }
 
 }

@@ -72,7 +72,6 @@ class CheckoutController extends Controller
      */
     function buy(Request $req)
     {
-
         // Determine the order type based on the existence of the 'forDelivery' key in the request object.
         $delivery_type = ($req->exists('forDelivery')) ? 'D' : 'P';
         
@@ -90,7 +89,8 @@ class CheckoutController extends Controller
                 'date_purchased' => Carbon::now(),
                 'date_needed' => $req->date,
                 'delivery_type' => $delivery_type,
-                'address' => $req->address
+                'address' => $req->address,
+                'comment' => $req->comment,
             ]);
 
         // Return a message indicating that the order has been successfully purchased.
