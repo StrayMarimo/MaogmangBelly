@@ -117,7 +117,8 @@
                         @csrf
                         <input type="hidden" name="order_line_id" value={{$item['id']}}>
                         <input type="hidden" name="order_type" value="C">
-                        <input type="number" name="item_quantity" class="input-item-quantity"
+                        <div id="input-number-error" style="color: red;"></div>
+                        <input type="number" name="item_quantity" class="input-item-quantity" min="50"
                             id="item-quantity-{{$item['id']}}" value="{{$item['quantity']}}">
                     </form>
 

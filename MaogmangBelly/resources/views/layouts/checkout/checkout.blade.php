@@ -21,7 +21,7 @@
                     @csrf
                     <input type="hidden" name="order_type" value="O">
                     <input type="hidden" name="order_line_id" value={{$item['id']}} >
-                    <input type="number" name="item_quantity" class="input-item-quantity" id="item-quantity-{{$item['id']}}" value="{{$item['quantity']}}">
+                    <input type="number" name="item_quantity" min="1" class="input-item-quantity" id="item-quantity-{{$item['id']}}" value="{{$item['quantity']}}">
                 </form>
                
             </td>
