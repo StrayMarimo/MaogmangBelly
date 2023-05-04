@@ -19,7 +19,7 @@
     @endif
     <form class="d-flex justify-content-end mb-4" action="{{ route('search') }}" role="search" id="form-search">
         <input class="form-control me-4 search-box" type="text" name="query" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="btn btn-outline-success" type="submit" >Search</button>
     </form>
     <!-- Include featured products layout -->
     @include('layouts.products.featured_products')

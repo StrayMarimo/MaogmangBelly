@@ -11,13 +11,13 @@
         <div class="row">
           @foreach($chunk as $item)
             <div class="col-sm-4">
-              <div class="card">
+              <div class="card mx-4">
                 <a href="{{ route('product_details', ['id' => $item['id']]) }}">
-                  <img class="card-img-top" src="{{ asset('assets/product_assets/'.$item['gallery']) }}" alt="{{ $item['name'] }}">
+                  <img class="card-img-top" src="{{ asset('assets/product_assets/'.$item['gallery']) }}" alt="{{ $item['name'] }}" style="height:30vh;">
                 </a>
                 <div class="card-body">
                   <h5 class="card-title">{{$item['name']}}</h5>
-                  <p class="card-text">{{$item['description']}}</p>
+                  <p class="card-text" style="max-height: 6em; overflow: hidden; text-overflow: ellipsis;">{{$item['description']}}</p>
                 </div>
               </div>
             </div>

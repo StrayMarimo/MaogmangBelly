@@ -598,3 +598,15 @@ a:active {
     background-attachment: fixed;
     min-height: 100vh;
   }
+
+  /* .btn-primary:hover {
+    background-color: #A72322;
+} */
+
+.btn{
+    background-color: #dc3545;;
+}
+
+.btn:hover{
+    background-color: #A72322;
+}
