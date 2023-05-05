@@ -4,6 +4,10 @@
         {{ Auth::User()->name }} <br>
         {{ Auth::User()->email }}
 
+        <div style="margin-top: 10vh" class="d-flex justify-content-center">
+            <a href="{{route('get_orders')}}" class="btn btn-danger px-4 py-2">See My Purchases</a>
+        </div>
+        
         @if (Auth::User()->email_verified_at == null)
             <button onclick="Auth::routes(['verify' => true]);">Verify email</button>
         @endif

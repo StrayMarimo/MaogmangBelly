@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\OrderLine;
 use App\Models\Product;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 class OrderController extends Controller
@@ -185,5 +186,55 @@ class OrderController extends Controller
 
         // Redirect to the home page
         return redirect('/');
+    }
+
+
+    function getAllOrders(Request $req)
+    {
+        $isAdmin = false;
+        $orders = [];
+         // user must be logged in first
+        if (!Auth::check()) {
+            return redirect('/login');
+        }
+
+        $user = Auth::user();
+        if ($user->is_admin) {
+            $isAdmin = true;
+        }
+
+        if($isAdmin)
+            $orders = Order::all();
+        else
+            $orders = Order::where(
+                'user_id', '=', $user->id,
+            )->get();
+
+        return view('layouts.history.purchase_history', ['orders' => $orders, 'isAdmin' => $isAdmin]);
+    }
+
+    function completeOrder(Request $req)
+    {
+
+       $rowsAffected = DB::table("orders")
+            ->where('id',(int) $req->order_id)
+            ->update(['date_completed' => Carbon::now()]);
+
+       
+        if ($rowsAffected > 0) {
+            return redirect()->route('get_orders')->with([
+                'status' => 200,
+                'message' => 'Order '.$req->order_id.' is now completed',
+                'success' => true
+            ]);
+        } else {
+            return redirect()->route('get_orders')->with([
+                'status' => 404,
+                'message' => 'Order '.$req->order_id.'completion failed',
+                'success' => false
+            ]);
+        }
+
+
     }
 }
