@@ -39,15 +39,20 @@ class HomeController extends Controller
     public function catering()
     {
         // Get the user id.
-        $user = Auth::user()->id;
+
+        $user = Auth::user();
         $hasOrder = false;
+        $scroll = session()->has('scroll') ? true : false;
+
+        if ($user == null){
+            return view('layouts.catering.catering', compact('scroll', 'hasOrder'));
+        }
         $order = Order::where([
-            ['user_id', '=', $user],
+            ['user_id', '=', $user->id],
             ['order_type', '=', 'C'],
             ['is_purchased', 0],
         ])->first();
 
-        $scroll = session()->has('scroll') ? true : false;
 
         // If the user has not added any orders.
         if ($order == null) {
@@ -103,15 +108,21 @@ class HomeController extends Controller
     {
 
         // Get the user id.
-        $user = Auth::user()->id;
+        $user = Auth::user();
+        $scroll = session()->has('scroll') ? true : false;
         $hasOrder = false;
+
+        if ($user == null) {
+            return view('layouts.reservations.reservations', compact('scroll', 'hasOrder')); 
+        }
+
         $order = Order::where([
-            ['user_id', '=', $user],
+            ['user_id', '=', $user->id],
             ['order_type', '=', 'R'],
             ['is_purchased', 0],
         ])->first();
 
-        $scroll = session()->has('scroll') ? true : false;
+       
 
         // If the user has not added any orders.
         if ($order == null) {
