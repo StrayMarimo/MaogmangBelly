@@ -66,16 +66,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        if(key_exists('subscribe_newsletter', $data)){
-            $mail = new Mails();
-            $mail->email = $data['email'];
-            $mail->save();
 
+        if(key_exists('subscribe_newsletter', $data)){
+            if(!Mails::where('email', '=', $data['email'])->exists()){
+                $mail = new Mails();
+                $mail->email = $data['email'];
+                $mail->save();
+            }
             return User::create([
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),
                 'is_subscribed' => 1,
+                'mobile_number' => null,
+                'access_token' => null
             ]);
         } else {
             return User::create([
@@ -83,6 +87,8 @@ class RegisterController extends Controller
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),
                 'is_subscribed' => 0,
+                'mobile_number' => null,
+                'access_token' => null
             ]);
         }
         

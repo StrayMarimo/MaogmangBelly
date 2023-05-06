@@ -42,9 +42,9 @@
         us, recipes, & more!
       </p>
       <p class="caption2">Email*</p>
-      <form action="subscribe_newsletter">
+      <form action="subscribe_newsletter" method="POST">
         @csrf
-        <input type="email" name="email_newsletter" size="35" style="height: 30px">
+        <input type="email" name="email_newsletter" size="35" style="height: 30px" required>
         <br>
         <br>
         <input type="submit" class="btn btn-danger">
