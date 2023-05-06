@@ -508,15 +508,10 @@ a:active {
 
 .red-btn3 {
     background: #a72322;
-    width: 24vh;
-    height: 7vh;
+    width: 15vh;
+    height: fit-content;
     border-radius: 12px;
-}
-
-.gray-btn {
-    background: gray;
-    height: 7vh;
-    border-radius: 12px;
+    padding: 1.5%;
 }
 
 .contact-box-3 {

@@ -78,7 +78,6 @@
                 </div>
                 <!-- Modal footer -->
                 <div class="modal-footer mt-2">
-                    <button type="button" class="gray-btn btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="red-btn3 btn btn-primary">Save Changes</button>
                 </div>
             </form>
