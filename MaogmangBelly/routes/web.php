@@ -55,7 +55,7 @@ Route::post("delete_order_line", [OrderController::class, 'deleteOrderLine'])->n
 // PURCHSE HISTORY
 Route::get('/orders', [OrderController::class, 'getAllOrders'])->name('get_orders');
 Route::post('/complete_order',[OrderController::class, 'completeOrder'])->name('complete_order');
-
+Route::get('/order_lines', [OrderController::class, 'getOrderLines'])->name('get_order_lines');
 //CHECKOUT
 Route::post("buy", [CheckoutController::class, 'buy']);
 Route::get("map", [MapController::class, 'showMap'])->name('show_map');

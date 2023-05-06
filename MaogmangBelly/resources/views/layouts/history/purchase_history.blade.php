@@ -56,10 +56,39 @@
             </form>
 
         </td>
-
         @endif
+        <td>
+            <button class="orderHistoryBtn btn btn-primary" type="button" data-toggle="collapse"
+                data-target="#orderHistory{{$order['id']}}" aria-expanded="false" data-order-id={{$order['id']}}
+                aria-controls="orderHistory{{$order['id']}}"> Show more
+            </button>
+        </td>
+       <tr>
+            <td colspan="8">
+                <div class="collapse" id="orderHistory{{$order['id']}}">
+                    <div class="card card-body">
+                       <table>
+                            <tr>
+                                <th>Product</th>
+                                <th>Unit Price</th>
+                                <th>Quantity</th>
+                                <th>Total Price</th>
+                            </tr>
+                            @for ($i = 0; $i < $order['order_count']; $i++)
+                            <tr>
+                                <td class="orderHistory" id="productName{{$i}}"></td>
+                                <td class="orderHistory" id="unitPrice{{$i}}"></td>
+                                <td class="orderHistory" id="quantity{{$i}}"></td>
+                                <td class="orderHistory" id="totalPrice{{$i}}"></td> 
+                            </tr>
+                            @endfor
+                       </table>
+                    </div>
+                </div>
+            </td>
+        </tr>
     </tr>
+
     @endforeach
 </table>
-
 @endsection

@@ -36,4 +36,37 @@ $(document).ready(function () {
             $('#edit-order-form-' + item_id).submit();
         }
     });
+    // hide all collapse elements initially
+    $('.collapse').hide();
+
+    // handle click event of the button
+    $('.orderHistoryBtn').click(function () {
+           let target = $(this).data('target');
+           let order_id = $(this).data('order-id');
+
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                },
+                url: '/order_lines?id=' + order_id,
+                method: 'GET',
+                success: function (response) {
+                    let order_lines = response;
+                    $.each(order_lines, function(index, order_line){
+                        $('.orderHistory#productName'+index).text(order_line['product_name']);
+                        $('.orderHistory#unitPrice'+index).text(order_line['price']);
+                        $('.orderHistory#quantity'+index).text(order_line['quantity']);
+                        $('.orderHistory#totalPrice' + index).text(
+                             order_line['total_price']
+                         );
+                    })
+                    
+                },
+                error: function (xhr) {
+                    console.log(xhr.responseText);
+                },
+            });
+           // toggle the collapse element with the corresponding ID
+           $(target).toggle();
+    });
 });
