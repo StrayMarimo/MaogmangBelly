@@ -18,7 +18,7 @@ $(document).ready(function () {
 
     $('#checkoutReservationBtn').on('click', function (e) {
         let order_id = $(this).data('order-id');
-
+         e.preventDefault();
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
@@ -27,14 +27,13 @@ $(document).ready(function () {
             method: 'GET',
             success: function (response) {
                 if (response >= 5) {
-                    $('#invalidReservationQuantity').hide();
+                    $('#checkoutReservationForm').submit();
                 } else {
-                    e.preventDefault();
-                    $('#invalidReservationQuantity').html(
-                        '<p>You should add at least 5 menu items'
+                    $('#minRequiredToast .toast-body').text(
+                        'You should have at least 5 menu items'
                     );
-                    // show the error message
-                    $('#invalidReservationQuantity').show();
+                    $('#minRequiredToast small').text('Reservations');
+                    $('#minRequiredToast').show();
                 }
             },
             error: function (xhr) {

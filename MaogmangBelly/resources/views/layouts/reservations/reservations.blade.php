@@ -63,7 +63,7 @@
       
       
         @if($hasOrder)
-        <form action="/buy" method="POST">
+        <form action="/buy" method="POST" id="checkoutReservationForm">
             @csrf
             <input type="hidden" name="order_id" value="{{$order['id']}}">
             <h5 class="mt-3 mb-2" style="color: white; font-family: 'Lexend';">Address: </h5>
@@ -85,7 +85,6 @@
                 </div>
                 <h3 class="mt-3 mb-2" style="color: white; font-family: 'Lexend';">Total: ₱{{$order['grand_total']}}.00
                 </h3>
-                <div id="invalidReservationQuantity" class="text-white"></div>
                 <div class="mt-3 mb-2 row d-flex justify-content-center">
                    
                 <button class="contact-red btn" data-order-id={{$order['id']}}
@@ -101,6 +100,7 @@
 
     </div>
 </div>
+<x-toaster />
 @endsection
 @section('javascript')
 <script>

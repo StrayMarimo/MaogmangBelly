@@ -64,7 +64,11 @@
                         <select class="form-control" id="selectCategoryEdit" required>
                             <!-- dynamically populate options here -->
                         </select>
-                        <input type="text" name="category_name" id="newCategoryName" placeholder="Enter new name...">
+                        <div class="mb-3">
+                            <label for="categoryName" class="form-label">Category Name</label>
+                            <input type="text" class="form-control" id="newCategoryName" name="category_name" placeholde="Enter new name..." required>
+                        </div>
+                      
                     </div>
                     <button type="submit" class="red-btn3 btn btn-primary mt-2">Save changes</button>
                 </form>
