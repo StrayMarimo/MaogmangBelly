@@ -4,7 +4,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav mx-auto">
+    <ul class="navbar-nav  mx-auto">
       <li class="nav-item">
         <a class="nav-link {{request()->is('/products') ? 'active' : ''}}" href="{{route('products')}}">
           <p class="{{request()->is('products') ? 'active' : ''}}">PRODUCTS</p>
@@ -21,7 +21,7 @@
         </a>
       </li>
       <a class="navbar-brand {{request()->is('/') ? 'active' : ''}}" href="{{ url('/') }}">
-        <img src="/assets/logo.png" alt="logo">
+        <img src="{{Vite::image('logo.png')}}" alt="logo">
         <p>Maogmang</p>
         <p class="{{request()->url() == url('') ? 'active' : '' }} mx-2">Belly</p>
       </a>
@@ -43,13 +43,12 @@
       @guest
       @if (Route::has('login'))
       <li class="nav-item login">
-        <a class="nav-link {{request()->is('/login') ? 'active' : ''}}" href="{{route('login')}}">
-          <p class=" {{request()->is('login') ? 'active' : ''}}">LOGIN</p>
+        <a class="nav-link {{request()->is('/login') ? 'active' : ''}}" href="{{route('login')}}" id="signingLink"> 
+          <p class="{{request()->is('login') ? 'active' : ''}}">LOGIN</p>
         </a>
       </li>
       @endif
       @else
-
       <li class="nav-item dropdown login">
         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false" v-pre>
@@ -72,6 +71,7 @@
 
       @endguest
     </ul>
+  </div>
   </div>
 </nav>
 <div style="height: 5vh" class="white"></div>

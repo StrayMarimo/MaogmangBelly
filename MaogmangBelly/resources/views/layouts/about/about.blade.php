@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="about">
+<div class="about" style="background-image: url({{Vite::image('about_bg.jpg')}}) ">
     <div class="container-fluid text-left p-5">
         <div class="about-box mx-auto">
             <div class="row mx-5">
@@ -19,7 +19,7 @@
                 </div>
                 <div class="col">
                     <div class="col2">
-                        <img src="/assets/logo.png" class="img-fluid" alt="">
+                        <img src={{Vite::image('logo.png')}} class="img-fluid" alt="">
                     </div>
                 </div>
             </div>

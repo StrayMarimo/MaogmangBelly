@@ -140,7 +140,6 @@ img.slider-img {
 }
 
 .text-light {
-    background-image: url('/assets/background.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: 50% 50%;
@@ -227,7 +226,6 @@ img.slider-img {
 }
 
 .about {
-    background: url('/assets/bg-about.jpg') no-repeat;
     background-size: cover;
     color: white;
 }
@@ -241,7 +239,6 @@ img.slider-img {
 }
 
 .contactbg {
-    background: url('/assets/contactbg.jpg') no-repeat;
     background-size: fixed;
     padding: 200px 0px 200px 0px;
     width: 100%;
@@ -307,7 +304,7 @@ img.slider-img {
 
 .card.auth {
     width: 68vh;
-    height: 88vh;
+    height: min-content; 
     font-family: 'Franklin Gothic Medium';
 }
 
@@ -359,7 +356,6 @@ a:active {
     justify-content: center;
 }
 .reservationbg {
-    background: url('/assets/reservationbg.jpg') no-repeat;
     background-size: cover;
     padding: 200px 0px 200px 0px;
     width: 100%;
@@ -407,7 +403,7 @@ a:active {
 }
 
 .text-light-2 {
-    background-image: url('/assets/catering.jpg');
+   
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center top;
@@ -543,8 +539,7 @@ a:active {
     height: 400px;
 }
 
-.noorders {
-    background: url('/assets/noorders.jpg') no-repeat;
+.noorders { 
     background-size: cover;
     padding: 200px 0px 200px 0px;
     width: 100%;
@@ -585,7 +580,6 @@ a:active {
 }
 
 .trending-wrapper {
-    background-image: url('/assets/searchbg.jpg');
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;

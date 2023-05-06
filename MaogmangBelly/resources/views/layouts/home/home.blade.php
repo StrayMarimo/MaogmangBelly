@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div style="height: 120vh" class="text-light">
+<div class="text-light" style="height: 120vh; background-image: url({{Vite::image('home_bg.jpg')}});">
     <div class="border1">
         <h1 class="tagline">Satisfy your cravings, <br>
             Have a Maogmang Belly</h1> <br>

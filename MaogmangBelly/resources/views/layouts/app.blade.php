@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -24,7 +24,6 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
  
 </head>
-
 <body>
     <div id="app">
         {{View::make('components.header')}}

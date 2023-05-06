@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="signing">
+<div style="background-image: url({{Vite::image('login_bg.png')}})"class="signing">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-auto">
@@ -77,7 +77,7 @@
                                 <p>Don't have an account?</p>
                             </div>
                             <div class="mt-2 text-center">
-                                <a href="/register">
+                                <a href="/register" id="signingLink">
                                     <h6>Sign up</h6>
                                 </a>
                             </div>

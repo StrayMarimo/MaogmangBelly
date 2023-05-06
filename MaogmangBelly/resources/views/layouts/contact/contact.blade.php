@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="container-fluid contactbg justify-content-center">
+<div style="background-image: url({{Vite::image('contact_bg.jpg')}})" class="container-fluid contactbg justify-content-center">
     <div class="row mx-5 w-80">
         <div class="col">
             <div class="text-center">

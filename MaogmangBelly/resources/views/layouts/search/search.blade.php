@@ -6,7 +6,7 @@
     <h4>Result for Products</h4>
   </div>
   <div class="col-sm-12 mx-2">
-    <div class="trending-wrapper">
+    <div style="background-image: url({{Vite::image('search_bg.jpg')}})" class="trending-wrapper">
       @foreach($products->chunk(3) as $chunk)
         <div class="row">
           @foreach($chunk as $item)

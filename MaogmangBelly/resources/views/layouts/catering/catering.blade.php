@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div style="height: 120vh" class="text-light-2">
+<div style="height: 120vh; background-image: url({{Vite::image('catering_bg.jpg')}})"" class="text-light-2">
     <div class="border1">
         <h1 class="tagline">Fresh Flavors, <br>
             Creative Catering</h1> <br>
@@ -100,11 +100,10 @@
 <script>
     $(document).ready(function(){
         @if($scroll)
-        setTimeout(() => {
             $('html, body').animate({
             scrollTop: $('#checkout_catering').offset().top
             }, 'slow');
-        }, 500);
+
         @endif
 
     })    
