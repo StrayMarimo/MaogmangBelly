@@ -153,10 +153,10 @@
                 <label for="img">Upload Product Image</label>
                 <div class="row">
                     <div class="col-sm-6 ">
-                        <img id="preview-image-before-upload" src="{{asset('/assets/logo.png')}}
+                        <img id="preview-image-before-upload" src="{{Vite::image('logo.png')}}
                     " alt="preview image" style="height: 200px; width: 200px; object-fit: cover;" class=" mb-2">
                         <input class=" form-control @error('img') is-invalid @enderror " type="file" name="img"
-                            value="{{asset('/assets/logo.png')}}" id="img">
+                            value="{{Vite::image('logo.png')}}" id="img">
                         <!-- Display error message if file upload fails -->
                         @error('img')
                         <span class="invalid-feedback" role="alert">

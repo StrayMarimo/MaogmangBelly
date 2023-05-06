@@ -231,7 +231,6 @@ img.slider-img {
 }
 
 .signing {
-    background: url('/assets/bg-login.png') no-repeat;
     background-size: cover;
     color: black;
     padding-top: 10vh;
@@ -586,9 +585,9 @@ a:active {
     min-height: 100vh;
 }
 
-/* .btn-primary:hover {
-    background-color: #A72322;
-} */
+.btn-primary{
+   --bs-btn-active-bg: #dc3545; 
+}
 
 .btn {
     background-color: #dc3545;
