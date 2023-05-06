@@ -56,7 +56,7 @@
     </div>
 
 </div>
-<div style="height: 200vh" class="text-light-2">
+<div style="height: 200vh; background-image: url({{Vite::image('catering2_bg.png')}})" class="text-light-2">
     <div class="margin-box">
         <div style="height: 30vh; width: 150vh" class="red-sectagtag">
             <h1 class="tagtag">OUR MENU</h1>
