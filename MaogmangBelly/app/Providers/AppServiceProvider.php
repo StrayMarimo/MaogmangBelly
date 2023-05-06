@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Models\OrderLine;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Vite;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Vite::macro('image', fn (string $asset) => $this->asset("resources/images/{$asset}"));
         view()->composer('*', function ($view) {
             $order_qty = 0;
             if (Auth::user() ) {

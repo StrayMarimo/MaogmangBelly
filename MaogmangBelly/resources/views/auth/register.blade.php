@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="signing">
+<div style="background-image: url({{Vite::image('login_bg.png')}})" class="signing">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-auto">
@@ -60,8 +60,11 @@
                             </div>
 
                             <div class="row mb-3">
-                                <input type="checkbox" name="subscribe_newsletter" id="subscribe-newsletter" checked>
-                                <label for="subscribe-newsletter">Subscribe to MaogmangBelly Newsletter.</label>
+                                <div class="col">
+                                    <input type="checkbox" name="subscribe_newsletter" id="subscribe-newsletter" checked class="mx-2">
+                                    <label for="subscribe-newsletter">Subscribe to MaogmangBelly Newsletter.</label>
+                                </div>
+                               
                             </div>
                             
                             <div class="row mb-3">

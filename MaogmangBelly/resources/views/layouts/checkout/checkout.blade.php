@@ -2,7 +2,7 @@
 @section("content")
 <div id="mapView">
     <a href="/">Go Back</a> <br>
-    <div class="container-fluid reservationbg">
+    <div style="background-image: url({{Vite::image('reservation_bg.jpg')}})" class="container-fluid reservationbg">
         <div class="card mb-3" id="reservecard" style="color:white; font-family: 'Lexend';">
             <div class="text-center" id="checkout_reservations">
                 <h1 class="contact-title" style="color: white">Checkout</h1>
