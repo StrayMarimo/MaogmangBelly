@@ -53,16 +53,20 @@ Route::post("edit_order_qty", [OrderController::class, 'editOrderQty'])->name('e
 Route::post("delete_order_line", [OrderController::class, 'deleteOrderLine'])->name('delete_order');
 
 // PURCHSE HISTORY
-Route::get('/orders', [OrderController::class, 'getAllOrders'])->name('get_orders');
+Route::get('/purchase_history', [OrderController::class, 'getAllOrders'])->name('get_orders');
 Route::post('/complete_order',[OrderController::class, 'completeOrder'])->name('complete_order');
 Route::get('/order_lines', [OrderController::class, 'getOrderLines'])->name('get_order_lines');
+
+
 //CHECKOUT
 Route::post("buy", [CheckoutController::class, 'buy']);
 Route::get("map", [MapController::class, 'showMap'])->name('show_map');
+Route::get("/order_count", [CheckoutController::class, 'getOrderLinesCount']);
 
 // CATERING
 Route::get('/catering', [HomeController::class, 'catering'])->name('catering');
 Route::get('/checkout_catering', [HomeController::class, 'checkoutCatering'])->name('checkout_catering');
+
 
 // RESERVATIONS
 Route::get('/reservations', [HomeController::class, 'reservations'])->name('reservations');
