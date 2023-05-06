@@ -18,7 +18,8 @@ $(document).ready(function () {
     });
 
     $('#checkoutCateringBtn').on('click', function (e) {
-      
+
+        e.preventDefault();
         let order_id = $(this).data('order-id');
         $.ajax({
             headers: {
@@ -29,14 +30,15 @@ $(document).ready(function () {
             success: function (response) {
                 if (response >= 10)
                 {
-                     $('#invalidFoodQuantity').hide();
+                    $('#checkoutCateringForm').submit();
                 }
                 else 
-                {
-                    e.preventDefault();
-                    $('#invalidFoodQuantity').html('<p>You should add at least 10 menu items');
-                    // show the error message
-                    $('#invalidFoodQuantity').show();
+                { 
+                    $('#minRequiredToast .toast-body').text(
+                        'You should have at least 10 menu items'
+                    );
+                    $('#minRequiredToast small').text('Reservations');
+                    $('#minRequiredToast').show();
                 }
             },
             error: function (xhr) {
