@@ -4,7 +4,12 @@
         <h5 class="mb-1"> Name: </h5> {{ Auth::User()->name }} <br><br>
         <h5 class="mb-1"> Email: </h5> {{ Auth::User()->email }}
         @if (Auth::User()->email_verified_at == null)
-            <button onclick="Auth::routes(['verify' => true]);" style="border-radius: 30px; background-color: #74c23d; color: white; border-style: none; width: 17vh">Verify email</button>
+            <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
+                @csrf
+                <button type="submit" style="border-radius: 30px; background-color: #74c23d; color: white; border-style: none; width: 17vh">{{ __('Verify Email')
+                    }}</button>
+            </form>
+     
         @endif
         @if(Auth::User()->is_admin)
        <div style="margin-top: 10vh" class="d-flex justify-content-center">
