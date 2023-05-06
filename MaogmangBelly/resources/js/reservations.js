@@ -5,7 +5,9 @@ $(document).ready(function () {
         let inputVal = $('#availProductQuantity').val(); // get input value
 
         if (parseInt(inputVal) < 10) {
-            $('#invalidQty').text('Quantity must be at least 10');
+            $('#minRequiredToast .toast-body').text('Quantity must be at least 10');
+            $('#minRequiredToast small').text('Reservations');
+            $('#minRequiredToast').show();
         } else {
             $('#invalidQty').text('');
             $('#orderType').val('R');
