@@ -96,4 +96,10 @@ class CheckoutController extends Controller
         // Return a message indicating that the order has been successfully purchased.
         return "Successfully bought order with id " . strval($order['id']);
     }
+
+    function getOrderLinesCount(Request $req)
+    {
+        $order_count = OrderLine::where('order_id', '=', $req->id)->count();
+        return response()->json($order_count);
+    }
 }

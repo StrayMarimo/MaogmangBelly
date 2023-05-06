@@ -48,11 +48,14 @@
                     @endif
                     @endforeach
                 </table>
+                <div style="margin-top: 10vh; margin-bottom: 5vh" class="d-flex justify-content-center">
+                    <a href="{{route('products')}}" class="btn btn-danger px-4 py-2">Add more products</a>
+                </div>
                 <div>
                     Grand Total : {{$order['grand_total']}}
                 </div>
 
-                <form action="/buy" method="POST">
+                <form action="/buy" method="POST" id="checkoutCateringForm">
                     @csrf
                     <input type="hidden" name="order_id" value="{{$order['id']}}">
                     <h5 class="mt-3 mb-2" style="color: white; font-family: 'Lexend';">Address: </h5>
@@ -68,7 +71,8 @@
                         <label for="date">Date and Time of Catering Service</label>
                         <input id="date" name="date" class="form-control" type="datetime-local" />
                     </div>
-                    <button class="btn btn-success mt-3">Buy Now!</button>
+                    <div id="invalidFoodQuantity" class="text-danger"></div>
+                    <button class="btn btn-success mt-3" id=checkoutCateringBtn data-order-id={{$order['id']}} >Buy Now!</button>
                 </form>
                 <form action="/cancel_all_orders" method="POST">
                     @csrf
