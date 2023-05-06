@@ -53,8 +53,7 @@ $(document).ready(function () {
             method: 'GET',
             success: function (response) {
                 let product = response;
-                console.log('dddd: ' + product['category_id']);
-
+        
                 $('#editProductForm #productId').val(product['id']);
                 $('#editProductForm #productCategoryId').val(product['category_id']);
                 $('#editProductForm #name').val(product['name']);

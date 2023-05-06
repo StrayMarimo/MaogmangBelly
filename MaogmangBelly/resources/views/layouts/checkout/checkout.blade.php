@@ -71,10 +71,12 @@
                             style="width:88vw; font-family: 'Franklin Gothic Medium';"
                             placeholder="Pin your location in the map..." required></textarea>
                         <div id="map" style="width: 88vw;" class="mb-2"></div>
-                        <div>
-                            <button class="btn btn-success mt-3">Buy Now!</button>
-                        </div>
                     </div>
+            </div>
+                    <div>
+                        <button class="btn btn-success mt-3">Buy Now!</button>
+                    </div>
+
             </form>
             <form action="/cancel_all_orders" method="POST">
                 @csrf

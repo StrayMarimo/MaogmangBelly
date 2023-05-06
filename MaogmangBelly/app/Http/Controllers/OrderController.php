@@ -209,6 +209,10 @@ class OrderController extends Controller
             $orders = Order::where(
                 'user_id', '=', $user->id,
             )->get();
+        
+        foreach ($orders as $item) {
+            $item['order_count'] =  OrderLine::where('order_id', '=', $item['id'])->count();
+        }
 
         return view('layouts.history.purchase_history', ['orders' => $orders, 'isAdmin' => $isAdmin]);
     }
@@ -234,7 +238,20 @@ class OrderController extends Controller
                 'success' => false
             ]);
         }
+    }
 
 
+    function getOrderLines(Request $req)
+    {
+ 
+        $orders = OrderLine::where('order_id', '=', $req->id)->get();
+
+        foreach ($orders as $item) {
+            $product = Product::where('id', '=', $item['product_id'])->first();
+            $item['product_name'] = $product['name'];
+            $item['price'] = $product['price'];
+        }
+
+        return response()->json($orders);
     }
 }
