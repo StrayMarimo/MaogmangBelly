@@ -76,10 +76,10 @@
                             </tr>
                             @for ($i = 0; $i < $order['order_count']; $i++)
                             <tr>
-                                <td class="orderHistory" id="productName{{$i}}"></td>
-                                <td class="orderHistory" id="unitPrice{{$i}}"></td>
-                                <td class="orderHistory" id="quantity{{$i}}"></td>
-                                <td class="orderHistory" id="totalPrice{{$i}}"></td> 
+                                <td class="orderHistory{{$order['id']}}" id="productName{{$i}}"></td>
+                                <td class="orderHistory{{$order['id']}}" id="unitPrice{{$i}}"></td>
+                                <td class="orderHistory{{$order['id']}}" id="quantity{{$i}}"></td>
+                                <td class="orderHistory{{$order['id']}}" id="totalPrice{{$i}}"></td> 
                             </tr>
                             @endfor
                        </table>
