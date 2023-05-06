@@ -1,13 +1,17 @@
 $(document).ready(function () {
+    $('#minRequiredToast button').on('click', function(){
+         $('#minRequiredToast').hide();
+    }); 
     $('#addToCatering').on('click', function (e) {
         e.preventDefault();
 
         let inputVal = $('#availProductQuantity').val(); // get input value
 
         if (parseInt(inputVal) < 50) {
-            $('#invalidQty').text('Quantity must be at least 50');
+            $('#minRequiredToast .toast-body').text( 'Quantity must be at least 50');
+            $('#minRequiredToast small').text('Catering');   
+            $('#minRequiredToast').show();
         } else {
-            $('#invalidQty').text('');
             $('#orderType').val('C');
             $('#availProductForm').submit();
         }
