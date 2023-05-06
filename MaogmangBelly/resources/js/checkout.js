@@ -53,20 +53,24 @@ $(document).ready(function () {
                 success: function (response) {
                     let order_lines = response;
                     $.each(order_lines, function(index, order_line){
-                        $('.orderHistory#productName'+index).text(order_line['product_name']);
-                        $('.orderHistory#unitPrice'+index).text(order_line['price']);
-                        $('.orderHistory#quantity'+index).text(order_line['quantity']);
-                        $('.orderHistory#totalPrice' + index).text(
-                             order_line['total_price']
-                         );
+                        $('.orderHistory'+ order_id + '#productName' + index).text(order_line['product_name']);
+                        $('.orderHistory' + order_id + '#unitPrice' + index).text(
+                            order_line['price']
+                        );
+                        $('.orderHistory' + order_id + '#quantity' + index).text(
+                            order_line['quantity']
+                        );
+                        $('.orderHistory' + order_id + '#totalPrice' + index).text(
+                            order_line['total_price']
+                        );
                     })
-                    
+                    $(target).toggle();
                 },
                 error: function (xhr) {
                     console.log(xhr.responseText);
                 },
             });
            // toggle the collapse element with the corresponding ID
-           $(target).toggle();
+          
     });
 });
