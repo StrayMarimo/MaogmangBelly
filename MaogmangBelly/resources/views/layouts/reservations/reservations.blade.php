@@ -18,7 +18,7 @@
             </div>
         </div>
         <h5 class="mt-5 mb-3" style="color: white; font-family: 'Lexend';">Selected Products</h5>
-       
+
         <div class="row">
             @foreach($orders as $product)
             <div class="col-sm-6 col-md-3 mb-4">
@@ -32,8 +32,12 @@
 
                     <img src="{{ url('/assets/product_assets/'.$product['gallery']) }}" class="card-img-top"
                         style="height:30vh;">
+
                     <div class="card-body">
-                        <h5 class="card-title">{{$product['product_name']}}</h5>
+                        <div style="height: 4rem">
+                            <h5 class="card-title">{{$product['product_name']}}</h5>
+                        </div>
+                    
                         <p class="card-text">
                             <b> Product Price: </b> ₱{{$product['price']}}.00 <br>
                             <b> Total Price: </b> ₱{{$product['total_price']}}.00
@@ -55,13 +59,12 @@
             <a href="{{route('products')}}" class="btn btn-danger px-4 py-2">Reserve more products</a>
         </div>
         @else
-           <h5 class="mt-5 mb-2 text-center" style="color: white; font-family: 'Lexend';">You have not made any reservations yet. </h5>
-           <div style="margin-top: 10vh; margin-bottom: 5vh" class="d-flex justify-content-center">
-                <a href="{{route('products')}}" class="btn btn-danger px-4 py-2">Reserve products</a>
-            </div>
+        <h5 class="mt-5 mb-2 text-center" style="color: white; font-family: 'Lexend';">You have not made any
+            reservations yet. </h5>
+        <div style="margin-top: 10vh; margin-bottom: 5vh" class="d-flex justify-content-center">
+            <a href="{{route('products')}}" class="btn btn-danger px-4 py-2">Reserve products</a>
+        </div>
         @endif
-      
-      
         @if($hasOrder)
         <form action="/buy" method="POST" id="checkoutReservationForm">
             @csrf
@@ -79,8 +82,8 @@
                 <input type="datetime-local" id="date" name="date" required>
                 <h5 class="mt-3 mb-2" style="color: white; font-family: 'Lexend';">Comment</h5>
                 <div class="form-floating">
-                    <textarea class="form-control mb-3" placeholder="Leave a comment here" id="floatingTextarea2" name="comment"
-                        style="height: 100px"></textarea>
+                    <textarea class="form-control mb-3" placeholder="Leave a comment here" id="floatingTextarea2"
+                        name="comment" style="height: 100px"></textarea>
                     <label for="floatingTextarea2" style="font-family: 'Franklin Gothic Medium';">Comments</label>
                 </div>
                 <h3 class="mt-3 mb-2" style="color: white; font-family: 'Lexend';">Total: ₱{{$order['grand_total']}}.00
@@ -89,12 +92,8 @@
                 <button class="contact-red btn" id="confirmReservationBtn" style="border: 2px solid #A72322; color: white; font-family: 'Lexend';">Hotdog</button>
                 </div>
             </div>
-
         </form>
-
         @endif
-
-
     </div>
 </div>
 <x-toaster />

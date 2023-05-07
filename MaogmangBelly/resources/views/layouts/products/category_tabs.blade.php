@@ -35,12 +35,14 @@
         </div>
     </div>
     <!-- Tab content -->
-    <div class="tab-content">
+    <div class="tab-content p-5">
         <div class="tab-pane fade show active" id="all-products">
             <div class="d-flex flex-wrap justify-content-center">
                 @foreach($products as $product)
-                <div class="col-sm-6 col-md-3">
-                    @include('layouts.products.product_card')
+                <div class="col-3">
+                    <div class="d-flex justify-content-center">
+                        @include('layouts.products.product_card')
+                    </div>
                 </div>
                 @endforeach
             </div>
@@ -52,8 +54,10 @@
                 <!-- Loop through all the products and display their data if they belong to the current category -->
                 @foreach($products as $product)
                 @if($product['category_id'] == $category['id'])
-                <div class="col-sm-6 col-md-3 mb-4">
-                    @include('layouts.products.product_card')
+                <div class="col-3">
+                    <div class="d-flex justify-content-center">
+                        @include('layouts.products.product_card')
+                    </div>
                 </div>
                 @endif
                 @endforeach

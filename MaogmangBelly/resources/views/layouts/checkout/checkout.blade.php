@@ -94,7 +94,7 @@
                             style="width:88vw; font-family: 'Franklin Gothic Medium';"
                             placeholder="Pin your location in the map..." required></textarea>
                         <div id="map" class="mb-2 w-100"></div>
-                        <button class="btn btn-success mt-3 w-100">Buy Now!</button>
+                       
                     </div>
             </div>
                     <button class="btn btn-primary" id="confirmCheckoutBtn">
@@ -106,6 +106,7 @@
                 <input type="hidden" name="order_id" value="{{$order['id']}}">
                 <button class="btn btn-danger mt-2">Cancel this order.</button>
                 </div>
+                <button class="btn btn-primary mt-3 w-100">Buy Now!</button>
             </form>
         </div>
     </div>
