@@ -104,11 +104,11 @@ class ProductControllerTest extends TestCase
         $this->assertEquals($expectedProduct['name'], $productData['product_name']);
         $this->assertEquals($expectedProduct['description'], $productData['product_desc']);
         $this->assertEquals($expectedProduct['category_id'], $productData['category_id']);
-        $response->assertStatus(200);
+        $response->assertStatus(302);
 
-        $response->assertJson([
-            'success' => true
-        ]);
+        // assert session data
+        $response->assertSessionHas('status', 200); // Assert that the 'status' session key has a value of 200
+        $response->assertSessionHas('success', true); // Assert that the 'success' session key has a value of true
     }
 
     public function test_can_edit_product(): void
