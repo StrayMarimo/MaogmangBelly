@@ -605,6 +605,12 @@ a:active {
     background-color: transparent
 }
 
+
+#searchCard:hover, #searchCard:focus{
+     color:  #1e1e1e;
+     opacity: 0.85;
+}
+
 .table-hover tbody tr:hover td {
     background-color: #c1272d;
     color: white;
@@ -615,8 +621,9 @@ a:active {
   background-color: inherit;
   color: inherit;
 }
+
 td div,
 td form {
   display: inline-block;
-  vertical-align: middle; /* optional */
+  vertical-align: middle;
 }
