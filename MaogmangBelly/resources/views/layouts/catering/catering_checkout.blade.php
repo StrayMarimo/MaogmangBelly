@@ -18,6 +18,7 @@
                         <th></th>
                     </tr>
                     @foreach ($orders as $item)
+                    @include('layouts.catering.catering_confirm')
                     @if($item['quantity'] > 0)
                     <tr>
                         <td>{{$item['product_name']}}</td>
@@ -72,7 +73,7 @@
                         <input id="date" name="date" class="form-control" type="datetime-local" />
                     </div>
                     <div id="invalidFoodQuantity" class="text-danger"></div>
-                    <button class="btn btn-success mt-3" id=checkoutCateringBtn data-order-id={{$order['id']}} >Buy Now!</button>
+                    <button class="btn btn-success mt-3" id="confirmBtn">Buy Now!</button>
                 </form>
                 <form action="/cancel_all_orders" method="POST">
                     @csrf
@@ -89,5 +90,7 @@
 
         </div>
     </div>
+   
 </div>
+
 <x-toaster />

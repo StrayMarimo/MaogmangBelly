@@ -1,4 +1,10 @@
 $(document).ready(function () {
+    // Handle clicks on the Confirmation button
+    $('#confirmReservationBtn').on('click', function (e) {
+        e.preventDefault();
+        $('#confirmReservation').modal('show');
+    });
+
     $('#addToReservations').on('click', function (e) {
         e.preventDefault();
 
