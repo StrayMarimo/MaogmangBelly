@@ -6,7 +6,8 @@
             <div class="text-center mt-3" id="checkout_reservations">
                 <h1 class="contact-title" style="color: white">Checkout</h1>
             </div>
-            <a href="{{route('products')}}" class="btn btn-danger mt-3 mb-3" style="width: fit-content">Add more products</a>
+            <a href="{{route('products')}}" class="btn btn-danger mt-3 mb-3" style="width: fit-content">Add more
+                products</a>
 
             <table class="table table-hover text-center text-white">
                 <thead style="font-size: 1.2rem">
@@ -94,21 +95,16 @@
                             style="width:88vw; font-family: 'Franklin Gothic Medium';"
                             placeholder="Pin your location in the map..." required></textarea>
                         <div id="map" class="mb-2 w-100"></div>
-                       
+
                     </div>
-            </div>
-                    <button class="btn btn-primary" id="confirmCheckoutBtn">
-                        Buy Now!
-                    </button>
-            </form>
-            <form action="/cancel_all_orders" method="POST">
-                @csrf
-                <input type="hidden" name="order_id" value="{{$order['id']}}">
-                <button class="btn btn-danger mt-2">Cancel this order.</button>
                 </div>
+                <button class="btn btn-primary w-100 mt-3" id="confirmCheckoutBtn">
+                    Buy Now!
+                </button>
             </form>
         </div>
     </div>
+</div>
 </div>
 @include('layouts.checkout.checkout_confirm')
 @endsection

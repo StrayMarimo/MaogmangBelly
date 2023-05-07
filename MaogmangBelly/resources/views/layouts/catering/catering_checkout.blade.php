@@ -89,6 +89,7 @@
 
         </div>
     </div>
+    @include('layouts.catering.catering_confirm') 
 </div>
-@include('layouts.catering.catering_confirm')
+
 <x-toaster />
