@@ -64,13 +64,13 @@ class CategoryController extends Controller
         if ($rowsAffected > 0) {
             return redirect()->route('products')->with([
                 'status' => 200,
-                'message' => 'Category Deleted Successfully',
+                'message' => 'Category Updated Successfully',
                 'success' => true
             ]);
         } else {
             return redirect()->route('products')->with([
                 'status' => 404,
-                'message' => 'Category Deletion failed',
+                'message' => 'Editing Category failed',
                 'success' => false
             ]);
         }
