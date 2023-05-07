@@ -1,6 +1,6 @@
 <div id="checkoutCatering"></div>
-<div style="height: 120vh" class="green-sec">
-    <div class="card mb-1" id="reservecard" style="color:white; font-family: 'Lexend';" >
+<div style="height: fit-content; padding-bottom: 20vh"" class="green-sec">
+    <div class="card" id="reservecard" style="color:white; font-family: 'Lexend';">
         <div class="text-center" id="checkout_catering">
             <h1 class="contact-title" style="color: white">Catering</h1>
         </div>

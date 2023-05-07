@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div style="height: 120vh; background-image: url({{Vite::image('catering_bg.jpg')}})"" class="text-light-2">
+<div style="height: 50rem; background-image: url({{Vite::image('catering_bg.jpg')}})"" class=" text-light-2">
     <div class="border1">
         <h1 class="tagline">Fresh Flavors, <br>
             Creative Catering</h1> <br>
@@ -14,12 +14,12 @@
     </div>
 
 </div>
-<div style="height: 120vh" class="green-sec">
+<div style="height: 50rem " class="green-sec">
     <h1 class="tag2">WHAT WE DO</h1>
     <p class="cap1 mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor <br>
         incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
 
-    <div class="row justify-content-center">
+    <div class="row justify-content-around mx-5">
         <div class="col-md-3">
             <div class="box2 card">
                 <div class="card-body">
@@ -58,29 +58,29 @@
 </div>
 <div style="height: 200vh; background-image: url({{Vite::image('catering2_bg.png')}})" class="text-light-2">
     <div class="margin-box">
-        <div style="height: 30vh; width: 150vh" class="red-sectagtag">
+        <div style="height: fit-content; width: 75rem" class="red-sectagtag">
             <h1 class="tagtag">OUR MENU</h1>
             <p class="cap1">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                 sed do eiusmod tempor <br> incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
         </div>
         <div>
             <div class="margin-box">
-                <div style="height: 20vh; width: 150vh" class="white-sectagtag">
+                <div style="height: fit-content; width: 75rem" class="white-sectagtag">
                     <h1 class="tagtag2">Wedding Meals</h1>
                 </div>
                 <div>
                     <div class="margin-box">
-                        <div style="height: 20vh; width: 150vh" class="white-sectagtag">
+                        <div style="height: fit-content; width: 75rem" class="white-sectagtag">
                             <h1 class="tagtag2">Children's Party</h1>
                         </div>
                         <div>
                             <div class="margin-box">
-                                <div style="height: 20vh; width: 150vh" class="white-sectagtag">
+                                <div style="height: fit-content; width: 75rem" class="white-sectagtag">
                                     <h1 class="tagtag2">Holiday Events</h1>
                                 </div>
                                 <div>
                                     <div class="margin-box">
-                                        <div style="height: 20vh; width: 150vh" class="white-sectagtag">
+                                        <div style="height: fit-content; width: 75rem" class="white-sectagtag">
                                             <h1 class="tagtag2">Filipino Fiesta Cuisine</h1>
                                         </div>
 
