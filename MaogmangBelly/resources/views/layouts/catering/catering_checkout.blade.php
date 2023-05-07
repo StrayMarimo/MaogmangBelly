@@ -18,6 +18,7 @@
                         <th></th>
                     </tr>
                     @foreach ($orders as $item)
+                    @include('layouts.catering.catering_confirm')
                     @if($item['quantity'] > 0)
                     <tr>
                         <td>{{$item['product_name']}}</td>
@@ -89,7 +90,7 @@
 
         </div>
     </div>
-    @include('layouts.catering.catering_confirm') 
+   
 </div>
 
 <x-toaster />
