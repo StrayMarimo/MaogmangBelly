@@ -106,10 +106,9 @@
                 <input type="hidden" name="order_id" value="{{$order['id']}}">
                 <button class="btn btn-danger mt-2">Cancel this order.</button>
                 </div>
-                <button class="btn btn-primary mt-3 w-100">Buy Now!</button>
             </form>
         </div>
     </div>
 </div>
-@endsection
 @include('layouts.checkout.checkout_confirm')
+@endsection
