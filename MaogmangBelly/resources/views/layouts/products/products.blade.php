@@ -25,7 +25,7 @@
         <!-- Include featured products layout -->
         @include('layouts.products.featured_products')
     </div>
-    <div style="height: 120vh" class="green-sec mb-3">
+    <div style="height: 50rem" class="green-sec mb-3">
         <!-- Include trending products layout -->
         @include('layouts.products.trending_products')
     </div>

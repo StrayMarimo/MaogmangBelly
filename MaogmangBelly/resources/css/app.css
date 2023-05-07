@@ -320,7 +320,7 @@ img.slider-img {
 }
 
 .boxbox {
-    width: 48vh;
+    width: 100%;
     border: 2px solid #a72322;
     border-radius: 12px;
     background: white;
@@ -508,7 +508,7 @@ a:active {
 
 .red-btn3 {
     background: #a72322;
-    width: 15vh;
+    width: fit-content;
     height: fit-content;
     border-radius: 12px;
     padding: 1.5%;
