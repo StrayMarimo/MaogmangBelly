@@ -48,7 +48,7 @@
             <div>
                 Grand Total : {{$order['grand_total']}}
             </div>
-            <form class="ml-3" action="/buy" method="POST">
+            <form class="ml-3" action="/buy" method="POST" id="checkoutConfirmForm">
                 @csrf
                 <input type="hidden" name="order_id" value="{{$order['id']}}">
                 <br>Delivery type:
@@ -73,10 +73,9 @@
                         <div id="map" style="width: 88vw;" class="mb-2"></div>
                     </div>
             </div>
-                    <div>
-                        <button class="btn btn-success mt-3">Buy Now!</button>
-                    </div>
-
+                    <button class="btn btn-primary" id="confirmCheckoutBtn">
+                        Buy Now!
+                    </button>
             </form>
             <form action="/cancel_all_orders" method="POST">
                 @csrf
@@ -87,3 +86,4 @@
     </div>
 </div>
 @endsection
+@include('layouts.checkout.checkout_confirm')

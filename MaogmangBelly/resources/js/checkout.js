@@ -1,5 +1,17 @@
 // Wait for the document to finish loading before executing this code
 $(document).ready(function () {
+    // Handle clicks on the Confirmation button
+    $('#confirmCheckoutBtn').on('click', function (e) {
+        e.preventDefault();
+        $('#confirmCheckout').modal('show');
+    });
+
+    // Handle clicks on Confirmed Modal button
+    $('#ConfirmCheckout').on('click', function (e) {
+        e.preventDefault();
+        $('#checkoutConfirmForm').submit();
+    });
+
     // Handle clicks on the "Pickup" radio button
     $('input:radio[name=forPickUp]').click(function () {
         // Hide the address picker and make the "Address" field not required
