@@ -5,15 +5,13 @@
     @if(session('success'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         {{session('message')}}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+        <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
         </button>
     </div>
     @elseif(session('failed'))
    <div class="alert alert-danger alert-dismissible fade show" role="alert">
         {{session('message')}}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+        <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
         </button>
     </div>
     @endif
@@ -25,7 +23,7 @@
         <!-- Include featured products layout -->
         @include('layouts.products.featured_products')
     </div>
-    <div style="height: 120vh" class="green-sec mb-3">
+    <div style="height: 50rem" class="green-sec mb-3">
         <!-- Include trending products layout -->
         @include('layouts.products.trending_products')
     </div>

@@ -26,7 +26,6 @@
                 </div>
                 <!-- Input for product description -->
                 <textarea class="contact-box-3 form-control my-2 mb-3" name="product_desc" placeholder="Description" rows="4"></textarea>
-                <!-- Description: <textarea rows="4" cols="50" placeholder="description..." name="product_desc" required></textarea> <br /> -->
                 <!-- Input for product price -->
                 <div class="form-box form-floating mb-3 col-md-auto">
                     <input id="product_price" type="number"
@@ -139,8 +138,8 @@
                 </div>
                 <!-- Input for product description -->
                 <div class="form-box form-floating mb-3 col-md-auto">
-                    <textarea rows="4" cols="50" id="description" name="product_desc" class="form-control @error('product_desc') is-invalid @enderror"
-                        required>{{ old('product_desc') }}</textarea>
+                    <textarea rows="4" cols="50" id="description" name="product_desc" class="boxbox pt-5 form-control @error('product_desc') is-invalid @enderror"
+                        required style="height:fit-content">{{ old('product_desc') }}</textarea>
                     <label for="floatingTextarea">Description</label>
                 </div>
                 <!-- Input for product price -->

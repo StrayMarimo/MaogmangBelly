@@ -82,7 +82,7 @@ class CheckoutController extends Controller
         if ($order['order_type'] == 'C' || $order['order_type'] == 'R')
             $delivery_type = 'D';
         // Update the order information in the database.
-        DB::table("orders")
+        $rowsAffected = DB::table("orders")
             ->where('id', $order['id'])
             ->update([
                 'is_purchased' => true,
@@ -93,8 +93,20 @@ class CheckoutController extends Controller
                 'comment' => $req->comment,
             ]);
 
-        // Return a message indicating that the order has been successfully purchased.
-        return "Successfully bought order with id " . strval($order['id']);
+            
+        if ($rowsAffected > 0) {
+            return redirect()->route('products')->with([
+                'status' => 200,
+                'message' => "Successfully bought order with id " . strval($order['id']),
+                'success' => true
+            ]);
+        } else {
+            return redirect()->route('products')->with([
+                'status' => 404,
+                'message' => "Failed buying order with id " . strval($order['id']),
+                'success' => false
+            ]);
+        }
     }
 
     function getOrderLinesCount(Request $req)

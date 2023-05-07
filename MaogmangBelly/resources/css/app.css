@@ -320,7 +320,7 @@ img.slider-img {
 }
 
 .boxbox {
-    width: 48vh;
+    width: 100%;
     border: 2px solid #a72322;
     border-radius: 12px;
     background: white;
@@ -508,7 +508,7 @@ a:active {
 
 .red-btn3 {
     background: #a72322;
-    width: 15vh;
+    width: fit-content;
     height: fit-content;
     border-radius: 12px;
     padding: 1.5%;
@@ -605,7 +605,25 @@ a:active {
     background-color: transparent
 }
 
+
 #searchCard:hover, #searchCard:focus{
      color:  #1e1e1e;
      opacity: 0.85;
+}
+
+.table-hover tbody tr:hover td {
+    background-color: #c1272d;
+    color: white;
+    opacity: 0.80;
+}
+
+.table-hover tr:hover th {
+  background-color: inherit;
+  color: inherit;
+}
+
+td div,
+td form {
+  display: inline-block;
+  vertical-align: middle;
 }
