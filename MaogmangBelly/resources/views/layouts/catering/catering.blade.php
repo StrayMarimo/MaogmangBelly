@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('content')
-<div style="height: 120vh; background-image: url({{Vite::image('catering_bg.jpg')}})"" class="text-light-2">
-    <div class="border1">
-        <h1 class="tagline">Fresh Flavors, <br>
+<div style="height: 120vh; background-image: url({{Vite::image('catering_bg.png')}})" class="text-light-2">
+    <div class="border1 text-white">
+        <h1 class="tagline" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5">Fresh Flavors, <br>
             Creative Catering</h1> <br>
-        <h3 class="subtitle">
+        <h3 class="subtitle" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do <br>
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
         </h3>

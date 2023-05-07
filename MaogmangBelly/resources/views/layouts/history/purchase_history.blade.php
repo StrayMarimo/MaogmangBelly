@@ -1,21 +1,20 @@
 @extends('layouts.app')
 @section('content')
 @if(session('success'))
-<div class="alert alert-success alert-dismissible fade show" role="alert">
+<div class="alert alert-success alert-dismissible fade show mx-4" role="alert">
     {{session('message')}}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
+    <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
     </button>
 </div>
 @elseif(session('failed'))
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
     {{session('message')}}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
 @endif
-<table>
+<table class="mx-4">
     <tr>
         <th>Order Type</th>
         <th>Order Id</th>
