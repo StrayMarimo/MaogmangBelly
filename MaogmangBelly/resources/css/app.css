@@ -605,3 +605,7 @@ a:active {
     background-color: transparent
 }
 
+#searchCard:hover, #searchCard:focus{
+     color:  #1e1e1e;
+     opacity: 0.85;
+}
