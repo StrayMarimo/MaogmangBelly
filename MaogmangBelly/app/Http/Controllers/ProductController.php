@@ -132,13 +132,17 @@ class ProductController extends Controller
         // Save the new product to the database
         $product->save();
         if ($product)
-            return response()->json(['success' => true]);
+            return redirect()->route('products')->with([
+                'status' => 200,
+                'message' => 'Product Added Successfully',
+                'success' => true
+            ]);
         else
-            return response()->json([
-                'success' => false,
-                'message' => 'Failed to add product',
-                'status' => 'error'
-            ], 400);
+            return redirect()->route('products')->with([
+                'status' => 404,
+                'message' => 'Adding Product failed',
+                'success' => false
+            ]);
     }
 
     function deleteProduct(Request $req)
