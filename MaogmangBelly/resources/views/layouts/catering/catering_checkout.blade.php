@@ -72,7 +72,7 @@
                         <input id="date" name="date" class="form-control" type="datetime-local" />
                     </div>
                     <div id="invalidFoodQuantity" class="text-danger"></div>
-                    <button class="btn btn-success mt-3" id=checkoutCateringBtn data-order-id={{$order['id']}} >Buy Now!</button>
+                    <button class="btn btn-success mt-3" id="confirmBtn">Buy Now!</button>
                 </form>
                 <form action="/cancel_all_orders" method="POST">
                     @csrf
@@ -90,4 +90,5 @@
         </div>
     </div>
 </div>
+@include('layouts.catering.catering_confirm')
 <x-toaster />

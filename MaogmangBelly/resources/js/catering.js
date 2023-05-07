@@ -1,4 +1,10 @@
 $(document).ready(function () {
+    // Handle clicks on the Confirmation button
+    $('#confirmBtn').on('click', function (e) {
+        e.preventDefault();
+        $('#confirmCheckoutCatering').modal('show');
+    });
+
     $('#minRequiredToast button').on('click', function(){
          $('#minRequiredToast').hide();
     }); 
