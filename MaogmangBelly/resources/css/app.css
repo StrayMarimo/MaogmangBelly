@@ -605,3 +605,18 @@ a:active {
     background-color: transparent
 }
 
+.table-hover tbody tr:hover td {
+    background-color: #c1272d;
+    color: white;
+    opacity: 0.80;
+}
+
+.table-hover tr:hover th {
+  background-color: inherit;
+  color: inherit;
+}
+td div,
+td form {
+  display: inline-block;
+  vertical-align: middle; /* optional */
+}
