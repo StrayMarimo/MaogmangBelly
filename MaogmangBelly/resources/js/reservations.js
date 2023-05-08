@@ -23,6 +23,7 @@ $(document).ready(function () {
 
 
     $('#checkoutReservationBtn').on('click', function (e) {
+
         let order_id = $(this).data('order-id');
          e.preventDefault();
         $.ajax({
@@ -35,6 +36,7 @@ $(document).ready(function () {
                 if (response >= 5) {
                     $('#checkoutReservationForm').submit();
                 } else {
+                     $('#confirmReservation').modal('hide');
                     $('#minRequiredToast .toast-body').text(
                         'You should have at least 5 menu items'
                     );

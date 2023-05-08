@@ -30,9 +30,6 @@
     <div>
         <!-- Products section title -->
         <h1 class="mb-3 mt-5 tag2" style="font-family: lexend">Our Products</h1>
-        @if($isAdmin)
-        <a href=""><i class="bs bi-gear">Settings</i></a>
-        @endif
         <!-- Include category tabs layout -->
         @include('layouts.products.category_tabs')
     </div>

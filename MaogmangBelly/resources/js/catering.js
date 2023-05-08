@@ -1,6 +1,6 @@
 $(document).ready(function () {
     // Handle clicks on the Confirmation button
-    $('#confirmBtn').on('click', function (e) {
+    $('#buyCateringBtn').on('click', function (e) {
         e.preventDefault();
         $('#confirmCheckoutCatering').modal('show');
     });
@@ -24,7 +24,7 @@ $(document).ready(function () {
     });
 
     $('#checkoutCateringBtn').on('click', function (e) {
-
+        console.log('shdjka');
         e.preventDefault();
         let order_id = $(this).data('order-id');
         $.ajax({
@@ -40,11 +40,13 @@ $(document).ready(function () {
                 }
                 else 
                 { 
+                     $('#confirmCheckoutCatering').modal('hide');
                     $('#minRequiredToast .toast-body').text(
                         'You should have at least 10 menu items'
                     );
                     $('#minRequiredToast small').text('Reservations');
                     $('#minRequiredToast').show();
+
                 }
             },
             error: function (xhr) {

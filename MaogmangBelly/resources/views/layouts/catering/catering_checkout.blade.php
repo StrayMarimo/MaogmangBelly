@@ -18,7 +18,6 @@
                         <th></th>
                     </tr>
                     @foreach ($orders as $item)
-                    @include('layouts.catering.catering_confirm')
                     @if($item['quantity'] > 0)
                     <tr>
                         <td>{{$item['product_name']}}</td>
@@ -55,7 +54,7 @@
                 <div>
                     Grand Total : {{$order['grand_total']}}
                 </div>
-
+                @include('layouts.catering.catering_confirm')
                 <form action="/buy" method="POST" id="checkoutCateringForm">
                     @csrf
                     <input type="hidden" name="order_id" value="{{$order['id']}}">
@@ -73,7 +72,7 @@
                         <input id="date" name="date" class="form-control" type="datetime-local" />
                     </div>
                     <div id="invalidFoodQuantity" class="text-danger"></div>
-                    <button class="btn btn-success mt-3" id="confirmBtn">Buy Now!</button>
+                    <button class="btn btn-success mt-3" id="buyCateringBtn">Buy Now!</button>
                 </form>
                 <form action="/cancel_all_orders" method="POST">
                     @csrf

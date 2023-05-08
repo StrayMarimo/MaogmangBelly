@@ -5,6 +5,11 @@ $(document).ready(function () {
         $(this).tab('show');
     });
 
+    $('#showSettingsBtn').on('click', function(e){
+        e.preventDefault();
+        $('#settingsModal').modal('show');
+    })
+
     $('#addToOrder').on('click', function (e) {
         e.preventDefault();
         $('#orderType').val('O');
@@ -13,24 +18,28 @@ $(document).ready(function () {
 
     // Handle clicks on the add category nav item
     $('#addCategory').on('click', function (e) {
+       $('#settingsModal').modal('hide'); 
         e.preventDefault();
         $('#addCategoryModal').modal('show');
     });
 
     // Handle clicks on the delete category nav item
     $('#deleteCategory').on('click', function (e) {
+        $('#settingsModal').modal('hide'); 
         e.preventDefault();
         $('#deleteCategoryModal').modal('show');
     });
 
     // Handle clicks on the add product nav item
     $('#addProduct').on('click', function (e) {
+        $('#settingsModal').modal('hide'); 
         e.preventDefault();
         $('#addProductModal').modal('show');
     });
 
     // Handle clicks on the edit category nav item
     $('#editCategory').on('click', function (e) {
+       $('#settingsModal').modal('hide');  
         e.preventDefault();
         $('#editCategoryModal').modal('show');
     });
@@ -189,5 +198,6 @@ $(document).ready(function () {
 
     setTimeout(function () {
         $('.alert').fadeOut(500);
+        $('.toaster').fadeOut(500);
     }, 5000);
 });
