@@ -1,5 +1,5 @@
 <div id="checkoutCatering"></div>
-<div style="height: fit-content; padding-bottom: 20vh"" class="green-sec">
+<div style="height: fit-content; padding-bottom: 20vh"" class=" green-sec">
     <div class="card" id="reservecard" style="color:white; font-family: 'Lexend';">
         <div class="text-center" id="checkout_catering">
             <h1 class="contact-title" style="color: white">Catering</h1>
@@ -39,7 +39,7 @@
                                 @csrf
                                 <input type="hidden" name="order_type" value="C">
                                 <input type="hidden" name="order_line_id" value="{{$item['id']}}">
-                                <button type="submit">
+                                <button type="submit" class="btn text-white">
                                     <i class="bs bi-trash-fill" id="delete-order-line"></i>
                                 </button>
                             </form>
@@ -61,13 +61,15 @@
                     <h5 class="mt-3 mb-2" style="color: white; font-family: 'Lexend';">Address: </h5>
                     <div class="mt-2 mb-2i">
                         <div class="mapView mb-3" id="mapView">
-                            <textarea type="text" name="address" id="address" rows=2
-                                style="width:88vw; font-family: 'Franklin Gothic Medium';"
-                                placeholder="Pin your location in the map..." required></textarea>
+                            <div id="checkoutAddress">
+                                <textarea type="text" name="address" id="address" rows=2
+                                    style="width:88vw; font-family: 'Franklin Gothic Medium';"
+                                    placeholder="Pin your location in the map..." required></textarea>
+                            </div>
                             <div id="map" style="width: 88vw;"></div>
                         </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-6" id="cateringDate">
                         <label for="date">Date and Time of Catering Service</label>
                         <input id="date" name="date" class="form-control" type="datetime-local" />
                     </div>
@@ -80,16 +82,17 @@
                 </form>
             </div>
             @else
-                <h5 class="mt-5 mb-2 text-center" style="color: white; font-family: 'Lexend';">You have not availed products for catering yet.
-                </h5>
-                <div style="margin-top: 10vh; margin-bottom: 5vh" class="d-flex justify-content-center">
-                    <a href="{{route('products')}}" class="btn btn-danger px-4 py-2">Avail products</a>
-                </div>
+            <h5 class="mt-5 mb-2 text-center" style="color: white; font-family: 'Lexend';">You have not availed products
+                for catering yet.
+            </h5>
+            <div style="margin-top: 10vh; margin-bottom: 5vh" class="d-flex justify-content-center">
+                <a href="{{route('products')}}" class="btn btn-danger px-4 py-2">Avail products</a>
+            </div>
             @endif
 
         </div>
     </div>
-   
+
 </div>
 
 <x-toaster />

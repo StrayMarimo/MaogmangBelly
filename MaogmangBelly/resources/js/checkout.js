@@ -2,8 +2,16 @@
 $(document).ready(function () {
     // Handle clicks on the Confirmation button
     $('#buyOrderBtn').on('click', function (e) {
-        e.preventDefault();
-        $('#confirmCheckout').modal('show');
+        if ($('#orderAddress #address').prop('required') === false || $('#orderAddress #address').val().trim() !== '') {
+            $('#confirmCheckout').modal('show');
+            e.preventDefault();
+        } else {
+             $('#minRequiredToast .toast-body').text('Address is required');
+             $('#minRequiredToast small').text('Reservations');
+             $('#minRequiredToast').show();
+             $('#minRequiredToast').delay(2000).fadeOut('slow');
+        }
+       
     });
 
     // Handle clicks on Confirmed Modal button
