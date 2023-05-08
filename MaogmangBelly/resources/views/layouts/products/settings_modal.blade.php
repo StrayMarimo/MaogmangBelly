@@ -9,16 +9,16 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="row mx-auto my-2" style="min-width: fit-content; max-width: 10vw">
+                <div class="row mx-auto my-2" style="max-width: 15vw">
                     <button class="btn btn-primary max-width: 30%" href="#" id="addCategory">Add Category</button>
                 </div>
-                <div class="row mx-auto my-2" style="min-width: fit-content; max-width: 10vw">
+                <div class="row mx-auto my-2" style="max-width: 15vw">
                     <button class="btn btn-primary" href="#" id="editCategory">Edit Category</button>
                 </div>
-                <div class="row mx-auto my-2" style="min-width: fit-content; max-width: 10vw">
+                <div class="row mx-auto my-2" style="max-width: 15vw">
                     <button class="btn btn-primary" href="#" id="deleteCategory">Delete Category</button>
                 </div>
-                <div class="row mx-auto my-2" style="min-width: fit-content; max-width: 10vw">
+                <div class="row mx-auto my-2" style="max-width: 15vw">
                     <button class="btn btn-primary" href="#" id="addProduct">Add More Products</button>
                 </div>
             </div>
