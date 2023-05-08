@@ -32,6 +32,10 @@ img.slider-img {
 
 .search-box {
     width: 250px !important;
+    border-top: white;
+    border-left: white;
+    border-right: white;
+    color: white !important;
 }
 
 .category-tabs {
