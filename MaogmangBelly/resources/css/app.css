@@ -655,3 +655,59 @@ td form {
   display: inline-block;
   vertical-align: middle;
 }
+
+/* Purchase history css */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: center;
+    padding: 10px;
+}
+
+.alert {
+    margin-top: 20px;
+    position: relative;
+}
+
+.alert button {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.orderHistoryBtn {
+    margin-top: 10px;
+}
+
+.collapse {
+    margin-top: 10px;
+}
+
+.carousel-item{
+    height: 500px;
+}
+
+.carousel-item img{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.brightness {
+    filter: brightness(85%);
+    background-image: radial-gradient(transparent 50%, black)
+}
+
+#cardph table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#cardph th, #cardph td {
+    text-align: center;
+    padding: 5px;
+}

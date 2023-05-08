@@ -3,8 +3,6 @@
 <div style="max-width: 100vw;">
   <a href="/" style="font-family: lexend; margin-left: 30px; margin-bottom: 50px">Go Back</a>
   <h4 class="mb-3 mt-2 tag2" style="font-family: lexend">Result for Products</h4>
-  <div class="col-sm-12 mx-2">
-
       @foreach($products->chunk(3) as $chunk)
       <div class="row" style="max-width: 100vw;">
         @foreach($chunk as $item)
@@ -25,7 +23,7 @@
       </div>
       @endforeach
   
-  </div>
+  
 </div>
 
 @endsection

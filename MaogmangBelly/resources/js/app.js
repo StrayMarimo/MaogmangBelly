@@ -9,3 +9,7 @@ import './map.js';
 
 
 import.meta.glob(['../images/**']);
+
+$(document).ready(function(){
+    $(window).scrollTop(0);
+})

@@ -50,7 +50,7 @@
         <td>
             <form action="{{route('complete_order')}}" method="POST">
                 @csrf
-                <input type="hidden" name="order_id" value={{$order['id']}}>
+                <input type="hidden" name="order_id" value="{{$order['id']}}">
                 <button type="submit" class="btn btn-danger px-4 py-2">Set Order as Completed</a>
             </form>
 
@@ -58,14 +58,14 @@
         @endif
         <td>
             <button class="orderHistoryBtn btn btn-primary" type="button" data-toggle="collapse"
-                data-target="#orderHistory{{$order['id']}}" aria-expanded="false" data-order-id={{$order['id']}}
+                data-target="#orderHistory{{$order['id']}}" aria-expanded="false" data-order-id="{{$order['id']}}"
                 aria-controls="orderHistory{{$order['id']}}"> Show more
             </button>
         </td>
        <tr>
             <td colspan="8">
                 <div class="collapse" id="orderHistory{{$order['id']}}">
-                    <div class="card card-body">
+                    <div class="card card-body" id="cardph">
                        <table>
                             <tr>
                                 <th>Product</th>
