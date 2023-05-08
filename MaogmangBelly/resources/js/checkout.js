@@ -1,7 +1,7 @@
 // Wait for the document to finish loading before executing this code
 $(document).ready(function () {
     // Handle clicks on the Confirmation button
-    $('#confirmCheckoutBtn').on('click', function (e) {
+    $('#buyOrderBtn').on('click', function (e) {
         e.preventDefault();
         $('#confirmCheckout').modal('show');
     });

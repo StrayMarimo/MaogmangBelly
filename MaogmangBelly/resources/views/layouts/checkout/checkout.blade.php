@@ -98,7 +98,7 @@
 
                     </div>
                 </div>
-                <button class="btn btn-primary w-100 mt-3" id="buyCateringBtn">
+                <button class="btn btn-primary w-100 mt-3" id="buyOrderBtn">
                     Buy Now!
                 </button>
             </form>
