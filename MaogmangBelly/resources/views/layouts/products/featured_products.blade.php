@@ -42,15 +42,15 @@
     </div>
 </div> -->
 
-<div id="carouselExampleCaptions" class="carousel h-150 slide" data-bs-ride="false">
-    <div id="product-showcase" class="carousel-inner">
+<div id="carouselExampleCaptions" class="custom-product carousel h-150 slide" data-bs-ride="false">
+    <div id="product-showcase" class="carousel slide">
         <div class="carousel-inner">
             @foreach ($featured_products as $item)
             <div class="carousel-item {{$loop->index == 1 ? 'active' : ''}}">
                 <a href="{{ route('product_details', ['id' => $item['id']]) }}">
                     <img class="d-block w-100 brightness" src="{{ url('/assets/product_assets/'.$item['gallery']) }}"
                         class="d-block w-100">
-                    <div class="carousel-caption d-none d-md-block slider-text">
+                    <div class="carousel-caption d-none d-md-block slider-text" id="carouselCaption">
                         <h1 style="font-family: 'Lexend';">{{$item['name']}}</h1>
                         <p class="cap1 mb-2">{{$item['description']}}</p>
                     </div>
@@ -84,4 +84,3 @@
             });
         </script>        
     </div>
-</div>

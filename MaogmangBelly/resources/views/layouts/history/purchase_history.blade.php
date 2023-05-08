@@ -14,7 +14,7 @@
     </button>
 </div>
 @endif
-<table class="mx-4">
+<table class="mx-auto">
     <tr>
         <th>Order Type</th>
         <th>Order Id</th>
@@ -42,9 +42,9 @@
         <td>For Delivery</td>
         @endif
         @if($order['date_completed'] != null)
-        <td>Completed</td>
+        <td style="color:green;">Completed</td>
         @else
-        <td>Ongoing</td>
+        <td style="color:yellow;">Ongoing</td>
         @endif
         @if($isAdmin && $order['date_completed'] == null )
         <td>
@@ -84,6 +84,7 @@
                        </table>
                     </div>
                 </div>
+                <hr>
             </td>
         </tr>
     </tr>
