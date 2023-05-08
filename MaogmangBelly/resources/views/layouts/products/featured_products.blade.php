@@ -28,14 +28,14 @@
             $(document).ready(function() {
                 var intervalId = setInterval(function() {
                     $('#nextBtn').click();
-                }, 5000);
+                }, 4000);
 
                 // When the user clicks on the previous button, reset the timer
                 $('.carousel-control-prev').click(function() {
                     clearInterval(intervalId);
                     intervalId = setInterval(function() {
                         $('#nextBtn').click();
-                    }, 5000);
+                    }, 4000);
                 });
             });
         </script>
