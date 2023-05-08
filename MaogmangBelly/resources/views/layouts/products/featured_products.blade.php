@@ -19,10 +19,26 @@
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next mx-5" type="button" data-bs-target="#product-showcase"
+        <button id="nextBtn" class="carousel-control-next mx-5" type="button" data-bs-target="#product-showcase"
             data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
+        <script>
+            $(document).ready(function() {
+                var intervalId = setInterval(function() {
+                    $('#nextBtn').click();
+                }, 5000);
+
+                // When the user clicks on the previous button, reset the timer
+                $('.carousel-control-prev').click(function() {
+                    clearInterval(intervalId);
+                    intervalId = setInterval(function() {
+                        $('#nextBtn').click();
+                    }, 5000);
+                });
+            });
+        </script>
     </div>
 </div>
+
