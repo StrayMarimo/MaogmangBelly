@@ -17,6 +17,7 @@ $(document).ready(function () {
             $('#minRequiredToast .toast-body').text( 'Quantity must be at least 50');
             $('#minRequiredToast small').text('Catering');   
             $('#minRequiredToast').show();
+             $('#minRequiredToast').delay(2000).fadeOut('slow');
         } else {
             $('#orderType').val('C');
             $('#availProductForm').submit();
@@ -46,6 +47,7 @@ $(document).ready(function () {
                     );
                     $('#minRequiredToast small').text('Reservations');
                     $('#minRequiredToast').show();
+                     $('#minRequiredToast').delay(2000).fadeOut('slow');
 
                 }
             },
