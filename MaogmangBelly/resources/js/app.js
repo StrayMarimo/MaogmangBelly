@@ -12,4 +12,12 @@ import.meta.glob(['../images/**']);
 
 $(document).ready(function(){
     $(window).scrollTop(0);
+     var minDate = new Date();
+     minDate.setDate(minDate.getDate() + 5); // add 5 days to today's date
+
+     // format the minimum date as YYYY-MM-DDTHH:MM
+     var minDateFormatted = minDate.toISOString().slice(0, 16);
+
+     // set the minimum date for the datetime input field
+     $('#date').attr('min', minDateFormatted);
 })

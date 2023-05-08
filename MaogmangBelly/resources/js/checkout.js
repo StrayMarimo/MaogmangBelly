@@ -6,7 +6,6 @@ $(document).ready(function () {
             $('#confirmCheckout').modal('show');
             e.preventDefault();
         } else {
-             console.log('aaaa');
              $('#minRequiredToast .toast-body').text('Address is required');
              $('#minRequiredToast small').text('Reservations');
              $('#minRequiredToast').show();
