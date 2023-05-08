@@ -37,7 +37,7 @@
                         <div style="height: 4rem">
                             <h5 class="card-title">{{$product['product_name']}}</h5>
                         </div>
-                    
+
                         <p class="card-text">
                             <b> Product Price: </b> ₱{{$product['price']}}.00 <br>
                             <b> Total Price: </b> ₱{{$product['total_price']}}.00
@@ -66,6 +66,7 @@
         </div>
         @endif
         @if($hasOrder)
+        @include('layouts.reservations.reservation_confirm')
         <form action="/buy" method="POST" id="checkoutReservationForm">
             @csrf
             <input type="hidden" name="order_id" value="{{$order['id']}}">
@@ -89,7 +90,8 @@
                 <h3 class="mt-3 mb-2" style="color: white; font-family: 'Lexend';">Total: ₱{{$order['grand_total']}}.00
                 </h3>
                 <div class="mt-3 mb-2 row d-flex justify-content-center">
-                <button class="contact-red btn" id="confirmReservationBtn" style="border: 2px solid #A72322; color: white; font-family: 'Lexend';">Buy Now</button>
+                    <button class="contact-red btn" id="confirmReservationBtn"
+                        style="border: 2px solid #A72322; color: white; font-family: 'Lexend';">Buy Now</button>
                 </div>
             </div>
         </form>
@@ -97,7 +99,7 @@
     </div>
 </div>
 <x-toaster />
-@include('layouts.reservations.reservation_confirm')
+
 @endsection
 @section('javascript')
 <script>
