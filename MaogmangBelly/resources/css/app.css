@@ -631,8 +631,11 @@ td form {
 /* Purchase history css */
 
 table {
-    width: 100%;
+    width: 90%;
+    max-width: 90%;
     border-collapse: collapse;
+    overflow-x: auto;
+    margin-left: 20px;
 }
 
 th, td {
@@ -640,15 +643,21 @@ th, td {
     padding: 10px;
 }
 
+th {
+    background-color: #f2f2f2;
+}
+
 .alert {
     margin-top: 20px;
     position: relative;
+    border: 1px solid #ccc;
 }
 
 .alert button {
     position: absolute;
     top: 0;
     right: 0;
+    padding: 0.5rem 1rem;
 }
 
 .orderHistoryBtn {
@@ -673,7 +682,6 @@ th, td {
     filter: brightness(85%);
     background-image: radial-gradient(transparent 50%, black)
 }
-
 #cardph table {
     width: 100%;
     border-collapse: collapse;
@@ -683,3 +691,4 @@ th, td {
     text-align: center;
     padding: 5px;
 }
+

@@ -1,5 +1,7 @@
 <div class="trending-warapper">
-    <h3 class="mb-5 tag2" style="font-family: lexend">Trending Products</h3>
+    <h3 class="mb-3 tag2" style="font-family: lexend">TRENDING PRODUCTS</h3>
+    <p class="cap1 mb-5"> Taste the latest food trends with our featured products - innovative, delicious, <br> 
+        and guaranteed to elevate your dining experience to the next level!</p>
     @foreach ($trending_products as $item)
     <div class="trending-item col-3">
         <a href="{{ route('product_details', ['id' => $item['id']]) }}" style="font-family: lexend; color: white">
