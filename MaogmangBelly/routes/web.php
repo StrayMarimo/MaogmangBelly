@@ -5,13 +5,11 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Auth\GoogleSocialiteController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\CateringController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MapController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\ReservationController;
 
 /*
 |--------------------------------------------------------------------------
