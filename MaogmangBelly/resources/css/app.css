@@ -31,7 +31,7 @@ img.slider-img {
 }
 
 .search-box {
-    width: 500px !important;
+    width: 250px !important;
 }
 
 .category-tabs {
@@ -42,6 +42,10 @@ img.slider-img {
 
 .navbar-nav {
     align-items: center;
+}
+
+.navbar-brand{
+    position: relative;
 }
 
 .navbar-brand img {
@@ -62,6 +66,10 @@ img.slider-img {
     border-bottom: #c1272d solid 3px;
     margin-right: 50px;
     margin-left: 50px;
+}
+
+.nav-item{
+    position: relative;
 }
 
 .nav-item .active {
@@ -207,12 +215,32 @@ img.slider-img {
 }
 .nav-item.login, .nav-item.dropdown.login {
     position: absolute;
-    left: 85%;
+    left: 90%;
     right: 0%;
     top: 0%;
     bottom: 0%;
 
     font-family: 'Franklin Gothic Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 17px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+
+    color: #ffffff;
+}
+
+.nav-item.search{
+    position: absolute;
+    left: 5%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+
+    font-family: 'Lexend';
     font-style: normal;
     font-weight: 400;
     font-size: 15px;

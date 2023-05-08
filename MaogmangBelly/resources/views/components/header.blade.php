@@ -5,6 +5,12 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav  mx-auto">
+      <li class="nav-item search">
+        <form class="d-flex justify-content-end" action="{{ route('search') }}" role="search" id="form-search">
+          <input class="form-control me-2 search-box border border-white" type="text" name="query" placeholder="Search" aria-label="Search">
+          <button class="btn btn-danger" type="submit" >Search</button>
+        </form>
+      </li>
       <li class="nav-item">
         <a class="nav-link {{request()->is('/products') ? 'active' : ''}}" href="{{route('products')}}">
           <p class="{{request()->is('products') ? 'active' : ''}}">PRODUCTS</p>

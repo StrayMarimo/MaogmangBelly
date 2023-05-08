@@ -15,10 +15,6 @@
         </button>
     </div>
     @endif
-    <form class="d-flex justify-content-end mb-5 mr-3" action="{{ route('search') }}" role="search" id="form-search">
-        <input class="form-control me-2 search-box" type="text" name="query" placeholder="Search" aria-label="Search">
-        <button class="btn btn-danger" type="submit" >Search</button>
-    </form>
     <div class="row d-flex justify-content-center m-3">
         <!-- Include featured products layout -->
         @include('layouts.products.featured_products')
