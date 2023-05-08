@@ -1,5 +1,5 @@
 <!-- Add Category Modal -->
-<div class="modal fade" id="addCategoryModal" tabindex="-1" aria-labelledby="addCategoryModalLabel" aria-hidden="true" style="font-family:'Franklin Gothic Medium';">
+<div class="modal fade" id="addCategoryModal" tabindex="-1" aria-labelledby="addCategoryModalLabel" aria-hidden="true" style="font-family:'Lexend';">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
