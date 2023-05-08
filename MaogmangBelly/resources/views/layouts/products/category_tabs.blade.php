@@ -3,17 +3,16 @@
         <!-- Navbar items -->
         <div class="collapse navbar-collapse" id="navbarNav">
             <!-- Tabs -->
-            <ul class="nav nav-tabs me-auto">
+            <ul class="nav nav-tabs me-auto" style="margin-left: 4vw">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#all-products" data-bs-toggle="tab">All Products</a>
+                    <a class="nav-link active" href="#all-products" data-bs-toggle="tab" style="font-family: Lexend; color: black">All Products</a>
                 </li>
                 @foreach ($categories as $category)
                 <li class="nav-item">
-                    <a class="nav-link text-capitalize" data-bs-toggle="tab" href="#category-{{ $category->id }}">{{
+                    <a class="nav-link text-capitalize" data-bs-toggle="tab" href="#category-{{ $category->id }}" style="font-family: Lexend; color: black">{{
                         $category->name }}</a>
                 </li>
                 @endforeach
-
             </ul>
             <!-- Dropdown tab -->
             @if($isAdmin)
