@@ -91,10 +91,13 @@
                 <div id="addressPicker">
                     <h5 class="mt-3 mb-2" style="color: white; font-family: 'Lexend';">Address: </h5>
                     <div class=" mapView mt-3 mb-2" id="mapView">
-                        <textarea class="p-3 w-100" name="address" id="address" rows=2
-                            style="width:88vw; font-family: 'Franklin Gothic Medium';"
-                            placeholder="Pin your location in the map..." required></textarea>
-                        <div id="map" class="mb-2 w-100"></div>
+                        <div id="orderAddress">
+                            <textarea class="p-3 w-100" name="address" id="address" rows=2
+                                style="width:88vw; font-family: 'Franklin Gothic Medium';" placeholder="Pin your location in the map..."
+                                required></textarea>
+                            <div id="map" class="mb-2 w-100"></div>
+                        </div>
+                       
 
                     </div>
                 </div>
@@ -105,6 +108,7 @@
         </div>
     </div>
 </div>
-</div>
+
 @include('layouts.checkout.checkout_confirm')
+<x-toaster />
 @endsection

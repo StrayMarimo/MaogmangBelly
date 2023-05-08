@@ -1,8 +1,16 @@
 $(document).ready(function () {
     // Handle clicks on the Confirmation button
     $('#confirmReservationBtn').on('click', function (e) {
+        if ($('#reservationAddress #address').val().trim() !== '' && $('#reservationDate #date').val() !== ''){
+            $('#confirmReservation').modal('show');
+        } else {
+              $('#minRequiredToast .toast-body').text('Address and Date are required');
+              $('#minRequiredToast small').text('Reservations');
+              $('#minRequiredToast').show();
+              $('#minRequiredToast').delay(2000).fadeOut('slow');
+        }
         e.preventDefault();
-        $('#confirmReservation').modal('show');
+       
     });
 
     $('#addToReservations').on('click', function (e) {
@@ -14,6 +22,7 @@ $(document).ready(function () {
             $('#minRequiredToast .toast-body').text('Quantity must be at least 10');
             $('#minRequiredToast small').text('Reservations');
             $('#minRequiredToast').show();
+             $('#minRequiredToast').delay(2000).fadeOut('slow');
         } else {
             $('#invalidQty').text('');
             $('#orderType').val('R');
@@ -42,6 +51,7 @@ $(document).ready(function () {
                     );
                     $('#minRequiredToast small').text('Reservations');
                     $('#minRequiredToast').show();
+                     $('#minRequiredToast').delay(2000).fadeOut('slow');
                 }
             },
             error: function (xhr) {

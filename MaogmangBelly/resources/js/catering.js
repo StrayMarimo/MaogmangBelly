@@ -1,8 +1,15 @@
 $(document).ready(function () {
     // Handle clicks on the Confirmation button
     $('#buyCateringBtn').on('click', function (e) {
+         if ($('#checkoutAddress #address').val().trim() !== '' && $('#cateringDate #date').val() !== ''){
+            $('#confirmCheckoutCatering').modal('show'); 
+        } else {
+              $('#minRequiredToast .toast-body').text('Address and Date are required');
+              $('#minRequiredToast small').text('Catering');
+              $('#minRequiredToast').show();
+              $('#minRequiredToast').delay(2000).fadeOut('slow');
+        }
         e.preventDefault();
-        $('#confirmCheckoutCatering').modal('show');
     });
 
     $('#minRequiredToast button').on('click', function(){
@@ -17,6 +24,7 @@ $(document).ready(function () {
             $('#minRequiredToast .toast-body').text( 'Quantity must be at least 50');
             $('#minRequiredToast small').text('Catering');   
             $('#minRequiredToast').show();
+            $('#minRequiredToast').delay(2000).fadeOut('slow');
         } else {
             $('#orderType').val('C');
             $('#availProductForm').submit();
@@ -24,7 +32,6 @@ $(document).ready(function () {
     });
 
     $('#checkoutCateringBtn').on('click', function (e) {
-        console.log('shdjka');
         e.preventDefault();
         let order_id = $(this).data('order-id');
         $.ajax({
@@ -46,6 +53,7 @@ $(document).ready(function () {
                     );
                     $('#minRequiredToast small').text('Reservations');
                     $('#minRequiredToast').show();
+                     $('#minRequiredToast').delay(2000).fadeOut('slow');
 
                 }
             },

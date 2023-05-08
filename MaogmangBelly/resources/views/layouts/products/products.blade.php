@@ -15,17 +15,27 @@
         </button>
     </div>
     @endif
+
     <div class="row d-flex justify-content-center m-3">
+
+    <div class="mb-5 mt-5">
+        <h1 class="mb-3 mt-5 tag2" style="font-family: lexend">FEATURED PRODUCTS</h1>
+        <p class="cap1 mb-4" style="color: black"> Indulge in the flavors of our featured food products - each one a culinary masterpiece <br> 
+        that will leave your taste buds begging for more! </p>
+
         <!-- Include featured products layout -->
         @include('layouts.products.featured_products')
     </div>
-    <div style="height: 50rem" class="green-sec mb-3">
+    <br>
+    <div style="height: 60rem" class="green-sec mb-3">
         <!-- Include trending products layout -->
         @include('layouts.products.trending_products')
     </div>
     <div>
         <!-- Products section title -->
-        <h1 class="mb-3 mt-5 tag2" style="font-family: lexend">Our Products</h1>
+        <h1 class="mb-3 mt-5 tag2" style="font-family: lexend">OUR PRODUCTS</h1>
+        <p class="cap1 mb-4" style="color: black"> From classic favorites to exciting new flavors, our selection of food products will tantalize your taste buds <br> 
+        and satisfy your cravings. Discover your next culinary adventure today!
         <!-- Include category tabs layout -->
         @include('layouts.products.category_tabs')
     </div>

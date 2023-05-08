@@ -73,14 +73,19 @@
             <h5 class="mt-3 mb-2" style="color: white; font-family: 'Lexend';">Address: </h5>
             <div class="mt-2 mb-2i">
                 <div class="mapView mb-3" id="mapView">
-                    <textarea type="text" name="address" id="address" rows=2
-                        style="width:88vw; font-family: 'Franklin Gothic Medium';"
-                        placeholder="Pin your location in the map..." required></textarea>
+                    <div id="reservationAddress">
+                        <textarea type="text" name="address" id="address" rows=2
+                            style="width:88vw; font-family: 'Franklin Gothic Medium';"
+                            placeholder="Pin your location in the map..." required></textarea>
+                    </div>
                     <div id="map" style="width: 88vw;"></div>
                 </div>
-                <label for="date" style="color: white; font-family: 'Lexend';">Choose Date and Time for
-                    Reservation:</label>
-                <input type="datetime-local" id="date" name="date" required>
+                <div id="cateringDate">
+                    <label for="date" style="color: white; font-family: 'Lexend';">Choose Date and Time for
+                        Reservation:</label>
+                    <input type="datetime-local" id="date" name="date" required />
+                </div>
+
                 <h5 class="mt-3 mb-2" style="color: white; font-family: 'Lexend';">Comment</h5>
                 <div class="form-floating">
                     <textarea class="form-control mb-3" placeholder="Leave a comment here" id="floatingTextarea2"
