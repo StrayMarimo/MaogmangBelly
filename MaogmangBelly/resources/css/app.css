@@ -205,7 +205,7 @@ img.slider-img {
     align-items: center;
     justify-content: center;
 }
-.nav-item.login {
+.nav-item.login, .nav-item.dropdown.login {
     position: absolute;
     left: 85%;
     right: 0%;
