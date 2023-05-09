@@ -220,8 +220,8 @@ img.slider-img {
 .nav-item.login,
 .nav-item.dropdown.login {
     position: absolute;
-    left: 90%;
-    right: 0%;
+    left: 85%;
+    right: 10%;
     top: 0%;
     bottom: 0%;
 
