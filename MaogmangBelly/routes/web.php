@@ -62,6 +62,7 @@ Route::get('/order_lines', [OrderController::class, 'getOrderLines'])->name('get
 Route::post("buy", [CheckoutController::class, 'buy']);
 Route::get("map", [MapController::class, 'showMap'])->name('show_map');
 Route::get("/order_count", [CheckoutController::class, 'getOrderLinesCount']);
+Route::get("/available_date", [CheckoutController::class, 'getDateAvailability']);
 
 // CATERING
 Route::get('/catering', [HomeController::class, 'catering'])->name('catering');
