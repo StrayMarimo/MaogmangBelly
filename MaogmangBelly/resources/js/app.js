@@ -12,6 +12,10 @@ import './history.js';
 import.meta.glob(['../images/**']);
 
 $(document).ready(function(){
+    /*! Fades in page on load */
+    $('body').css('display', 'none');
+    $('body').fadeIn(1000);
+    
     $(window).scrollTop(0);
      var minDate = new Date();
      minDate.setDate(minDate.getDate() + 5); // add 5 days to today's date
