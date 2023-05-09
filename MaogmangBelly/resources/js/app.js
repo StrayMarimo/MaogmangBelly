@@ -6,6 +6,7 @@ import './checkout.js';
 import './catering.js';
 import './reservations.js';
 import './map.js';
+import './history.js';
 
 
 import.meta.glob(['../images/**']);
