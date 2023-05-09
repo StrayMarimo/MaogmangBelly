@@ -31,7 +31,11 @@ img.slider-img {
 }
 
 .search-box {
-    width: 500px !important;
+    width: 250px !important;
+    border-top: white;
+    border-left: white;
+    border-right: white;
+    color: white !important;
 }
 
 .category-tabs {
@@ -42,6 +46,10 @@ img.slider-img {
 
 .navbar-nav {
     align-items: center;
+}
+
+.navbar-brand{
+    position: relative;
 }
 
 .navbar-brand img {
@@ -62,6 +70,10 @@ img.slider-img {
     border-bottom: #c1272d solid 3px;
     margin-right: 50px;
     margin-left: 50px;
+}
+
+.nav-item{
+    position: relative;
 }
 
 .nav-item .active {
@@ -207,12 +219,32 @@ img.slider-img {
 }
 .nav-item.login, .nav-item.dropdown.login {
     position: absolute;
-    left: 85%;
+    left: 90%;
     right: 0%;
     top: 0%;
     bottom: 0%;
 
     font-family: 'Franklin Gothic Medium';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 17px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+
+    color: #ffffff;
+}
+
+.nav-item.search{
+    position: absolute;
+    left: 5%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+
+    font-family: 'Lexend';
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
@@ -668,6 +700,20 @@ th {
     margin-top: 10px;
 }
 
+.carousel-item{
+    height: 500px;
+}
+
+.carousel-item img{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.brightness {
+    filter: brightness(85%);
+    background-image: radial-gradient(transparent 50%, black)
+}
 #cardph table {
     width: 100%;
     border-collapse: collapse;
@@ -678,3 +724,115 @@ th {
     padding: 5px;
 }
 
+/* .trending-item:hover .trending-image {
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+} */
+
+.trending-item:hover {
+    transform: perspective(1000px) rotateY(-5deg) scale(1.1);
+}
+
+.trending-item:hover .trending-image {
+    transition: transform 0.3s ease-in-out;
+}
+
+.trending-item:hover .trending-image.zoomable {
+    transform: scale(1.1);
+}
+
+.trending-text {
+    transform: rotateY(20deg);
+    transition: transform 0.3s ease-in-out;
+}
+
+.trending-item:hover .trending-text {
+    transform: rotateY(15deg);
+}
+
+/* wave trending word with php*/
+
+.tag2 {
+    display: inline-block;
+    position: relative;
+}
+
+.tag2 span {
+    display: inline-block;
+    animation: wave 0.5s infinite;
+}
+
+@keyframes wave {
+    0% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-5px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    75% {
+        transform: translateY(5px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* navbar animation */
+
+.nav-link p:hover {
+    animation-name: bounce;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes bounce {
+    0% { transform: translateY(0); }
+    25% { transform: translateY(-10px); }
+    50% { transform: translateY(0); }
+    75% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+  }
+
+/* what we do */
+.green-sec {
+    position: relative;
+  }
+  
+  .box2 {
+    animation: float 4s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translatey(0px);
+    }
+    50% {
+      transform: translatey(-20px);
+    }
+    100% {
+      transform: translatey(0px);
+    }
+  }
+
+/* about */
+.about-box {
+    position: relative;
+    left: -100%;
+    animation: slide-in 1s forwards;
+  }
+  
+  @keyframes slide-in {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 0;
+    }
+  }

@@ -20,7 +20,7 @@
         incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
 
     <div class="row justify-content-around mx-5">
-        <div class="col-md-3">
+        <div class="col-md-3">  
             <div class="box2 card">
                 <div class="card-body">
                     <h2 class="capcap card-title mb-5">Drop Off<br>Catering</h2>
