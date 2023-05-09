@@ -12,8 +12,11 @@ import './history.js';
 import.meta.glob(['../images/**']);
 
 $(document).ready(function () {
-
-    $('body').addClass('visible');
+    // /*! Fades in page on load */
+    // $('body').css('display', 'none');
+    // $('body').fadeIn(500);
+    // // $('body').addClass('visible');
+    
     
     $(window).scrollTop(0);
     var minDate = new Date();
