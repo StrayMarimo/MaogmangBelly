@@ -48,7 +48,7 @@ img.slider-img {
     align-items: center;
 }
 
-.navbar-brand{
+.navbar-brand {
     position: relative;
 }
 
@@ -72,7 +72,7 @@ img.slider-img {
     margin-left: 50px;
 }
 
-.nav-item{
+.nav-item {
     position: relative;
 }
 
@@ -217,7 +217,8 @@ img.slider-img {
     align-items: center;
     justify-content: center;
 }
-.nav-item.login, .nav-item.dropdown.login {
+.nav-item.login,
+.nav-item.dropdown.login {
     position: absolute;
     left: 90%;
     right: 0%;
@@ -237,7 +238,7 @@ img.slider-img {
     color: #ffffff;
 }
 
-.nav-item.search{
+.nav-item.search {
     position: absolute;
     left: 5%;
     right: 0%;
@@ -335,7 +336,7 @@ img.slider-img {
 
 .card.auth {
     width: 68vh;
-    height: min-content; 
+    height: min-content;
     font-family: 'Franklin Gothic Medium';
 }
 
@@ -434,7 +435,6 @@ a:active {
 }
 
 .text-light-2 {
-   
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center top;
@@ -565,7 +565,7 @@ a:active {
     height: 400px;
 }
 
-.noorders { 
+.noorders {
     background-size: cover;
     padding: 200px 0px 200px 0px;
     width: 100%;
@@ -582,7 +582,6 @@ a:active {
     color: #000;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
-
 
 /* .noorders {
     background-color: #D9D9D9;
@@ -612,8 +611,8 @@ a:active {
     min-height: 100vh;
 }
 
-.btn-primary{
-   --bs-btn-active-bg: #dc3545; 
+.btn-primary {
+    --bs-btn-active-bg: #dc3545;
 }
 
 .btn {
@@ -627,37 +626,48 @@ a:active {
 }
 
 .close-icon {
-      background-color: transparent;
+    background-color: transparent;
 }
 .close-icon:hover,
 .close-icon:focus {
     color: #dc3545;
     text-decoration: none;
     cursor: pointer;
-    background-color: transparent
+    background-color: transparent;
 }
 
-
-#searchCard:hover, #searchCard:focus{
-     color:  #1e1e1e;
-     opacity: 0.85;
+#searchCard:hover,
+#searchCard:focus {
+    color: #1e1e1e;
+    opacity: 0.85;
 }
 
 .table-hover tbody tr:hover td {
     background-color: #c1272d;
     color: white;
-    opacity: 0.80;
+    opacity: 0.8;
 }
 
 .table-hover tr:hover th {
-  background-color: inherit;
-  color: inherit;
+    background-color: inherit;
+    color: inherit;
+}
+
+.history.table-hover tbody tr:hover td {
+    background-color: rgb(239, 233, 233);
+    color: #000;
+}
+
+.btn.disabled {
+  opacity: 0.65;
+  background-color: rgb(163, 160, 160); 
+  color: white;
 }
 
 td div,
 td form {
-  display: inline-block;
-  vertical-align: middle;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 /* Purchase history css */
@@ -670,7 +680,8 @@ table {
     margin-left: 20px;
 }
 
-th, td {
+th,
+td {
     text-align: center;
     padding: 10px;
 }
@@ -700,11 +711,11 @@ th {
     margin-top: 10px;
 }
 
-.carousel-item{
+.carousel-item {
     height: 500px;
 }
 
-.carousel-item img{
+.carousel-item img {
     object-fit: cover;
     height: 100%;
     width: 100%;
@@ -712,15 +723,15 @@ th {
 
 .brightness {
     filter: brightness(85%);
-    background-image: radial-gradient(transparent 50%, black)
+    background-image: radial-gradient(transparent 50%, black);
 }
 #cardph table {
     width: 100%;
     border-collapse: collapse;
 }
 
-#cardph th, #cardph td {
+#cardph th,
+#cardph td {
     text-align: center;
     padding: 5px;
 }
-
