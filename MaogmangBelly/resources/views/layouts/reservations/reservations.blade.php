@@ -80,7 +80,7 @@
                     </div>
                     <div id="map" style="width: 88vw;"></div>
                 </div>
-                <div id="cateringDate">
+                <div id="reservationDate">
                     <label for="date" style="color: white; font-family: 'Lexend';">Choose Date and Time for
                         Reservation:</label>
                     <input type="datetime-local" id="date" name="date" required />

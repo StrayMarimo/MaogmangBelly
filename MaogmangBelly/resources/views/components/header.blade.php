@@ -27,7 +27,7 @@
         </a>
       </li>
       <a class="navbar-brand {{request()->is('/') ? 'active' : ''}}" href="{{ url('/') }}">
-        <img src="{{Vite::image('logo.png')}}" alt="logo">
+        <img src="{{Vite::image('logo.png')}}" alt="logo" width="80px">
         <p>Maogmang</p>
         <p class="{{request()->url() == url('') ? 'active' : '' }} mx-3">Belly</p>
       </a>

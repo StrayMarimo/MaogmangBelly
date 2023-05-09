@@ -126,4 +126,13 @@ class CheckoutController extends Controller
         $order_count = OrderLine::where('order_id', '=', $req->id)->count();
         return response()->json($order_count);
     }
+
+    function getDateAvailability(Request $req)
+    {
+             
+        $passedDate = Carbon::parse($req->date)->startOfDay();
+        $recordExists = Order::whereDate('date_needed', $passedDate)->exists();
+
+        return $recordExists;
+    }
 }
