@@ -9,6 +9,8 @@ use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\OrderMail;
+use Illuminate\Support\Facades\Mail;
 
 
 class CheckoutController extends Controller
@@ -28,11 +30,11 @@ class CheckoutController extends Controller
         if (Auth::check()) {
 
             // Get the user id.
-            $user = Auth::user()->id;
+            $user = Auth::user();
 
             // Find the first unpurchased order of the user.
             $order = Order::where([
-                ['user_id', '=', $user],
+                ['user_id', '=', $user->id],
                 ['is_purchased', 0],
                 ['order_type', '=', 'O']
             ])->first();
@@ -51,6 +53,18 @@ class CheckoutController extends Controller
                 $item['product_name'] = $product['name'];
                 $item['price'] = $product['price'];
             }
+            // Email user for confirmation of order
+            $order_count = OrderLine::where('order_id', '=', $req->id)->count();
+            $mailData = [
+                'email' => $user->email,
+                'fname' => $user->first_name,
+                'lname' => $user->last_name,
+                'orderid' => $order['id'],
+                'orders' => $orders,
+                'order_count' => $order_count
+            ];
+            
+            Mail::to($user->email)->send(new OrderMail($mailData));
 
             // Display the checkout page, passing all products ordered and order data.
             return view('layouts.checkout.checkout', [
