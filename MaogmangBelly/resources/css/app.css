@@ -220,8 +220,8 @@ img.slider-img {
 .nav-item.login,
 .nav-item.dropdown.login {
     position: absolute;
-    left: 90%;
-    right: 0%;
+    left: 85%;
+    right: 10%;
     top: 0%;
     bottom: 0%;
 
@@ -737,27 +737,6 @@ th {
     padding: 5px;
 }
 
-/* navbar animation */
-/* 
-.nav-link p:hover {
-    animation-name: bounce;
-    animation-duration: 0.5s;
-    animation-timing-function: ease-out;
-    animation-delay: 0s;
-    animation-iteration-count: 1;
-    animation-direction: normal;
-    animation-fill-mode: forwards;
-  }
-
-  @keyframes bounce {
-    0% { transform: translateY(0); }
-    25% { transform: translateY(-10px); }
-    50% { transform: translateY(0); }
-    75% { transform: translateY(-5px); }
-    100% { transform: translateY(0); }
-  } */
-
-/* fade in */
 
 .trending-item:hover {
     opacity: 0.8;
@@ -772,4 +751,11 @@ th {
 .trending-item:hover .trending-image {
     opacity: 0.6;
 }
+.hidden {
+  opacity: 0;
+}
 
+.visible {
+  opacity: 1;
+  transition: opacity 1s ease-out;
+}  
