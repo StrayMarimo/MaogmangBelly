@@ -23,15 +23,16 @@
             <th>Total Price</th>
             <th>Delivery Type</th>
             <th>Status</th>
-            
+           <th></th> 
             @if($isAdmin)
             <th >Options</th>
-            <th></th>
+        
             @endif
         </tr>
     </thead>
     <tbody>
         @foreach($orders as $order)
+        @if($order['is_purchased'] == 1)
         <tr style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);">
             @if ($order['order_type'] == 'O')
             <td>Order</td>
@@ -107,7 +108,7 @@
             </td>
         </tr>
 
-
+        @endif
         @endforeach
     </tbody>
 </table>
