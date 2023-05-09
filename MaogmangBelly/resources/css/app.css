@@ -31,7 +31,7 @@ img.slider-img {
 }
 
 .search-box {
-    width: 250px !important;
+    width: 150px !important;
     border-top: white;
     border-left: white;
     border-right: white;
@@ -282,8 +282,8 @@ img.slider-img {
     width: 1300px;
     height: 700px;
 
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 40px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 25px;
 
     display: flex;
     align-items: center;
@@ -295,21 +295,22 @@ img.slider-img {
     font-weight: 400;
     font-size: 20px;
     line-height: 0%;
-    writing-mode: vertical-rl;
     color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .brandname {
     font-family: 'Lexend';
     font-style: normal;
     font-weight: 700;
-    font-size: 40px;
+    font-size: 60px;
     line-height: 120%;
     align-items: center;
     text-align: center;
     letter-spacing: 0.11em;
-    color: rgba(255, 255, 255, 0.8);
-    text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+    color: black;
     text-align: center;
 }
 
@@ -735,3 +736,40 @@ th {
     text-align: center;
     padding: 5px;
 }
+
+/* navbar animation */
+/* 
+.nav-link p:hover {
+    animation-name: bounce;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes bounce {
+    0% { transform: translateY(0); }
+    25% { transform: translateY(-10px); }
+    50% { transform: translateY(0); }
+    75% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+  } */
+
+/* fade in */
+
+.trending-item:hover {
+    opacity: 0.8;
+    /* transform: scale(1.05); */
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.trending-item .trending-image {
+    transition: opacity 0.3s ease-in-out;
+}
+
+.trending-item:hover .trending-image {
+    opacity: 0.6;
+}
+

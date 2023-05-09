@@ -7,8 +7,8 @@
     <ul class="navbar-nav  mx-auto">
       <li class="nav-item search">
         <form class="d-flex justify-content-end" action="{{ route('search') }}" role="search" id="form-search">
-          <button class="btn btn-danger me-2" type="submit" ><i class="bi bi-search"></i></button>
-          <input class="form-control search-box bg-black" type="text" name="query" placeholder="Search" aria-label="Search">
+          <button class="btn btn-danger bg-black" type="submit" ><i class="bi bi-search"></i></button>
+          <input class="form-control search-box bg-black" type="text" name="query" placeholder="Search" aria-label="Search" style="border-radius: 0px">
         </form>
       </li>
       <li class="nav-item">
@@ -29,7 +29,7 @@
       <a class="navbar-brand {{request()->is('/') ? 'active' : ''}}" href="{{ url('/') }}">
         <img src="{{Vite::image('logo.png')}}" alt="logo">
         <p>Maogmang</p>
-        <p class="{{request()->url() == url('') ? 'active' : '' }} mx-2">Belly</p>
+        <p class="{{request()->url() == url('') ? 'active' : '' }} mx-3">Belly</p>
       </a>
       <li class="nav-item">
         <a class="nav-link {{request()->is('/about') ? 'active' : ''}}" href="{{route('about')}}">
@@ -57,13 +57,13 @@
       @else
       <li class="nav-item dropdown login">
         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false" v-pre style="font-size:0.5 rem">
+          aria-haspopup="true" aria-expanded="false" v-pre style="font-size:0.5 rem;">
           {{ Auth::user()->first_name }}
         </a>
 
         <div class="dropdown-menu dropdown-menu-right dropdown-menu-up" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                               document.getElementById('logout-form').submit();">
+              document.getElementById('logout-form').submit();">
             {{ __('Logout') }}
           </a>
           <a class="dropdown-item" href="profile">
@@ -79,4 +79,4 @@
   </div>
   </div>
 </nav>
-<div style="height: 5vh" class="white"></div>
+<div style="height: 3vh" class="white"></div>
