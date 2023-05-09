@@ -6,7 +6,7 @@
 </head>
 
 <body>
-    <p>Greetings Customer!</p>
+    <p>Hello {{ $mailData['fname'] }}!</p>
 
     <p class="fs-4">This is to confirm your order with Order ID : {{ $mailData['orderid'] }}</p>
     <h4>Products Ordered</h4>

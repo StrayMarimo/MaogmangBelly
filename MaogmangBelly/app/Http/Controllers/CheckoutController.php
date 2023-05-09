@@ -53,18 +53,6 @@ class CheckoutController extends Controller
                 $item['product_name'] = $product['name'];
                 $item['price'] = $product['price'];
             }
-            // Email user for confirmation of order
-            $order_count = OrderLine::where('order_id', '=', $req->id)->count();
-            $mailData = [
-                'email' => $user->email,
-                'fname' => $user->first_name,
-                'lname' => $user->last_name,
-                'orderid' => $order['id'],
-                'orders' => $orders,
-                'order_count' => $order_count
-            ];
-            
-            Mail::to($user->email)->send(new OrderMail($mailData));
 
             // Display the checkout page, passing all products ordered and order data.
             return view('layouts.checkout.checkout', [
@@ -90,7 +78,7 @@ class CheckoutController extends Controller
         $delivery_type = ($req->exists('forDelivery')) ? 'D' : 'P';
         
         // Get the authenticated user's id and their first unpurchased order.
-        $user = Auth::user()->id;
+        $user = Auth::user();
         $order = Order::where('id', $req->order_id)->first();
 
         if ($order['order_type'] == 'C' || $order['order_type'] == 'R')
@@ -107,6 +95,16 @@ class CheckoutController extends Controller
                 'comment' => $req->comment,
             ]);
 
+        // Email user for confirmation of order
+        $order_count = OrderLine::where('order_id', '=', $req->id)->count();
+        $mailData = [
+            'email' => $user->email,
+            'fname' => $user->first_name,
+            'orderid' => $order['id'],
+            'order_count' => $order_count
+        ];
+        
+        Mail::to($user->email)->send(new OrderMail($mailData));
             
         if ($rowsAffected > 0) {
             return redirect()->route('products')->with([
