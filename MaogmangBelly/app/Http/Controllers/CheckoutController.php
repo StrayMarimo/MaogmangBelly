@@ -94,14 +94,14 @@ class CheckoutController extends Controller
                 'address' => $req->address,
                 'comment' => $req->comment,
             ]);
-
+        
         // Email user for confirmation of order
-        $order_count = OrderLine::where('order_id', '=', $req->id)->count();
+        // $order_count = OrderLine::where('order_id', '=', $req->id)->count();
         $mailData = [
             'email' => $user->email,
             'fname' => $user->first_name,
             'orderid' => $order['id'],
-            'order_count' => $order_count
+            'orderType' => $order['order_type']
         ];
         
         Mail::to($user->email)->send(new OrderMail($mailData));

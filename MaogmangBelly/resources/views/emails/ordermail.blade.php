@@ -8,7 +8,9 @@
 <body>
     <p>Hello {{ $mailData['fname'] }}!</p>
 
-    <p class="fs-4">This is to confirm your order with Order ID : {{ $mailData['orderid'] }}</p>
+    <p class="fs-4">This is to confirm your order: </p> 
+    <p>ID : {{ $mailData['orderid'] }}</p>
+    <p>Order Type : {{ $mailData['orderType'] }}</p>
     <h4>Products Ordered</h4>
     {{-- <table class="table table-borderless">
         <thead>
