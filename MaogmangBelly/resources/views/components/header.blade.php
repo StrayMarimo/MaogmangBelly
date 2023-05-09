@@ -57,13 +57,13 @@
       @else
       <li class="nav-item dropdown login">
         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false" v-pre style="font-size:0.5 rem">
+          aria-haspopup="true" aria-expanded="false" v-pre style="font-size:0.5 rem;">
           {{ Auth::user()->first_name }}
         </a>
 
         <div class="dropdown-menu dropdown-menu-right dropdown-menu-up" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                               document.getElementById('logout-form').submit();">
+              document.getElementById('logout-form').submit();">
             {{ __('Logout') }}
           </a>
           <a class="dropdown-item" href="profile">
