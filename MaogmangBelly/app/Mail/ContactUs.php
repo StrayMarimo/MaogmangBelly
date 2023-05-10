@@ -29,7 +29,7 @@ class ContactUs extends Mailable
     {
         return new Envelope(
             from: new Address($this->mailData['email'], $this->mailData['name']),
-            subject: 'Contact',
+            subject: 'Message from a customer.',
         );
     }
 
