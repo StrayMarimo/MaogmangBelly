@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AdminOrderMail;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\OrderLine;
@@ -9,6 +10,8 @@ use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\OrderMail;
+use Illuminate\Support\Facades\Mail;
 
 
 class CheckoutController extends Controller
@@ -28,11 +31,11 @@ class CheckoutController extends Controller
         if (Auth::check()) {
 
             // Get the user id.
-            $user = Auth::user()->id;
+            $user = Auth::user();
 
             // Find the first unpurchased order of the user.
             $order = Order::where([
-                ['user_id', '=', $user],
+                ['user_id', '=', $user->id],
                 ['is_purchased', 0],
                 ['order_type', '=', 'O']
             ])->first();
@@ -76,7 +79,7 @@ class CheckoutController extends Controller
         $delivery_type = ($req->exists('forDelivery')) ? 'D' : 'P';
         
         // Get the authenticated user's id and their first unpurchased order.
-        $user = Auth::user()->id;
+        $user = Auth::user();
         $order = Order::where('id', $req->order_id)->first();
 
         if ($order['order_type'] == 'C' || $order['order_type'] == 'R')
@@ -92,9 +95,43 @@ class CheckoutController extends Controller
                 'address' => $req->address,
                 'comment' => $req->comment,
             ]);
-
+        
+            
             
         if ($rowsAffected > 0) {
+            // Email user for confirmation of order
+            $order_count = OrderLine::where('order_id', '=', $req->order_id)->count();
+
+            // If the user has one unpurchased order saved, get all orders.
+            $orders = OrderLine::where('order_id', '=', $req->order_id)->get();
+
+
+            // For each item in the order, query the product name and price and add them as fields in orders.
+            foreach ($orders as $item) {
+                $product = Product::where('id', '=', $item['product_id'])->first();
+                $item['product_name'] = $product['name'];
+                $item['price'] = $product['price'];
+            }
+        
+            
+            $mailData = [
+                'email' => $user->email,
+                'fname' => $user->first_name,
+                'orderid' => $order['id'],
+                'orders' => $orders,
+                'order_count' => $order_count,
+                'grandTotal' => $order['grand_total'],
+                'order_type' => $order->order_type,
+                'delivery_type' => $delivery_type,
+                'address' => $req->address,
+                'date_needed' => date('Y/m/d H:i:s',strtotime($req->date))
+            ];
+
+        Mail::to($user->email)->send(new OrderMail($mailData));
+
+        $mailData['username'] = Auth::user()->name;
+        $mailData['email'] = Auth::user()->email;
+        Mail::to('maogmangbelly@gmail.com')->send(new AdminOrderMail($mailData));
             return redirect()->route('products')->with([
                 'status' => 200,
                 'message' => "Successfully bought order with id " . strval($order['id']),

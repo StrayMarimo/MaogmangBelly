@@ -64,7 +64,7 @@ $(document).ready(function () {
             url: '/order_count?id=' + order_id,
             method: 'GET',
             success: function (response) {
-                if (response >= 1) {
+                if (response >= 5) {
                     $('#checkoutReservationForm').submit();
                 } else {
                     $('#confirmReservation').modal('hide');
