@@ -24,7 +24,7 @@
                 </div>
                 <div class="col">
                     <div class="col2">
-                        <img src={{Vite::image('logo.png')}} class="img-fluid" alt="">
+                        <img src={{Vite::image('logo.png')}} width=500px; class="img-fluid" alt="">
                     </div>
                 </div>
             </div>

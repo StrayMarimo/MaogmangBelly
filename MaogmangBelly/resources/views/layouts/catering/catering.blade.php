@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div style="height: 50rem; background-image: url({{Vite::image('catering_bg.png')}})" class=" text-light-2">
+<div style="height: 50rem; background-image: url({{Vite::image('catering_bg.png')}})" width=100% class=" text-light-2">
     <div class="border1 text-white">
         <h1 class="tagline" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5">Fresh Flavors, <br>
             Creative Catering</h1> <br>
