@@ -24,7 +24,10 @@
         <tbody>
             @for ($i = 0; $i < $mailData['order_count']; $i++)
                 <tr>
-                    <td>{{ $mailData['orders']['product_id'] }}</td>
+                    <td>{{ $mailData['orders'][$i]['product_name'] }}</td>
+                    <td>{{ $mailData['orders'][$i]['price'] }}</td>
+                    <td>{{ $mailData['orders'][$i]['quantity'] }}</td>
+                    <td>{{ $mailData['orders'][$i]['total_price'] }}</td>
                 </tr>
             @endfor
         </tbody>

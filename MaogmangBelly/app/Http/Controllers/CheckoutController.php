@@ -95,24 +95,33 @@ class CheckoutController extends Controller
                 'comment' => $req->comment,
             ]);
         
-        // Email user for confirmation of order
-        $order_count = OrderLine::where('order_id', '=', $req->id)->count();
-
-        // If the user has one unpurchased order saved, get all orders.
-        $orders = OrderLine::where('order_id', '=', $order['id'])->get();
-
-        $mailData = [
-            'email' => $user->email,
-            'fname' => $user->first_name,
-            'orderid' => $order['id'],
-            'orderType' => $order['order_type'],
-            'orders' => $orders,
-            'order_count' => $order_count
-        ];
-        
-        Mail::to($user->email)->send(new OrderMail($mailData));
+            
             
         if ($rowsAffected > 0) {
+            // Email user for confirmation of order
+            $order_count = OrderLine::where('order_id', '=', $req->order_id)->count();
+
+            // If the user has one unpurchased order saved, get all orders.
+            $orders = OrderLine::where('order_id', '=', $req->order_id)->get();
+
+
+            // For each item in the order, query the product name and price and add them as fields in orders.
+            foreach ($orders as $item) {
+                $product = Product::where('id', '=', $item['product_id'])->first();
+                $item['product_name'] = $product['name'];
+                $item['price'] = $product['price'];
+            }
+            // dd($orders);
+            $mailData = [
+                'email' => $user->email,
+                'fname' => $user->first_name,
+                'orderid' => $order['id'],
+                'orderType' => $order['order_type'],
+                'orders' => $orders,
+                'order_count' => $order_count
+            ];
+        
+        Mail::to($user->email)->send(new OrderMail($mailData));
             return redirect()->route('products')->with([
                 'status' => 200,
                 'message' => "Successfully bought order with id " . strval($order['id']),
