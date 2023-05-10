@@ -4,11 +4,15 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav  mx-auto">
+    <ul class="navbar-nav mx-auto">
       <li class="nav-item search">
         <form class="d-flex justify-content-end" action="{{ route('search') }}" role="search" id="form-search">
-          <button class="btn btn-danger bg-black" type="submit" ><i class="bi bi-search"></i></button>
-          <input class="form-control search-box bg-black" type="text" name="query" placeholder="Search" aria-label="Search" style="border-radius: 0px">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1" style="background-color: black; border:none;"><button class="btn" type="submit"><i class="bi bi-search" style="color: #c1272d;"></i></button></span>
+          </div>
+          <input type="text" class="form-control search-box" style="background-color: black; border: none; border-bottom:#c1272d 2px solid" name="query" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1">
+        </div>
         </form>
       </li>
       <li class="nav-item">
@@ -56,7 +60,7 @@
       @endif
       @else
       <li class="nav-item dropdown login">
-        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+        <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false" v-pre style="font-size:0.5 rem;">
           {{ Auth::user()->first_name }}
         </a>

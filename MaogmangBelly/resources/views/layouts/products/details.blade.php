@@ -18,13 +18,13 @@
                 <div class="d-flex">
                     <input class="form-control text-center me-3" name="quantity" min=1 id="availProductQuantity" type="number" value=1
                         style="min-width: 5rem">
-                    <button class="btn btn-primary flex-shrink-0 text-white mx-2" type="button" id="addToOrder" style="border-radius: 20px;">
+                    <button class="btn btn-primary flex-shrink-0 text-white mx-2" type="button" id="addToOrder" style="border-radius: 20px; background-color:#dc3545">
                         Add to Order
                     </button>
-                    <button class="btn btn-outline-dark flex-shrink-0 text-white mx-2" type="button" id="addToCatering" style="border-radius: 20px;">
+                    <button class="btn btn-outline-dark flex-shrink-0 text-white mx-2" type="button" id="addToCatering" style="border-radius: 20px; background-color:#dc3545"">
                         Add to Catering
                     </button>
-                    <button class="btn btn-outline-dark flex-shrink-0 text-white mx-2" type="button" id="addToReservations" style="border-radius: 20px;">
+                    <button class="btn btn-outline-dark flex-shrink-0 text-white mx-2" type="button" id="addToReservations" style="border-radius: 20px; background-color:#dc3545"">
                         Add to Reservations
                     </button>
                 </div>
