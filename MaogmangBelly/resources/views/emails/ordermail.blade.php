@@ -12,7 +12,7 @@
     <p>ID : {{ $mailData['orderid'] }}</p>
     <p>Order Type : {{ $mailData['orderType'] }}</p>
     <h4>Products Ordered</h4>
-    {{-- <table class="table table-borderless">
+    <table class="table table-borderless">
         <thead>
             <tr>
                 <th>Product</th>
@@ -24,15 +24,12 @@
         <tbody>
             @for ($i = 0; $i < $mailData['order_count']; $i++)
                 <tr>
-                    <td class="orderHistory{{ $order['id'] }}" id="productName{{ $i }}"></td>
-                    <td class="orderHistory{{ $order['id'] }}" id="unitPrice{{ $i }}"></td>
-                    <td class="orderHistory{{ $order['id'] }}" id="quantity{{ $i }}"></td>
-                    <td class="orderHistory{{ $order['id'] }}" id="totalPrice{{ $i }}"></td>
+                    <td>{{ $mailData['orders']['product_id'] }}</td>
                 </tr>
             @endfor
         </tbody>
 
-    </table> --}}
+    </table>
     <p>Your order will arrive shortly. Thank you!</p>
 </body>
 

@@ -96,12 +96,18 @@ class CheckoutController extends Controller
             ]);
         
         // Email user for confirmation of order
-        // $order_count = OrderLine::where('order_id', '=', $req->id)->count();
+        $order_count = OrderLine::where('order_id', '=', $req->id)->count();
+
+        // If the user has one unpurchased order saved, get all orders.
+        $orders = OrderLine::where('order_id', '=', $order['id'])->get();
+
         $mailData = [
             'email' => $user->email,
             'fname' => $user->first_name,
             'orderid' => $order['id'],
-            'orderType' => $order['order_type']
+            'orderType' => $order['order_type'],
+            'orders' => $orders,
+            'order_count' => $order_count
         ];
         
         Mail::to($user->email)->send(new OrderMail($mailData));
