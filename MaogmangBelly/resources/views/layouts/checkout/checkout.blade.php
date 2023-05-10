@@ -101,7 +101,7 @@
 
                     </div>
                 </div>
-                <button class="btn btn-primary w-100 mt-3" id="buyOrderBtn">
+                <button class="btn btn-primary w-100 mt-3" style="background-color:#dc3545;" id="buyOrderBtn">
                     Buy Now!
                 </button>
             </form>
