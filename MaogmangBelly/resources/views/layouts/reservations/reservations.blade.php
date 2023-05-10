@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div style="background-image: url({{Vite::image('reservation_bg.jpg')}})" class="container-fluid reservationbg">
+<div style="background-image: url({{Vite::image('reservation_bg.jpg')}})" width=100% class="container-fluid reservationbg">
     <div class="card" id="reservecard">
         <div class="text-center" id="checkout_reservations">
             <h1 class="contact-title" style="color: white">Reservation</h1>
