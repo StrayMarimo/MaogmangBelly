@@ -48,7 +48,7 @@
             @foreach ($featured_products as $item)
             <div class="carousel-item {{$loop->index == 1 ? 'active' : ''}}">
                 <a href="{{ route('product_details', ['id' => $item['id']]) }}">
-                    <img class="d-block w-100 brightness" src="{{ url('/assets/product_assets/'.$item['gallery']) }}"
+                    <img class="d-block w-100 brightness" src="{{ url('/assets/product_assets/'.$item['gallery']) }}" width=100%
                         class="d-block w-100">
                     <div class="carousel-caption d-none d-md-block slider-text" id="carouselCaption">
                         <h1 style="font-family: 'Lexend';">{{$item['name']}}</h1>
