@@ -170,8 +170,7 @@
                                     <td align="center" valign="middle">
                                         <table>
                                             <tr>
-                                                <td valign="top"
-                                                    style="text-align: center; padding: 60px 0 10px 20px;">
+                                                <td valign="top" style="text-align: center; padding: 60px 0 10px 20px;">
                                                     <h1
                                                         style="margin: 0; font-family: 'Montserrat', sans-serif; font-size: 30px; line-height: 36px; color: #ffffff; font-weight: bold;">
                                                         We Got Work To Do!</h1>
@@ -180,7 +179,8 @@
                                             <tr>
                                                 <td valign="top"
                                                     style="text-align: center; padding: 10px 20px 15px 20px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #fff;">
-                                                    <p style="margin: 0;">An order has been made by a customer. Details of their
+                                                    <p style="margin: 0;">An order has been made by <b><i>
+                                                                {{$mailData['username']}}</b>. Details of their
                                                         order can be found below.</p>
                                                 </td>
                                             </tr>
@@ -205,6 +205,12 @@
                                 <td height="20" style="font-size:20px; line-height:20px;">&nbsp;</td>
                             </tr>
                             <tr>
+                                    <td
+                                        style="padding: 0px 40px 20px 40px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555; text-align: left; font-weight:bold;">
+                                        <p style="margin: 0;">Customer Email: {{ $mailData['email'] }}</p>
+                                    </td>
+                                </tr>
+                            <tr>
                                 <td
                                     style="padding: 0px 40px 20px 40px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555; text-align: left; font-weight:bold;">
                                     <p style="margin: 0;">Order ID: {{ $mailData['orderid'] }}</p>
@@ -214,13 +220,13 @@
                                 <td
                                     style="padding: 0px 40px 20px 40px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555; text-align: left; font-weight:bold;">
                                     <p style="margin: 0;">Order Type:
-                                    @if($mailData['order_type']  == 'O')
+                                        @if($mailData['order_type'] == 'O')
                                         @if($mailData['delivery_type'] != 'P') Delivery
                                         @else Pick-Up
                                         @endif
-                                    @elseif($mailData['order_type'] == 'C') Catering
-                                    @else Reservation
-                                    @endif
+                                        @elseif($mailData['order_type'] == 'C') Catering
+                                        @else Reservation
+                                        @endif
                                     </p>
                                 </td>
                             </tr>
@@ -231,76 +237,75 @@
                                         <tr>
                                             <td>Orders:</td>
                                         </tr>
-                                        @for ($i = 0; $i < $mailData['order_count']; $i++)
-                                        <tr>
-                                            <td>{{ $mailData['orders'][$i]['quantity'] }} pcs of {{ $mailData['orders'][$i]['product_name'] }} @ &#8369; {{ $mailData['orders'][$i]['price'] }} each  -  &#8369; {{ $mailData['orders'][$i]['total_price'] }}</td>
-                                        </tr>
-                                        @endfor
-                                        <tr>
-                                            <td height="10" style="font-size:10px; line-height:10px;">&nbsp;</td>
-                                        </tr>
-                                        <tr>
-                                            <td><h4>Grand Total : &#8369; {{ $mailData['grandTotal'] }}</h4></td>
-                                        </tr>
-                                    </table>
-                                </td>
+                                        @for ($i = 0; $i < $mailData['order_count']; $i++) <tr>
+                                            <td>{{ $mailData['orders'][$i]['quantity'] }} pcs of {{
+                                                $mailData['orders'][$i]['product_name'] }} @ &#8369; {{
+                                                $mailData['orders'][$i]['price'] }} each - &#8369; {{
+                                                $mailData['orders'][$i]['total_price'] }}</td>
                             </tr>
-                            @if($mailData['delivery_type'] != 'P')
+                            @endfor
                             <tr>
-                                <td
-                                    style="padding: 0px 40px 20px 40px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555; text-align: left; font-weight:bold;">
-                                    <p style="margin: 0;">Delivery Address: {{ $mailData['address'] }}</p>
-                                </td>
-                            </tr>
-                            @endif
-                            @if($mailData['date_needed'] != null)
-                            <tr>
-                                <td
-                                    style="padding: 0px 40px 20px 40px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555; text-align: left; font-weight:bold;">
-                                    <p style="margin: 0;">Date Needed: {{ $mailData['date_needed'] }}</p>
-                                </td>
-                            </tr>
-                            @endif
-                            <tr>
-                                <td style="padding: 0px 40px 20px 40px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555; text-align: left; font-weight:normal;">
-                                    <p style="margin: 0;">Thank you for ordering. We hope to see you again soon!</p>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr> <!-- INTRO : END -->
-                <!-- CTA : BEGIN -->
-                <tr>
-                    <td bgcolor="#ffffff">
-                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"> <br>
-                            <tr>
-                                <td align="center"> <img
-                                        src="https://drive.google.com/uc?id=1pA3x4pPl6X96TjAAs9apzDNKKYNDw4zL"
-                                        width="37" height="37" style="display: block; border: 0px;" /> </td>
+                                <td height="10" style="font-size:10px; line-height:10px;">&nbsp;</td>
                             </tr>
                             <tr>
-                                <td align="center"
-                                    style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 24px; padding: 5px 0 10px 0;">
-                                    <p style="font-size: 14px; font-weight: 800; line-height: 18px; color: #333333;">
-                                        Maogmang Belly<br> Elias Angeles Street, Naga City, Bicol</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td
-                                    style="padding: 0px 40px 10px 40px; font-family: sans-serif; font-size: 12px; line-height: 18px; color: #666666; text-align: center; font-weight:normal;">
-                                    <p style="margin: 0;">This email was sent to you from maogmangbelly@gmail.com</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td
-                                    style="padding: 0px 40px 40px 40px; font-family: sans-serif; font-size: 12px; line-height: 18px; color: #666666; text-align: center; font-weight:normal;">
-                                    <p style="margin: 0;">Copyright &copy; 2023 <b>MaogmangBelly.com</b>, All Rights
-                                        Reserved.</p>
+                                <td>
+                                    <h4>Grand Total : &#8369; {{ $mailData['grandTotal'] }}</h4>
                                 </td>
                             </tr>
                         </table>
                     </td>
                 </tr>
+                @if($mailData['delivery_type'] != 'P')
+                <tr>
+                    <td
+                        style="padding: 0px 40px 20px 40px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555; text-align: left; font-weight:bold;">
+                        <p style="margin: 0;">Delivery Address: {{ $mailData['address'] }}</p>
+                    </td>
+                </tr>
+                @endif
+                @if($mailData['date_needed'] != null)
+                <tr>
+                    <td
+                        style="padding: 0px 40px 20px 40px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555; text-align: left; font-weight:bold;">
+                        <p style="margin: 0;">Date Needed: {{ $mailData['date_needed'] }}</p>
+                    </td>
+                </tr>
+                @endif
+            </table>
+            </td>
+            </tr> <!-- INTRO : END -->
+            <!-- CTA : BEGIN -->
+            <tr>
+                <td bgcolor="#ffffff">
+                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%"> <br>
+                        <tr>
+                            <td align="center"> <img
+                                    src="https://drive.google.com/uc?id=1pA3x4pPl6X96TjAAs9apzDNKKYNDw4zL" width="37"
+                                    height="37" style="display: block; border: 0px;" /> </td>
+                        </tr>
+                        <tr>
+                            <td align="center"
+                                style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 24px; padding: 5px 0 10px 0;">
+                                <p style="font-size: 14px; font-weight: 800; line-height: 18px; color: #333333;">
+                                    Maogmang Belly<br> Elias Angeles Street, Naga City, Bicol</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td
+                                style="padding: 0px 40px 10px 40px; font-family: sans-serif; font-size: 12px; line-height: 18px; color: #666666; text-align: center; font-weight:normal;">
+                                <p style="margin: 0;">This email was sent to you from maogmangbelly@gmail.com</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td
+                                style="padding: 0px 40px 40px 40px; font-family: sans-serif; font-size: 12px; line-height: 18px; color: #666666; text-align: center; font-weight:normal;">
+                                <p style="margin: 0;">Copyright &copy; 2023 <b>MaogmangBelly.com</b>, All Rights
+                                    Reserved.</p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
             </table>
         </div>
     </center>
@@ -308,7 +313,8 @@
 
 </html>
 
-{{-- <!DOCTYPE html>
+{{--
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -332,14 +338,13 @@
             </tr>
         </thead>
         <tbody>
-            @for ($i = 0; $i < $mailData['order_count']; $i++)
-                <tr>
-                    <td>{{ $mailData['orders'][$i]['product_name'] }}</td>
-                    <td>{{ $mailData['orders'][$i]['price'] }}</td>
-                    <td>{{ $mailData['orders'][$i]['quantity'] }}</td>
-                    <td>{{ $mailData['orders'][$i]['total_price'] }}</td>
+            @for ($i = 0; $i < $mailData['order_count']; $i++) <tr>
+                <td>{{ $mailData['orders'][$i]['product_name'] }}</td>
+                <td>{{ $mailData['orders'][$i]['price'] }}</td>
+                <td>{{ $mailData['orders'][$i]['quantity'] }}</td>
+                <td>{{ $mailData['orders'][$i]['total_price'] }}</td>
                 </tr>
-            @endfor
+                @endfor
         </tbody>
 
     </table>

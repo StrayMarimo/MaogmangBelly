@@ -112,7 +112,8 @@ class CheckoutController extends Controller
                 $item['product_name'] = $product['name'];
                 $item['price'] = $product['price'];
             }
-
+        
+            
             $mailData = [
                 'email' => $user->email,
                 'fname' => $user->first_name,
@@ -123,10 +124,13 @@ class CheckoutController extends Controller
                 'order_type' => $order->order_type,
                 'delivery_type' => $delivery_type,
                 'address' => $req->address,
-                'date_needed' => $req->date_needed
+                'date_needed' => date('Y/m/d H:i:s',strtotime($req->date))
             ];
-        
+
         Mail::to($user->email)->send(new OrderMail($mailData));
+
+        $mailData['username'] = Auth::user()->name;
+        $mailData['email'] = Auth::user()->email;
         Mail::to('maogmangbelly@gmail.com')->send(new AdminOrderMail($mailData));
             return redirect()->route('products')->with([
                 'status' => 200,
