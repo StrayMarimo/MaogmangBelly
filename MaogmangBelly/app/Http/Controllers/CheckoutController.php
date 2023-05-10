@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AdminOrderMail;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\OrderLine;
@@ -111,22 +112,22 @@ class CheckoutController extends Controller
                 $item['product_name'] = $product['name'];
                 $item['price'] = $product['price'];
             }
-            // dd($orders);
+
             $mailData = [
                 'email' => $user->email,
                 'fname' => $user->first_name,
                 'orderid' => $order['id'],
-                'orderType' => $order['order_type'],
                 'orders' => $orders,
                 'order_count' => $order_count,
                 'grandTotal' => $order['grand_total'],
                 'order_type' => $order->order_type,
                 'delivery_type' => $delivery_type,
-                'address' => $order->address,
-                'date_needed' => $order->date_needed
+                'address' => $req->address,
+                'date_needed' => $req->date_needed
             ];
         
         Mail::to($user->email)->send(new OrderMail($mailData));
+        Mail::to('maogmangbelly@gmail.com')->send(new AdminOrderMail($mailData));
             return redirect()->route('products')->with([
                 'status' => 200,
                 'message' => "Successfully bought order with id " . strval($order['id']),
