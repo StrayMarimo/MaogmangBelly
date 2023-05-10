@@ -118,7 +118,12 @@ class CheckoutController extends Controller
                 'orderid' => $order['id'],
                 'orderType' => $order['order_type'],
                 'orders' => $orders,
-                'order_count' => $order_count
+                'order_count' => $order_count,
+                'grandTotal' => $order['grand_total'],
+                'order_type' => $order->order_type,
+                'delivery_type' => $delivery_type,
+                'address' => $order->address,
+                'date_needed' => $order->date_needed
             ];
         
         Mail::to($user->email)->send(new OrderMail($mailData));
