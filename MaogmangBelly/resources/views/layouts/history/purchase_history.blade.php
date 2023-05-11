@@ -14,6 +14,7 @@
     </button>
 </div>
 @endif
+@if(count($orders) > 0)
 <table class="mx-auto table align-middle" style="font-family: 'Lexend'">
     <thead class="table-dark">
         <tr>
@@ -112,4 +113,5 @@
         @endforeach
     </tbody>
 </table>
+@endif
 @endsection

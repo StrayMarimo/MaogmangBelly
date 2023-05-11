@@ -13,7 +13,7 @@
                         <label for="categoryName" class="form-label">Category Name</label>
                         <input type="text" class="form-control" id="categoryName" name="category_name" required>
                     </div>
-                    <button type="submit" class="red-btn3 btn btn-primary">Save changes</button>
+                    <button type="submit" class="red-btn3 btn btn-primary" style="background-color: #a72322 ">Save changes</button>
                 </form>
             </div>
         </div>
@@ -38,7 +38,7 @@
                             <!-- dynamically populate options here -->
                         </select>
                     </div>
-                    <button type="submit" class="red-btn3 btn btn-primary mt-2" >Save changes</button>
+                    <button type="submit" class="red-btn3 btn btn-primary mt-2" style="background-color: #a72322 ">Save changes</button>
                 </form>
             </div>
         </div>
@@ -70,7 +70,7 @@
                         </div>
                       
                     </div>
-                    <button type="submit" class="red-btn3 btn btn-primary mt-2">Save changes</button>
+                    <button type="submit" class="red-btn3 btn btn-primary mt-2" style="background-color: #a72322 ">Save changes</button>
                 </form>
             </div>
         </div>
