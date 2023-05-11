@@ -1,4 +1,4 @@
-<div style="height: 5vh" class="white"></div>
+<div style="height: 3vh" class="white"></div>
 <div class="container-fluid">
   <div class="row bg-black text-white p-5">
     <div class="col-4">

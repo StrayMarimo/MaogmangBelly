@@ -67,22 +67,22 @@
         </div>
         <div>
             <div class="margin-box">
-                <div style="height: fit-content; width: 75rem" class="white-sectagtag">
-                    <h1 class="tagtag2">Wedding Meals</h1>
+                <div style="height: fit-content; width: 75rem" class="white-sectagtag py-4">
+                    <h1 class="tagtag2 h-100 my-auto">Wedding Meals</h1>
                 </div>
                 <div>
                     <div class="margin-box">
-                        <div style="height: fit-content; width: 75rem" class="white-sectagtag">
+                        <div style="height: fit-content; width: 75rem" class="white-sectagtag py-4">
                             <h1 class="tagtag2">Children's Party</h1>
                         </div>
                         <div>
                             <div class="margin-box">
-                                <div style="height: fit-content; width: 75rem" class="white-sectagtag">
+                                <div style="height: fit-content; width: 75rem" class="white-sectagtag py-4">
                                     <h1 class="tagtag2">Holiday Events</h1>
                                 </div>
                                 <div>
                                     <div class="margin-box">
-                                        <div style="height: fit-content; width: 75rem" class="white-sectagtag">
+                                        <div style="height: fit-content; width: 75rem" class="white-sectagtag py-4">
                                             <h1 class="tagtag2">Filipino Fiesta Cuisine</h1>
                                         </div>
 

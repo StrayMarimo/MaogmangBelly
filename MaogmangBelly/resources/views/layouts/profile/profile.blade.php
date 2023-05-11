@@ -6,7 +6,7 @@
         @if (Auth::User()->email_verified_at == null)
             <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
                 @csrf
-                <button type="submit" style="border-radius: 30px; background-color: #74c23d; color: white; border-style: none; width: 17vh">{{ __('Verify Email')
+                <button type="submit" style="border-radius: 30px; background-color: #74c23d; color: white; border-style: none; width: 10vw">{{ __('Verify Email')
                     }}</button>
             </form>
      
