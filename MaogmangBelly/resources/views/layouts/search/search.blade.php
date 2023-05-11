@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section("content")
 <div style="max-width: 100vw;">
-  <a href="/" style="font-family: lexend; margin-left: 30px; margin-bottom: 50px">Go Back</a>
+  @if(count($products) > 0)
   <h4 class="mb-3 mt-2 tag2" style="font-family: lexend">Result for Products</h4>
       @foreach($products->chunk(3) as $chunk)
       <div class="row" style="max-width: 100vw;">
@@ -22,8 +22,12 @@
         @endforeach
       </div>
       @endforeach
+    @else
+    <div style="height: 50vh;">
+      <p class="text-center my-auto" style="font-family: 'Lexend'; font-size: 30px;">Sorry, no products found.</p>
+    </div>
   
-  
-</div>
+    @endif
+    </div>
 
 @endsection
