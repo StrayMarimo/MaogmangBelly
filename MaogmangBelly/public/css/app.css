@@ -30,7 +30,8 @@ img.slider-img {
     color: white !important;
     border: none !important;
     outline: none !important;
-    /* border-bottom: 2px solid white; */
+    font-family: 'Franklin Gothic Medium' !important;
+    padding-top: 2px;
 }
 
 .category-tabs {
@@ -768,4 +769,10 @@ a:active {
 
 .dropdown-menu{
     --bs-dropdown-link-active-bg: transform !important;
+}
+
+#form-search {
+  display: flex !important;
+  align-items: center  !important;;
+  justify-content: center  !important;;
 }
