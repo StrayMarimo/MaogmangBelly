@@ -28,8 +28,8 @@ img.slider-img {
 .search-box {
     width: 150px !important;
     color: white !important;
-    border: none  !important;
-    outline: none  !important;
+    border: none !important;
+    outline: none !important;
     /* border-bottom: 2px solid white; */
 }
 
@@ -44,29 +44,29 @@ img.slider-img {
 }
 
 .navbar-brand {
-    position: relative  !important;
+    position: relative !important;
     color: #fff !important;
 }
 
 .navbar-brand img {
-    width: 79.46px  !important;
-    display: block  !important;
-    margin-left: auto  !important;
-    margin-right: auto  !important;
+    width: 79.46px !important;
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
 .navbar-brand p {
-    font-family: 'Lexend', sans-serif  !important;
+    font-family: 'Lexend', sans-serif !important;
     font-size: 20px !important;
-    line-height: 25px  !important;
-    letter-spacing: -0.005em  !important;
-    text-align: center  !important;
-    margin: 0  !important;
+    line-height: 25px !important;
+    letter-spacing: -0.005em !important;
+    text-align: center !important;
+    margin: 0 !important;
 }
 .navbar-brand .active {
-    border-bottom: #c1272d solid 3px  !important;
-    margin-right: 50px  !important;
-    margin-left: 50px  !important;
+    border-bottom: #c1272d solid 3px !important;
+    margin-right: 50px !important;
+    margin-left: 50px !important;
 }
 
 .nav-item {
@@ -368,19 +368,19 @@ img.slider-img {
 }
 
 .contact-caption {
-    font-family: 'Franklin Gothic Medium';
-    font-style: normal;
-    font-weight: 100;
-    font-size: 15px;
-    line-height: 25px;
+    font-family: 'Franklin Gothic Medium' !important;
+    font-style: normal !important;
+    font-weight: 100 !important;
+    font-size: 15px !important;
+    line-height: 25px !important;
 }
 
 .contact-box {
-    border-radius: 90px;
+    border-radius: 90px !important;
 }
 
 .contact-box-2 {
-    border-radius: 30px;
+    border-radius: 30px !important;
 }
 
 .contact-red {
@@ -439,36 +439,36 @@ img.slider-img {
 }
 
 .white-sectagtag {
-    background-color: white;
-    align-items: center;
-    padding-top: 40px;
+    background-color: white !important;
+    align-items: center !important;
+    
 }
 
 .tagtag {
-    font-family: 'Lexend';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 70px;
-    line-height: 80%;
-    align-items: center;
-    text-align: center;
-    letter-spacing: 0.11em;
-    color: #c1272d;
-    text-shadow: -1px 1px 0 #fff, 1px 1px 0 #fff, 1px -1px 0 #fff, -1px -1px 0 #fff;
+    font-family: 'Lexend' !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    font-size: 70px !important;
+    line-height: 80% !important;
+    align-items: center !important;
+    text-align: center !important;
+    letter-spacing: 0.11em !important;
+    color: #c1272d !important;
+    text-shadow: -1px 1px 0 #fff, 1px 1px 0 #fff, 1px -1px 0 #fff, -1px -1px 0 #fff !important;
     text-align: center;
 }
 
 .margin-box {
-    margin-bottom: 50px;
-    margin-top: 50px;
+    margin-bottom: 50px !important;
+    margin-top: 50px !important;
 }
 
 .tagtag2 {
-    font-family: 'Times New Roman MT';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 64px;
-    text-align: center;
+    font-family: 'Times New Roman MT' !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 64px !important;
+    text-align: center !important;
 }
 
 .more-info {
@@ -603,9 +603,9 @@ img.slider-img {
 }
 
 .btn.disabled {
-    opacity: 0.65;
-    background-color: rgb(163, 160, 160);
-    color: white;
+    opacity: 0.65 !important;
+    background-color: rgb(163, 160, 160) !important;;
+    color: white !important;;
 }
 
 td div,
@@ -645,6 +645,9 @@ td {
 
 .orderHistoryBtn {
     margin-top: 10px;
+}
+.orderHistoryBtn:hover {
+   background-color: transparent !important;
 }
 
 .collapse {
@@ -757,4 +760,12 @@ a:active {
 
 .btn-danger {
     color: white !important;
+}
+.dropdown-item:selected {
+  background-color: transparent !important;
+  color: black !important;
+}
+
+.dropdown-menu{
+    --bs-dropdown-link-active-bg: transform !important;
 }
