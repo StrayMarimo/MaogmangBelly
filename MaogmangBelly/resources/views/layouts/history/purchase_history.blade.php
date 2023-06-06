@@ -16,7 +16,7 @@
 @endif
 @if(count($orders) > 0)
 <table class="mx-auto table align-middle" style="font-family: 'Lexend'">
-    <thead class="table-dark">
+    <thead class="table-dark text-center">
         <tr>
             <th>Order Type</th>
             <th>Order Id</th>
@@ -24,17 +24,17 @@
             <th>Total Price</th>
             <th>Delivery Type</th>
             <th>Status</th>
-           <th></th> 
             @if($isAdmin)
             <th >Options</th>
-        
             @endif
+            <th></th>
+
         </tr>
     </thead>
     <tbody>
         @foreach($orders as $order)
         @if($order['is_purchased'] == 1)
-        <tr style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);">
+        <tr style="box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);" class="text-center">
             @if ($order['order_type'] == 'O')
             <td>Order</td>
             @elseif($order['order_type'] == 'C')
@@ -43,7 +43,7 @@
             <td>Reservation</td>
             @endif
             <td>{{$order['id']}}</td>
-            <td class="date-purchased">{{$order['date_purchased']}}</td>
+            <td class="date-purchased">{{$order['updated_at']}}</td>
             <td>₱{{$order['grand_total']}}.00</td>
             @if ($order['delivery_type'] == 'P')
             <td>For Pickup</td>

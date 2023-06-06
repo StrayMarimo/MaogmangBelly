@@ -45,7 +45,12 @@ class User extends Authenticatable implements MustVerifyEmail
         $lastName = array_pop($words);
         return $lastName;
     }
- 
+
+    public function orders()
+    {
+        return $this->hasMany(App\Models\Order);
+    }
+    
     /**
      * The attributes that should be hidden for arrays.
      *
