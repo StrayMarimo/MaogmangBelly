@@ -1,5 +1,5 @@
 <?php
-
+namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CheckoutController;
@@ -10,7 +10,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MapController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\ReservationController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -41,10 +40,10 @@ Route::post("/products/delete", [ProductController::class, 'deleteProduct'])->na
 Route::post("/products/edit", [ProductController::class, 'editProduct'])->name('edit_product');
 
 // CATEGORIES
-Route::get('/categories', [CategoryController::class, 'getCategories'])->name('categories');
-Route::post("/categories/add", [CategoryController::class, 'addCategory'])->name('add_category');
-Route::post("/categories/edit", [CategoryController::class, 'editCategory'])->name('edit_category');
-Route::post("/categories/delete", [CategoryController::class, 'deleteCategory'])->name('delete_category');
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
+Route::post("/categories/add", [CategoryController::class, 'store'])->name('categories.add');
+Route::put("/categories/update", [CategoryController::class, 'update'])->name('categories.update');
+Route::delete("/categories/delete", [CategoryController::class, 'destroy'])->name('categories.delete');
 
 // ORDER
 Route::post("add_to_order", [OrderController::class, 'addToOrder'])->name('add_order');

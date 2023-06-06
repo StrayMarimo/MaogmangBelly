@@ -2,13 +2,13 @@
 @section("content")
 
 <div class="row d-flex justify-content-center mx-5">
-    @if(session('success'))
+    @if(session('success') === true)
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         {{session('message')}}
         <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
         </button>
     </div>
-    @elseif(session('failed'))
+    @elseif(session('success') === false)
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
         {{session('message')}}
         <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">

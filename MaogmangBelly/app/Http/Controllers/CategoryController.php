@@ -4,97 +4,76 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
-use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
 
-    public function getCategories()
+    public function index()
     {
-        $categories = Category::all();
-
-        return response()->json($categories);
+        return response()->json(Category::all());
     }
 
-    /**
-     * Add a new category to the database.
-     *
-     * @param  Request  $req  The HTTP request containing the new category's name.
-     * @return RedirectResponse  A redirect back to the products page.
-     */
-    function addCategory(Request $req)
+    function store(Request $req)
     {
-
-        // Create a new Category object and set its name
-        $category = new Category;
-        $category->name = $req->category_name;
-
-        // Save the new category to the database
-        $category->save();
-
-        if ($category)
-            return redirect()->route('products')->with([
-                'status' => 200,
-                'message' => 'Category Added Successfully',
-                'success' => true
-            ]);
-        else
-            return redirect()->route('products')->with([
-                'status' => 404,
-                'message' => 'Adding Category failed',
-                'success' => false
-            ]);
-    }
-
-    /**
-     * Edit a category's name or delete a category entirely.
-     *
-     * @param  Request  $req  The HTTP request containing the category ID, name, and whether to delete the category.
-     * @return RedirectResponse  A redirect back to the products page.
-     */
-    function editCategory(Request $req)
-    {
+        $name = strtolower($req->category_name);
+        $category = Category::where('name', $name)->first();
     
-        // Update the category's name in the database
-        $rowsAffected = DB::table("categories")
-            ->where('id', (int) $req->category_id)
-            ->update(['name' => $req->category_name]);
+        if ($category) 
+            return redirect()->route('products')
+                ->with($this->retSession("adding " . $name . ". Category already exists", false));
         
+        $category = Category::create(['name' => $name]);
+        if ($category)
+            return redirect()->route('products')
+                ->with($this->retSession("added " . $name, true));
+    
+        return redirect()->route('products')
+            ->with($this->retSession("adding " . $name, false));
+    }
 
-        if ($rowsAffected > 0) {
-            return redirect()->route('products')->with([
-                'status' => 200,
-                'message' => 'Category Updated Successfully',
-                'success' => true
-            ]);
-        } else {
-            return redirect()->route('products')->with([
-                'status' => 404,
-                'message' => 'Editing Category failed',
-                'success' => false
-            ]);
-        }
+    function update(Request $req)
+    {
+        $category = Category::find((int) $req->category_id);
+        $oldName = $category->name; 
+        $name = strtolower($req->category_name); 
+        $rowAffected = $category->update(['name' => $name]);
+
+        if ($rowAffected == 1) 
+            return redirect()->route('products')
+                ->with($this->retSession("updated " . $oldName . " to " .$name, true)); 
+
+        return redirect()->route('products')
+            ->with($this->retSession("updating " . $oldName, false));
     }
 
 
-    function deleteCategory(Request $req)
+    function destroy(Request $req)
     {
-        $rowsDeleted = DB::table("categories")
-            ->where('id', (int) $req->category_id)
-            ->delete();
-       
-        if ($rowsDeleted > 0) {
-            return redirect()->route('products')->with([
+        $id = (int) $req->category_id;
+        $name = Category::find($id)['name'];
+
+        $rowDeleted = Category::destroy($id);
+        if ($rowDeleted == 1)
+            return redirect()->route('products')
+                ->with($this->retSession("deleted " . $name, true)); 
+
+        return redirect()->route('products')
+            ->with($this->retSession("deleting" . $name, false));
+    }
+
+    private function retSession(String $msg, bool $success)
+    {  
+        if ($success)
+            return [
                 'status' => 200,
-                'message' => 'Category Deleted Successfully',
+                'message' => "Successfully " . $msg . "!",
                 'success' => true
-            ]);
-        } else {
-            return redirect()->route('products')->with([
+            ];
+        else
+           return [
                 'status' => 404,
-                'message' => 'Category Deletion failed',
+                'message' => "Failed " . $msg . ".",
                 'success' => false
-            ]);
-        }
+            ]; 
     }
 }
