@@ -58,7 +58,7 @@ class CategoryController extends Controller
                 ->with($this->retSession("deleted " . $name, true)); 
 
         return redirect()->route('products')
-            ->with($this->retSession("deleting" . $name, false));
+            ->with($this->retSession("deleting " . $name, false));
     }
 
     private function retSession(String $msg, bool $success)
