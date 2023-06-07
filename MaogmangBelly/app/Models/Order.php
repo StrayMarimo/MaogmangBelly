@@ -10,12 +10,17 @@ class Order extends Model
 {
     use HasFactory;
     public $table="orders";
-    protected $fillable = ['is_purchased'];
-    protected $dates = ['date_purchased'];
+    protected $fillable = ['is_purchased', 'delivery_type'];
+    protected $dates = ['date_needed'];
 
-    public function scopeOfUser($query, $userId)
+    public function orderLines()
     {
-        return $query->where('user_id', '=', $userId);
+        return $this->hasMany(OrderLine::class);
+    }
+
+    public function scopeOfDate($query, $date)
+    {
+        return $query->whereDate('date_needed', $date)->exists();
     }
 
     public function scopeUnpurchased($query)

@@ -213,7 +213,7 @@
                             <tr>
                                 <td
                                     style="padding: 0px 40px 20px 40px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555; text-align: left; font-weight:bold;">
-                                    <p style="margin: 0;">Order ID: {{ $mailData['orderid'] }}</p>
+                                    <p style="margin: 0;">Order ID: {{ $mailData['id'] }}</p>
                                 </td>
                             </tr>
                             <tr>
@@ -238,10 +238,10 @@
                                             <td>Orders:</td>
                                         </tr>
                                         @for ($i = 0; $i < $mailData['order_count']; $i++) <tr>
-                                            <td>{{ $mailData['orders'][$i]['quantity'] }} pcs of {{
-                                                $mailData['orders'][$i]['product_name'] }} @ &#8369; {{
-                                                $mailData['orders'][$i]['price'] }} each - &#8369; {{
-                                                $mailData['orders'][$i]['total_price'] }}</td>
+                                            <td>{{ $mailData['order_lines'][$i]['quantity'] }} pcs of {{
+                                                $mailData['order_lines'][$i]['name'] }} @ &#8369; {{
+                                                $mailData['order_lines'][$i]['price'] }} each - &#8369; {{
+                                                $mailData['order_lines'][$i]['total_price'] }}</td>
                             </tr>
                             @endfor
                             <tr>
@@ -249,7 +249,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <h4>Grand Total : &#8369; {{ $mailData['grandTotal'] }}</h4>
+                                    <h4>Grand Total : &#8369; {{ $mailData['grand_total'] }}</h4>
                                 </td>
                             </tr>
                         </table>
@@ -263,7 +263,7 @@
                     </td>
                 </tr>
                 @endif
-                @if($mailData['date_needed'] != null)
+                @if($mailData['order_type'] != 'O')
                 <tr>
                     <td
                         style="padding: 0px 40px 20px 40px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555; text-align: left; font-weight:bold;">

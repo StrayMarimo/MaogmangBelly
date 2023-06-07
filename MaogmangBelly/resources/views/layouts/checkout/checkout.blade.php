@@ -23,7 +23,7 @@
                     @foreach ($orders as $item)
                     @if($item['quantity'] > 0)
                     <tr class="align-middle">
-                        <td>{{$item['product_name']}}</td>
+                        <td>{{$item['name']}}</td>
                         <td>{{$item['price']}}</td>
                         <td>
                             <form action="/edit_order_qty" method="POST" id="edit-order-form-{{$item['id']}}">

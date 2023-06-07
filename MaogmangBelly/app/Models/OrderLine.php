@@ -10,13 +10,8 @@ class OrderLine extends Model
     use HasFactory;
     public $table="order_lines";
 
-    public function scopeOfOrder($query, $orderId)
+    public function product()
     {
-        return $query->where('order_id', '=', $orderId)->get();
-    }
-
-    public function orderCount($query, $orderId)
-    {
-        return  $query->where('order_id', '=', $orderId)->count(); 
+        return $this->hasOne(Product::class, 'id', 'product_id');
     }
 }

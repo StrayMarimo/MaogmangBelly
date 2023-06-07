@@ -44,16 +44,10 @@ class HomeController extends Controller
         $hasOrder = false;
         $scroll = session()->has('scroll') ? true : false;
 
-        if ($user == null){
+        if ($user == null)
             return view('layouts.catering.catering', compact('scroll', 'hasOrder'));
-        }
-        $order = Order::where([
-            ['user_id', '=', $user->id],
-            ['order_type', '=', 'C'],
-            ['is_purchased', 0],
-        ])->first();
-
-
+        
+        $order = $user->orders()->ofType('C')->unpurchased()->first();
         // If the user has not added any orders.
         if ($order == null) {
             return view('layouts.catering.catering', compact('scroll', 'hasOrder'));

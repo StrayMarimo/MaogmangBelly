@@ -40,14 +40,11 @@ class OrderController extends Controller
             ['is_purchased', 0],
         ])->get();
 
-        $delivery_type = ($req->order_type == "C" || $req->order_type == "R") ? 'D' : 'X';
-
         // if no order exists, create new one
         if (count($orders) == 0) {
             $newOrder = new Order;
             $newOrder->user_id = $user;
             $newOrder->order_type = $req->order_type;
-            $newOrder->delivery_type = $delivery_type;
             $newOrder->is_purchased = false;
             $newOrder->save();
         }
