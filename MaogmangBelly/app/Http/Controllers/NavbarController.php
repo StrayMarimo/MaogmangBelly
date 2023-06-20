@@ -29,15 +29,11 @@ class NavbarController extends Controller
         $user = Auth::user();
         $hasOrder = false;
         $scroll = session()->has('scroll') ? true : false;
-        $order = $user->orders()->ofType('C')->unpurchased()->first();
-        if ($user == null)
+        if ($user)
+            $order = $user->orders()->ofType('C')->unpurchased()->first();
+        if ($user == null || $order == null)
             return view('layouts.catering.catering', compact('scroll', 'hasOrder'));
-        
-       
-        // If the user has not added any orders.
-        if ($order == null) 
-            return view('layouts.catering.catering', compact('scroll', 'hasOrder'));
-     
+
         $hasOrder = true;
         // If the user has one unpurchased order saved, get all orders.
         $orders = $order->getOrders();
@@ -79,16 +75,12 @@ class NavbarController extends Controller
         $user = Auth::user();
         $scroll = session()->has('scroll') ? true : false;
         $hasOrder = false;
-
-        if ($user == null) 
+        if ($user)
+            $order = $user->orders()->ofType('R')->unpurchased()->first();
+        
+        if ($user == null || $order == null) 
             return view('layouts.reservations.reservations', compact('scroll', 'hasOrder')); 
 
-        $order = $user->orders()->ofType('R')->unpurchased()->first();
-
-        // If the user has not added any orders.
-        if ($order == null)
-            return view('layouts.reservations.reservations', compact('scroll', 'hasOrder'));
-    
         $hasOrder = true;
         // If the user has one unpurchased order saved, get all orders.
         $orders = $order->getOrders();
@@ -99,9 +91,9 @@ class NavbarController extends Controller
      /**
      * Gets all orders of the user that have not been purchased to be displayed in the order checkout page.
      * @param Request $req - the HTTP request object.
-     * @return string|View - if the user is not authenticated, redirects to the login page. 
-     *                       if the user has not added any orders yet, returns a string message. 
-     *                       Otherwise, returns the checkout page with all the products ordered and order data.
+     * @return View - if the user is not authenticated, redirects to the login page. 
+     *                if the user has not added any orders yet, redirect to no orders yet
+     *                Otherwise, returns the checkout page with all the products ordered and order data.
      */
     public function order()
     {

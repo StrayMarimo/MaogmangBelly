@@ -8,7 +8,7 @@
         @foreach($chunk as $item)
         <div class="col-sm-4">
           <div class="card mx-4">
-            <a href="{{ route('product_details', ['id' => $item['id']]) }}" id="searchCard">
+            <a href="{{ route('product.show', ['product' => $item['id']]) }}" id="searchCard">
               <img class="card-img-top" src="{{ asset('assets/product_assets/'.$item['gallery']) }}"
                 alt="{{ $item['name'] }}" style="object-fit: cover; width: 100%; height: 30vh;">
               <div class="card-body">

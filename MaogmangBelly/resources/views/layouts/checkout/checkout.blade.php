@@ -6,7 +6,7 @@
             <div class="text-center mt-3" id="checkout_reservations">
                 <h1 class="contact-title" style="color: white">Checkout</h1>
             </div>
-            <a href="{{route('products')}}" class="btn btn-danger mt-3 mb-3" style="width: fit-content">Add more
+            <a href="{{route('product.index')}}" class="btn btn-danger mt-3 mb-3" style="width: fit-content">Add more
                 products</a>
 
             <table class="table table-hover text-center text-white">

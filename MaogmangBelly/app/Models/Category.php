@@ -15,5 +15,10 @@ class Category extends Model
     {
         return $query->where('name', '=', $name)->exists();
     }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
     
 }

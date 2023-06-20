@@ -7,7 +7,7 @@
         <p class="card-text" style="max-height: 6em; overflow: hidden; text-overflow: ellipsis;">
             {{$product['description']}}</p>
             <div class="d-flex justify-content-between align-items-center">
-            <a href="{{ route('product_details', ['id' => $product['id']]) }}" class="btn btn-danger"
+            <a href="{{ route('product.show', ['product' => $product['id']]) }}" class="btn btn-danger"
                 style="background-color: #dc3545;">Add to Order</a>
             @if($isAdmin)
             <a href="" id="editProduct" data-product-id="{{$product['id']}}" class="edit-product"><i

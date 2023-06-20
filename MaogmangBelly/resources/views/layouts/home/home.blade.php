@@ -17,7 +17,7 @@
         <br>
         <br>
         <div class="mb-3" style="justify-content: center; display: flex">
-            <a class="btn btn-primary" href="{{route('products')}}" role="button" style="font-family: Lexend; text-align: center; background: #a72322; width: 15vw; border-radius: 30px; color:white !important;">Order Now</a>
+            <a class="btn btn-primary" href="{{route('product.index')}}" role="button" style="font-family: Lexend; text-align: center; background: #a72322; width: 15vw; border-radius: 30px; color:white !important;">Order Now</a>
         </div>
     </div>
 </div>

@@ -31,17 +31,17 @@ Route::get('/contact', [NavbarController::class, 'contact'])->name('contact');
 Route::get('/order', [NavbarController::class, 'order'])->name('order');
 
 // PRODUCTS
-Route::get("/products", [ProductController::class, 'getProducts'])->name('products');
-Route::get('/products/search', [ProductController::class, 'searchProducts'])->name('search');
-Route::get("/products/details", [ProductController::class, 'getProductDetails'])->name('product_details');
-Route::get("/products/product", [ProductController::class, 'getProduct'])->name('product');
-Route::post("products/add", [ProductController::class, 'addProduct'])->name('add_product');
-Route::post("/products/delete", [ProductController::class, 'deleteProduct'])->name('delete_product');
-Route::post("/products/edit", [ProductController::class, 'editProduct'])->name('edit_product');
+// Route::get("/products", [ProductController::class, 'index'])->name('products');
+Route::get('/product/search', [ProductController::class, 'search'])->name('search');
+// Route::get("/products/product", [ProductController::class, 'getProduct'])->name('product');
+// Route::post("products/add", [ProductController::class, 'addProduct'])->name('add_product');
+// Route::post("/products/delete", [ProductController::class, 'deleteProduct'])->name('delete_product');
+// Route::post("/products/edit", [ProductController::class, 'editProduct'])->name('edit_product');
 
 Route::resource('category', CategoryController::class, ['only' => ['index', 'store', 'update', 'destroy']]);
 Route::resource('orders', OrderController::class, ['only' => ['index', 'store', 'update', 'destroy']]);
 Route::resource('order_line', OrderLineController::class, ['only' => ['index', 'store', 'update', 'destroy']]);
+Route::resource('product', ProductController::class, ['only' => ['index', 'show', 'search', 'store', 'update', 'destroy']]);
 
 Route::get("add_order_line", [OrderLineController::class, 'store'])->name('add_orderline');
 

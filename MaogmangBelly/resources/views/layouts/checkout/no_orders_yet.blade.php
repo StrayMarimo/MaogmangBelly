@@ -5,7 +5,7 @@
         <div class="card-body">
             <h5 class="card-title">No Orders Yet</h5>
             <p class="card-text">You have not made any orders yet.</p>
-            <a href="{{route('products')}}"class="btn btn-primary text-white" style="background-color: #dc3545; ">Make an Order</a>
+            <a href="{{route('product.index')}}"class="btn btn-primary text-white" style="background-color: #dc3545; ">Make an Order</a>
         </div>
     </div>
 </div>

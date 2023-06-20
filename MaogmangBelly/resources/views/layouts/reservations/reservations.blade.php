@@ -62,7 +62,7 @@
         <h5 class="mt-5 mb-2 text-center" style="color: white; font-family: 'Lexend';">You have not made any
             reservations yet. </h5>
         <div style="margin-top: 10vh; margin-bottom: 5vh" class="d-flex justify-content-center">
-            <a href="{{route('products')}}" class="btn btn-danger px-4 py-2">Reserve products</a>
+            <a href="{{route('product.index')}}" class="btn btn-danger px-4 py-2">Reserve products</a>
         </div>
         @endif
         @if($hasOrder)

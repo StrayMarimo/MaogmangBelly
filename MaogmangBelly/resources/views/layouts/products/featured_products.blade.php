@@ -3,7 +3,7 @@
         <div class="carousel-inner">
             @foreach ($featured_products as $item)
             <div class="carousel-item {{$loop->index == 1 ? 'active' : ''}}">
-                <a href="{{ route('product_details', ['id' => $item['id']]) }}">
+                <a href="{{ route('product.show', ['product' => $item['id']]) }}">
                     <img class="slider-img w-100 px-5" src="{{ url('/assets/product_assets/'.$item['gallery']) }}"
                         class="d-block w-100">
                     <div class="carousel-caption d-none d-md-block slider-text">
@@ -47,7 +47,7 @@
         <div class="carousel-inner">
             @foreach ($featured_products as $item)
             <div class="carousel-item {{$loop->index == 1 ? 'active' : ''}}">
-                <a href="{{ route('product_details', ['id' => $item['id']]) }}">
+                <a href="{{ route('product.show', ['product' => $item['id']]) }}">
                     <img class="d-block w-100 brightness" src="{{ url('/assets/product_assets/'.$item['gallery']) }}" width=100%
                         class="d-block w-100">
                     <div class="carousel-caption d-none d-md-block slider-text" id="carouselCaption">

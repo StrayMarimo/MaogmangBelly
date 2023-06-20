@@ -58,11 +58,12 @@ $(document).ready(function () {
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
             },
-            url: '/products/product?id=' + product_id,
+            url: '/product',
+            data: JSON.stringify({ product: product_id}),
             method: 'GET',
             success: function (response) {
                 let product = response;
-        
+
                 $('#editProductForm #productId').val(product['id']);
                 $('#editProductForm #productCategoryId').val(product['category_id']);
                 $('#editProductForm #name').val(product['name']);

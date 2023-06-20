@@ -9,7 +9,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <!-- Add Product form -->
-            <form action="{{ route('add_product')}}" method="POST" enctype="multipart/form-data" id="addProductForm"
+            <form action="{{ route('product.store')}}" method="POST" enctype="multipart/form-data" id="addProductForm"
                 style="margin: 20px; line-height: 2.5;" class="mb-2">
                 @csrf
                 <div class="form-group mb-2">
@@ -102,7 +102,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="deleteProductForm" action="{{ route('delete_product')}}" method="POST">
+                <form id="deleteProductForm" action="{{ route('product.destroy', ['product' => 'product_id'])}}" method="POST">
                     @csrf
                     <!-- Save category ID -->
                     <input type="hidden" id="deleteProductId" value="" name="product_id" required>
@@ -126,7 +126,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <!-- Edit Product form -->
-            <form action="{{ route('edit_product')}}" method="POST" enctype="multipart/form-data" id="editProductForm"
+            <form action="{{ route('product.update', ['product' => 'product_id'])}}" method="POST" enctype="multipart/form-data" id="editProductForm"
                 style="margin: 20px; line-height: 2.5;">
                 @csrf
                 <!-- Save product ID -->

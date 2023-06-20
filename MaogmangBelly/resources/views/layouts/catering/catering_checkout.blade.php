@@ -86,7 +86,7 @@
                 for catering yet.
             </h5>
             <div style="margin-top: 10vh; margin-bottom: 5vh" class="d-flex justify-content-center">
-                <a href="{{route('products')}}" class="btn btn-danger px-4 py-2">Avail products</a>
+                <a href="{{route('product.index')}}" class="btn btn-danger px-4 py-2">Avail products</a>
             </div>
             @endif
 

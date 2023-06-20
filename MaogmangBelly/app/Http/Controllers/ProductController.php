@@ -15,32 +15,15 @@ class ProductController extends Controller
      *
      * @return View - the products view.
      */
-    function getProducts()
+    public function index()
     {
-        $isAdmin = false;
         $user = Auth::user();
-
-        // check if user is an admin
-        if ($user != null) {
-            if ($user->is_admin) {
-                $isAdmin = true;
-            }
-        }
-
-        // retrieve all products and categories
-        $products = Product::all();
-        $categories = Category::all();
-
-        $featured_products = Product::where('is_featured', true)->get();
-        $trending_products = Product::where('is_trending', true)->get();
-
-        // return the products view with all the products and categories, and the isAdmin flag
         return view('layouts.products.products', [
-            'products' => $products,
-            'categories' => $categories,
-            'isAdmin' => $isAdmin,
-            'featured_products' => $featured_products,
-            'trending_products' => $trending_products
+            'products' => Product::all(),
+            'categories' => Category::all(),
+            'isAdmin' => $user != null && $user->is_admin,
+            'featured_products' => Product::featured(),
+            'trending_products' => Product::trending()
         ]);
     }
 
@@ -48,33 +31,14 @@ class ProductController extends Controller
      * Show the details of a specific product.
      *
      * @param int $id - the ID of the product.
-     * @return View - the details view.
+     * @return JSON|View  - containing the product details
      */
-    function getProductDetails(Request $req)
+    public function show(Request $req)
     {
-        // get the product with the given ID
-        $data = Product::find($req->id);
-
-        // get the category of the product
-        $cat_id = $data['category_id'];
-        $category = Category::find($cat_id);
-
-        // return the details view with the product and category information
-        return view('layouts.products.details', ['product' => $data, 'category' => $category]);
-    }
-
-    /**
-     * Show the details of a specific product.
-     *
-     * @param int $id - the ID of the product.
-     * @return JSON - the product data.
-     */
-    function getProduct(Request $req)
-    {
-        // get the product with the given ID
-        $product = Product::find($req->id);
-
-        return response()->json($product);
+        $product = Product::find($req->product);
+        if ($req->ajax()) return response()->json($product);
+        return view('layouts.products.details', 
+            ['product' => $product, 'category' => $product->category]);
     }
 
 
@@ -84,15 +48,10 @@ class ProductController extends Controller
      * @param Request $req - the HTTP request containing the user input.
      * @return View - the search view with the matching products.
      */
-    function searchProducts(Request $req)
+    public function search(Request $req)
     {
-        $query = $req->input('query');
-
-        // retrieve all products whose names contain the search query
-        $products = Product::where('name', 'like', '%' . $query . '%')->get();
-
-        // return search results view
-        return view('layouts.search.search', ['products' => $products]);
+        return view('layouts.search.search', 
+            ['products' => Product::ofPattern($req->input('query'))]);
     }
 
     /**
@@ -101,64 +60,52 @@ class ProductController extends Controller
      * @param  Request  $req  The HTTP request containing the new product's info.
      * @return RedirectResponse  A redirect back to the products page.
      */
-    function addProduct(Request $req)
+    public function store(Request $req)
     {
         $filename= ""; 
-      
-
         // get the filename of image uploaded
         if($req->img)
         {
-             $filename = $req->img->getClientOriginalName();
-
+            $filename = $req->img->getClientOriginalName();
             // store in public folder
             $req->img->move(public_path('assets/product_assets/'), $filename);
         }
-           
-        // Create a new Product object and set its data
-        $product = new Product;
-        $product->name = $req->product_name;
-        $product->description = $req->product_desc;
-        $product->price = $req->product_price;
-        $product->price_10pax = $req->product_price_10;
-        $product->price_20pax = $req->product_price_20;
-        $product->stock = $req->product_stock;
-        $product->gallery = $filename;
-        $product->total_sold = 0;
-        $product->category_id = $req->category_id;
-        $product->is_trending = $req->has('is_trending');
-        $product->is_featured = $req->has('is_featured');
 
-        // Save the new product to the database
-        $product->save();
+        // Create a new product object and set its data
+        $product = Product::create([
+            'name' =>  $req->product_name,
+            'description' => $req->product_desc,
+            'price' => $req->product_price,
+            'price_10pax' => $req->product_price_10,
+            'price_20pax' =>  $req->product_price_20,
+            'stock' => $req->product_stock,
+            'gallery' => $filename,
+            'category_id' => $req->category_id,
+            'is_trending' => $req->has('is_trending'),
+            'is_featured' => $req->has('is_featured')
+        ]);
+
         if ($product)
-            return redirect()->route('products')->with([
-                'status' => 200,
-                'message' => 'Product Added Successfully',
-                'success' => true
-            ]);
-        else
-            return redirect()->route('products')->with([
-                'status' => 404,
-                'message' => 'Adding Product failed',
-                'success' => false
-            ]);
+            return redirect()->route('product.index')->with(
+                $this->retSession('Successfully added ' .$req->product_name, true));
+        return redirect()->route('product.index')->with(
+            $this->retSession('Failed adding ' . $req->product_name, false));
     }
 
-    function deleteProduct(Request $req)
+    public function destroy(Request $req)
     {
-        $rowsDeleted = DB::table("products")
-            ->where('id', (int) $req->product_id)
-            ->delete();
-
-        if ($rowsDeleted > 0) {
-            return redirect()->route('products')->with([
+        $id = (int) $req->product;
+        $name = Product::find($id)['name'];
+        $rowDeleted = Product::destroy($id);
+        
+        if ($rowDeleted == 1) {
+            return redirect()->route('product')->with([
                 'status' => 200,
                 'message' => 'Product Deleted Successfully',
                 'success' => true
             ]);
         } else {
-            return redirect()->route('products')->with([
+            return redirect()->route('product')->with([
                 'status' => 404,
                 'message' => 'Product Deletion failed',
                 'success' => false
@@ -166,7 +113,7 @@ class ProductController extends Controller
         }
     }
 
-    function editProduct(Request $req)
+    public function update(Request $req)
     {
         $filename = "";
 
@@ -199,17 +146,27 @@ class ProductController extends Controller
         
             
         if ($rowsAffected > 0) {
-            return redirect()->route('products')->with([
+            return redirect()->route('product')->with([
                 'status' => 200,
                 'message' => 'Product Updated Successfully',
                 'success' => true
             ]);
         } else {
-            return redirect()->route('products')->with([
+            return redirect()->route('product')->with([
                 'status' => 404,
                 'message' => 'Product Deletion failed',
                 'success' => false
             ]);
         }
     }
+
+    
+    private function retSession(String $msg, bool $success)
+    {  
+        return [
+            'message' => $msg . "!",
+            'success' => $success
+        ];
+    }
 }
+

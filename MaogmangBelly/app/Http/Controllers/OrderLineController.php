@@ -11,36 +11,44 @@ use App\Models\Product;
 class OrderLineController extends Controller
 {
 
+    /**
+     * gets all order lines under a specified order
+     * @param Request req containing the order id
+     * @return JSON response containing all order lines
+     */
     public function index(Request $req)
     {
         return response()->json(Order::find($req->id)->getOrders);
     }
     
+    /**
+     * creates a new order line
+     * 
+     * @param Request req containing all necessary data
+     * @return calls a function to return a redirect to orders route
+     */
     public function store(Request $req)
     {
-        // store and save details of order line
+        // create order line using passed data
         OrderLine::create([
             'order_id' => $req->order_id,
             'product_id' => $req->product_id,
             'quantity' => $req->quantity,
             'total_price' => $req->total_price
         ]);
-
         return $this->redirectTo($req->order_type);
     }
-     /**
+    /**
      * Updates the quantity and total price of an order line, and the grand total of the order.
      *
      * @param Request $req The HTTP request containing order line ID and item quantity.
      * @return RedirectResponse A redirect response to the checkout order page.
      */
-    function update(Request $req)
+    public function update(Request $req)
     {
         // Find the order line to update
         $orderLine = OrderLine::find($req->order_line);
         // Find the order that the order line belongs to
-
-       
         $order = $orderLine->order;
 
         // If the new quantity is zero, delete the order line and the order if it has no remaining order lines
@@ -76,7 +84,7 @@ class OrderLineController extends Controller
      * @param Request $req The HTTP request object containing the order line ID
      * @return RedirectResponse A redirect to the checkout order page
      */
-    function destroy(Request $req)
+    public function destroy(Request $req)
     {
         // Find the order line to delete
         $order_line = OrderLine::find((int) $req->order_line);
@@ -96,12 +104,21 @@ class OrderLineController extends Controller
             $order->save();
 
         return $this->redirectTo($req->order_type);
-       
+
     }
 
+    /**
+     * The function redirects the user to different pages based on the order
+     * type parameter passed.
+     * 
+     * @param order_type The parameter order_type is a variable that
+     * is used to determine which page to redirect to.
+     * @return RedirectResponse to a specific URL based on the value of the
+     * parameter
+     */
     private function redirectTo($order_type)
     {
-         if ($order_type == "O")
+        if ($order_type == "O")
             return redirect('/order');
         if ($order_type == "C")
             return redirect('/catering')->with('scroll', true);

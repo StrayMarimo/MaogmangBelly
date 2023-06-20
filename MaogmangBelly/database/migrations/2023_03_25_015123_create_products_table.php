@@ -19,7 +19,7 @@ return new class extends Migration
             $table->double("price_10pax", 8, 2);
             $table->double("price_20pax", 8, 2);
             $table->integer("stock");
-            $table->integer("total_sold");
+            $table->integer("total_sold")->default(0);
             $table->string("gallery");
             $table->boolean("is_trending");
             $table->boolean("is_featured");

@@ -16,8 +16,8 @@
         </form>
       </li>
       <li class="nav-item">
-        <a class="nav-link {{request()->is('/products') ? 'active' : ''}}" href="{{route('products')}}">
-          <p class="{{request()->is('products') ? 'active' : ''}}">PRODUCTS</p>
+        <a class="nav-link {{request()->is('/product.index') ? 'active' : ''}}" href="{{route('product.index')}}">
+          <p class="{{request()->is('product.index') ? 'active' : ''}}">PRODUCTS</p>
         </a>
       </li>
       <li class="nav-item">
