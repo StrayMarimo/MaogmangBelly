@@ -23,7 +23,7 @@ class MailController extends Controller
             'body' => "Thank you for subscribing to our newsletter. We'll keep you up to date on our business."
         ];
 
-        if(!Mails::where('email', '=', $req->email_newsletter)->exists()){
+        if(!Mails::hasMail($req->email_newsletter)){
             $mail = new Mails;
             $mail->email = $req->email_newsletter;
             $mail->save();

@@ -11,7 +11,7 @@
                 ₱{{$product['price']}}.00
             </div>
             <p class="lead">{{$product['description']}}</p>
-            <form action="{{route('add_order')}}" method="POST" id="availProductForm">
+            <form action="{{route('orders.store')}}" method="POST" id="availProductForm">
                 @csrf
                 <input type="hidden" name="product_id" value={{$product['id']}}>
                 <input type="hidden" name="order_type" value="" id="orderType">

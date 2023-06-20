@@ -59,9 +59,9 @@
             @if($isAdmin)
             @if ($order['date_completed'] == null)
                 <td>
-                    <form action="{{route('complete_order')}}" method="POST">
+                    <form action="{{route('orders.update', ['order' => $order['id'] ])}}" method="POST">
+                        @method('PUT')
                         @csrf
-                        <input type="hidden" name="order_id" value="{{$order['id']}}">
                         <button type="submit" class="btn px-4 py-2" style="color: white; background-color:#a72322; border-radius: 20px;">Set Order as Completed</a>
                     </form>
 

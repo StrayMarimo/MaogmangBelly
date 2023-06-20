@@ -13,11 +13,11 @@
         @endif
         @if(Auth::User()->is_admin)
        <div style="margin-top: 10vh" class="d-flex justify-content-center">
-            <a href="{{route('get_orders')}}" class="btn btn-danger px-4 py-2" style="border-radius: 30px;">See All Customer's Purchases</a>
+            <a href="{{route('orders.index')}}" class="btn btn-danger px-4 py-2" style="border-radius: 30px;">See All Customer's Purchases</a>
         </div>
         @else 
         <div style="margin-top: 10vh" class="d-flex justify-content-center">
-            <a href="{{route('get_orders')}}" class="btn btn-danger px-4 py-2">See My Purchases</a>
+            <a href="{{route('orders.index')}}" class="btn btn-danger px-4 py-2">See My Purchases</a>
         </div>
         @endif
         <div class="">

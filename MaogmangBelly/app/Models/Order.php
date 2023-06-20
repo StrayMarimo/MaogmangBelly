@@ -10,8 +10,18 @@ class Order extends Model
 {
     use HasFactory;
     public $table="orders";
-    protected $fillable = ['is_purchased', 'delivery_type'];
-    protected $dates = ['date_needed'];
+    protected $fillable = [
+        'is_purchased', 
+        'delivery_type', 
+        'order_type', 
+        'user_id', 
+        'grand_total', 
+        'comment', 
+        'address'
+    ];
+    protected $dates = [
+        'date_needed', 
+        'date_completed'];
 
     public function orderLines()
     {
@@ -31,6 +41,26 @@ class Order extends Model
     public function scopeOfType($query, $orderType)
     {
         return $query->where('order_type', '=', $orderType);
+    }
+
+    public function getOrders()
+    {
+        $orders = $this->orderLines;
+        foreach ($orders as $order)
+        {
+            $product = $order->product;
+            $order->name = $product->name;
+            $order->price = $product->price;
+            $order->price_10pax = $product->price_10pax;
+            $order->price_20pax = $product->price_20pax;
+            unset($order->product);
+        }
+        return $orders->toArray();
+    }
+
+    public function countOrders()
+    {
+        return $this->orderLines->count();
     }
 
 }

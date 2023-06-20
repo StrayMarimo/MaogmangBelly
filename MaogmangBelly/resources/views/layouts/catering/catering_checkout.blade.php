@@ -1,5 +1,5 @@
 <div id="checkoutCatering"></div>
-<div style="height: fit-content; padding-bottom: 20vh"" class=" green-sec">
+<div style="height: fit-content; padding-bottom: 20vh" class=" green-sec">
     <div class="card" id="reservecard" style="color:white; font-family: 'Lexend';">
         <div class="text-center" id="checkout_catering">
             <h1 class="contact-title" style="color: white">Catering</h1>
@@ -20,7 +20,7 @@
                     @foreach ($orders as $item)
                     @if($item['quantity'] > 0)
                     <tr>
-                        <td>{{$item['product_name']}}</td>
+                        <td>{{$item['name']}}</td>
                         <td>{{$item['price']}}</td>
                         <td>
                             <form action="/edit_order_qty" method="POST" id="edit-order-form-{{$item['id']}}">

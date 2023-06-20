@@ -35,7 +35,7 @@
 
                     <div class="card-body">
                         <div style="height: 4rem">
-                            <h5 class="card-title">{{$product['product_name']}}</h5>
+                            <h5 class="card-title">{{$product['name']}}</h5>
                         </div>
 
                         <p class="card-text">

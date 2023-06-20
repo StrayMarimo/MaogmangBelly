@@ -9,4 +9,9 @@ class Mails extends Model
 {
     use HasFactory;
     protected $table = 'subscribed_to_newsletter';
+
+    public function scopeHasEmail($query, $email)
+    {
+        return $query->where('email', '=', $email)->exists();
+    }
 }

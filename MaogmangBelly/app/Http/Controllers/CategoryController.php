@@ -16,64 +16,56 @@ class CategoryController extends Controller
     function store(Request $req)
     {
         $name = strtolower($req->category_name);
-        $category = Category::where('name', $name)->first();
+        $category = Category::ofName($name);
     
         if ($category) 
             return redirect()->route('products')
-                ->with($this->retSession("adding " . $name . ". Category already exists", false));
+                ->with($this->retSession("Failed adding " . $name . ". Category already exists", false));
         
         $category = Category::create(['name' => $name]);
         if ($category)
             return redirect()->route('products')
-                ->with($this->retSession("added " . $name, true));
+                ->with($this->retSession("Successfully  added " . $name, true));
     
         return redirect()->route('products')
-            ->with($this->retSession("adding " . $name, false));
+            ->with($this->retSession("Failed adding " . $name, false));
     }
 
     function update(Request $req)
     {
-        $category = Category::find((int) $req->category_id);
+        $category = Category::find((int) $req->category);
         $oldName = $category->name; 
         $name = strtolower($req->category_name); 
         $rowAffected = $category->update(['name' => $name]);
 
         if ($rowAffected == 1) 
             return redirect()->route('products')
-                ->with($this->retSession("updated " . $oldName . " to " .$name, true)); 
+                ->with($this->retSession("Successfully updated " . $oldName . " to " .$name, true)); 
 
         return redirect()->route('products')
-            ->with($this->retSession("updating " . $oldName, false));
+            ->with($this->retSession("Failed updating " . $oldName, false));
     }
 
 
     function destroy(Request $req)
     {
-        $id = (int) $req->category_id;
+        $id = (int) $req->category;
         $name = Category::find($id)['name'];
 
         $rowDeleted = Category::destroy($id);
         if ($rowDeleted == 1)
             return redirect()->route('products')
-                ->with($this->retSession("deleted " . $name, true)); 
+                ->with($this->retSession("Successfully deleted " . $name, true)); 
 
         return redirect()->route('products')
-            ->with($this->retSession("deleting " . $name, false));
+            ->with($this->retSession("Failed deleting " . $name, false));
     }
 
     private function retSession(String $msg, bool $success)
     {  
-        if ($success)
-            return [
-                'status' => 200,
-                'message' => "Successfully " . $msg . "!",
-                'success' => true
-            ];
-        else
-           return [
-                'status' => 404,
-                'message' => "Failed " . $msg . ".",
-                'success' => false
-            ]; 
+        return [
+            'message' => $msg . "!",
+            'success' => $success
+        ];
     }
 }

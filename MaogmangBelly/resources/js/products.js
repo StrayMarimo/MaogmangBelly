@@ -125,16 +125,20 @@ $(document).ready(function () {
     // handles instance when category is selected on delete category
     $('#selectCategory').on('change', function () {
         let category_id = $('#selectCategory').val();
-        console.log('id: ', category_id);
-        $('#delete-category-id').val(category_id);
+       
+        let actionUrl = $('#deleteCategoryForm').attr('action');
+         console.log(actionUrl);
+        actionUrl = actionUrl.replace('category_id', category_id);
+        $('#deleteCategoryForm').attr('action', actionUrl);
+
     });
 
     // handles instance when category is selected on edit category
     $('#selectCategoryEdit').on('change', function () {
-        console.log('dasd');
         let category_id = $('#selectCategoryEdit').val();
-        console.log('id: ', category_id);
-        $('#editCategoryId').val(category_id);
+        let actionUrl = $('#editCategoryForm').attr('action');
+        actionUrl = actionUrl.replace('category_id', category_id);
+        $('#editCategoryForm').attr('action', actionUrl); 
     });
 
     // Handle product image upload
@@ -153,7 +157,7 @@ $(document).ready(function () {
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
             },
-            url: '/categories',
+            url: '/category',
             method: 'GET',
             success: function (response) {
                 let categories = response;
@@ -198,6 +202,5 @@ $(document).ready(function () {
 
     setTimeout(function () {
         $('.alert').fadeOut(500);
-        // $('.toaster').fadeOut(500);
     }, 5000);
 });

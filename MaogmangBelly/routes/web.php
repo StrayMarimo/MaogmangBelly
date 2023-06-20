@@ -7,9 +7,10 @@ use App\Http\Controllers\Auth\GoogleSocialiteController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\MapController;
+use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderLineController;
+use App\Models\OrderLine;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -23,12 +24,11 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-// PAGES
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/about', [HomeController::class, 'about'])->name('about');
-Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
-Route::get('/profile', [UserController::class, 'profile'])->name('profile');
-Route::get('/order', [CheckoutController::class, 'checkout'])->name('order');
+// NAVBAR
+Route::get('/', [NavbarController::class, 'home']);
+Route::get('/about', [NavbarController::class, 'about'])->name('about');
+Route::get('/contact', [NavbarController::class, 'contact'])->name('contact');
+Route::get('/order', [NavbarController::class, 'order'])->name('order');
 
 // PRODUCTS
 Route::get("/products", [ProductController::class, 'getProducts'])->name('products');
@@ -39,43 +39,32 @@ Route::post("products/add", [ProductController::class, 'addProduct'])->name('add
 Route::post("/products/delete", [ProductController::class, 'deleteProduct'])->name('delete_product');
 Route::post("/products/edit", [ProductController::class, 'editProduct'])->name('edit_product');
 
-// CATEGORIES
-Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
-Route::post("/categories/add", [CategoryController::class, 'store'])->name('categories.add');
-Route::put("/categories/update", [CategoryController::class, 'update'])->name('categories.update');
-Route::delete("/categories/delete", [CategoryController::class, 'destroy'])->name('categories.delete');
+Route::resource('category', CategoryController::class, ['only' => ['index', 'store', 'update', 'destroy']]);
+Route::resource('orders', OrderController::class, ['only' => ['index', 'store', 'update', 'destroy']]);
+Route::resource('order_line', OrderLineController::class, ['only' => ['index', 'store', 'update', 'destroy']]);
 
-// ORDER
-Route::post("add_to_order", [OrderController::class, 'addToOrder'])->name('add_order');
-Route::post("cancel_all_orders", [OrderController::class, 'cancelAllOrders'])->name('cancel_orders');
-Route::post("edit_order_qty", [OrderController::class, 'editOrderQty'])->name('edit_order');
-Route::post("delete_order_line", [OrderController::class, 'deleteOrderLine'])->name('delete_order');
-
-// PURCHSE HISTORY
-Route::get('/purchase_history', [OrderController::class, 'getAllOrders'])->name('get_orders');
-Route::post('/complete_order',[OrderController::class, 'completeOrder'])->name('complete_order');
-Route::get('/order_lines', [OrderController::class, 'getOrderLines'])->name('get_order_lines');
-
+Route::get("add_order_line", [OrderLineController::class, 'store'])->name('add_orderline');
 
 //CHECKOUT
-Route::post("buy", [CheckoutController::class, 'buy']);
-Route::get("map", [MapController::class, 'showMap'])->name('show_map');
+Route::post("/buy", [CheckoutController::class, 'buy']);
+Route::get("/map", [CheckoutController::class, 'showMap'])->name('show_map');
 Route::get("/order_count", [CheckoutController::class, 'getOrderLinesCount']);
 Route::get("/available_date", [CheckoutController::class, 'getDateAvailability']);
 
 // CATERING
-Route::get('/catering', [HomeController::class, 'catering'])->name('catering');
-Route::get('/checkout_catering', [HomeController::class, 'checkoutCatering'])->name('checkout_catering');
+Route::get('/catering', [NavbarController::class, 'catering'])->name('catering');
+Route::get('/checkout_catering', [NavbarController::class, 'checkoutCatering'])->name('checkout_catering');
 
 
 // RESERVATIONS
-Route::get('/reservations', [HomeController::class, 'reservations'])->name('reservations');
-Route::get('/checkout_reservations', [HomeController::class, 'checkoutReservations'])->name('checkout_reservations');
+Route::get('/reservations', [NavbarController::class, 'reservations'])->name('reservations');
+Route::get('/checkout_reservations', [NavbarController::class, 'checkoutReservations'])->name('checkout_reservations');
 
 // Authentication
-Auth::routes([
-    'verify' => true
-]);
+Auth::routes([ 'verify' => true]);
+
+// USER
+Route::get('/profile', [UserController::class, 'profile'])->name('profile');
 
 // Google Auth
 Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle']);

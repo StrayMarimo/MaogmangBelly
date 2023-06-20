@@ -26,7 +26,8 @@
                         <td>{{$item['name']}}</td>
                         <td>{{$item['price']}}</td>
                         <td>
-                            <form action="/edit_order_qty" method="POST" id="edit-order-form-{{$item['id']}}">
+                            <form action="{{route('order_line.update', ['order_line' => $item['id']])}}" method="POST" id="edit-order-form-{{$item['id']}}">
+                                @method("PUT")
                                 @csrf
                                 <input type="hidden" name="order_type" value="O">
                                 <input type="hidden" name="order_line_id" value={{$item['id']}}>
@@ -39,10 +40,10 @@
                         </td>
                         <td>{{$item['total_price']}}</td>
                         <td>
-                            <form action="/delete_order_line" method="POST">
+                            <form action="{{ route('order_line.destroy', ['order_line' => $item['id']])}}" method="POST">
+                                @method('DELETE')
                                 @csrf
                                 <input type="hidden" name="order_type" value="O">
-                                <input type="hidden" name="order_line_id" value="{{$item['id']}}">
                                 <button type="submit" class="btn text-white">
                                     <i class="bs bi-trash-fill " id="delete-order-line"></i>
                                 </button>
@@ -59,9 +60,9 @@
 
                         </td>
                         <td>
-                            <form action="/cancel_all_orders" method="POST">
+                            <form action="{{route('orders.destroy', ['order' => $order['id']])}}" method="POST">
+                                @method('DELETE')
                                 @csrf
-                                <input type="hidden" name="order_id" value="{{$order['id']}}">
                                 <button class="btn btn-danger mt-2">Cancel this order.</button>
                             </form>
                         </td>
@@ -93,11 +94,11 @@
                     <div class=" mapView mt-3 mb-2" id="mapView">
                         <div id="orderAddress">
                             <textarea class="p-3 w-100" name="address" id="address" rows=2
-                                style="width:88vw; font-family: 'Franklin Gothic Medium';" placeholder="Pin your location in the map..."
-                                required></textarea>
+                                style="width:88vw; font-family: 'Franklin Gothic Medium';"
+                                placeholder="Pin your location in the map..." required></textarea>
                             <div id="map" class="mb-2 w-100"></div>
                         </div>
-                       
+
 
                     </div>
                 </div>
