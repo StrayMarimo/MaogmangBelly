@@ -23,7 +23,7 @@ class ProductControllerTest extends TestCase
 
 
         $response = $this->actingAs($user)
-            ->get(route('products'));
+            ->get(route('product.index'));
         $response->assertStatus(200);
 
         $response->assertViewIs('layouts.products.products')
@@ -43,7 +43,7 @@ class ProductControllerTest extends TestCase
             'category_id' => $categories->random()->id,
         ]);
 
-        $response = $this->get(route('product_details', ['id' => $product->id]));
+        $response = $this->get(route('product.show', ['product' => $product->id]));
         $response->assertStatus(200);
 
         $expectedProduct = Product::find($product['id']);
@@ -96,7 +96,7 @@ class ProductControllerTest extends TestCase
             'category_id' => $category->id
         ];
 
-        $response = $this->post(route('add_product'), $productData);
+        $response = $this->post(route('product.store'), $productData);
 
         $expectedProduct = Product::first();
 
@@ -104,11 +104,10 @@ class ProductControllerTest extends TestCase
         $this->assertEquals($expectedProduct['name'], $productData['product_name']);
         $this->assertEquals($expectedProduct['description'], $productData['product_desc']);
         $this->assertEquals($expectedProduct['category_id'], $productData['category_id']);
-        $response->assertStatus(302);
 
-        // assert session data
-        $response->assertSessionHas('status', 200); // Assert that the 'status' session key has a value of 200
-        $response->assertSessionHas('success', true); // Assert that the 'success' session key has a value of true
+        // assert redirect with success session data
+        $response->assertStatus(302);
+        $response->assertSessionHas('success', true); 
     }
 
     public function test_can_edit_product(): void
@@ -133,18 +132,16 @@ class ProductControllerTest extends TestCase
             'gallery' => $this->faker->word(),
         ];
 
-        $response = $this->post(route('edit_product'), $product_data);
+        $response = $this->put(route('product.update', ['product' => $product['id']]), $product_data);
         $expectedProduct = Product::first();
 
         // Assert that the category name is updated
         $this->assertEquals($expectedProduct['name'], $product_data['product_name']);
         // $this->assertEquals($expectedProduct['description'], $product_data['product_desc']);
 
-        // assert redirect
+        // assert redirect with success session
         $response->assertStatus(302);
-
-        $response->assertSessionHas('status', 200); // Assert that the 'status' session key has a value of 200
-        $response->assertSessionHas('success', true); // Assert that the 'success' session key has a value of true
+        $response->assertSessionHas('success', true); 
 
     }
 
@@ -155,18 +152,15 @@ class ProductControllerTest extends TestCase
             'category_id' => $categories->random()->id,
         ]);
 
-        $response = $this->post(route('delete_product'), ['product_id' => $product->id]);
+        $response = $this->delete(route('product.destroy', ['product' => $product->id]));
 
 
         // Assert that the product is deleted
         $deletedProduct = Product::find($product->id);
         $this->assertNull($deletedProduct);
 
-        // assert redirect
+        // assert redirect with success session
         $response->assertStatus(302);
-
-        // assert session data
-        $response->assertSessionHas('status', 200); // Assert that the 'status' session key has a value of 200
         $response->assertSessionHas('success', true); // Assert that the 'success' session key has a value of true
     }
 }
