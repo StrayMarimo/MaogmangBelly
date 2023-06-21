@@ -10,7 +10,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderLineController;
-use App\Models\OrderLine;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -30,20 +29,13 @@ Route::get('/about', [NavbarController::class, 'about'])->name('about');
 Route::get('/contact', [NavbarController::class, 'contact'])->name('contact');
 Route::get('/order', [NavbarController::class, 'order'])->name('order');
 
-// PRODUCTS
-// Route::get("/products", [ProductController::class, 'index'])->name('products');
+// RESOURCES
 Route::get('/product/search', [ProductController::class, 'search'])->name('search');
-// Route::get("/products/product", [ProductController::class, 'getProduct'])->name('product');
-// Route::post("products/add", [ProductController::class, 'addProduct'])->name('add_product');
-// Route::post("/products/delete", [ProductController::class, 'deleteProduct'])->name('delete_product');
-// Route::post("/products/edit", [ProductController::class, 'editProduct'])->name('edit_product');
-
+Route::get("add_order_line", [OrderLineController::class, 'store'])->name('add_orderline');
 Route::resource('category', CategoryController::class, ['only' => ['index', 'store', 'update', 'destroy']]);
 Route::resource('orders', OrderController::class, ['only' => ['index', 'store', 'update', 'destroy']]);
 Route::resource('order_line', OrderLineController::class, ['only' => ['index', 'store', 'update', 'destroy']]);
 Route::resource('product', ProductController::class, ['only' => ['index', 'show', 'search', 'store', 'update', 'destroy']]);
-
-Route::get("add_order_line", [OrderLineController::class, 'store'])->name('add_orderline');
 
 //CHECKOUT
 Route::post("/buy", [CheckoutController::class, 'buy']);
@@ -54,7 +46,6 @@ Route::get("/available_date", [CheckoutController::class, 'getDateAvailability']
 // CATERING
 Route::get('/catering', [NavbarController::class, 'catering'])->name('catering');
 Route::get('/checkout_catering', [NavbarController::class, 'checkoutCatering'])->name('checkout_catering');
-
 
 // RESERVATIONS
 Route::get('/reservations', [NavbarController::class, 'reservations'])->name('reservations');
