@@ -94,16 +94,16 @@ class CategoryController extends Controller
                 $rowDeleted)); 
     }
 
-/**
- * returns session data for the redirect response
- * 
- * @param String msg is a string indicating the action performed
- * @param bool success A boolean value indicating whether the operation was
- * successful or not
- * 
- * @return array<associative> with two keys -- 'message' and 'success' --
- * for the session message and session status respectively
- */
+    /**
+     * returns session data for the redirect response
+     * 
+     * @param String msg is a string indicating the action performed
+     * @param bool success A boolean value indicating whether the operation was
+     * successful or not
+     * 
+     * @return array<associative> with two keys -- 'message' and 'success' --
+     * for the session message and session status respectively
+     */
     private function retSession(String $msg, bool $success)
     {  
         return [
