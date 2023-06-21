@@ -20,18 +20,6 @@
                 <li class="nav-item dropdown">
                     <a href="" id="showSettingsBtn"><i class="bi bi-gear-fill" style="font-size: 1.3rem"></i></a>
                     @include('layouts.products.settings_modal')
-                    {{-- <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" data-bs-offset="-10,-20" data-bs-popper="none" aria-expanded="false">
-
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#" id="addCategory">Add Category</a>
-                        <a class="dropdown-item" href="#" id="editCategory">Edit Category</a>
-                        <a class="dropdown-item" href="#" id="deleteCategory">Delete Category</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#" id="addProduct">Add More
-                            Products</a>
-                    </div> --}}
                 </li>
             </ul>
             @endif
