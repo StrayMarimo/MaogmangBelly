@@ -85,7 +85,8 @@
                 </div>
                 <!-- Modal footer -->
                 <div class="modal-footer mt-2">
-                    <button type="submit" class="red-btn3 btn btn-primary" style="background-color: #a72322 ">Save Changes</button>
+                    <button type="submit" class="red-btn3 btn btn-primary" style="background-color: #a72322 ">Save
+                        Changes</button>
                 </div>
             </form>
         </div>
@@ -102,7 +103,9 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="deleteProductForm" action="{{ route('product.destroy', ['product' => 'product_id'])}}" method="POST">
+                <form id="deleteProductForm" action="{{ route('product.destroy', ['product' => 'product_id'])}}"
+                    method="POST">
+                    @method('DELETE')
                     @csrf
                     <!-- Save category ID -->
                     <input type="hidden" id="deleteProductId" value="" name="product_id" required>
@@ -126,8 +129,9 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <!-- Edit Product form -->
-            <form action="{{ route('product.update', ['product' => 'product_id'])}}" method="POST" enctype="multipart/form-data" id="editProductForm"
-                style="margin: 20px; line-height: 2.5;">
+            <form action="{{ route('product.update', ['product' => 'product_id'])}}" method="POST"
+                enctype="multipart/form-data" id="editProductForm" style="margin: 20px; line-height: 2.5;">
+                @method('PUT')
                 @csrf
                 <!-- Save product ID -->
                 <input type="hidden" id="productId" value="" name="product_id" required>

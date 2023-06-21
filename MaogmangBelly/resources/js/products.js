@@ -18,7 +18,7 @@ $(document).ready(function () {
 
     // Handle clicks on the add category nav item
     $('#addCategory').on('click', function (e) {
-       $('#settingsModal').modal('hide'); 
+        $('#settingsModal').modal('hide'); 
         e.preventDefault();
         $('#addCategoryModal').modal('show');
     });
@@ -39,7 +39,7 @@ $(document).ready(function () {
 
     // Handle clicks on the edit category nav item
     $('#editCategory').on('click', function (e) {
-       $('#settingsModal').modal('hide');  
+        $('#settingsModal').modal('hide');  
         e.preventDefault();
         $('#editCategoryModal').modal('show');
     });
@@ -58,12 +58,13 @@ $(document).ready(function () {
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
             },
-            url: '/product',
-            data: JSON.stringify({ product: product_id}),
+            url: '/product/' + product_id,
             method: 'GET',
             success: function (response) {
                 let product = response;
-
+                let actionUrl = $('#editProductForm').attr('action');
+                actionUrl = actionUrl.replace('product_id', product_id);
+                $('#editProductForm').attr('action', actionUrl);
                 $('#editProductForm #productId').val(product['id']);
                 $('#editProductForm #productCategoryId').val(product['category_id']);
                 $('#editProductForm #name').val(product['name']);
@@ -95,8 +96,9 @@ $(document).ready(function () {
         $('#deleteProductId').val(product_id);
 
         let modal_text = $('#deleteProductName').text() + ' ' + product_name + ' ?';
-        console.log(modal_text);
-        $('#deleteProductId').val(product_id);
+        let actionUrl = $('#deleteProductForm').attr('action');
+        actionUrl = actionUrl.replace('product_id', product_id);
+        $('#deleteProductForm').attr('action', actionUrl);
         $('#deleteProductName').text(modal_text);
         $('#deleteProductModal').modal('show');
     });
@@ -126,12 +128,9 @@ $(document).ready(function () {
     // handles instance when category is selected on delete category
     $('#selectCategory').on('change', function () {
         let category_id = $('#selectCategory').val();
-       
         let actionUrl = $('#deleteCategoryForm').attr('action');
-         console.log(actionUrl);
         actionUrl = actionUrl.replace('category_id', category_id);
         $('#deleteCategoryForm').attr('action', actionUrl);
-
     });
 
     // handles instance when category is selected on edit category

@@ -24,17 +24,17 @@ use Illuminate\Support\Facades\Auth;
 */
 
 // NAVBAR
-Route::get('/', [NavbarController::class, 'home']);
+Route::get('/', [NavbarController::class, 'home'])->name('home');
 Route::get('/about', [NavbarController::class, 'about'])->name('about');
 Route::get('/contact', [NavbarController::class, 'contact'])->name('contact');
 Route::get('/order', [NavbarController::class, 'order'])->name('order');
+Route::get('/product/search', [ProductController::class, 'search'])->name('search');
 
 // RESOURCES
-Route::get('/product/search', [ProductController::class, 'search'])->name('search');
-Route::get("add_order_line", [OrderLineController::class, 'store'])->name('add_orderline');
+Route::get('order_line/{order_id}', [OrderLineController::class, 'index']);
 Route::resource('category', CategoryController::class, ['only' => ['index', 'store', 'update', 'destroy']]);
 Route::resource('orders', OrderController::class, ['only' => ['index', 'store', 'update', 'destroy']]);
-Route::resource('order_line', OrderLineController::class, ['only' => ['index', 'store', 'update', 'destroy']]);
+Route::resource('order_line', OrderLineController::class, ['only' => [ 'store', 'update', 'destroy']]);
 Route::resource('product', ProductController::class, ['only' => ['index', 'show', 'search', 'store', 'update', 'destroy']]);
 
 //CHECKOUT
@@ -42,6 +42,7 @@ Route::post("/buy", [CheckoutController::class, 'buy']);
 Route::get("/map", [CheckoutController::class, 'showMap'])->name('show_map');
 Route::get("/order_count", [CheckoutController::class, 'getOrderLinesCount']);
 Route::get("/available_date", [CheckoutController::class, 'getDateAvailability']);
+Route::get('add_order_line', [OrderLineController::class, 'store'])->name('add_orderline');
 
 // CATERING
 Route::get('/catering', [NavbarController::class, 'catering'])->name('catering');

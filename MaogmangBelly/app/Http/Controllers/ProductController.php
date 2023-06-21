@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -85,86 +84,89 @@ class ProductController extends Controller
             'is_featured' => $req->has('is_featured')
         ]);
 
-        if ($product)
-            return redirect()->route('product.index')->with(
-                $this->retSession('Successfully added ' .$req->product_name, true));
-        return redirect()->route('product.index')->with(
-            $this->retSession('Failed adding ' . $req->product_name, false));
+        return redirect()->route('product.index')->with($this->retSession(
+            ($product ? 'added ' : "adding ") . $req->product_name, 
+            $product != null));
     }
 
-    public function destroy(Request $req)
+    /**
+     * deletes a product
+     * @param int id of product to be deleted
+     * @return RedirectResponse to products tab with a session message
+     * indicating whether the product was successfully deleted or not 
+     */
+    public function destroy(int $id)
     {
-        $id = (int) $req->product;
+        // gets name of the product
         $name = Product::find($id)['name'];
+
+        // deletes the product
         $rowDeleted = Product::destroy($id);
-        
-        if ($rowDeleted == 1) {
-            return redirect()->route('product')->with([
-                'status' => 200,
-                'message' => 'Product Deleted Successfully',
-                'success' => true
-            ]);
-        } else {
-            return redirect()->route('product')->with([
-                'status' => 404,
-                'message' => 'Product Deletion failed',
-                'success' => false
-            ]);
-        }
+
+        return redirect()->route('product.index')->with(
+            $this->retSession(
+                ($rowDeleted? "deleted " : "deleting ") . $name,
+                $rowDeleted));
     }
 
-    public function update(Request $req)
+    /**
+     * updates a product
+     * @param Request req contains the product data
+     * @param int id of the product to be updated
+     * @return RedirectResponse to products tab with a session message
+     * indicating whether the product was successfully updated or not
+     */
+    public function update(Request $req, int $id)
     {
+        $product = Product::find($id);
         $filename = "";
 
         // get the filename of image uploaded
-        if ($req->img) {
+        if ($req->img) 
+        {
             $filename = $req->img->getClientOriginalName();
-
             // store in public folder
             $req->img->move(public_path('assets/product_assets/'), $filename);
-        }else
-        {
-            $filename = Product::find($req->product_id)['gallery'];
         }
+        else
+            $filename = Product::find($req->product_id)['gallery'];
+        
 
         // Update the product's data in the database
-        $rowsAffected = DB::table("products")
-        ->where('id', (int) $req->product_id)
-            ->update([
-                'name' => $req->product_name,
-                'description' =>  $req->product_desc,
-                'price' => $req->product_price,
-                'price_10pax' => $req->product_price_10,
-                'price_20pax' => $req->product_price_20,
-                'stock' => $req->product_stock,
-                'gallery' => $filename,
-                'category_id' => $req->category_id,
-                'is_trending' => $req->has('is_trending'),
-                'is_featured' => $req->has('is_featured')
-            ]);
-        
+        $rowAffected = $product->update([
+            'name' => $req->product_name,
+            'description' =>  $req->product_desc,
+            'price' => $req->product_price,
+            'price_10pax' => $req->product_price_10,
+            'price_20pax' => $req->product_price_20,
+            'stock' => $req->product_stock,
+            'gallery' => $filename,
+            'category_id' => $req->category_id,
+            'is_trending' => $req->has('is_trending'),
+            'is_featured' => $req->has('is_featured')
+        ]);
+    
             
-        if ($rowsAffected > 0) {
-            return redirect()->route('product')->with([
-                'status' => 200,
-                'message' => 'Product Updated Successfully',
-                'success' => true
-            ]);
-        } else {
-            return redirect()->route('product')->with([
-                'status' => 404,
-                'message' => 'Product Deletion failed',
-                'success' => false
-            ]);
-        }
+        return redirect()->route('product.index')->with(
+        $this->retSession(
+            ($rowAffected? "updated " : "updating ") . $product['name'],
+            $rowAffected));
     }
 
-    
+    /**
+     * returns session data for the redirect response
+     * 
+     * @param String msg is a string indicating the action performed
+     * @param bool success A boolean value indicating whether the operation was
+     * successful or not
+     * 
+     * @return array<associative> with two keys -- 'message' and 'success' --
+     * for the session message and session status respectively
+     */
     private function retSession(String $msg, bool $success)
     {  
         return [
-            'message' => $msg . "!",
+            'message' => ($success? "Successfully " : "Failed ") . $msg . "!",
             'success' => $success
         ];
     }

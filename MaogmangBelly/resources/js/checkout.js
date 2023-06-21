@@ -11,7 +11,6 @@ $(document).ready(function () {
              $('#minRequiredToast').show();
              $('#minRequiredToast').delay(2000).fadeOut('slow');
         }
-       
     });
 
     // Handle clicks on Confirmed Modal button
@@ -63,17 +62,16 @@ $(document).ready(function () {
     $('.orderHistoryBtn').click(function () {
            let target = $(this).data('target');
            let order_id = $(this).data('order-id');
-
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
                 },
-                url: '/order_lines?id=' + order_id,
+                url: '/order_line/' + order_id,
                 method: 'GET',
                 success: function (response) {
                     let order_lines = response;
                     $.each(order_lines, function(index, order_line){
-                        $('.orderHistory'+ order_id + '#productName' + index).text(order_line['product_name']);
+                        $('.orderHistory'+ order_id + '#productName' + index).text(order_line['name']);
                         $('.orderHistory' + order_id + '#unitPrice' + index).text(
                             order_line['price']
                         );

@@ -16,9 +16,10 @@ class OrderLineController extends Controller
      * @param Request req containing the order id
      * @return JSON response containing all order lines
      */
-    public function index(Request $req)
+    public function index(int $id)
     {
-        return response()->json(Order::find($req->id)->getOrders);
+       // dd($id);
+        return response()->json(Order::find($id)->getOrders());
     }
     
     /**

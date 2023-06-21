@@ -56,14 +56,14 @@ class CheckoutController extends Controller
             Mail::to('maogmangbelly@gmail.com')->send(new AdminOrderMail($mailData));
 
             // redirect user to home page with success session message and status
-            return redirect()->route('/')->with([
+            return redirect()->route('home')->with([
                 'message' => "Successfully bought order with id " . strval($order['id']),
                 'success' => true
             ]);
         } 
 
         // otherwise redirect user to home page with failed session message and status
-        return redirect()->route('/')->with([
+        return redirect()->route('home')->with([
             'message' => "Failed buying order with id " . strval($order['id']),
             'success' => false
         ]);
