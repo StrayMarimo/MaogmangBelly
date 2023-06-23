@@ -49,7 +49,7 @@
                     @endforeach
                 </table>
                 <div style="margin-top: 10vh; margin-bottom: 5vh" class="d-flex justify-content-center">
-                    <a href="{{route('products')}}" class="btn btn-danger px-4 py-2">Add more products</a>
+                    <a href="{{route('product.index')}}" class="btn btn-danger px-4 py-2">Add more products</a>
                 </div>
                 <div>
                     Grand Total : {{$order['grand_total']}}

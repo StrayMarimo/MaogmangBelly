@@ -1,93 +1,84 @@
-// Wait for the document to finish loading before executing this code
+import * as utils from './utils.js';
+
 $(document).ready(function () {
     // Handle clicks on the tabs in the navigation menu
     $('.nav-tabs a').click(function () {
         $(this).tab('show');
     });
 
-    $('#showSettingsBtn').on('click', function(e){
+    // handle clicks on settings button
+    $('#showSettingsBtn').on('click', function (e) {
         e.preventDefault();
         $('#settingsModal').modal('show');
-    })
+    });
 
+    // handle clicks on add to order button on product details page
     $('#addToOrder').on('click', function (e) {
         e.preventDefault();
         $('#orderType').val('O');
         $('#availProductForm').submit();
     });
 
-    // Handle clicks on the add category nav item
+    // Handle clicks on the add category btn
     $('#addCategory').on('click', function (e) {
-        $('#settingsModal').modal('hide'); 
-        e.preventDefault();
+        hideSettingsModal(e);
         $('#addCategoryModal').modal('show');
     });
 
-    // Handle clicks on the delete category nav item
+    // Handle clicks on the delete category btn
     $('#deleteCategory').on('click', function (e) {
-        $('#settingsModal').modal('hide'); 
-        e.preventDefault();
+        hideSettingsModal(e);
         $('#deleteCategoryModal').modal('show');
     });
 
     // Handle clicks on the add product nav item
     $('#addProduct').on('click', function (e) {
-        $('#settingsModal').modal('hide'); 
-        e.preventDefault();
+        hideSettingsModal(e);
         $('#addProductModal').modal('show');
     });
 
     // Handle clicks on the edit category nav item
     $('#editCategory').on('click', function (e) {
-        $('#settingsModal').modal('hide');  
-        e.preventDefault();
+        hideSettingsModal(e);
         $('#editCategoryModal').modal('show');
     });
 
-    // Handle clicks on the add product nav item
+    // Handle clicks on the edit product icon button
     $('.edit-product').on('click', function (e) {
         e.preventDefault();
-
-        console.log('editproduct');
         let product_id = $(this).data('product-id');
         populateParentCategorySelect(
             '#editProductForm #selectCategoryUpdate',
             product_id
         );
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-            },
-            url: '/product/' + product_id,
-            method: 'GET',
-            success: function (response) {
+
+        let getProductDetails = utils.ajaxParams('/product/' + product_id, 'GET');
+        getProductDetails.success = function (response) {
                 let product = response;
-                let actionUrl = $('#editProductForm').attr('action');
+                let form = '#editProductForm';
+                let actionUrl = $(form).attr('action');
                 actionUrl = actionUrl.replace('product_id', product_id);
-                $('#editProductForm').attr('action', actionUrl);
-                $('#editProductForm #productId').val(product['id']);
-                $('#editProductForm #productCategoryId').val(product['category_id']);
-                $('#editProductForm #name').val(product['name']);
-                $('#editProductForm #description').val(product['description']);
-                $('#editProductForm #preview-image-before-upload').attr(
+                $(form).attr('action', actionUrl);
+                $(form + ' #productId').val(product['id']);
+                $(form + ' #productCategoryId').val(product['category_id']);
+                $(form + ' #name').val(product['name']);
+                $(form + ' #description').val(product['description']);
+                $(form + ' #preview-image-before-upload').attr(
                     'src',
                     '/assets/product_assets/' + product['gallery']
                 );
-                $('#editProductForm #price').val(product['price']);
-                $('#editProductForm #price10').val(product['price_10pax']);
-                $('#editProductForm #price20').val(product['price_20pax']);
-                $('#editProductForm #stock').val(product['stock']);
-                $('#editProductForm #isFeatured').prop('checked', product['is_featured']);
-                $('#editProductForm #isTrending').prop('checked', product['is_trending']);
+                $(form + ' #price').val(product['price']);
+                $(form + ' #price10').val(product['price_10pax']);
+                $(form + ' #price20').val(product['price_20pax']);
+                $(form + ' #stock').val(product['stock']);
+                $(form + ' #isFeatured').prop('checked', product['is_featured']);
+                $(form + ' #isTrending').prop('checked', product['is_trending']);
                 $('#editProductModal').modal('show');
             },
-            error: function (xhr) {
-                console.log(xhr.responseText);
-            },
-        });
+        $.ajax(getProductDetails);
     });
 
-    // Handle clicks on the delete product nav item
+    // Handle clicks on the delete product icon button
     $('.delete-product').on('click', function (e) {
         e.preventDefault();
 
@@ -121,7 +112,6 @@ $(document).ready(function () {
     // handles instance when category is selected on add product modal
     $('#parentCategory').on('change', function () {
         let category_id = $('#parentCategory').val();
-        console.log('id: ', category_id);
         $('#product-category-id').val(category_id);
     });
 
@@ -138,7 +128,7 @@ $(document).ready(function () {
         let category_id = $('#selectCategoryEdit').val();
         let actionUrl = $('#editCategoryForm').attr('action');
         actionUrl = actionUrl.replace('category_id', category_id);
-        $('#editCategoryForm').attr('action', actionUrl); 
+        $('#editCategoryForm').attr('action', actionUrl);
     });
 
     // Handle product image upload
@@ -149,19 +139,14 @@ $(document).ready(function () {
         };
         reader.readAsDataURL(this.files[0]);
     });
+
+    // function to add options in a category select dropdown menu
     function populateParentCategorySelect(selectCategoryId, defaultValue) {
-        console.log('populating categories options');
         let $parentCategorySelect = $(selectCategoryId);
         $parentCategorySelect.empty();
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-            },
-            url: '/category',
-            method: 'GET',
-            success: function (response) {
+        let getCategories = utils.ajaxParams('/category', 'GET');
+        getCategories.success = function (response) {
                 let categories = response;
-                console.log(categories);
                 if (defaultValue == 0)
                     $parentCategorySelect
                         .empty()
@@ -178,7 +163,6 @@ $(document).ready(function () {
                         }
                     });
                 }
-
                 $.each(categories, function () {
                     $parentCategorySelect.append(
                         $('<option>', {
@@ -186,21 +170,24 @@ $(document).ready(function () {
                             text: this.name,
                         })
                     );
-                    console.log('ID: ' + this.id);
-                    console.log('Name: ' + this.name);
                 });
             },
-            error: function (xhr) {
-                console.log(xhr.responseText);
-            },
-        });
+        $.ajax(getCategories);
     }
 
+    // handles click on close btn of alert
     $('.alert .close').click(function () {
         $(this).parent().fadeOut(500);
     });
 
+    // adds a fade out to alerts
     setTimeout(function () {
         $('.alert').fadeOut(500);
     }, 5000);
+
+    // function to hide settings modal
+    function hideSettingsModal(e) {
+        $('#settingsModal').modal('hide');
+        e.preventDefault();
+    }
 });

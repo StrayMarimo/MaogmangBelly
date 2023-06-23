@@ -1,9 +1,9 @@
-window.onload = function() {
-    var mapContainer = document.getElementById('mapView');
+window.onload = function () {
+    let mapContainer = document.getElementById('mapView');
     if (mapContainer != null) {
-        var map = L.map('map').setView([13.6303, 123.1851], 18);
-        var popup = L.popup();
-        var marker = L.marker();
+        let map = L.map('map').setView([13.6303, 123.1851], 18);
+        let popup = L.popup();
+        let marker = L.marker();
 
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 15,
@@ -29,12 +29,8 @@ window.onload = function() {
                 .then((res) => res.json())
                 .then((res) => {
                     $('#address').val(res.display_name);
-                    console.log(res.display_name);
-                    console.log(res.address);
                 });
         }
         map.on('click', onMapClick);
     }
 };
-
-

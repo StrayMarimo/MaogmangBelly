@@ -20,4 +20,5 @@ $(document).ready(function () {
 
     // set the minimum date for the datetime input field
     $('#date').attr('min', minDateFormatted);
+
 });

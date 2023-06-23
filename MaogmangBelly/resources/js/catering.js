@@ -1,93 +1,70 @@
+import * as utils from './utils.js';
+
 $(document).ready(function () {
-    // Handle clicks on the Confirmation button
-    $('#buyCateringBtn').on('click', function (e) {
-        e.preventDefault();
-         if ($('#checkoutAddress #address').val().trim() !== '' && $('#cateringDate #date').val() !== ''){
-            
-            let date = $('#cateringDate #date').val().toString();
-
-            console.log(date);
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                },
-                url: '/available_date?date=' + date,
-                method: 'GET',
-                success: function (response) {
-                    console.log(response);
-                    if (response == 0)
-                       $('#confirmCheckoutCatering').modal('show'); 
-                    else
-                    {
-                        $('#minRequiredToast .toast-body').text('Date is already taken');
-                        $('#minRequiredToast small').text('Catering Booking Date');
-                        $('#minRequiredToast').show();
-                        $('#minRequiredToast').delay(2000).fadeOut('slow');
-                    }
-                },
-                error: function (xhr) {
-                    console.log(xhr.responseText);
-                },
-            });
-        } else {
-              $('#minRequiredToast .toast-body').text('Address and Date are required');
-              $('#minRequiredToast small').text('Catering');
-              $('#minRequiredToast').show();
-              $('#minRequiredToast').delay(2000).fadeOut('slow');
-        }
-
-    });
-
-    $('#minRequiredToast button').on('click', function(){
-         $('#minRequiredToast').hide();
-    }); 
+    // handle click on adding catering order on details page
     $('#addToCatering').on('click', function (e) {
         e.preventDefault();
+        // get item quantity
+        let inputVal = $('#availProductQuantity').val();
 
-        let inputVal = $('#availProductQuantity').val(); // get input value
-
+        // check if input is at least fixed minimum
         if (parseInt(inputVal) < 50) {
-            $('#minRequiredToast .toast-body').text( 'Quantity must be at least 50');
-            $('#minRequiredToast small').text('Catering');   
-            $('#minRequiredToast').show();
-            $('#minRequiredToast').delay(2000).fadeOut('slow');
+            utils.showToaster('Quantity must be at least 50', 'Catering');
         } else {
+            // invoke post request
             $('#orderType').val('C');
             $('#availProductForm').submit();
         }
     });
 
+    // Handle click on buy catering btn
+    $('#buyCateringBtn').on('click', function (e) {
+        e.preventDefault();
+
+        // check if address and date fields are empty
+        if (
+            $('#checkoutAddress #address').val().trim() !== '' &&
+            $('#cateringDate #date').val() !== ''
+        ) {
+            // check if date is already reserved for a catering or reservation service
+            let date = $('#cateringDate #date').val().toString();
+            let checkAvilability = utils.ajaxParams(
+                '/available_date?date=' + date,
+                'GET'
+            );
+            (checkAvilability.success = function (response) {
+                if (response == 0) $('#confirmCheckoutCatering').modal('show');
+                else utils.showToaster('Date is already taken', 'Catering Booking Date');
+            }),
+            $.ajax(checkAvilability);
+        } else utils.showToaster('Address and Date are required', 'Catering');
+    });
+
+    // handle clicks on confirm catering btn modal
     $('#checkoutCateringBtn').on('click', function (e) {
         e.preventDefault();
+
+        // get order id
         let order_id = $(this).data('order-id');
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-            },
-            url: '/order_count?id=' + order_id,
-            method: 'GET',
-            success: function (response) {
-                if (response >= 10)
-                {
-                    $('#checkoutCateringForm').submit();
-                }
-                else 
-                { 
-                     $('#confirmCheckoutCatering').modal('hide');
-                    $('#minRequiredToast .toast-body').text(
-                        'You should have at least 10 menu items'
-                    );
-                    $('#minRequiredToast small').text('Reservations');
-                    $('#minRequiredToast').show();
-                    $('#minRequiredToast').delay(2000).fadeOut('slow');
 
-                }
-            },
-            error: function (xhr) {
-                console.log(xhr.responseText);
-            },
-        });
-    })
+        // check if amount of order lines meets min requirements
+        let checkMinItem = utils.ajaxParams('/order_count?id=' + order_id, 'GET');
+        checkMinItem.success = function (response) {
+            if (response >= 10)
+                $('#checkoutCateringForm').submit();
+            else {
+                $('#confirmCheckoutCatering').modal('hide');
+                utils.showToaster(
+                    'You should have at least 10 menu items',
+                    'Catering'
+                );
+            }
+        };
+        $.ajax(checkMinItem);
+    });
 
-
+    // handle click on close button of toaster
+    $('#minRequiredToast button').on('click', function () {
+        $('#minRequiredToast').hide();
+    });
 });
