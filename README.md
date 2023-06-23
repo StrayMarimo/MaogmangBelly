@@ -13,13 +13,10 @@
 ![Build](https://img.shields.io/badge/build-passing-green)
 
 ## Description
-<hr>
 Maogmang Belly is a web-based proprietary website of a local-based restaurant of the same name. Created to assist the business owner, the website aims to provide an online platform for customers to order, reserve, and book a catering service. The website will also serve as a promotion, showcasing the menu or list of food the restaurant offers.  
 <br>
-<br>
 
-## Usage
-<hr>
+## Installation
 <ol>
  <li>Clone GitHub repo for this project locally  </li>
  <code>git clone git@github.com:StrayMarimo/MaogmangBelly.git</code>
@@ -45,7 +42,6 @@ Maogmang Belly is a web-based proprietary website of a local-based restaurant of
 <br>
 
 ## Core Developers:
-<hr>
 <b>Project Lead: </b> Angeline B. Basbas   
 <br>
 <b>Frontend Team: </b>
